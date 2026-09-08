@@ -1,9 +1,27 @@
-dist/
-node_modules/
-.astro/
-.env
-.env.production
-.env.*.local
-.DS_Store
+# Logs
+logs
+*.log
 npm-debug.log*
-.wrangler/
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# wrangler
+.wrangler
