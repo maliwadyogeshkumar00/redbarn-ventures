@@ -1,19 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import Footer from '../components/Footer'
+import { CITIES, EMAIL, mailto } from '../content/site'
+import { usePageMeta } from '../components/Blocks'
 
 const CITY_IMAGE = '/city.png'
 const TOPICS = ['New venture', 'Consulting', 'Investment', 'Press', 'Careers']
-const CITIES: { name: string; tz: string }[] = [
-  { name: 'Amsterdam', tz: 'Europe/Amsterdam' },
-  { name: 'Ahmedabad', tz: 'Asia/Kolkata' },
-  { name: 'London', tz: 'Europe/London' },
-]
 const DESKS = [
-  { t: 'New ventures & pitches', d: 'The one-line idea and what you need: capital, a co-builder, or both.', m: 'build@' },
-  { t: 'Consulting engagements', d: 'Design, technology, marketing, business or finance. The problem and the timeline.', m: 'consulting@' },
-  { t: 'Investment & partnerships', d: 'Pre-seed to growth. Your stage, round size and deck.', m: 'invest@' },
-  { t: 'Press & media', d: 'Quotes, data and introductions to founders.', m: 'press@' },
-  { t: 'Careers', d: 'Send your work, not just your CV.', m: 'careers@' },
+  { t: 'New ventures & pitches', d: 'The one-line idea and what you need: capital, a co-builder, or both.', subj: 'Pitch: [company name]' },
+  { t: 'Consulting engagements', d: 'Design, technology, marketing, business or finance. The problem and the timeline.', subj: 'Consulting enquiry' },
+  { t: 'Investment & partnerships', d: 'Pre-seed to growth. Your stage, round size and deck.', subj: 'Investment enquiry' },
+  { t: 'Press & media', d: 'Quotes, data and introductions.', subj: 'Press enquiry' },
+  { t: 'Careers', d: 'Send your work, not just your CV.', subj: 'Application' },
 ]
 const FAQS = [
   { q: 'Do you only work with technology companies?', a: 'No. Most of our work is technology-led, but we back and advise strong teams across consumer, fintech, healthcare, energy and more. What matters is the founder and the problem.' },
@@ -69,6 +66,21 @@ export default function Contact() {
   const [imgOn, setImgOn] = useState(false)
   const [topic, setTopic] = useState(0)
   const [done, setDone] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [err, setErr] = useState('')
+  const nameRef = useRef<HTMLInputElement>(null), emailRef = useRef<HTMLInputElement>(null), coRef = useRef<HTMLInputElement>(null), msgRef = useRef<HTMLTextAreaElement>(null)
+  usePageMeta('Contact', 'Contact Redbarn Ventures. Tell us what you are building; a real person reads every message and replies within two business days.', '/contact')
+
+  const submit = async () => {
+    const name = nameRef.current?.value.trim() ?? '', email = emailRef.current?.value.trim() ?? '', message = msgRef.current?.value.trim() ?? ''
+    if (!name || !email || !message) { setErr('Please add your name, email and a message.'); return }
+    setErr(''); setSending(true)
+    try {
+      const r = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ name, email, company: coRef.current?.value ?? '', topic: TOPICS[topic], message, _subject: `Website: ${TOPICS[topic]} from ${name}`, _template: 'table', _captcha: 'false' }) })
+      if (!r.ok) throw new Error(String(r.status))
+      setDone(true)
+    } catch { setErr(`Could not send just now. Email us directly at ${EMAIL}.`) } finally { setSending(false) }
+  }
   const [faq, setFaq] = useState<number | null>(null)
 
   // image load + reveal (never blocks on a slow image)
@@ -156,15 +168,16 @@ export default function Contact() {
               <>
                 <div className="f">
                   <div className="two">
-                    <div><label htmlFor="c-name">Name</label><input id="c-name" type="text" placeholder="Jane Okafor" /></div>
-                    <div><label htmlFor="c-email">Email</label><input id="c-email" type="email" placeholder="jane@company.com" /></div>
+                    <div><label htmlFor="c-name">Name</label><input id="c-name" ref={nameRef} type="text" placeholder="Jane Okafor" /></div>
+                    <div><label htmlFor="c-email">Email</label><input id="c-email" ref={emailRef} type="email" placeholder="jane@company.com" /></div>
                   </div>
-                  <div><label htmlFor="c-co">Company or project</label><input id="c-co" type="text" placeholder="What you're working on" /></div>
+                  <div><label htmlFor="c-co">Company or project</label><input id="c-co" ref={coRef} type="text" placeholder="What you're working on" /></div>
                   <div><label>About</label><div className="pills">{TOPICS.map((t, i) => <button key={t} type="button" className={`pill${topic === i ? ' on' : ''}`} onClick={() => setTopic(i)}>{t}</button>)}</div></div>
-                  <div><label htmlFor="c-msg">Message</label><textarea id="c-msg" placeholder="A couple of honest lines about what you need." /></div>
+                  <div><label htmlFor="c-msg">Message</label><textarea id="c-msg" ref={msgRef} placeholder="A couple of honest lines about what you need." /></div>
                 </div>
-                <button className="send" type="button" onClick={() => setDone(true)}><span>Send message</span><Arrow /></button>
-                <div className="alt">Prefer email? <a href="mailto:hello@redbarn.ventures">hello@redbarn.ventures</a></div>
+                <button className="send" type="button" onClick={submit} disabled={sending}><span>{sending ? 'Sending…' : 'Send message'}</span><Arrow /></button>
+                {err && <div className="ferr">{err}</div>}
+                <div className="alt">Prefer email? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
               </>
             ) : (
               <div className="sent">
@@ -180,9 +193,10 @@ export default function Contact() {
       <section className="more">
         <div className="blk">
           <span className="lab">/ Direct desks</span>
-          <h2>Or write straight to the right team.</h2>
+          <h2>One inbox. Tell us which door.</h2>
+          <p className="lead" style={{ marginBottom: 22 }}>Everything reaches a person at {EMAIL}. Pick the subject that fits and we will route it to the right team.</p>
           {DESKS.map((d) => (
-            <a className="desk" key={d.m} href={`mailto:${d.m}redbarn.ventures`}><h3>{d.t}<small>{d.d}</small></h3><span className="m">{d.m}</span></a>
+            <a className="desk" key={d.subj} href={mailto(d.subj)}><h3>{d.t}<small>{d.d}</small></h3><span className="m">{d.subj}</span></a>
           ))}
         </div>
         <div className="blk">

@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { DOMAINS, STAGES, INDUSTRIES } from '../content/site'
+import { ARTICLES, fmtDate } from '../content/insights'
+import { CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import Footer from '../components/Footer'
 
 // Base (moody) and reveal (illuminated) share one generated city image;
 // the base layer is darkened/cooled via CSS so the spotlight reveals the warm, lit skyline.
@@ -62,6 +66,7 @@ function RevealLayer({ image, cursorX, cursorY }: { image: string; cursorX: numb
 }
 
 export default function Home() {
+  usePageMeta('Redbarn Ventures — Consulting, Ownership & Investment under one roof', 'Redbarn Ventures brings design, technology, marketing, business and finance consultancy together with long-term ownership and investment, across Ahmedabad, Oslo, London and Amsterdam.', '/')
   const mouse = useRef<Pt>({ x: -999, y: -999 })
   const smooth = useRef<Pt>({ x: -999, y: -999 })
   const rafRef = useRef<number>(0)
@@ -84,7 +89,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black tracking-[-0.02em]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="rb-page tracking-[-0.02em]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <section className="relative w-full overflow-hidden h-screen bg-black" style={{ height: '100dvh' }}>
         <div
           className="absolute inset-0 bg-center bg-cover bg-no-repeat z-10 hero-zoom"
@@ -112,6 +117,65 @@ export default function Home() {
           <Link to="/contact" className="bg-[#8A2B23] hover:bg-[#6F221C] text-white text-sm font-medium px-7 py-3 rounded-full transition-all hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#8A2B23]/30">Start a conversation</Link>
         </div>
       </section>
+
+      <section className="sec">
+        <div className="g2">
+          <div><span className="lab">/ What we do</span><h2>Three roles. One point of view.</h2></div>
+          <div>
+            <p className="lead">Most of the business world is optimised for the next quarter. We are not. Whether we are advising a company, running one or backing one, the question is the same: will this still be worth something in ten years?</p>
+            <div className="g3" style={{ marginTop: 34 }}>
+              <Link to="/consultancy" className="tile"><span className="n">Consult</span><h3>Five disciplines, one team</h3><p>Design, technology, marketing, business and finance, solved whole.</p></Link>
+              <Link to="/investment#strategic" className="tile"><span className="n">Own</span><h3>Long-term positions</h3><p>Companies we hold and run like owners, because we are.</p></Link>
+              <Link to="/investment" className="tile"><span className="n">Invest</span><h3>First cheque to growth</h3><p>Capital that arrives with the whole bench behind it.</p></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="sec-head"><div><span className="lab">/ Consultancy</span><h2>Everything a growing company needs, under one roof.</h2></div><Link to="/consultancy" className="tlink">All services<Arrow /></Link></div>
+        <div className="doms">
+          {DOMAINS.map((d, i) => (
+            <Link to={`/consultancy#${d.slug}`} className="domt" key={d.slug}>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{d.name}</h3>
+              <p>{d.tagline}</p>
+              <ul>{d.services.slice(0, 3).map((s) => <li key={s}>{s}</li>)}</ul>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="g2">
+          <div><span className="lab">/ Investment</span><h2>We back founders from first cheque to growth.</h2><p className="lead" style={{ marginTop: 18 }}>Pre-seed to scale, and we stay. Every investment comes with the full Redbarn bench from day one.</p><Link to="/investment" className="tlink" style={{ marginTop: 26 }}>How we invest<Arrow /></Link></div>
+          <div className="stages compact">
+            {STAGES.map((s, i) => <Link to={`/investment#${s.slug}`} className="stage" key={s.slug}><span className="n">{String(i + 1).padStart(2, '0')}</span><div><h3>{s.name}</h3></div></Link>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="sec-head"><div><span className="lab">/ Industry</span><h2>Where we work.</h2></div><Link to="/industry" className="tlink">All industries<Arrow /></Link></div>
+        <div className="chips big">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry#${i.slug}`} className="chip">{i.name}</Link>)}</div>
+      </section>
+
+      <section className="sec">
+        <div className="sec-head"><div><span className="lab">/ Insights</span><h2>Notes from the barn.</h2></div><Link to="/insights" className="tlink">All writing<Arrow /></Link></div>
+        <div className="arts">
+          {ARTICLES.slice(0, 3).map((a) => (
+            <Link to={`/insights/${a.slug}`} className="art" key={a.slug}>
+              <div className="am"><span>{a.category}</span><span>{fmtDate(a.date)}</span></div>
+              <h3>{a.title}</h3>
+              <p>{a.excerpt}</p>
+              <span className="go">Read<Arrow /></span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <CtaBand />
+      <Footer />
     </div>
   )
 }
