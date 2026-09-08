@@ -8,9 +8,9 @@ const Plus = () => <span className="p" />
 type OvItem = { label: string; to: string; subs?: { label: string; to: string }[] }
 const OV_ITEMS: OvItem[] = [
   { label: 'Home', to: '/' },
-  { label: 'Consultancy', to: '/consultancy', subs: DOMAINS.map((d) => ({ label: d.name, to: `/consultancy#${d.slug}` })) },
-  { label: 'Investment', to: '/investment', subs: STAGES.map((s) => ({ label: s.name, to: `/investment#${s.slug}` })) },
-  { label: 'Industry', to: '/industry', subs: INDUSTRIES.map((i) => ({ label: i.name, to: `/industry#${i.slug}` })) },
+  { label: 'Consultancy', to: '/consultancy', subs: DOMAINS.map((d) => ({ label: d.name, to: `/consultancy/${d.slug}` })) },
+  { label: 'Investment', to: '/investment', subs: STAGES.map((s) => ({ label: s.name, to: `/investment/${s.slug}` })) },
+  { label: 'Industry', to: '/industry', subs: INDUSTRIES.map((i) => ({ label: i.name, to: `/industry/${i.slug}` })) },
   { label: 'About', to: '/about' },
   { label: 'Careers', to: '/careers' },
   { label: 'Insights', to: '/insights' },
@@ -89,12 +89,12 @@ export default function Header() {
           <nav className="nav">
             <Link to="/" className={here('/')}>Home</Link>
             <div className="nav-item"><Link to="/consultancy" className={`nav-trig ${here('/consultancy') ?? ''}`}>Consultancy<Chev /></Link>
-              <div className="drop">{DOMAINS.map((d) => <Link key={d.slug} to={`/consultancy#${d.slug}`}>{d.name}<Plus /></Link>)}</div></div>
+              <div className="drop">{DOMAINS.map((d) => <Link key={d.slug} to={`/consultancy/${d.slug}`}>{d.name}<Plus /></Link>)}</div></div>
             <div className="nav-item"><Link to="/investment" className={`nav-trig ${here('/investment') ?? ''}`}>Investment<Chev /></Link>
               <div className="drop invest"><p className="dtag">We back founders from first cheque to growth capital - pre-seed to scale.</p><h6>How we invest</h6>
-                {STAGES.map((s) => <Link key={s.slug} to={`/investment#${s.slug}`}>{s.name}<Plus /></Link>)}</div></div>
+                {STAGES.map((s) => <Link key={s.slug} to={`/investment/${s.slug}`}>{s.name}<Plus /></Link>)}</div></div>
             <div className="nav-item"><Link to="/industry" className={`nav-trig ${here('/industry') ?? ''}`}>Industry<Chev /></Link>
-              <div className="drop">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry#${i.slug}`}>{i.name}</Link>)}</div></div>
+              <div className="drop">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry/${i.slug}`}>{i.name}</Link>)}</div></div>
             <Link to="/about" className={here('/about')}>About</Link>
             <Link to="/careers" className={here('/careers')}>Careers</Link>
             <Link to="/insights" className={here('/insights')}>Insights</Link>

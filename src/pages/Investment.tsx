@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { STAGES, mailto } from '../content/site'
 import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
@@ -46,10 +47,10 @@ export default function Investment() {
         <h2>From first cheque to strategic ownership.</h2>
         <div className="stages">
           {STAGES.map((s, i) => (
-            <div className="stage" id={s.slug} key={s.slug}>
+            <Link to={`/investment/${s.slug}`} className="stage" key={s.slug}>
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
-              <div><h3>{s.name}</h3><p>{s.desc}</p></div>
-            </div>
+              <div><h3>{s.name}</h3><p>{s.desc}</p><span className="tlink" style={{ marginTop: 12, fontSize: 15 }}>Read about this stage<Arrow /></span></div>
+            </Link>
           ))}
         </div>
       </section>

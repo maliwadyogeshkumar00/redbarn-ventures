@@ -11,6 +11,9 @@ import Careers from './pages/Careers'
 import { InsightsIndex, ArticlePage } from './pages/Insights'
 import { Privacy, Terms, Cookies } from './pages/Legal'
 import NotFound from './pages/NotFound'
+import DomainPage from './pages/DomainPage'
+import StagePage from './pages/StagePage'
+import IndustryPage from './pages/IndustryPage'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -34,8 +37,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/consultancy" element={<Consultancy />} />
+        <Route path="/consultancy/:slug" element={<DomainPage />} />
         <Route path="/investment" element={<Investment />} />
+        <Route path="/investment/:slug" element={<StagePage />} />
         <Route path="/industry" element={<Industry />} />
+        <Route path="/industry/:slug" element={<IndustryPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/insights" element={<InsightsIndex />} />

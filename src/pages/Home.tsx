@@ -125,7 +125,7 @@ export default function Home() {
             <p className="lead">Most of the business world is optimised for the next quarter. We are not. Whether we are advising a company, running one or backing one, the question is the same: will this still be worth something in ten years?</p>
             <div className="g3" style={{ marginTop: 34 }}>
               <Link to="/consultancy" className="tile"><span className="n">Consult</span><h3>Five disciplines, one team</h3><p>Design, technology, marketing, business and finance, solved whole.</p></Link>
-              <Link to="/investment#strategic" className="tile"><span className="n">Own</span><h3>Long-term positions</h3><p>Companies we hold and run like owners, because we are.</p></Link>
+              <Link to="/investment/strategic" className="tile"><span className="n">Own</span><h3>Long-term positions</h3><p>Companies we hold and run like owners, because we are.</p></Link>
               <Link to="/investment" className="tile"><span className="n">Invest</span><h3>First cheque to growth</h3><p>Capital that arrives with the whole bench behind it.</p></Link>
             </div>
           </div>
@@ -136,11 +136,11 @@ export default function Home() {
         <div className="sec-head"><div><span className="lab">/ Consultancy</span><h2>Everything a growing company needs, under one roof.</h2></div><Link to="/consultancy" className="tlink">All services<Arrow /></Link></div>
         <div className="doms">
           {DOMAINS.map((d, i) => (
-            <Link to={`/consultancy#${d.slug}`} className="domt" key={d.slug}>
+            <Link to={`/consultancy/${d.slug}`} className="domt" key={d.slug}>
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <h3>{d.name}</h3>
               <p>{d.tagline}</p>
-              <ul>{d.services.slice(0, 3).map((s) => <li key={s}>{s}</li>)}</ul>
+              <ul>{d.services.slice(0, 3).map((s) => <li key={s.name}>{s.name}</li>)}</ul>
             </Link>
           ))}
         </div>
@@ -150,14 +150,14 @@ export default function Home() {
         <div className="g2">
           <div><span className="lab">/ Investment</span><h2>We back founders from first cheque to growth.</h2><p className="lead" style={{ marginTop: 18 }}>Pre-seed to scale, and we stay. Every investment comes with the full Redbarn bench from day one.</p><Link to="/investment" className="tlink" style={{ marginTop: 26 }}>How we invest<Arrow /></Link></div>
           <div className="stages compact">
-            {STAGES.map((s, i) => <Link to={`/investment#${s.slug}`} className="stage" key={s.slug}><span className="n">{String(i + 1).padStart(2, '0')}</span><div><h3>{s.name}</h3></div></Link>)}
+            {STAGES.map((s, i) => <Link to={`/investment/${s.slug}`} className="stage" key={s.slug}><span className="n">{String(i + 1).padStart(2, '0')}</span><div><h3>{s.name}</h3></div></Link>)}
           </div>
         </div>
       </section>
 
       <section className="sec">
         <div className="sec-head"><div><span className="lab">/ Industry</span><h2>Where we work.</h2></div><Link to="/industry" className="tlink">All industries<Arrow /></Link></div>
-        <div className="chips big">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry#${i.slug}`} className="chip">{i.name}</Link>)}</div>
+        <div className="chips big">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry/${i.slug}`} className="chip">{i.name}</Link>)}</div>
       </section>
 
       <section className="sec">

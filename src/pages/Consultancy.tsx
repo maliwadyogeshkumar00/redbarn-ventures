@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { DOMAINS, mailto } from '../content/site'
+import { DOMAINS } from '../content/site'
 import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
@@ -9,22 +9,22 @@ export default function Consultancy() {
     <div className="pg">
       <PageHero label="/ Consultancy" title={<>Five disciplines.<br /><em>One team.</em></>}>
         <p>Most companies hire a design agency, a dev shop, a marketing firm, a management consultant and an accountant, then spend their time making them talk to each other. We put all five under one roof so the work gets solved whole.</p>
-        <div className="chips">{DOMAINS.map((d) => <a key={d.slug} href={`#${d.slug}`} className="chip">{d.name}</a>)}</div>
+        <div className="chips">{DOMAINS.map((d) => <Link key={d.slug} to={`/consultancy/${d.slug}`} className="chip">{d.name}</Link>)}</div>
       </PageHero>
 
       {DOMAINS.map((d, i) => (
-        <section className="dom" id={d.slug} key={d.slug}>
+        <section className="dom" key={d.slug}>
           <div className="g2">
             <div>
               <span className="lab">/ {String(i + 1).padStart(2, '0')} · {d.name}</span>
               <h2>{d.tagline}</h2>
               <p className="lead">{d.intro}</p>
               <p className="engage"><b>How we engage.</b> {d.engage}</p>
-              <a className="tlink" href={mailto(`${d.name} enquiry`)}>Enquire about {d.name.toLowerCase()}<Arrow /></a>
+              <Link className="tlink" to={`/consultancy/${d.slug}`}>Explore {d.name.toLowerCase()} consultancy<Arrow /></Link>
             </div>
             <div>
               <div className="svc-h">What we do</div>
-              <ul className="svc">{d.services.map((s) => <li key={s}>{s}</li>)}</ul>
+              <ul className="svc">{d.services.map((s) => <li key={s.name}>{s.name}</li>)}</ul>
             </div>
           </div>
         </section>

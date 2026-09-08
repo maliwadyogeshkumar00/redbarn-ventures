@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 const PILLARS = [
   { h: 'Consult', p: 'Design, technology, marketing, business and finance, delivered as one team. We fix problems whole instead of handing them between agencies.', to: '/consultancy', c: 'Consultancy' },
-  { h: 'Own', p: 'We hold long-term positions in companies we believe in and run them like owners, because we are. Patience is a strategy, not a slogan.', to: '/investment#strategic', c: 'Long-term ownership' },
+  { h: 'Own', p: 'We hold long-term positions in companies we believe in and run them like owners, because we are. Patience is a strategy, not a slogan.', to: '/investment/strategic', c: 'Long-term ownership' },
   { h: 'Invest', p: 'From first cheque to growth capital. Every investment arrives with the full consultancy bench behind it, from day one.', to: '/investment', c: 'Investment' },
 ]
 

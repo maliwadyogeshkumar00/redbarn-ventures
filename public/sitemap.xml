@@ -11,10 +11,27 @@
   <url><loc>https://redbarn.ventures/privacy</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://redbarn.ventures/terms</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://redbarn.ventures/cookies</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://redbarn.ventures/insights/pre-seed-pitch-investors-actually-read</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://redbarn.ventures/insights/six-sigma-for-growing-companies</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://redbarn.ventures/insights/brand-identity-on-a-startup-budget</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://redbarn.ventures/insights/accounting-basics-founders-year-one</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://redbarn.ventures/insights/digital-marketing-when-ai-answers-the-search</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://redbarn.ventures/insights/how-to-choose-a-software-development-partner</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://redbarn.ventures/consultancy/design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/consultancy/technology</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/consultancy/marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/consultancy/business</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/consultancy/finance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/investment/pre-seed</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/investment/series-a</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/investment/growth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/investment/strategic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/technology-saas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/fintech</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/healthcare</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/consumer-retail</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/energy-climate</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/media-entertainment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/real-estate</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/industry/industrial</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/pre-seed-pitch-investors-actually-read</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/six-sigma-for-growing-companies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/brand-identity-on-a-startup-budget</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/accounting-basics-founders-year-one</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/digital-marketing-when-ai-answers-the-search</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://redbarn.ventures/insights/how-to-choose-a-software-development-partner</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
