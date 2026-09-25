@@ -154,7 +154,7 @@ export default function Contact() {
         <div className="ui">
           <div className="htop">
             <div className="lab">[ Contact ]<br /><b>Redbarn Ventures</b></div>
-            <div className="status"><span className="dot" />Online now &middot; replies in 2 days</div>
+            <div className="status"><span className="dot" />Replies within 2 business days</div>
           </div>
 
           <h1 className="hl"><span className="ln"><span>Let's</span></span><span className="ln"><span><em>talk.</em></span></span></h1>

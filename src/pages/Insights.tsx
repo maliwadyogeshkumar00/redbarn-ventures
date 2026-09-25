@@ -1,6 +1,6 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { ARTICLES, findArticle, fmtDate } from '../content/insights'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 export function InsightsIndex() {
@@ -8,7 +8,7 @@ export function InsightsIndex() {
   const [lead, ...rest] = ARTICLES
   return (
     <div className="pg">
-      <PageHero label="/ Insights" title={<>Notes from<br />the <em>barn.</em></>}>
+      <PageHero image={img('insights')} label="/ Insights" title={<>Notes from<br />the <em>barn.</em></>}>
         <p>Practical writing on building, running and backing companies. No trend pieces, no listicles. The things we find ourselves explaining to founders and clients most often, written down once.</p>
       </PageHero>
 
@@ -37,6 +37,8 @@ export function InsightsIndex() {
   )
 }
 
+const CAT_IMG: Record<string, string> = { Investment: 'pre-seed', Business: 'business', Design: 'design', Finance: 'finance', Marketing: 'marketing', Technology: 'technology' }
+
 export function ArticlePage() {
   const { slug = '' } = useParams()
   const a = findArticle(slug)
@@ -45,11 +47,9 @@ export function ArticlePage() {
   const others = ARTICLES.filter((x) => x.slug !== a.slug).slice(0, 3)
   return (
     <div className="pg">
-      <section className="phero">
-        <span className="lab"><Link to="/insights" className="crumb">Insights</Link> / {a.category}</span>
-        <h1 className="art-title">{a.title}</h1>
+      <PageHero compact image={img(CAT_IMG[a.category] ?? 'insights')} label={<><Link to="/insights" className="crumb">Insights</Link> / {a.category}</>} title={a.title}>
         <div className="am"><span>{fmtDate(a.date)}</span><span>{a.read} read</span><span>Redbarn Ventures</span></div>
-      </section>
+      </PageHero>
       <article className="article">
         {a.body.map((b, i) => b.h ? <h2 key={i}>{b.h}</h2> : b.ul ? <ul key={i}>{b.ul.map((li) => <li key={li}>{li}</li>)}</ul> : <p key={i}>{b.p}</p>)}
       </article>

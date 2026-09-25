@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { STAGES, mailto } from '../content/site'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 const LOOK = [
@@ -20,7 +20,7 @@ export default function Investment() {
   usePageMeta('Investment: Pre-seed to Growth', 'Redbarn Ventures invests from first cheque to growth capital: pre-seed and seed, Series A and B, growth and expansion, and long-term strategic positions. How we invest and how to pitch us.', '/investment')
   return (
     <div className="pg">
-      <PageHero label="/ Investment" title={<>First cheque<br />to <em>growth.</em></>}>
+      <PageHero image={img('investment')} label="/ Investment" title={<>First cheque<br />to <em>growth.</em></>}>
         <p>We back founders from pre-seed to scale, and we stay. Capital is the start of the relationship, not the end of it: every investment comes with the full Redbarn bench across design, technology, marketing, business and finance.</p>
       </PageHero>
 

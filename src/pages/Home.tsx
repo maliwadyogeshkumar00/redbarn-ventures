@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DOMAINS, STAGES, INDUSTRIES } from '../content/site'
 import { ARTICLES, fmtDate } from '../content/insights'
-import { CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { CtaBand, usePageMeta, Arrow, Promises } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 // Base (moody) and reveal (illuminated) share one generated city image;
@@ -90,32 +90,41 @@ export default function Home() {
 
   return (
     <div className="rb-page tracking-[-0.02em]" style={{ fontFamily: "'Inter', sans-serif" }}>
-      <section className="relative w-full overflow-hidden h-screen bg-black" style={{ height: '100dvh' }}>
-        <div
-          className="absolute inset-0 bg-center bg-cover bg-no-repeat z-10 hero-zoom"
-          style={{ backgroundImage: `url('${BG_IMAGE}')`, filter: 'brightness(0.6) saturate(0.82) contrast(1.05)' }}
-        />
-        <div
-          className="absolute inset-0 z-20 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, rgba(4,7,15,0.74) 0%, rgba(4,7,15,0.24) 32%, rgba(4,7,15,0.30) 66%, rgba(4,7,15,0.72) 100%)' }}
-        />
+      <section className="hhero">
+        <div className="hbg hero-zoom" style={{ backgroundImage: `url('${BG_IMAGE}')` }} />
+        <div className="tone" style={{ zIndex: 15 }} />
+        <div className="hgrade" />
         <RevealLayer image={BG_IMAGE} cursorX={cursorPos.x} cursorY={cursorPos.y} />
-
-        <div className="absolute top-[18%] left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none z-50">
-          <h1 className="text-white leading-[0.95]">
-            <span className="block font-playfair italic font-normal text-5xl sm:text-7xl md:text-8xl hero-anim hero-reveal" style={{ letterSpacing: '-0.05em', animationDelay: '0.25s' }}>Durable value,</span>
-            <span className="block font-normal text-5xl sm:text-7xl md:text-8xl -mt-1 hero-anim hero-reveal" style={{ letterSpacing: '-0.08em', animationDelay: '0.42s' }}>built to last.</span>
+        <div className="hui">
+          <div className="hh-top hero-anim hero-fade" style={{ animationDelay: '0.1s' }}>
+            <div className="hh-lab">[ Redbarn Ventures ]<br /><b>Consult &middot; Own &middot; Invest</b></div>
+            <div className="status"><span className="dot" />Ahmedabad &middot; Oslo &middot; London &middot; Amsterdam</div>
+          </div>
+          <h1 className="hh1">
+            <span className="hero-anim hero-reveal" style={{ animationDelay: '0.2s' }}>Durable value,</span>
+            <span className="hero-anim hero-reveal" style={{ animationDelay: '0.36s' }}>built to <em>last.</em></span>
           </h1>
+          <div className="hh-foot hero-anim hero-fade" style={{ animationDelay: '0.7s' }}>
+            <p>Consulting, long-term ownership and investing under one roof, so the right idea, the right operators and the right capital finally work together.</p>
+            <div className="hh-cta">
+              <Link to="/contact" className="rb-btn"><span>Start a conversation</span><Arrow /></Link>
+              <Link to="/consultancy" className="tlink">What we do<Arrow /></Link>
+            </div>
+          </div>
+          <div className="hh-hint hero-anim hero-fade" style={{ animationDelay: '1.2s' }}>Move across the skyline</div>
         </div>
+      </section>
 
-        <div className="hidden sm:block absolute bottom-14 left-10 md:left-14 max-w-[260px] z-50 hero-anim hero-fade" style={{ animationDelay: '0.7s' }}>
-          <p className="text-sm text-white/80 leading-relaxed">Redbarn Ventures brings consulting, long-term ownership, and investing under one roof — so the right idea, the right operators, and the right capital finally work together.</p>
-        </div>
+      <section className="facts">
+        {[['5', 'Disciplines under one roof'], ['4', 'Investment stages, pre-seed to strategic'], ['8', 'Industries we work across'], ['4', 'Cities, one team'], ['2', 'Business days to a real reply']].map(([n, t]) => (
+          <div className="fact" key={t}><b>{n}</b><span>{t}</span></div>
+        ))}
+      </section>
 
-        <div className="absolute bottom-10 sm:bottom-24 left-5 right-5 sm:left-auto sm:right-10 md:right-14 max-w-full sm:max-w-[260px] flex flex-col items-start gap-4 sm:gap-5 z-50 hero-anim hero-fade" style={{ animationDelay: '0.85s' }}>
-          <p className="text-xs sm:text-sm text-white/80 leading-relaxed">We advise, own, and back companies built for the long term. Glide across the skyline to light up what we're building beneath the surface.</p>
-          <Link to="/contact" className="bg-[#8A2B23] hover:bg-[#6F221C] text-white text-sm font-medium px-7 py-3 rounded-full transition-all hover:scale-[1.03] active:scale-95 hover:shadow-lg hover:shadow-[#8A2B23]/30">Start a conversation</Link>
-        </div>
+      <section className="statement">
+        <span className="lab">/ Why Redbarn</span>
+        <p className="big">Most advisers get paid whether you win or not. <span>We put our own capital behind the companies we believe in, so our advice has to be right.</span></p>
+        <Promises />
       </section>
 
       <section className="sec">
@@ -136,7 +145,8 @@ export default function Home() {
         <div className="sec-head"><div><span className="lab">/ Consultancy</span><h2>Everything a growing company needs, under one roof.</h2></div><Link to="/consultancy" className="tlink">All services<Arrow /></Link></div>
         <div className="doms">
           {DOMAINS.map((d, i) => (
-            <Link to={`/consultancy/${d.slug}`} className="domt" key={d.slug}>
+            <Link to={`/consultancy/${d.slug}`} className="domt withimg" key={d.slug}>
+              <div className="timg" style={{ backgroundImage: `url(/img/${d.slug}.jpg)` }} />
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <h3>{d.name}</h3>
               <p>{d.tagline}</p>
@@ -158,6 +168,16 @@ export default function Home() {
       <section className="sec">
         <div className="sec-head"><div><span className="lab">/ Industry</span><h2>Where we work.</h2></div><Link to="/industry" className="tlink">All industries<Arrow /></Link></div>
         <div className="chips big">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry/${i.slug}`} className="chip">{i.name}</Link>)}</div>
+      </section>
+
+      <section className="sec">
+        <span className="lab">/ How we work</span>
+        <h2>From first call to lasting result.</h2>
+        <div className="g4" style={{ marginTop: 40 }}>
+          {[['Listen', 'A real conversation with a senior person. No pitch deck, no junior hand-off.'], ['Diagnose', 'An honest read of the problem, including whether we are the right team to fix it.'], ['Commit', 'Scope, price and outcome agreed in writing before any work starts.'], ['Deliver and stay', 'Work shipped in phases you can see. Then we stay on as partners, or as owners.']].map(([h, p], i) => (
+            <div className="step" key={h}><span className="n">{String(i + 1).padStart(2, '0')}</span><h4>{h}</h4><p>{p}</p></div>
+          ))}
+        </div>
       </section>
 
       <section className="sec">

@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { STAGES, mailto, domainPath } from '../content/site'
 import { findArticle } from '../content/insights'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 export default function StagePage() {
@@ -15,7 +15,7 @@ export default function StagePage() {
 
   return (
     <div className="pg">
-      <PageHero label={`/ Investment · Stage ${String(idx + 1).padStart(2, '0')}`} title={<>{s.name.split(' & ')[0]}<br /><em>{s.name.includes(' & ') ? `& ${s.name.split(' & ')[1]}.` : ''}</em></>}>
+      <PageHero image={img(s.slug)} label={`/ Investment · Stage ${String(idx + 1).padStart(2, '0')}`} title={<>{s.name.split(' & ')[0]}<br /><em>{s.name.includes(' & ') ? `& ${s.name.split(' & ')[1]}.` : ''}</em></>}>
         <p>{s.desc}</p>
         <div className="chips"><a className="chip" href={mailto(`Pitch (${s.name}): [company name]`)}>Pitch us at this stage</a><Link className="chip" to="/investment">All stages</Link></div>
       </PageHero>

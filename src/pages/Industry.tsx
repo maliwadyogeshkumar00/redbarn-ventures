@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { INDUSTRIES, domainPath } from '../content/site'
 import { Arrow } from '../components/Blocks'
-import { PageHero, CtaBand, usePageMeta } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 
@@ -9,7 +9,7 @@ export default function Industry() {
   usePageMeta('Industries we serve', 'Redbarn Ventures works across technology and SaaS, fintech, healthcare, consumer and retail, energy and climate, media, real estate and industrial manufacturing, with consultancy and investment under one roof.', '/industry')
   return (
     <div className="pg">
-      <PageHero label="/ Industry" title={<>Eight industries.<br /><em>One way of working.</em></>}>
+      <PageHero image={img('industry')} label="/ Industry" title={<>Eight industries.<br /><em>One way of working.</em></>}>
         <p>We do not pretend to be specialists in everything. We are specialists in a way of working that travels: understand the problem, fix it whole, and stay long enough to see it hold. These are the industries where that has earned us the right to work.</p>
         <div className="chips">{INDUSTRIES.map((i) => <Link key={i.slug} to={`/industry/${i.slug}`} className="chip">{i.name}</Link>)}</div>
       </PageHero>
@@ -17,7 +17,8 @@ export default function Industry() {
       <section className="sec">
         <div className="inds">
           {INDUSTRIES.map((ind, i) => (
-            <div className="ind" key={ind.slug}>
+            <div className="ind withimg" key={ind.slug}>
+              <div className="timg" style={{ backgroundImage: `url(/img/${ind.slug}.jpg)` }} />
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <h3><Link to={`/industry/${ind.slug}`} className="plain">{ind.name}</Link></h3>
               <p>{ind.desc}</p>

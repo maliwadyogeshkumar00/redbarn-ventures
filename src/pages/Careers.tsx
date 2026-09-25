@@ -1,5 +1,5 @@
 import { ROLES, VALUES, CITIES, mailto } from '../content/site'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 const WHY = [
@@ -19,7 +19,7 @@ export default function Careers() {
   usePageMeta('Careers', 'Join Redbarn Ventures. Design, technology, marketing, business and finance roles across Ahmedabad, Oslo, London and Amsterdam, with real ownership and range.', '/careers')
   return (
     <div className="pg">
-      <PageHero label="/ Careers" title={<>Build the companies<br /><em>worth believing in.</em></>}>
+      <PageHero image={img('careers')} label="/ Careers" title={<>Build the companies<br /><em>worth believing in.</em></>}>
         <p>We are a small team that advises, owns and backs companies across Europe and India. That means unusual range, real responsibility early, and work you would be glad to put your name on. We are always looking for sharp, curious people who care about the craft.</p>
       </PageHero>
 

@@ -29,10 +29,26 @@ function ScrollManager() {
   return null
 }
 
+function Reveal() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return
+    let io: IntersectionObserver | null = null
+    const t = setTimeout(() => {
+      const els = document.querySelectorAll<HTMLElement>('.sec, .dom, .ctab-in, .more > .blk, .statement, .facts, .promises, .foot-top, .article, .legal')
+      io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io?.unobserve(e.target) } }), { threshold: 0.08, rootMargin: '0px 0px -40px 0px' })
+      els.forEach((el) => { if (!el.classList.contains('in')) { el.classList.add('rv'); io!.observe(el) } })
+    }, 60)
+    return () => { clearTimeout(t); io?.disconnect() }
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <>
       <ScrollManager />
+      <Reveal />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

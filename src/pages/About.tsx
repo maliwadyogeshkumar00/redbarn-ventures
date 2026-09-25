@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { VALUES, CITIES } from '../content/site'
-import { PageHero, CtaBand, usePageMeta } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 const PILLARS = [
@@ -13,7 +13,7 @@ export default function About() {
   usePageMeta('About Redbarn Ventures', 'Redbarn Ventures unites consulting, long-term ownership and investing under one roof, working with founders and companies across Ahmedabad, Oslo, London and Amsterdam.', '/about')
   return (
     <div className="pg">
-      <PageHero label="/ About" title={<>Consulting, ownership<br />and investing <em>under one roof.</em></>}>
+      <PageHero image={img('about')} label="/ About" title={<>Consulting, ownership<br />and investing <em>under one roof.</em></>}>
         <p>Redbarn Ventures was built on a simple frustration: the right idea, the right operators and the right capital rarely meet in the same room. Advisers advise and leave. Investors write cheques and wait. Operators are left to make it all work. We decided to be all three.</p>
       </PageHero>
 
@@ -50,7 +50,7 @@ export default function About() {
           <div><span className="lab">/ Where we are</span><h2>Four cities. One team.</h2></div>
           <div>
             <div className="cityline">{CITIES.map((c) => <span key={c.name}>{c.name}</span>)}</div>
-            <p className="lead" style={{ marginTop: 22 }}>We work with founders and companies across Europe and India, mostly remotely, and we meet in person when it genuinely moves things forward. We do not publish office addresses; we would rather meet where the work is.</p>
+            <p className="lead" style={{ marginTop: 22 }}>We work with founders and companies across Europe and India. Remote by default, in the room when it moves the work forward, and always one team with one inbox.</p>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { INDUSTRIES, DOMAINS, mailto } from '../content/site'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 export default function IndustryPage() {
@@ -13,7 +13,7 @@ export default function IndustryPage() {
 
   return (
     <div className="pg">
-      <PageHero label={`/ Industry · ${String(idx + 1).padStart(2, '0')}`} title={<>{ind.name.split(' & ')[0]}{ind.name.includes(' & ') ? <><br /><em>& {ind.name.split(' & ')[1]}.</em></> : <><br /><em>.</em></>}</>}>
+      <PageHero image={img(ind.slug)} label={`/ Industry · ${String(idx + 1).padStart(2, '0')}`} title={<>{ind.name.split(' & ')[0]}{ind.name.includes(' & ') ? <><br /><em>& {ind.name.split(' & ')[1]}.</em></> : <><br /><em>.</em></>}</>}>
         <p>{ind.desc}</p>
         <div className="chips"><a className="chip" href={mailto(`${ind.name} enquiry`)}>Talk to us about {ind.name.toLowerCase()}</a><Link className="chip" to="/industry">All industries</Link></div>
       </PageHero>

@@ -5,6 +5,8 @@ import './index.css'
 import './redbarn.css'
 import App from './App.tsx'
 
+document.documentElement.classList.add('js')
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { DOMAINS } from '../content/site'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 export default function Consultancy() {
   usePageMeta('Consultancy: Design, Technology, Marketing, Business & Finance', 'Redbarn Ventures consultancy: brand and web design, software development, digital marketing, Six Sigma business consulting and accounting, delivered by one team across Ahmedabad, Oslo, London and Amsterdam.', '/consultancy')
   return (
     <div className="pg">
-      <PageHero label="/ Consultancy" title={<>Five disciplines.<br /><em>One team.</em></>}>
+      <PageHero image={img('consultancy')} label="/ Consultancy" title={<>Five disciplines.<br /><em>One team.</em></>}>
         <p>Most companies hire a design agency, a dev shop, a marketing firm, a management consultant and an accountant, then spend their time making them talk to each other. We put all five under one roof so the work gets solved whole.</p>
         <div className="chips">{DOMAINS.map((d) => <Link key={d.slug} to={`/consultancy/${d.slug}`} className="chip">{d.name}</Link>)}</div>
       </PageHero>
@@ -23,6 +23,7 @@ export default function Consultancy() {
               <Link className="tlink" to={`/consultancy/${d.slug}`}>Explore {d.name.toLowerCase()} consultancy<Arrow /></Link>
             </div>
             <div>
+              <div className="domimg" style={{ backgroundImage: `url(/img/${d.slug}.jpg)` }} />
               <div className="svc-h">What we do</div>
               <ul className="svc">{d.services.map((s) => <li key={s.name}>{s.name}</li>)}</ul>
             </div>

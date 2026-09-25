@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { DOMAINS, INDUSTRIES, mailto } from '../content/site'
 import { findArticle } from '../content/insights'
-import { PageHero, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
+import { PageHero, img, CtaBand, usePageMeta, Arrow } from '../components/Blocks'
 import Footer from '../components/Footer'
 
 export default function DomainPage() {
@@ -16,7 +16,7 @@ export default function DomainPage() {
 
   return (
     <div className="pg">
-      <PageHero label={`/ Consultancy · ${String(idx + 1).padStart(2, '0')}`} title={<>{d.name}<br /><em>consultancy.</em></>}>
+      <PageHero image={img(d.slug)} label={`/ Consultancy · ${String(idx + 1).padStart(2, '0')}`} title={<>{d.name}<br /><em>consultancy.</em></>}>
         <p>{d.tagline} {d.intro}</p>
         <div className="chips"><a className="chip" href={mailto(`${d.name} enquiry`)}>Enquire about {d.name.toLowerCase()}</a><Link className="chip" to="/consultancy">All disciplines</Link></div>
       </PageHero>
