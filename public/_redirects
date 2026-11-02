@@ -1,0 +1,12 @@
+# Old multi-page site -> new one-page site
+/contact        /   301
+/consultancy    /   301
+/consultancy/*  /   301
+/investment     /   301
+/investment/*   /   301
+/industry       /   301
+/industry/*     /   301
+/about          /   301
+/careers        /   301
+/insights       /   301
+/insights/*     /   301
