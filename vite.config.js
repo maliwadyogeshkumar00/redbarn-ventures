@@ -5,6 +5,7 @@ const page = (f) => resolve(import.meta.dirname, f)
 
 export default defineConfig({
   build: {
+    target: 'es2020',
     rollupOptions: {
       input: {
         main: page('index.html'),
