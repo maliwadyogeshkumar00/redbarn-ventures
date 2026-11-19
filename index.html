@@ -3,228 +3,186 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Redbarn Ventures | Where ideas become ventures</title>
-<meta name="description" content="Redbarn Ventures works at the intersection of creative thinking, technology and strategic investment. Design. Technology. Investment." />
+<title>Redbarn Ventures | Ideas, built into ventures</title>
+<meta name="description" content="Redbarn Ventures is a venture studio for design, technology and investment. We turn ideas into companies that last." />
 <link rel="canonical" href="https://redbarn.ventures/" />
-<meta name="theme-color" content="#edeae3" />
-<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#000000" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Redbarn Ventures" />
-<meta property="og:title" content="Redbarn Ventures | Where ideas become ventures" />
-<meta property="og:description" content="Design. Technology. Investment. We work at the intersection of creative thinking, technology and strategic investment." />
+<meta property="og:title" content="Redbarn Ventures | Ideas, built into ventures" />
+<meta property="og:description" content="Design. Technology. Investment. One studio, one point of view." />
 <meta property="og:url" content="https://redbarn.ventures/" />
 <meta property="og:image" content="https://redbarn.ventures/og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Redbarn Ventures - Where ideas become ventures" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Redbarn Ventures | Where ideas become ventures" />
-<meta name="twitter:description" content="Design. Technology. Investment." />
-<meta name="twitter:image" content="https://redbarn.ventures/og.jpg" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
-<script>
-  document.documentElement.classList.add('js');
-  setTimeout(function () { if (!document.documentElement.classList.contains('booted')) document.documentElement.classList.remove('js') }, 6000);
-  try { if (sessionStorage.getItem('rb-seen')) document.documentElement.classList.add('seen') } catch (e) {}
-</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Redbarn Ventures","url":"https://redbarn.ventures/","logo":"https://redbarn.ventures/apple-touch-icon.png","email":"admin@redbarn.ventures","slogan":"Where ideas become ventures.","description":"Redbarn Ventures works at the intersection of creative thinking, technology and strategic investment.","knowsAbout":["Design","Branding","Digital experiences","Technology","Software development","Investment","Business consulting"]}</script>
-<script type="module" src="/src/main.ts"></script>
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Redbarn Ventures","url":"https://redbarn.ventures/","logo":"https://redbarn.ventures/apple-touch-icon.png","email":"admin@redbarn.ventures","slogan":"Ideas, built into ventures.","description":"A venture studio for design, technology and investment.","knowsAbout":["Brand design","Web design","Software development","Investment","Business consulting","Accounting"]}</script>
+<script type="module" src="/src/apple.ts"></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
 
-<!-- ============ LOADER ============ -->
-<div class="loader" aria-hidden="true">
-  <div class="loader-in">
-    <svg class="loader-mark" viewBox="0 0 120 100" fill="none">
-      <path class="loader-gable" d="M10 98 V44 L60 4 L110 44 V98" pathLength="1" />
-      <path class="loader-floor" d="M2 98 H118" pathLength="1" />
-    </svg>
-    <div class="loader-row">
-      <span class="mono">Redbarn Ventures</span>
-      <span class="mono loader-count"><b>000</b></span>
-    </div>
-  </div>
-</div>
-
-<!-- ============ CURSOR ============ -->
-<div class="cursor" aria-hidden="true"><div class="cursor-ring"><span class="cursor-label"></span></div><div class="cursor-dot"></div></div>
-<div class="grain" aria-hidden="true"></div>
-
-<!-- ============ NAV ============ -->
+<!-- NAV -->
 <header class="nav" id="nav">
-  <a href="#index" class="nav-brand" data-magnetic aria-label="Redbarn Ventures - back to top">
-    <svg class="mark" viewBox="0 0 32 28" aria-hidden="true"><path d="M3 27V12L16 2l13 10v15" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M11 27v-8h10v8" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
-    <span class="nav-word">Redbarn<span class="nav-word-light">&nbsp;Ventures</span></span>
-  </a>
-  <nav class="nav-links" aria-label="Main">
-    <a href="#index" data-roll data-magnetic><span class="roll"><span>Index</span><span aria-hidden="true">Index</span></span></a>
-    <a href="#services" data-roll data-magnetic><span class="roll"><span>What we do</span><span aria-hidden="true">What we do</span></span></a>
-    <a href="#contact" data-roll data-magnetic><span class="roll"><span>Contact</span><span aria-hidden="true">Contact</span></span></a>
-  </nav>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mnav"><span class="nav-toggle-txt">Menu</span><span class="nav-toggle-ico" aria-hidden="true"><i></i><i></i></span></button>
+  <div class="nav-in">
+    <a href="#top" class="brand" aria-label="Redbarn Ventures">
+      <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M3 27V12L16 2l13 10v15" /><path d="M11 27v-8h10v8" /></svg>
+      <span>Redbarn <i>Ventures</i></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#studio">Studio</a>
+      <a href="#work">What we do</a>
+      <a href="#why">Why us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="pill pill-sm">Get in touch</a>
+  </div>
 </header>
 
-<div class="mnav" id="mnav" aria-hidden="true">
-  <nav class="mnav-links" aria-label="Mobile">
-    <a href="#index"><small>01</small><span>Index</span></a>
-    <a href="#services"><small>02</small><span>What we do</span></a>
-    <a href="#contact"><small>03</small><span>Contact</span></a>
-  </nav>
-  <div class="mnav-foot">
-    <a class="mono js-email" href="mailto:admin@redbarn.ventures">admin@redbarn.ventures</a>
-    <span class="mono">Design / Technology / Investment</span>
-  </div>
-</div>
+<main id="top">
 
-<main id="main">
-
-<!-- ============ 01 HERO ============ -->
-<section class="hero" id="index" aria-labelledby="hero-title">
-  <canvas class="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-veil" aria-hidden="true"></div>
-
-  <div class="hero-meta">
-    <div class="meta-col">
-      <span class="mono dim">(01)</span>
-      <span class="mono">Venture studio</span>
+<!-- 1 HERO -->
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-pin">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow" data-in>Redbarn Ventures</p>
+      <h1 id="h1" class="display grad" data-in>Ideas, built<br />into ventures.</h1>
+      <p class="lede" data-in>A venture studio for design, technology and investment.</p>
+      <div class="ctas" data-in>
+        <a href="#contact" class="pill">Start a conversation</a>
+        <a href="#work" class="more">See what we do <span aria-hidden="true">›</span></a>
+      </div>
     </div>
-    <div class="meta-col meta-clocks" aria-label="Local times">
-      <span class="mono"><span class="dim">AMS</span> <b data-tz="Europe/Amsterdam">--:--</b></span>
-      <span class="mono"><span class="dim">LDN</span> <b data-tz="Europe/London">--:--</b></span>
-      <span class="mono"><span class="dim">OSL</span> <b data-tz="Europe/Oslo">--:--</b></span>
-      <span class="mono"><span class="dim">AMD</span> <b data-tz="Asia/Kolkata">--:--</b></span>
-    </div>
-  </div>
-
-  <div class="hero-copy">
-    <p class="hero-kicker mono"><span class="rv">Design.</span> <span class="rv">Technology.</span> <span class="rv">Investment.</span></p>
-    <p class="hero-tag"><span class="ln"><span>Where ideas</span></span><span class="ln"><span><em>become ventures.</em></span></span></p>
-    <p class="hero-intro rv">We work at the intersection of creative thinking, technology and strategic investment.</p>
-  </div>
-
-  <div class="hero-bottom">
-    <div class="hero-sub">
-      <span class="mono">Redbarn Ventures</span>
-      <span class="mono dim">Design / Technology / Investment &amp; Consulting</span>
-      <a class="scroll-cue mono" href="#services" aria-label="Scroll to what we do"><span>Scroll</span><i aria-hidden="true"></i></a>
-    </div>
-    <h1 class="wordmark" id="hero-title" aria-label="Redbarn Ventures">
-      <span class="wm" aria-hidden="true"><span class="wm-l"><span>R</span></span><span class="wm-l"><span>E</span></span><span class="wm-l"><span>D</span></span><br class="wm-br"><span class="wm-l"><span>B</span></span><span class="wm-l"><span>A</span></span><span class="wm-l"><span>R</span></span><span class="wm-l"><span>N</span></span></span>
-    </h1>
+    <div class="hero-cue" aria-hidden="true"><span></span></div>
   </div>
 </section>
 
-<!-- ============ 02 WHAT WE DO ============ -->
-<section class="what" id="services" aria-labelledby="what-title">
-  <div class="what-head">
-    <span class="mono dim">(02) &nbsp;What we do</span>
-    <h2 class="what-title" id="what-title"><span class="ln"><span>Three disciplines.</span></span><span class="ln"><span><em>One point of view.</em></span></span></h2>
-  </div>
-
-  <div class="panels">
-    <article class="panel is-active" data-tone="design" data-cursor="Design" tabindex="0" aria-labelledby="p1-t">
-      <header class="panel-top"><span class="mono">01</span><span class="mono dim">( Design )</span></header>
-      <div class="panel-vis" aria-hidden="true">
-        <svg class="vis vis-design" viewBox="0 0 300 300" fill="none">
-          <circle class="d-circle" cx="120" cy="140" r="78" />
-          <rect class="d-square" x="140" y="86" width="120" height="120" />
-          <path class="d-gable" d="M60 250 V196 L110 156 L160 196 V250 Z" />
-          <line class="d-guide" x1="10" y1="206" x2="290" y2="206" />
-          <line class="d-guide" x1="140" y1="10" x2="140" y2="290" />
-          <circle class="d-dot" cx="140" cy="206" r="6" />
-        </svg>
-      </div>
-      <div class="panel-body">
-        <h3 class="panel-title" id="p1-t">Design</h3>
-        <p class="panel-line">Building identities, experiences and ideas that stand apart.</p>
-      </div>
-    </article>
-
-    <article class="panel" data-tone="tech" data-cursor="Technology" tabindex="0" aria-labelledby="p2-t">
-      <header class="panel-top"><span class="mono">02</span><span class="mono dim">( Technology )</span></header>
-      <div class="panel-vis" aria-hidden="true">
-        <canvas class="vis vis-tech"></canvas>
-      </div>
-      <div class="panel-body">
-        <h3 class="panel-title" id="p2-t">Technology</h3>
-        <p class="panel-line">Turning ambitious ideas into intelligent digital experiences.</p>
-      </div>
-    </article>
-
-    <article class="panel" data-tone="invest" data-cursor="Investment" tabindex="0" aria-labelledby="p3-t">
-      <header class="panel-top"><span class="mono">03</span><span class="mono dim">( Investment &amp; Consulting )</span></header>
-      <div class="panel-vis" aria-hidden="true">
-        <svg class="vis vis-invest" viewBox="0 0 300 300" fill="none">
-          <g class="i-grid">
-            <line x1="20" y1="260" x2="280" y2="260" /><line x1="20" y1="200" x2="280" y2="200" /><line x1="20" y1="140" x2="280" y2="140" /><line x1="20" y1="80" x2="280" y2="80" />
-          </g>
-          <path class="i-arc" d="M20 260 A240 240 0 0 1 260 20" pathLength="1" />
-          <path class="i-line" d="M20 250 L70 236 L100 242 L140 196 L170 204 L206 140 L232 150 L270 52" pathLength="1" />
-          <circle class="i-dot" cx="270" cy="52" r="7" />
-        </svg>
-      </div>
-      <div class="panel-body">
-        <h3 class="panel-title" id="p3-t">Investment <em>&amp;&nbsp;Consulting</em></h3>
-        <p class="panel-line">Backing potential. Creating direction. Building what comes next.</p>
-      </div>
-    </article>
+<!-- 2 STATEMENT (word by word) -->
+<section class="statement" id="studio" aria-label="About the studio">
+  <div class="statement-pin">
+    <p class="eyebrow dim">The studio</p>
+    <p class="words" data-words>We work where creative thinking, technology and strategic investment meet. One studio. Three disciplines. Every idea treated like a company from day one.</p>
   </div>
 </section>
 
-<!-- ============ 03 STATEMENT ============ -->
-<section class="statement" id="approach" aria-labelledby="st-title">
-  <div class="st-pin">
-    <span class="mono dim st-label">(03) &nbsp;Point of view</span>
-    <h2 class="st-title" id="st-title" aria-label="Think beyond the obvious.">
-      <span class="st-row st-r1" aria-hidden="true"><span class="st-w">Think</span></span>
-      <span class="st-row st-r2" aria-hidden="true"><span class="st-w st-serif">beyond</span><span class="st-w st-small mono">( disciplines / people / possibilities )</span></span>
-      <span class="st-row st-r3" aria-hidden="true"><span class="st-w">the</span> <span class="st-w st-obv"><span class="st-obv-t">obvious<span class="st-strike"></span></span><span class="st-dot">.</span></span></span>
-    </h2>
-    <div class="st-foot">
-      <p class="st-copy">We believe the most interesting opportunities exist where disciplines, people and possibilities intersect.</p>
-      <svg class="venn" viewBox="0 0 300 280" fill="none" aria-hidden="true">
-        <g class="venn-c v1"><circle cx="150" cy="105" r="80" /><text x="150" y="58" text-anchor="middle">Design</text></g>
-        <g class="venn-c v2"><circle cx="105" cy="180" r="80" /><text x="62" y="222" text-anchor="middle">Technology</text></g>
-        <g class="venn-c v3"><circle cx="195" cy="180" r="80" /><text x="238" y="222" text-anchor="middle">Investment</text></g>
-        <circle class="venn-core" cx="150" cy="155" r="9" />
-      </svg>
+<!-- 3 CHAPTERS (horizontal) -->
+<section class="chapters" id="work" aria-labelledby="ch-title">
+  <div class="chapters-head">
+    <p class="eyebrow">What we do</p>
+    <h2 id="ch-title" class="headline">Three disciplines.<br /><span class="mute">One point of view.</span></h2>
+  </div>
+  <div class="track-wrap">
+    <div class="track">
+      <article class="card c-design">
+        <div class="card-vis">
+          <svg class="vis-design" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+            <circle class="dv dv-c" cx="120" cy="140" r="78" pathLength="1" />
+            <rect class="dv dv-s" x="140" y="86" width="120" height="120" pathLength="1" />
+            <path class="dv dv-g" d="M60 250 V196 L110 156 L160 196 V250 Z" pathLength="1" />
+            <line class="dv-guide" x1="10" y1="206" x2="290" y2="206" />
+            <line class="dv-guide" x1="140" y1="10" x2="140" y2="290" />
+            <circle class="dv-dot" cx="140" cy="206" r="6" />
+          </svg>
+        </div>
+        <div class="card-txt">
+          <p class="card-k">01 · Design</p>
+          <h3>Brands that look like they mean it.</h3>
+          <p>Identity, logo, presentation and web design. Built from positioning outward, so every asset speaks with one voice.</p>
+        </div>
+      </article>
+
+      <article class="card c-tech">
+        <div class="card-vis"><canvas class="vis-tech" aria-hidden="true"></canvas></div>
+        <div class="card-txt">
+          <p class="card-k">02 · Technology</p>
+          <h3>Software built to be owned.</h3>
+          <p>Websites, platforms and custom software. Clean architecture, real documentation and a handover you can take in-house.</p>
+        </div>
+      </article>
+
+      <article class="card c-invest">
+        <div class="card-vis">
+          <svg class="vis-invest" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+            <g class="iv-grid"><line x1="20" y1="260" x2="280" y2="260" /><line x1="20" y1="200" x2="280" y2="200" /><line x1="20" y1="140" x2="280" y2="140" /><line x1="20" y1="80" x2="280" y2="80" /></g>
+            <path class="iv-line" d="M20 250 L70 236 L100 242 L140 196 L170 204 L206 140 L232 150 L270 52" pathLength="1" />
+            <circle class="iv-dot" cx="270" cy="52" r="7" />
+          </svg>
+        </div>
+        <div class="card-txt">
+          <p class="card-k">03 · Investment &amp; Consulting</p>
+          <h3>Capital, with the bench behind it.</h3>
+          <p>From first cheque to long-term ownership, plus the consulting, accounting and operating support to make it count.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ 04 CONTACT ============ -->
-<section class="contact" id="contact" aria-labelledby="ct-title">
-  <div class="ct-head">
-    <span class="mono dim">(04) &nbsp;Contact</span>
-    <span class="mono dim">New ventures, partnerships &amp; collaborations</span>
+<!-- 4 BENTO -->
+<section class="bento-sec" id="why" aria-labelledby="why-title">
+  <div class="bento-head">
+    <p class="eyebrow clay">Why Redbarn</p>
+    <h2 id="why-title" class="headline ink">Everything a new venture needs.<br /><span class="mute-ink">Under one roof.</span></h2>
   </div>
-  <p class="ct-ask"><span class="ln"><span>Have something interesting in mind?</span></span></p>
-  <h2 class="ct-title" id="ct-title"><span class="ln"><span>Let's make</span></span><span class="ln"><span>it happen<span class="ct-dot">.</span></span></span></h2>
-
-  <a class="ct-mail js-email" href="mailto:admin@redbarn.ventures" data-magnetic data-cursor="Write">
-    <span class="ct-mail-txt js-email-txt">admin@redbarn.ventures</span>
-    <span class="ct-mail-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M10 30 L30 10 M14 10 H30 V26" stroke="currentColor" stroke-width="2"/></svg></span>
-  </a>
-
-  <div class="signature" aria-hidden="true">
-    <svg class="sig-svg" viewBox="0 0 1400 260" preserveAspectRatio="xMidYMid meet">
-      <path class="sig-mark" d="M14 250 V120 L84 64 L154 120 V250" pathLength="1" />
-      <text class="sig-text" x="186" y="248" textLength="1200" lengthAdjust="spacingAndGlyphs">REDBARN</text>
-    </svg>
+  <div class="bento">
+    <div class="tile t-big t-dark" data-tile>
+      <p class="tile-k">The difference</p>
+      <p class="tile-xl">We put our own capital behind the ideas we believe in.</p>
+      <p class="tile-s">So our advice has to be right.</p>
+    </div>
+    <div class="tile t-list" data-tile>
+      <p class="tile-k">Under one roof</p>
+      <ul class="svc">
+        <li>Design</li><li>Technology</li><li>Investment</li><li>Consulting</li><li>Accounting</li>
+      </ul>
+    </div>
+    <div class="tile t-num" data-tile>
+      <p class="tile-k">Response</p>
+      <p class="num"><span data-count="2">0</span><small>days</small></p>
+      <p class="tile-s">A real person replies to every serious enquiry within two business days.</p>
+    </div>
+    <div class="tile t-own t-clay" data-tile>
+      <p class="tile-k">Ownership</p>
+      <p class="tile-l">You own everything we make. Code, files, accounts, brand. From day one.</p>
+    </div>
+    <div class="tile t-clocks" data-tile>
+      <p class="tile-k">Four cities. One team.</p>
+      <div class="clocks">
+        <div><span>Ahmedabad</span><b data-tz="Asia/Kolkata">--:--</b></div>
+        <div><span>Oslo</span><b data-tz="Europe/Oslo">--:--</b></div>
+        <div><span>London</span><b data-tz="Europe/London">--:--</b></div>
+        <div><span>Amsterdam</span><b data-tz="Europe/Amsterdam">--:--</b></div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <footer class="foot">
-    <span class="mono">Redbarn Ventures</span>
-    <span class="mono dim">Design / Technology / Investment</span>
-    <nav class="foot-legal mono" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookies</a></nav>
-    <span class="mono dim">&copy; <span class="js-year">2026</span></span>
-    <a class="mono foot-top" href="#index" data-magnetic>Back to top &uarr;</a>
-  </footer>
+<!-- 5 CONTACT -->
+<section class="contact" id="contact" aria-labelledby="ct">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <p class="eyebrow" data-in>Contact</p>
+  <h2 id="ct" class="display grad" data-in>Let's make<br />it happen.</h2>
+  <p class="lede" data-in>New ventures, partnerships and collaborations. Tell us what you are building.</p>
+  <a class="mail js-email" href="mailto:admin@redbarn.ventures" data-in><span class="js-email-txt">admin@redbarn.ventures</span><span class="mail-arrow" aria-hidden="true">↗</span></a>
 </section>
 
 </main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-brand">
+      <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M3 27V12L16 2l13 10v15" /><path d="M11 27v-8h10v8" /></svg>
+      <span>Redbarn Ventures</span>
+    </div>
+    <p class="foot-line">Design · Technology · Investment</p>
+    <nav class="foot-legal" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookies</a></nav>
+    <p class="foot-copy">© <span class="js-year">2026</span> Redbarn Ventures. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>

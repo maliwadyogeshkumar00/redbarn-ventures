@@ -5,7 +5,7 @@
  * follows the pointer, and flies through on scroll. No 3D library needed.
  */
 
-type Opts = { mobile: boolean; still: boolean }
+type Opts = { mobile: boolean; still: boolean; ink?: number[]; accent?: number[] }
 
 const INK = [21, 20, 19]
 const CLAY = [147, 64, 47]
@@ -31,9 +31,13 @@ export class Truss {
   /** smoothed scroll velocity from Lenis */
   vel = 0
   active = true
+  private ink: number[]
+  private accent: number[]
 
   constructor(private canvas: HTMLCanvasElement, private opts: Opts) {
     this.ctx = canvas.getContext('2d', { alpha: true })!
+    this.ink = opts.ink ?? INK
+    this.accent = opts.accent ?? CLAY
     this.N = opts.mobile ? 18 : 26
     const hw = 3
     this.profile = [
@@ -103,7 +107,7 @@ export class Truss {
     // --- floor rails (very faint) ---
     const railA = 0.07 * Math.min(1, build * 1.6)
     if (railA > 0.001) {
-      ctx.strokeStyle = `rgba(${INK},${railA})`
+      ctx.strokeStyle = `rgba(${this.ink},${railA})`
       ctx.lineWidth = 1
       ctx.beginPath()
       for (let x = -12; x <= 12; x += 2) {
@@ -121,7 +125,7 @@ export class Truss {
         if (al < 0.003) continue
         const a = P(-12, 0, d)
         const b = P(12, 0, d)
-        ctx.strokeStyle = `rgba(${INK},${al})`
+        ctx.strokeStyle = `rgba(${this.ink},${al})`
         ctx.beginPath()
         ctx.moveTo(a[0], a[1])
         ctx.lineTo(b[0], b[1])
@@ -139,7 +143,7 @@ export class Truss {
         const dd1 = Math.max(d1, 0.9)
         const al = fog(d2) * 0.5 * longA
         if (al < 0.004) continue
-        ctx.strokeStyle = `rgba(${INK},${al})`
+        ctx.strokeStyle = `rgba(${this.ink},${al})`
         ctx.lineWidth = Math.max(0.5, Math.min(1.6, (f / d2) * 0.0035))
         ctx.beginPath()
         for (let v = 0; v < profile.length; v++) {
@@ -165,7 +169,7 @@ export class Truss {
       if (al < 0.004) continue
       const id = i + base
       const red = id % 7 === 3
-      const col = red ? CLAY : INK
+      const col = red ? this.accent : this.ink
       ctx.strokeStyle = `rgba(${col},${Math.min(1, al * (red ? 1.15 : 0.92))})`
       ctx.lineWidth = Math.max(0.6, Math.min(red ? 3.2 : 2.4, (f / d) * (red ? 0.0062 : 0.0042)))
 
