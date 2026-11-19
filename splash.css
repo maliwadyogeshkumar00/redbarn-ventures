@@ -26,8 +26,8 @@ a{color:inherit}
 .top{display:flex;justify-content:center;padding:32px 20px 0}
 .logo{display:inline-flex;align-items:center;gap:11px;text-decoration:none}
 .logo .mark{display:flex;gap:2.5px}
-.logo .mark span{width:8px;height:20px;transform:skewX(-16deg);border-radius:1px;background:var(--rose)}
-.logo .mark span:nth-child(2){background:var(--crimson)}.logo .mark span:nth-child(3){background:var(--deep)}
+.logo .mark span{width:8px;height:20px;transform:skewX(-16deg);border-radius:1px;background:#fff}
+.logo b i{font-style:normal;font-weight:400;color:rgba(242,242,242,.6);margin-left:.28em}
 .logo b{font:600 20px/1 'Inter Tight','Inter',sans-serif;letter-spacing:-.02em;color:var(--text)}
 
 .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(60px,14vh,150px) 20px 0;min-height:calc(var(--pt) - 60px)}
