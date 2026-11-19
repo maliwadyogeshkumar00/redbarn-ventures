@@ -17,7 +17,7 @@ const draw = () => {
     s.p += s.s; s.x += s.v; if (s.x > w + 4) s.x = -4
     const a = reduce ? 0.5 : 0.25 + (Math.sin(s.p) + 1) * 0.3
     ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283)
-    ctx.fillStyle = s.c ? `rgba(220,106,124,${a})` : `rgba(243,236,221,${a})`; ctx.fill()
+    ctx.fillStyle = `rgba(255,255,255,${a * 0.85})`; ctx.fill()
   }
   if (!reduce) requestAnimationFrame(draw)
 }
