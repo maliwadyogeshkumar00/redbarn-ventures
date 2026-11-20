@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro'
 import CtaBand from '../components/CtaBand.astro'
 import Art from '../components/Art.astro'
 import Arrow from '../components/Arrow.astro'
+import Photo from '../components/Photo.astro'
 import services from '../data/services.json'
 const S = Object.fromEntries(services.map((s) => [s.slug, s]))
 const inds = [
@@ -22,6 +23,8 @@ const global = [
 ---
 <Base title="Industries" description="Industries we serve: energy and industrial, technology and SaaS, consumer and e-commerce, professional services, startups and health and wellness - one global agency.">
   <PageHero label="Industries" title="Different industries. The same senior standard." lead="We work with companies around the world in sectors where trust, clarity and long sales cycles matter. Here is how we help in each - and the services our clients use most." crumbs={[{ t: 'Industries' }]} />
+
+  <Photo name="industries" alt="An industrial control room at night overlooking energy infrastructure" caption="Built for complex industries" />
 
   <section class="frame row" aria-label="Industries">
     <div class="ind in-pad">

@@ -6,6 +6,7 @@ import Faq from '../components/Faq.astro'
 import AgentFlow from '../components/AgentFlow.astro'
 import Art from '../components/Art.astro'
 import Arrow from '../components/Arrow.astro'
+import Photo from '../components/Photo.astro'
 const uses = [
   { d: 'Sales', items: ['Lead qualification and scoring', 'Prospect research briefs', 'Personalised outreach drafts', 'Meeting preparation notes', 'Call summaries to CRM', 'Proposal first drafts', 'Follow-up reminders', 'Pipeline health reports', 'Competitor monitoring', 'Pricing question answers', 'Tender document analysis', 'Account research agents'] },
   { d: 'Marketing', items: ['Content briefs and outlines', 'SEO article drafts', 'Social post variations', 'Ad copy testing', 'Campaign reporting', 'AI-search visibility checks', 'Newsletter drafts', 'Image and video ideas', 'Translation and localisation', 'Review and mention monitoring', 'Persona research', 'Landing page copy tests'] },
@@ -55,6 +56,8 @@ const faq = [
       <div class="ai-vis hatch"><div class="rv"><AgentFlow /></div></div>
     </div>
   </section>
+
+  <Photo name="ai" alt="An engineer reviewing an AI workflow dashboard in a server room" caption="AI agents in production" />
 
   <section class="frame row" id="uses" aria-labelledby="uses-h">
     <div class="sec-h in-pad">

@@ -1,0 +1,29 @@
+---
+/* Renders public/images/<name>.(jpg|webp|png) only if the file exists - pages stay complete without it. */
+import fs from 'node:fs'
+import path from 'node:path'
+interface Props { name: string; alt: string; ratio?: string; caption?: string; class?: string }
+const { name, alt, ratio = '21/9', caption, class: cls = '' } = Astro.props
+let src: string | null = null
+for (const ext of ['webp', 'jpg', 'png']) {
+  if (fs.existsSync(path.join(process.cwd(), 'public', 'images', `${name}.${ext}`))) { src = `/images/${name}.${ext}`; break }
+}
+---
+{src && (
+  <section class={`frame row photo ${cls}`}>
+    <figure class="ph-fig hatch">
+      <div class="ph-in rv" style={`aspect-ratio:${ratio}`}>
+        <img src={src} alt={alt} loading="lazy" decoding="async" width="1600" height="686" />
+        <span class="ph-tag"><i></i>{caption || 'Redbarn Ventures'}</span>
+      </div>
+    </figure>
+  </section>
+)}
+<style>
+  .ph-fig{margin:0;padding:clamp(16px,3vw,36px)}
+  .ph-in{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line-2);background:#0E1A22}
+  .ph-in img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.6s var(--ease)}
+  .ph-in.in img{transform:none}
+  .ph-tag{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-radius:6px;padding:5px 10px;font-size:12px}
+  .ph-tag i{width:6px;height:6px;border-radius:50%;background:var(--red)}
+</style>

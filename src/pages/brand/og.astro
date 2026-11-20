@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro'
+import Art from '../../components/Art.astro'
+---
+<Base title="OG" noindex bare>
+  <div class="og">
+    <div class="og-s hatch"></div>
+    <div class="og-c">
+      <img src="/logo.svg" alt="" class="og-logo" />
+      <p class="og-h">We make good companies <b>impossible to <span>ignore.</span></b></p>
+      <div class="og-row"><span class="og-chip"><i></i>Global agency · Est. 2023</span><span class="og-u">redbarn.ventures</span></div>
+    </div>
+    <div class="og-o hatch"><div class="og-box"><Art kind="cube" class="in" /></div></div>
+  </div>
+</Base>
+<style is:global>
+  html,body{background:#fff!important;overflow:hidden;margin:0}
+  .og{width:1200px;height:630px;display:grid;grid-template-columns:56px 1fr 360px;border:1px solid #E7E7E7;box-sizing:border-box}
+  .og-s{border-right:1px solid #E7E7E7}
+  .og-c{display:flex;flex-direction:column;justify-content:space-between;padding:56px 56px 52px}
+  .og-logo{height:34px;width:auto;align-self:flex-start}
+  .og-h{font-size:66px;line-height:1.02;letter-spacing:-.045em;max-width:12ch}
+  .og-h b{font-weight:600;letter-spacing:-.05em}.og-h span{color:#A3101C}
+  .og-row{display:flex;justify-content:space-between;align-items:center;font-size:18px;color:#6B6B6B}
+  .og-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #E7E7E7;border-radius:7px;padding:6px 12px}
+  .og-chip i{width:7px;height:7px;border-radius:50%;background:#A3101C}
+  .og-o{border-left:1px solid #E7E7E7;display:grid;place-items:center}
+  .og-box{width:240px;height:240px;background:#fff;border:1px solid #D9D9D9;border-radius:18px;padding:32px;display:grid;place-items:center}
+  .og-box .art .fl{animation:none}
+  .js .og-box .art .s{stroke-dashoffset:0;fill-opacity:1;transition:none}
+</style>

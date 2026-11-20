@@ -1,5 +1,7 @@
 ---
-interface Props { href?: string; class?: string }
-const { href = '/', class: cls = '' } = Astro.props
+interface Props { href?: string; class?: string; height?: number; variant?: 'primary' | 'white' }
+const { href = '/', class: cls = '', height = 19, variant = 'primary' } = Astro.props
+const src = variant === 'white' ? '/logo-white.svg' : '/logo.svg'
+const w = Math.round((631 / 62) * height)
 ---
-<a href={href} class={`logo ${cls}`} aria-label="Redbarn Ventures, home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><b>Redbarn<span>Ventures</span></b></a>
+<a href={href} class={`logo ${cls}`} aria-label="Redbarn Ventures, home"><img src={src} alt="Redbarn Ventures" width={w} height={height} style={`height:${height}px;width:auto`} /></a>

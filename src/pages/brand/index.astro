@@ -6,13 +6,13 @@ import Art from '../../components/Art.astro'
 import Icon from '../../components/Icon.astro'
 import Arrow from '../../components/Arrow.astro'
 const colours = [
-  { n: 'Wine Red', hex: '#8C1C34', rgb: '140 28 52', cmyk: '0 80 63 45', use: 'Accent only: buttons, logo bars, active states, one face of each object.', dark: true },
+  { n: 'Blood Red', hex: '#A3101C', rgb: '163 16 28', cmyk: '0 90 83 36', use: 'Accent only: buttons, logo bars, active states, one face of each object.', dark: true },
   { n: 'Ink', hex: '#0B0B0C', rgb: '11 11 12', cmyk: '8 8 0 95', use: 'Headlines, body text, line drawing.', dark: true },
   { n: 'Paper', hex: '#FFFFFF', rgb: '255 255 255', cmyk: '0 0 0 0', use: 'The canvas. Every layout starts white.' },
   { n: 'Hairline', hex: '#E7E7E7', rgb: '231 231 231', cmyk: '0 0 0 9', use: 'Frame lines, dividers, hatching.' },
   { n: 'Clay', hex: '#E6E6E6', rgb: '230 230 230', cmyk: '0 0 0 10', use: 'Object faces and tags.' },
   { n: 'Graphite', hex: '#6B6B6B', rgb: '107 107 107', cmyk: '0 0 0 58', use: 'Secondary text and captions.' },
-  { n: 'Blush', hex: '#F6E8EB', rgb: '252 236 238', cmyk: '0 6 5 1', use: 'Selected and highlighted states.' },
+  { n: 'Blush', hex: '#FBE9EA', rgb: '252 236 238', cmyk: '0 6 5 1', use: 'Selected and highlighted states.' },
 ]
 const type = [
   { n: 'Display', spec: '80 / 1.02 · -4.5%', s: 'font-size:clamp(40px,5vw,80px);line-height:1.02;letter-spacing:-.045em', t: 'Built uncommonly well.' },
@@ -49,13 +49,13 @@ const motion = [
 
   <!-- 01 LOGO -->
   <section class="frame row" id="b-logo">
-    <div class="sec-h in-pad"><div><span class="label faint">/01 Logo</span><h2 class="h2" data-split data-bold="2">Three bars. One name.</h2></div><p class="lead rv">Three slanted bars in Wine Red stand for the three things we join together - design, technology and growth. The wordmark is set in Inter Tight: Redbarn in SemiBold, Ventures in Regular Graphite.</p></div>
+    <div class="sec-h in-pad"><div><span class="label faint">/01 Logo</span><h2 class="h2" data-split data-bold="2">Three bars. One name.</h2></div><p class="lead rv">Three slanted bars in Blood Red stand for the three things we join together - design, technology and growth. The wordmark is set in Inter Tight: Redbarn in SemiBold, Ventures in Regular Graphite.</p></div>
     <div class="lg-hero hatch"><div class="lg-stage rv"><LogoArt size={96} /></div></div>
     <div class="lg-grid">
       <div class="lg-cell"><LogoArt size={40} /><span class="cap">Primary · on white</span></div>
       <div class="lg-cell dark"><LogoArt size={40} variant="reversed" /><span class="cap">Reversed · on ink</span></div>
       <div class="lg-cell"><LogoArt size={40} variant="black" /><span class="cap">Mono · one-colour print</span></div>
-      <div class="lg-cell redbg"><LogoArt size={40} variant="white" /><span class="cap">White · on Wine Red</span></div>
+      <div class="lg-cell redbg"><LogoArt size={40} variant="white" /><span class="cap">White · on Blood Red</span></div>
     </div>
     <div class="lg-rules">
       <div class="rule"><div class="rule-art"><div class="clear"><LogoArt size={44} /></div></div><h3 class="h3">Clear space</h3><p class="mute">Keep a margin of at least two bar-widths around the logo. Nothing enters that zone.</p></div>
@@ -72,7 +72,7 @@ const motion = [
   <!-- 02 COLOUR -->
   <section class="frame row" id="b-colour">
     <div class="sec-h in-pad"><div><span class="label faint">/02 Colour</span><h2 class="h2" data-split data-bold="2">White page. Black ink. One red signal.</h2></div><p class="lead rv">Red is never a background for whole sections. It marks the one thing that matters on a page - usually the next step.</p></div>
-    <div class="ratio in-pad rv" aria-label="Colour proportions"><span style="flex:70;background:#fff">Paper 70%</span><span style="flex:18;background:#0B0B0C;color:#fff">Ink 18%</span><span style="flex:8;background:#E7E7E7">Greys 8%</span><span style="flex:4;background:#8C1C34;color:#fff">4%</span></div>
+    <div class="ratio in-pad rv" aria-label="Colour proportions"><span style="flex:70;background:#fff">Paper 70%</span><span style="flex:18;background:#0B0B0C;color:#fff">Ink 18%</span><span style="flex:8;background:#E7E7E7">Greys 8%</span><span style="flex:4;background:#A3101C;color:#fff">4%</span></div>
     <div class="sw-grid in-pad">
       {colours.map((c) => (
         <div class="sw rv"><div class="sw-chip" style={`background:${c.hex};color:${c.dark ? '#fff' : '#0B0B0C'}`}><span>{c.hex}</span></div><div class="sw-b"><b>{c.n}</b><span class="faint">RGB {c.rgb}</span><span class="faint">CMYK {c.cmyk}</span><p class="mute">{c.use}</p></div></div>
@@ -99,7 +99,7 @@ const motion = [
 
   <!-- 05 OBJECTS -->
   <section class="frame row" id="b-objects">
-    <div class="sec-h in-pad"><div><span class="label faint">/05 Objects</span><h2 class="h2" data-split data-bold="2">Six objects, one for each service.</h2></div><p class="lead rv">Flat axonometric drawings: Clay faces, 1 px Ink outline, exactly one cut face in Wine Red. They replace stock photography and client logos.</p></div>
+    <div class="sec-h in-pad"><div><span class="label faint">/05 Objects</span><h2 class="h2" data-split data-bold="2">Six objects, one for each service.</h2></div><p class="lead rv">Flat axonometric drawings: Clay faces, 1 px Ink outline, exactly one cut face in Blood Red. They replace stock photography and client logos.</p></div>
     <div class="obj-grid">
       {objects.map((o) => <div class="ob rv"><div class="ob-art hatch"><Art kind={o.k} /></div><div class="ob-b"><span class="ob-ico"><Icon kind={o.k} /></span><div><b>{o.n}</b><p class="mute">{o.m}</p></div></div></div>)}
     </div>
@@ -119,7 +119,7 @@ const motion = [
   <section class="frame row" id="b-motion">
     <div class="sec-h in-pad"><div><span class="label faint">/07 Motion</span><h2 class="h2" data-split data-bold="2">Calm, precise, purposeful.</h2></div><p class="lead rv">Motion should feel like a well-made object closing: quick to start, soft to settle.</p></div>
     <ol class="p-grid">{motion.map((m, i) => <li class="rv"><div class="p-top"><span class="p-n">{`0${i + 1}`}</span><span class="p-line"></span></div><h3 class="h3">{m.t}</h3><p class="mute">{m.d}</p></li>)}</ol>
-    <div class="ease-demo in-pad"><span class="label faint">Ease curve</span><svg viewBox="0 0 200 100" aria-hidden="true"><path d="M0 100 H200 M0 0 V100" stroke="#E7E7E7" fill="none"/><path d="M0 100 C44 0 72 0 200 0" stroke="#8C1C34" stroke-width="1.6" fill="none"/></svg><span class="faint">cubic-bezier(.22, 1, .36, 1) · 0.6-1.1 s</span></div>
+    <div class="ease-demo in-pad"><span class="label faint">Ease curve</span><svg viewBox="0 0 200 100" aria-hidden="true"><path d="M0 100 H200 M0 0 V100" stroke="#E7E7E7" fill="none"/><path d="M0 100 C44 0 72 0 200 0" stroke="#A3101C" stroke-width="1.6" fill="none"/></svg><span class="faint">cubic-bezier(.22, 1, .36, 1) · 0.6-1.1 s</span></div>
   </section>
 
   <!-- 08 VOICE -->
@@ -159,7 +159,7 @@ const motion = [
   .lg-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
   .lg-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:44px 20px;border-right:1px solid var(--line);min-height:190px}
   .lg-cell:last-child{border-right:0}
-  .lg-cell.dark{background:#0B0B0C}.lg-cell.redbg{background:#8C1C34}
+  .lg-cell.dark{background:#0B0B0C}.lg-cell.redbg{background:#A3101C}
   .cap{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
   .dark .cap,.redbg .cap{color:rgba(255,255,255,.7)}
   .lg-rules{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
@@ -203,7 +203,7 @@ const motion = [
   .gd-frame{display:grid;grid-template-columns:28px 1fr 28px}
   .gd-frame .hatch:first-child{border-right:1px solid var(--line)}.gd-frame .hatch:last-child{border-left:1px solid var(--line)}
   .gd-c{display:grid;grid-template-columns:repeat(6,1fr)}
-  .gd-c i{border-right:1px dashed #E3BFC7}.gd-c i:last-child{border-right:0}
+  .gd-c i{border-right:1px dashed #EBC0C3}.gd-c i:last-child{border-right:0}
   .gd-cards{display:flex;gap:10px;align-items:center;justify-content:center;background:var(--hatch)}
   .gd-cards span{width:28%;height:62%;background:#fff;border:1px solid var(--line-2);border-radius:10px}
   .gd-cards span.on{border-color:var(--red);transform:translateY(-6px)}
@@ -226,7 +226,7 @@ const motion = [
   .vc{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;background:#fff}
   .vd{border-left:2px solid #1F9D55;padding-left:10px;font-size:14px}
   .vd.no{border-color:var(--red);color:var(--mute)}
-  .vd.no p{text-decoration:line-through;text-decoration-color:rgba(140,28,52,.5)}
+  .vd.no p{text-decoration:line-through;text-decoration-color:rgba(163,16,28,.5)}
   .ok,.ko{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1F9D55}
   .ko{color:var(--red)}
   .hard{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);padding:0!important}

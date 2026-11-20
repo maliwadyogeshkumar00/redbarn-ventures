@@ -8,6 +8,7 @@ import services from '../data/services.json'
 import H from '../data/home.json'
 import Marquee from '../components/Marquee.astro'
 import AgentFlow from '../components/AgentFlow.astro'
+import Photo from '../components/Photo.astro'
 const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/', email: site.email, description: site.description, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.short } })) } }
@@ -82,6 +83,8 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       {H.statement.points.map((p, i) => <li class="rv" style={`transition-delay:${i * 80}ms`}><span class="num">0{i + 1}</span><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></li>)}
     </ol>
   </section>
+
+  <Photo name="home" alt="A senior strategy team reviewing website layouts and growth charts in a glass-walled meeting room" caption="Strategy, design and growth in one room" />
 
   <!-- SERVICES -->
   <section class="frame row svc" id="services" aria-labelledby="svc-h">

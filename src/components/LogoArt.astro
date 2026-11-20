@@ -1,18 +1,7 @@
 ---
-/* Logo built from geometry + text. variant: primary | white | black | reversed */
 interface Props { variant?: 'primary' | 'white' | 'black' | 'reversed'; size?: number; mark?: boolean }
 const { variant = 'primary', size = 48, mark = false } = Astro.props
-const bar = variant === 'black' ? '#0B0B0C' : variant === 'white' ? '#FFFFFF' : '#8C1C34'
-const ink = variant === 'white' || variant === 'reversed' ? '#FFFFFF' : '#0B0B0C'
-const sub = variant === 'white' || variant === 'reversed' ? 'rgba(255,255,255,.62)' : variant === 'black' ? '#0B0B0C' : '#6B6B6B'
+const src = mark ? '/logo-mark.svg' : variant === 'black' ? '/logo-mono.svg' : variant === 'white' || variant === 'reversed' ? '/logo-white.svg' : '/logo.svg'
+const h = Math.round(size * 0.62)
 ---
-<span class="lg" style={`--s:${size}px;--bar:${bar};--ink:${ink};--sub:${sub}`}>
-  <span class="lg-m"><i></i><i></i><i></i></span>{!mark && <b>Redbarn<span>Ventures</span></b>}
-</span>
-<style>
-  .lg{display:inline-flex;align-items:center;gap:calc(var(--s)*.34);line-height:1}
-  .lg-m{display:flex;gap:calc(var(--s)*.085)}
-  .lg-m i{width:calc(var(--s)*.25);height:calc(var(--s)*.62);background:var(--bar);transform:skewX(-16deg);border-radius:calc(var(--s)*.03)}
-  .lg b{font-weight:600;font-size:calc(var(--s)*.64);letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
-  .lg b span{font-weight:400;color:var(--sub);margin-left:.13em}
-</style>
+<img class="lg" src={src} alt="Redbarn Ventures" height={h} style={`height:${h}px;width:auto;display:block`} />

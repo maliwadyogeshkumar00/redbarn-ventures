@@ -1,0 +1,25 @@
+{
+  "model": "gemini-3.1-flash-image",
+  "aspect": "16:9",
+  "style": "Photorealistic editorial photograph in a dark moody corporate, cinematic tech style. Cool colour grade: shadows and midtones pushed to teal and blue; warm tones only on skin and small amber practical lights, creating a subtle teal-and-orange contrast. Low-key exposure lit by one cool overhead source with soft haze and gentle bloom around the light. Lifted, matte blacks that read as dark grey-blue rather than pure black, like a faded film print. Low overall saturation. Shallow depth of field with soft foreground blur, sometimes shot through glass with faint reflections. Shot on a full-frame camera with a 50mm lens. Natural, unposed moments. No text, no logos, no brand names, no watermarks, no recognisable real people.",
+  "images": [
+    { "name": "home", "prompt": "A senior strategy team of four in a glass-walled meeting room at dusk, reviewing a large wall display of website layouts and growth charts; one person stands pointing at the screen while others lean in." },
+    { "name": "about", "prompt": "A calm, modern agency workspace in the evening: long shared desk with laptops, sketchbooks, colour swatches and printed brand guidelines; two people quietly discussing a design on a large monitor." },
+    { "name": "ai", "prompt": "Close view of a modern server room aisle with small amber status lights, a single engineer reviewing an AI workflow dashboard on a tablet, haze in the air." },
+    { "name": "industries", "prompt": "Wide view of an industrial facility control room at night with large windows overlooking battery storage containers and wind turbines in the distance, an operator silhouetted at a console." },
+    { "name": "service-brand-and-identity", "prompt": "A designer's desk with printed logo sketches, brand guideline pages and paper colour samples laid out under a single overhead lamp; a hand adjusting a printed sheet." },
+    { "name": "service-websites-and-apps", "prompt": "A developer and designer side by side reviewing a website on a laptop and a phone held up for comparison, code softly visible on a second screen." },
+    { "name": "service-ai-agents-and-automation", "prompt": "A modern operations office where a person reviews an automated workflow on a wide monitor showing connected boxes and arrows, coffee cup and notebook nearby." },
+    { "name": "service-marketing-and-growth", "prompt": "A marketing team around a table with laptops showing campaign dashboards and analytics graphs, sticky notes on a glass wall behind them." },
+    { "name": "service-seo", "prompt": "Over-the-shoulder view of a strategist analysing search results and keyword maps on a large monitor in a dim office, reflections on the glass." },
+    { "name": "service-lead-generation-and-sales", "prompt": "A sales lead on a video call with a client, headset on, notes and a printed proposal on the desk, city lights bokeh through the window." },
+    { "name": "service-influencer-marketing", "prompt": "A small content creator studio with a ring light, camera on a tripod and a smartphone on a gimbal, a creator reviewing footage on the phone." },
+    { "name": "service-video-and-content", "prompt": "A video editing suite with two large monitors showing a colour-grading timeline, an editor's hand on a control surface, soft haze." },
+    { "name": "service-trade-shows-and-events", "prompt": "A modern trade show stand in an exhibition hall with a large illuminated back wall, a team member talking with two visitors at the counter, crowd blurred in the foreground." },
+    { "name": "service-consultancy", "prompt": "A senior consultant leading a workshop at a whiteboard covered in a strategy framework, three executives listening around a table, shot through glass." },
+    { "name": "service-corporate-materials", "prompt": "Printed company brochures, product datasheets and a bound investor deck neatly arranged on a dark conference table, a hand turning a page." },
+    { "name": "insight-ai-agents-ceo-guide", "prompt": "A chief executive at the head of a long boardroom table, listening as a colleague presents an AI strategy on a large screen, colleagues in the foreground softly blurred, seen through glass." },
+    { "name": "insight-website-board-level-asset", "prompt": "A leadership team in a boardroom reviewing a company website on a large wall screen, one person pointing to a section, evening light." },
+    { "name": "insight-trade-shows-into-pipeline", "prompt": "A busy exhibition hall seen from a mezzanine, stands lit in cool tones, small groups of business visitors in conversation." }
+  ]
+}

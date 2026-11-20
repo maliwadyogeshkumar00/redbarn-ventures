@@ -5,6 +5,7 @@ import CtaBand from '../../components/CtaBand.astro'
 import Faq from '../../components/Faq.astro'
 import Art from '../../components/Art.astro'
 import Arrow from '../../components/Arrow.astro'
+import Photo from '../../components/Photo.astro'
 import services from '../../data/services.json'
 import site from '../../data/site.json'
 
@@ -42,6 +43,8 @@ const ld = [
       ))}
     </ol>
   </section>
+
+  <Photo name={`service-${s.slug}`} alt={`${s.title} at Redbarn Ventures`} caption={s.title} />
 
   <section class="frame row" aria-labelledby="inc-h">
     <div class="sec-h in-pad">
