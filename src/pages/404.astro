@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import Arrow from '../components/Arrow.astro'
+---
+<Base title="Page not found" noindex>
+  <PageHero label="404" title="This page has moved." lead="The page you were looking for does not exist any more, or the link was mistyped. Everything we do is one click away from here.">
+    <div class="hero-btns rv"><a href="/" class="btn btn-p">Back to home <Arrow /></a><a href="/services" class="btn btn-o">See our services</a><a href="/contact" class="btn btn-o">Contact us</a></div>
+  </PageHero>
+</Base>

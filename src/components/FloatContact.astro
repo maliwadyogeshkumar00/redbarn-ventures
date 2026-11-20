@@ -2,12 +2,14 @@
 import site from '../data/site.json'
 const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hi Redbarn, I would like to discuss a project.')}`
 ---
-<aside class="nudge" aria-label="Email us">
-  <button class="nudge-tab" type="button" aria-label="Email us"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5 8 9l5.5-4.5"/></svg>Email us</button>
-  <div class="nudge-body">
-    <p>Have a brief, a deadline or just a question? Write to us - a senior person replies.</p>
+<aside class="nudge" aria-label="Contact options" data-nudge>
+  <button class="nudge-tab" type="button" aria-expanded="false" aria-controls="nudge-body" data-nudge-toggle><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5 8 9l5.5-4.5"/></svg>Email us</button>
+  <div class="nudge-body" id="nudge-body">
+    <div class="nb-top"><b>Talk to a senior person</b><button type="button" class="nb-x" aria-label="Close" data-nudge-close>×</button></div>
+    <p>Have a brief, a deadline or just a question? Send a message and we reply personally.</p>
     <a class="em" href={`mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`}>{site.email}</a>
-    <a class="btn btn-p btn-sm" href={`mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`} style="justify-content:center">Write to us</a>
+    <a class="btn btn-p btn-sm" href="/contact" style="justify-content:center">Open the contact form</a>
+    <a class="btn btn-o btn-sm" href={wa} target="_blank" rel="noopener" style="justify-content:center">WhatsApp us</a>
   </div>
 </aside>
 <a class="wa" href={wa} target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">

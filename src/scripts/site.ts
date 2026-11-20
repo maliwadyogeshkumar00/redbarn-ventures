@@ -12,6 +12,17 @@ burger?.addEventListener('click', () => {
 })
 $$('.sheet a').forEach((a) => a.addEventListener('click', () => document.body.classList.remove('nav-open')))
 
+/* ---------- email nudge (click to open) ---------- */
+const nudge = $('[data-nudge]')
+if (nudge) {
+  const tog = $('[data-nudge-toggle]', nudge)
+  const set = (o: boolean) => { nudge.classList.toggle('open', o); tog?.setAttribute('aria-expanded', String(o)) }
+  tog?.addEventListener('click', () => set(!nudge.classList.contains('open')))
+  $('[data-nudge-close]', nudge)?.addEventListener('click', () => set(false))
+  document.addEventListener('click', (e) => { if (!nudge.contains(e.target as Node)) set(false) })
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false) })
+}
+
 /* ---------- header state ---------- */
 const top = $('.top')
 const onScroll = () => top?.classList.toggle('scrolled', scrollY > 8)

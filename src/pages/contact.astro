@@ -1,0 +1,201 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import Faq from '../components/Faq.astro'
+import Arrow from '../components/Arrow.astro'
+import site from '../data/site.json'
+import services from '../data/services.json'
+const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hi Redbarn, I would like to discuss a project.')}`
+const next = [
+  { t: 'We read your message', d: 'A senior member of the team reads every enquiry personally - never an automated triage.' },
+  { t: 'A short call', d: 'We arrange a focused call to understand your business, your goals and your timeline.' },
+  { t: 'Your written plan', d: 'You receive a clear plan with scope, timeline and quote. No obligation, no pressure.' },
+]
+const faq = [
+  { q: 'What should I include in my message?', a: 'A few lines about your company, what you need help with and any deadline you are working towards. If you have an existing website or brand files, a link is helpful but not required.' },
+  { q: 'Do you charge for the first call?', a: 'No. The first conversation and the written plan that follows are free and without obligation.' },
+  { q: 'Can we sign an NDA before sharing details?', a: 'Yes. If your project is confidential, tell us in your message and we will sign your NDA before you share anything sensitive.' },
+  { q: 'Can I contact you on WhatsApp instead?', a: 'Of course. Many clients prefer WhatsApp for quick questions - use the green button on any page and you will reach us directly.' },
+]
+---
+<Base title="Contact" description="Contact Redbarn Ventures about your brand, website, marketing, SEO or corporate materials. Email, WhatsApp or the project form - a senior person replies.">
+  <PageHero label="Contact" title="Let's talk about your brand." lead="Tell us what you are working on. Whether it is a new website, a rebrand, a marketing plan or a single deck, a senior person will read your message and reply personally." crumbs={[{ t: 'Contact' }]} />
+
+  <section class="frame row" aria-label="Contact form and details">
+    <div class="ct-grid">
+      <div class="ct-form-wrap">
+        <div class="ct-card hatch">
+          <div class="ct-in">
+            <form id="ct-form" novalidate>
+              <div class="ct-head"><h2 class="h3">Start a project</h2><span class="faint">Takes about a minute</span></div>
+              <div class="ct-two">
+                <div class="fld"><label for="c-name">Your name <i>*</i></label><input id="c-name" name="name" autocomplete="name" required placeholder="Full name" /><span class="err">Please add your name.</span></div>
+                <div class="fld"><label for="c-email">Email <i>*</i></label><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" /><span class="err">Please add a valid email.</span></div>
+              </div>
+              <div class="ct-two">
+                <div class="fld"><label for="c-co">Company</label><input id="c-co" name="company" autocomplete="organization" placeholder="Company name" /></div>
+                <div class="fld"><label for="c-web">Website</label><input id="c-web" name="website" autocomplete="url" placeholder="yourcompany.com" /></div>
+              </div>
+              <fieldset class="fld" id="c-svc">
+                <legend>What do you need? <i>*</i></legend>
+                <div class="chips">
+                  {services.map((s) => <label class="pick"><input type="checkbox" name="service" value={s.title} /><span>{s.nav}</span></label>)}
+                  <label class="pick"><input type="checkbox" name="service" value="Not sure yet" /><span>Not sure yet</span></label>
+                </div>
+                <span class="err">Pick at least one option.</span>
+              </fieldset>
+              <div class="fld"><label for="c-msg">Tell us about the project <i>*</i></label><textarea id="c-msg" name="message" rows="5" required placeholder="What are you working on, what do you need and by when?"></textarea><span class="err">Please write a short message.</span></div>
+              <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button class="btn btn-p ct-send" type="submit"><span class="lbl">Send message</span><Arrow /></button>
+              <p class="ct-fine faint">By sending, you agree to our <a href="/privacy">privacy policy</a>. We never share your details.</p>
+              <div class="ct-error" role="alert" hidden></div>
+            </form>
+            <div class="ct-done" role="status" hidden>
+              <span class="ct-tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+              <h2 class="h3">Message received.</h2>
+              <p class="mute">Thank you<span data-name></span>. A senior member of the team will reply to <b data-mail></b> personally.</p>
+              <a class="btn btn-o btn-sm" href={wa} target="_blank" rel="noopener">Need it faster? WhatsApp us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="ct-side">
+        <div class="ct-block">
+          <span class="label faint">/Direct</span>
+          <a class="ct-big" href={`mailto:${site.email}`}>{site.email}</a>
+          <a class="btn btn-o" href={wa} target="_blank" rel="noopener" style="align-self:flex-start"><svg viewBox="0 0 32 32" fill="#25D366" style="width:16px;height:16px"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3z"/></svg>WhatsApp us</a>
+        </div>
+        <div class="ct-block">
+          <span class="label faint">/What happens next</span>
+          <ol class="ct-next">{next.map((n, i) => <li><span class="p-n">{`0${i + 1}`}</span><div><b>{n.t}</b><p class="mute">{n.d}</p></div></li>)}</ol>
+        </div>
+        <div class="ct-block">
+          <span class="label faint">/Prefer email?</span>
+          <p class="mute">Write to us directly with a few lines about your company and what you need. Attach a brief or existing files if you have them - we treat everything you share as confidential.</p>
+          <p class="mute">Useful things to mention: your current website, who your customers are, what is not working today, any deadline or launch date, and a rough idea of budget if you have one. If you are not sure, that is fine too - a short call usually makes it clear.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="frame row" aria-labelledby="help-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/What we can help with</span><h2 class="h2" id="help-h" data-split>Not sure where to start? Start here.</h2></div>
+      <p class="lead rv">You do not need a perfect brief. Tell us the problem in your own words and we will recommend the simplest way to solve it - even if that means doing less.</p>
+    </div>
+    <ul class="help-list">
+      {services.map((s) => (
+        <li class="rv"><a href={`/services/${s.slug}`}><span class="cap-n">{s.n}</span><span class="h3">{s.title}</span><span class="mute">{s.short}</span><Arrow /></a></li>
+      ))}
+    </ul>
+    <div class="ways in-pad">
+      <p><b>Our promise when you get in touch:</b> a personal reply from a senior person, an honest view on whether we are the right fit, and a written plan with a clear quote before you commit to anything.</p>
+      <a href="#ct-form" class="btn btn-p btn-sm">Back to the form <Arrow /></a>
+    </div>
+  </section>
+
+  <Faq items={faq} title="Before you get in touch." />
+</Base>
+
+<script>
+  import site from '../data/site.json'
+  const form = document.getElementById('ct-form') as HTMLFormElement | null
+  if (form) {
+    const done = document.querySelector('.ct-done') as HTMLElement
+    const err = form.querySelector('.ct-error') as HTMLElement
+    const btn = form.querySelector('.ct-send') as HTMLButtonElement
+    const lbl = btn.querySelector('.lbl') as HTMLElement
+    const v = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement)?.value || '').trim()
+    const checks: Record<string, () => boolean> = {
+      'c-name': () => v('name').length > 1,
+      'c-email': () => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email')),
+      'c-svc': () => form.querySelectorAll('input[name=service]:checked').length > 0,
+      'c-msg': () => v('message').length > 5,
+    }
+    const box = (id: string) => (document.getElementById(id)?.closest('.fld') || document.getElementById(id)) as HTMLElement
+    const check = (id: string) => { const ok = checks[id](); box(id).classList.toggle('bad', !ok); return ok }
+    Object.keys(checks).forEach((id) => document.getElementById(id)?.addEventListener(id === 'c-svc' ? 'change' : 'input', () => box(id).classList.contains('bad') && check(id)))
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); err.hidden = true
+      const bad = Object.keys(checks).filter((id) => !check(id))
+      if (bad.length) { (document.getElementById(bad[0])?.querySelector('input') || document.getElementById(bad[0]))?.focus(); return }
+      const services = [...form.querySelectorAll<HTMLInputElement>('input[name=service]:checked')].map((c) => c.value).join(', ')
+      const finish = () => {
+        (done.querySelector('[data-name]') as HTMLElement).textContent = ', ' + v('name').split(' ')[0]
+        ;(done.querySelector('[data-mail]') as HTMLElement).textContent = v('email')
+        form.hidden = true; done.hidden = false
+      }
+      if (v('_honey')) { finish(); return }
+      btn.disabled = true; lbl.textContent = 'Sending...'
+      try {
+        const r = await fetch(`https://formsubmit.co/ajax/${site.formTo}`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ name: v('name'), email: v('email'), company: v('company') || '-', website: v('website') || '-', services, message: v('message'), _subject: `Website enquiry: ${services} - ${v('name')}`, _replyto: v('email'), _template: 'table', _captcha: 'false' }),
+        })
+        const j = await r.json().catch(() => ({}))
+        if (!r.ok || j.success === 'false' || j.success === false) throw new Error()
+        finish()
+      } catch {
+        const body = encodeURIComponent(`Name: ${v('name')}\nCompany: ${v('company')}\nWebsite: ${v('website')}\nNeeds: ${services}\n\n${v('message')}`)
+        err.innerHTML = `We could not send that just now. <a href="mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}&body=${body}">Send it by email instead</a> or message us on WhatsApp.`
+        err.hidden = false
+      } finally { btn.disabled = false; lbl.textContent = 'Send message' }
+    })
+  }
+</script>
+<style>
+  .ct-grid{display:grid;grid-template-columns:1.25fr .75fr}
+  .ct-form-wrap{border-right:1px solid var(--line);padding:clamp(40px,5vw,72px) var(--pad)}
+  .ct-card{border:1px solid var(--line);padding:20px}
+  .ct-in{background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:clamp(18px,3vw,30px)}
+  .ct-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;font-size:13px}
+  .ct-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fld{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;border:0;padding:0;min-width:0}
+  .fld label,.fld legend{font-size:13px;color:#333;padding:0;margin-bottom:6px}
+  .fld i{font-style:normal;color:var(--red)}
+  .fld input,.fld textarea{width:100%;border:1px solid var(--line-2);border-radius:8px;padding:11px 12px;font-size:15px;background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
+  .fld textarea{resize:vertical;min-height:130px;line-height:1.5}
+  .fld input:focus,.fld textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(215,38,61,.12)}
+  .fld input::placeholder,.fld textarea::placeholder{color:#AAA}
+  .err{display:none;font-size:12.5px;color:var(--red)}
+  .fld.bad .err{display:block}
+  .fld.bad input,.fld.bad textarea{border-color:var(--red)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .pick input{position:absolute;opacity:0;pointer-events:none}
+  .pick span{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border:1px solid var(--line-2);border-radius:7px;font-size:13.5px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+  .pick span::before{content:"";width:12px;height:12px;border-radius:3px;border:1px solid var(--line-2);transition:background .2s,border-color .2s}
+  .pick:hover span{border-color:var(--red)}
+  .pick input:checked+span{border-color:var(--red);background:#FCECEE;color:var(--ink)}
+  .pick input:checked+span::before{background:var(--red);border-color:var(--red)}
+  .pick input:focus-visible+span{outline:2px solid var(--red);outline-offset:2px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px}
+  .ct-send{width:100%;justify-content:center;height:46px;font-size:15px}
+  .ct-send[disabled]{opacity:.7;cursor:progress}
+  .ct-fine{font-size:12.5px;text-align:center;margin-top:10px}
+  .ct-fine a{text-decoration:underline;text-underline-offset:2px}
+  .ct-error{margin-top:12px;padding:10px 12px;border-radius:8px;background:#FCECEE;color:var(--red);font-size:14px}
+  .ct-error :global(a){text-decoration:underline}
+  .ct-done{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 8px}
+  .ct-done[hidden]{display:none}
+  .ct-tick{width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center}
+  .ct-tick svg{width:22px;height:22px}
+  .help-list{border-top:1px solid var(--line)}
+  .help-list a{display:grid;grid-template-columns:60px 260px 1fr 20px;gap:16px;align-items:center;padding:18px var(--pad);border-bottom:1px solid var(--line);transition:background .25s}
+  .help-list a:hover{background:#FCFCFC}
+  .help-list a:hover .h3,.help-list a:hover :global(svg){color:var(--red)}
+  .help-list :global(svg){width:14px;height:14px}
+  .help-list .mute{font-size:14.5px}
+  .cap-n{font-size:12px;color:var(--faint)}
+  @media (max-width:900px){.help-list a{grid-template-columns:40px 1fr 18px}.help-list .mute{grid-column:2/3}}
+  .ct-side{display:flex;flex-direction:column}
+  .ct-block{padding:32px var(--pad);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+  .ct-block:last-child{border-bottom:0}
+  .ct-big{font-size:clamp(20px,2vw,26px);letter-spacing:-.025em;word-break:break-all}
+  .ct-big:hover{color:var(--red)}
+  .ct-next{display:flex;flex-direction:column;gap:14px}
+  .ct-next li{display:grid;grid-template-columns:32px 1fr;gap:12px}
+  .ct-next b{font-weight:400;font-size:15px}
+  .ct-next p{font-size:14px;margin-top:2px}
+  .ct-block p{font-size:14.5px}
+  @media (max-width:900px){.ct-grid{grid-template-columns:1fr}.ct-form-wrap{border-right:0;border-bottom:1px solid var(--line)}.ct-two{grid-template-columns:1fr;gap:0}}
+</style>

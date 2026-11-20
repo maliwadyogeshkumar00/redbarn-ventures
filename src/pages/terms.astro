@@ -1,0 +1,17 @@
+---
+import Legal from '../components/Legal.astro'
+import site from '../data/site.json'
+const E = site.email
+---
+<Legal title="Terms of use" description="Terms of use for the Redbarn Ventures website, redbarn.ventures." lead="Last updated 20 November 2026. These terms apply to your use of redbarn.ventures. Client work is governed by a separate written agreement.">
+  <section><h2>Using this website</h2><p>By using this website you agree to these terms. If you do not agree, please do not use the site. We provide the website to give general information about Redbarn Ventures and our services, and to let you contact us.</p></section>
+  <section><h2>Information on this site</h2><p>We work hard to keep the information on this website accurate and up to date, but it is provided for general information only. It does not form an offer, and descriptions of services, timelines and processes are indicative. The exact scope, price and timeline of any work are set out in a written proposal and agreement.</p></section>
+  <section><h2>Intellectual property</h2><p>Unless stated otherwise, the text, illustrations, design and code of this website belong to Redbarn Ventures. You may share links to our pages and quote short extracts with a clear reference to us. You may not copy, reproduce or reuse substantial parts of the website without our written permission.</p></section>
+  <section><h2>Your submissions</h2><p>When you send us a message through the contact form, email or WhatsApp, you confirm that the information is accurate and that you have the right to share it. If you need to share confidential information, tell us first and we will sign a non-disclosure agreement before you send it.</p></section>
+  <section><h2>Acceptable use</h2><p>You must not misuse this website, including by attempting to gain unauthorised access, introducing malicious code, sending spam through our forms or interfering with the site's operation.</p><p>We may block access or report misuse where we reasonably believe it is necessary to protect the website, our clients or other visitors.</p></section>
+  <section><h2>Links to other websites</h2><p>This website may link to third-party websites, such as WhatsApp. We are not responsible for the content or privacy practices of those websites.</p></section>
+  <section><h2>Liability</h2><p>To the fullest extent permitted by law, Redbarn Ventures is not liable for any loss arising from the use of, or reliance on, this website. Nothing in these terms limits liability that cannot be limited by law.</p></section>
+  <section><h2>Proposals and client work</h2><p>Any proposal, quote or plan we send you is valid for the period stated in it. Work only begins once both parties have agreed the scope, price and timeline in writing. Ownership of deliverables, payment terms, revisions and confidentiality for client projects are set out in that agreement, which takes priority over these website terms.</p></section>
+  <section><h2>Availability</h2><p>We aim to keep this website available at all times, but we do not guarantee uninterrupted access. We may change, suspend or remove any part of the website without notice, for example for maintenance or improvements.</p></section>
+  <section><h2>Changes and contact</h2><p>We may update these terms at any time by publishing a new version on this page. Questions about these terms can be sent to <a href={`mailto:${E}`}>{E}</a>.</p></section>
+</Legal>

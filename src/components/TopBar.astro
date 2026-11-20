@@ -1,26 +1,45 @@
 ---
 import site from '../data/site.json'
+import services from '../data/services.json'
 import Logo from './Logo.astro'
 import Arrow from './Arrow.astro'
+import Icon from './Icon.astro'
 const path = Astro.url.pathname.replace(/\/$/, '') || '/'
-const links = site.nav
-const cur = (h: string) => path === h || path.startsWith(h + '/')
+const cur = (h: string) => !h.includes('#') && (path === h || path.startsWith(h + '/'))
 ---
 <header class="hdr">
   <div class="hdr-in">
     <Logo />
     <nav class="nav" aria-label="Main">
-      {links.map((l) => <a href={l.href} aria-current={cur(l.href) ? 'page' : undefined}>{l.label}</a>)}
+      {site.nav.map((l) => l.menu ? (
+        <div class="dd">
+          <a href={l.href} aria-current={cur(l.href) ? 'page' : undefined} aria-haspopup="true">{l.label}<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+          <div class="dd-panel">
+            <div class="dd-grid">
+              {services.map((s) => (
+                <a href={`/services/${s.slug}`} class="dd-item" aria-current={path === `/services/${s.slug}` ? 'page' : undefined}>
+                  <span class="dd-ico"><Icon kind={s.obj} /></span>
+                  <span><b>{s.nav}</b><small>{s.short}</small></span>
+                </a>
+              ))}
+            </div>
+            <a href="/services" class="dd-all">All services <Arrow /></a>
+          </div>
+        </div>
+      ) : <a href={l.href} aria-current={cur(l.href) ? 'page' : undefined}>{l.label}</a>)}
     </nav>
     <div class="hdr-cta">
-      <a href="/#contact" class="btn btn-o btn-sm">Contact</a>
-      <a href="/#contact" class="btn btn-p btn-sm">Start a project <Arrow /></a>
+      <a href="/contact" class="btn btn-o btn-sm">Contact</a>
+      <a href="/contact" class="btn btn-p btn-sm">Start a project <Arrow /></a>
     </div>
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet" data-burger><span><i></i><i></i><i></i></span></button>
   </div>
 </header>
 <nav class="sheet" id="sheet" aria-label="Mobile">
-  {links.map((l) => <a href={l.href}>{l.label}</a>)}
-  <a href="/#contact">Contact</a>
-  <a href="/#contact" class="btn btn-p">Start a project <Arrow /></a>
+  <a href="/services">Services</a>
+  {services.map((s) => <a href={`/services/${s.slug}`} class="sub">{s.nav}</a>)}
+  <a href="/#process">Process</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
 </nav>

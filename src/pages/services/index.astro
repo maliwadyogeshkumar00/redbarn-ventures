@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro'
+import PageHero from '../../components/PageHero.astro'
+import CtaBand from '../../components/CtaBand.astro'
+import Faq from '../../components/Faq.astro'
+import Art from '../../components/Art.astro'
+import Arrow from '../../components/Arrow.astro'
+import services from '../../data/services.json'
+import H from '../../data/home.json'
+const together = [
+  { t: 'Start anywhere', d: 'Most clients begin with one urgent need - a new website, a rebrand, a sales deck. We solve that first, properly, without forcing a bigger package on you.' },
+  { t: 'Connected by one brief', d: 'Because every service is planned from the same understanding of your business, your brand, website, content and campaigns reinforce each other instead of pulling in different directions.' },
+  { t: 'Supported for the long term', d: 'After launch we stay available for updates, new pages, campaigns and fresh materials, so your brand keeps improving rather than slowly going out of date.' },
+]
+const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }]
+---
+<Base title="Services" description="Brand identity, websites and apps, marketing, SEO and AI search, consultancy and corporate materials - six services delivered by one senior studio team." jsonld={ld}>
+  <PageHero label="Services" title="Six services. One senior team." lead="From the first sketch of your logo to the monthly report on your search rankings, every service is delivered by experienced specialists who share one brief, one plan and one point of contact with you." crumbs={[{ t: 'Services' }]}>
+    <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Start a project <Arrow /></a><a href="#ways" class="btn btn-o">Ways to work with us</a></div>
+  </PageHero>
+
+  <section class="frame row" aria-labelledby="all-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/All services</span><h2 class="h2" id="all-h" data-split>Choose what you need today.</h2></div>
+      <p class="lead rv">Each service stands on its own, and each one gets stronger when combined with the others. Open any of them to see exactly what is included and how we work.</p>
+    </div>
+    <div class="b-grid in-pad">
+      {services.map((s, i) => (
+        <a href={`/services/${s.slug}`} class="bcard rv" style={`transition-delay:${(i % 3) * 70}ms`}>
+          <div class="bc-tile hatch"><span class="bc-n">{s.n}</span><div class="bc-art"><Art kind={s.obj} /></div></div>
+          <div class="bc-body">
+            <h3 class="h3">{s.title}</h3>
+            <p class="mute">{s.short}</p>
+            <div class="bc-tags">{s.included.slice(0, 3).map((t) => <span class="tag">{t.t}</span>)}</div>
+            <span class="bc-more">Explore {s.title} <Arrow /></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="frame row" aria-labelledby="tog-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/How it fits together</span><h2 class="h2" id="tog-h" data-split>One studio instead of four suppliers.</h2></div>
+      <p class="lead rv">Hiring a separate designer, developer, agency and consultant means four briefs, four timelines and four opinions. Working with one team removes the friction - and the finger-pointing.</p>
+    </div>
+    <ol class="st-points">
+      {together.map((p, i) => <li class="rv" style={`transition-delay:${i * 80}ms`}><span class="num">0{i + 1}</span><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></li>)}
+    </ol>
+  </section>
+
+  <section class="frame row engage" id="ways" aria-labelledby="e-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split>Start small or build for the long run.</h2></div>
+      <p class="lead rv">Every engagement starts with a written plan and quote. Choose the model that fits where your business is today - and change it as you grow.</p>
+    </div>
+    <div class="e-grid in-pad">
+      {H.engage.map((e, i) => (
+        <article class={`ecard rv ${e.featured ? 'feat' : ''}`} style={`transition-delay:${i * 80}ms`}>
+          <div class="e-top"><h3 class="h3">{e.t}</h3><span class={`tag ${e.featured ? 'tag-r' : ''}`}>{e.tag}</span></div>
+          <p class="mute">{e.d}</p>
+          <ul>{e.points.map((p) => <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>{p}</li>)}</ul>
+          <a href="/contact" class={`btn ${e.featured ? 'btn-p' : 'btn-o'}`}>Get a plan and quote <Arrow /></a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <Faq items={H.faq} />
+  <CtaBand />
+</Base>

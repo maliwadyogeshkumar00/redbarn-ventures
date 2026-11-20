@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from './PageHero.astro'
+interface Props { title: string; description: string; lead: string }
+const { title, description, lead } = Astro.props
+---
+<Base title={title} description={description}>
+  <PageHero label="Legal" title={title} lead={lead} crumbs={[{ t: title }]} />
+  <div class="frame row"><article class="prose"><slot /></article></div>
+</Base>

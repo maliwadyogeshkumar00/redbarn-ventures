@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Art from '../components/Art.astro'
+import Arrow from '../components/Arrow.astro'
+import services from '../data/services.json'
+import H from '../data/home.json'
+const who = [
+  { t: 'Established companies', d: 'Businesses with a strong product and a reputation to protect, whose brand, website or materials no longer reflect how good they are.' },
+  { t: 'New ventures', d: 'Founders launching a product or company who want to look established from day one and build marketing that grows with them.' },
+  { t: 'Technical and industrial firms', d: 'Companies selling complex products - energy, engineering, software - who need clear, credible communication for demanding buyers.' },
+]
+---
+<Base title="About" description="Redbarn Ventures is a small senior studio for brand, websites and growth. One team, one point of contact, and long-term support after launch.">
+  <PageHero label="About Redbarn" title="A small senior studio for brands that want to grow." lead="We started Redbarn because good companies kept telling us the same story: they had a great product, but their brand, website and marketing were spread across too many suppliers who never spoke to each other." crumbs={[{ t: 'About' }]} />
+
+  <section class="frame row incl" aria-labelledby="story-h">
+    <div class="incl-grid">
+      <div class="incl-l"><div class="incl-card hatch rv"><div class="ic-in"><div class="ic-top"><span class="faint">studio /</span>&nbsp;about</div><div class="ic-art" aria-hidden="true"><Art kind="sphere" /></div><p class="ic-sum">Design, technology, marketing and strategy - sliced into one team, held together by one brief.</p></div></div></div>
+      <div class="incl-r">
+        <span class="label faint">/Our story</span>
+        <h2 class="h2" id="story-h" data-split>Built to remove the hand-offs.</h2>
+        <div class="about-copy rv">
+          <p>Most companies end up managing a designer for the logo, a developer for the website, an agency for advertising and a consultant for strategy. Each one is good at their part. None of them owns the whole picture. The result is a brand that looks slightly different everywhere, a website that does not match the sales deck, and campaigns that send people to pages nobody planned for them.</p>
+          <p>Redbarn Ventures brings those disciplines into one small, senior team. The people who design your identity also build your website, write your pages, plan your campaigns and prepare your corporate materials. They work from one brief, share one plan and report to you through one point of contact.</p>
+          <p>We deliberately stay small. It means the people you meet in the first call are the people who do the work, decisions are made quickly, and every client gets real attention rather than a rotating cast of juniors.</p>
+          <p>And we do not disappear after launch. Brands, websites and marketing are never finished, so we offer long-term partnerships that keep your company improving month after month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="frame row trust" aria-labelledby="pr-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Principles</span><h2 class="h2" id="pr-h" data-split>How we treat every client.</h2></div>
+      <p class="lead rv">These are not slogans. They are the rules we work by on every project, whatever its size.</p>
+    </div>
+    <ul class="t-grid">
+      {H.trust.map((t, i) => (
+        <li class="rv" style={`transition-delay:${(i % 3) * 70}ms`}><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="frame row" aria-labelledby="who-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Who we work with</span><h2 class="h2" id="who-h" data-split>Companies that care about quality.</h2></div>
+      <p class="lead rv">We are a good fit for teams who want a long-term partner rather than the cheapest quote - and who value honest advice as much as beautiful work.</p>
+    </div>
+    <ol class="st-points">
+      {who.map((p, i) => <li class="rv" style={`transition-delay:${i * 80}ms`}><span class="num">0{i + 1}</span><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></li>)}
+    </ol>
+  </section>
+
+  <section class="frame row" aria-labelledby="cap-h">
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/Capabilities</span><h2 class="h2" id="cap-h" data-split>What we do every week.</h2></div><a href="/services" class="btn btn-o">All services <Arrow /></a></div>
+    <ul class="cap-list">
+      {services.map((s) => (
+        <li class="rv"><a href={`/services/${s.slug}`}><span class="cap-n">{s.n}</span><span class="cap-t">{s.title}</span><span class="cap-tags">{s.included.slice(0, 4).map((t) => <span class="tag">{t.t}</span>)}</span><span class="cap-go"><Arrow /></span></a></li>
+      ))}
+    </ul>
+  </section>
+
+  <CtaBand title="Let's see if we are a fit." />
+</Base>
+<style>
+  .about-copy{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .about-copy p{font-size:16px;line-height:1.65;color:#444;max-width:60ch}
+  .cap-list{border-top:1px solid var(--line)}
+  .cap-list a{display:grid;grid-template-columns:60px 1.1fr 2fr 30px;gap:16px;align-items:center;padding:20px var(--pad);border-bottom:1px solid var(--line);transition:background .25s}
+  .cap-list li:last-child a{border-bottom:0}
+  .cap-list a:hover{background:#FCFCFC}
+  .cap-list a:hover .cap-t,.cap-list a:hover .cap-go{color:var(--red)}
+  .cap-n{font-size:12px;color:var(--faint)}
+  .cap-t{font-size:20px;letter-spacing:-.02em;transition:color .2s}
+  .cap-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .cap-go :global(svg){width:14px;height:14px}
+  @media (max-width:768px){.cap-list a{grid-template-columns:40px 1fr 24px}.cap-tags{grid-column:2/3}}
+</style>

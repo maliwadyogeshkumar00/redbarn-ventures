@@ -5,28 +5,21 @@
   "description": "Redbarn Ventures is a senior design and growth studio. Brand identity, websites and apps, marketing, consultancy and corporate materials - delivered by one team that stays with you after launch.",
   "nav": [
     {
-      "n": "01",
       "label": "Services",
-      "href": "/#services",
-      "obj": "cube"
+      "href": "/services",
+      "menu": true
     },
     {
-      "n": "02",
-      "label": "What we build",
-      "href": "/#build",
-      "obj": "lattice"
-    },
-    {
-      "n": "03",
       "label": "Process",
-      "href": "/#process",
-      "obj": "arrow"
+      "href": "/#process"
     },
     {
-      "n": "04",
+      "label": "About",
+      "href": "/about"
+    },
+    {
       "label": "FAQ",
-      "href": "/#faq",
-      "obj": "slabs"
+      "href": "/#faq"
     }
   ],
   "approach": [
@@ -46,5 +39,6 @@
       "text": "We stay on to market, measure and improve. Good work is kept, extended and reused, so every round starts further ahead."
     }
   ],
-  "whatsapp": "919638500066"
+  "whatsapp": "919638500066",
+  "formTo": "admin@redbarn.ventures"
 }

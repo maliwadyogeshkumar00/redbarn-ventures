@@ -1,12 +1,18 @@
-# Old multi-page site -> new one-page site
-/contact        /   301
-/consultancy    /   301
-/consultancy/*  /   301
-/investment     /   301
-/investment/*   /   301
-/industry       /   301
-/industry/*     /   301
-/about          /   301
-/careers        /   301
-/insights       /   301
-/insights/*     /   301
+# Old site routes
+/consultancy            /services/consultancy   301
+/consultancy/design     /services/brand-and-identity  301
+/consultancy/technology /services/websites-and-apps   301
+/consultancy/marketing  /services/marketing-and-growth 301
+/consultancy/business   /services/consultancy   301
+/consultancy/*          /services   301
+/investment             /   301
+/investment/*           /   301
+/investing              /   301
+/industry               /services   301
+/industry/*             /services   301
+/careers                /about   301
+/insights               /   301
+/insights/*             /   301
+/cookies                /privacy   301
+/work                   /services   301
+/work/*                 /services   301

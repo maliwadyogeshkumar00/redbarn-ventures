@@ -1,0 +1,13 @@
+---
+import Legal from '../components/Legal.astro'
+import site from '../data/site.json'
+const E = site.email
+---
+<Legal title="Imprint" description="Imprint and company information for Redbarn Ventures, redbarn.ventures." lead="Information about the company responsible for this website.">
+  <section><h2>Company</h2><p>Redbarn Ventures<br /><span class="ph-note">Placeholder: registered company name and legal form</span><br /><span class="ph-note">Placeholder: registered office address</span><br /><span class="ph-note">Placeholder: company registration number</span><br /><span class="ph-note">Placeholder: tax or VAT number, if applicable</span></p></section>
+  <section><h2>Contact</h2><p>Email: <a href={`mailto:${E}`}>{E}</a><br />WhatsApp: available through the button on every page.</p></section>
+  <section><h2>Responsible for content</h2><p><span class="ph-note">Placeholder: name of the person responsible for the content of this website</span></p></section>
+  <section><h2>Liability for content</h2><p>We create the content of this website with great care. However, we cannot guarantee that all information is complete, accurate and up to date at all times. If we become aware of any errors, we will correct them promptly.</p></section>
+  <section><h2>Liability for links</h2><p>This website contains links to external websites over whose content we have no control. The respective provider or operator of those pages is always responsible for their content. If we become aware of any legal infringement on a linked page, we will remove the link promptly.</p></section>
+  <section><h2>Copyright</h2><p>The content, illustrations and design of this website are subject to copyright. Any reproduction, editing, distribution or other use beyond the limits of copyright law requires the written consent of Redbarn Ventures.</p></section>
+</Legal>

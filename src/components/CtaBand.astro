@@ -1,0 +1,20 @@
+---
+import site from '../data/site.json'
+import Arrow from './Arrow.astro'
+interface Props { title?: string; lead?: string }
+const { title = 'Tell us about your brand.', lead = 'A few lines about your business and what you need is enough. We will arrange a short call and come back with a written plan and quote.' } = Astro.props
+const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hi Redbarn, I would like to discuss a project.')}`
+---
+<section class="frame row cta" aria-label="Contact">
+  <div class="hatch side" aria-hidden="true"></div>
+  <div class="cta-c">
+    <span class="chip"><i></i>Taking on new projects</span>
+    <h2 class="display" data-split>{title}</h2>
+    <p class="lead rv">{lead}</p>
+    <div class="hero-btns rv">
+      <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
+      <a href={wa} class="btn btn-o" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+  <div class="hatch side" aria-hidden="true"></div>
+</section>
