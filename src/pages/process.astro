@@ -6,19 +6,19 @@ import Faq from '../components/Faq.astro'
 import Arrow from '../components/Arrow.astro'
 import H from '../data/home.json'
 const phases = [
-  { t: 'Discovery', w: [0, 2], d: 'We learn your business, customers, competitors and goals through a focused call and a short questionnaire.', get: ['Discovery call', 'Goals and constraints', 'Quick-win list'] },
-  { t: 'Plan and quote', w: [2, 3], d: 'You receive a written plan with scope, deliverables, timeline, owners and a fixed quote - before any commitment.', get: ['Written plan', 'Timeline', 'Fixed quote'] },
-  { t: 'Design and build', w: [3, 9], d: 'We work in short rounds. Every round ends with real work for you to review - not slides about work.', get: ['Review rounds', 'Weekly update', 'Shared board'] },
-  { t: 'Launch', w: [9, 10], d: 'We test, launch and hand over every file, login and guide. Your team is trained to use what we built.', get: ['Launch checklist', 'Handover pack', 'Team training'] },
-  { t: 'Grow', w: [10, 12], d: 'If you want, we stay on: improving, publishing, campaigning and reporting month after month.', get: ['Monthly plan', 'Plain-language report', 'Ongoing support'] },
+  { t: 'Discovery', w: [0, 2], d: 'One call on goals and gaps.', get: ['Discovery call', 'Goals and constraints', 'Quick-win list'] },
+  { t: 'Plan and quote', w: [2, 3], d: 'Scope, dates and a fixed quote.', get: ['Written plan', 'Timeline', 'Fixed quote'] },
+  { t: 'Design and build', w: [3, 9], d: 'Short rounds of real work.', get: ['Review rounds', 'Weekly update', 'Shared board'] },
+  { t: 'Launch', w: [9, 10], d: 'Go live, hand over, train.', get: ['Launch checklist', 'Handover pack', 'Team training'] },
+  { t: 'Grow', w: [10, 12], d: 'Ongoing support, monthly reports.', get: ['Monthly plan', 'Plain-language report', 'Ongoing support'] },
 ]
 const comms = [
-  { t: 'One senior lead', d: 'One person owns your account and answers your questions from start to finish.' },
-  { t: 'Weekly update', d: 'A short written update every week: what was done, what is next, what we need from you.' },
-  { t: 'Shared board', d: 'A live board shows every task, its owner and its status - nothing hidden.' },
-  { t: 'Clear approvals', d: 'Nothing goes live without your sign-off. Approvals are simple and recorded.' },
+  { t: 'One senior lead', d: 'Start to finish.' },
+  { t: 'Weekly update', d: 'Done, next, needed.' },
+  { t: 'Shared board', d: 'Every task, visible.' },
+  { t: 'Clear approvals', d: 'Nothing ships without you.' },
 ]
-const quality = ['Spelling, facts and numbers checked against the source', 'Tested on real phones, tablets and desktops', 'Page speed and accessibility checked before launch', 'Brand rules applied to every file', 'Search and analytics set up and verified', 'Files organised, named and handed over']
+const quality = ['Facts and numbers checked', 'Tested on real devices', 'Speed and accessibility', 'Brand rules applied', 'Search and analytics live', 'Files organised and handed over']
 const faq = [
   { q: 'How long does a typical project take?', a: 'It depends on scope. A focused website or identity usually takes a few weeks; larger programmes run over several months. Your written plan gives exact dates before you commit.' },
   { q: 'How much of our time do you need?', a: 'A discovery call, timely feedback at each review round and a final approval. We keep your effort as light as possible.' },
@@ -27,14 +27,14 @@ const faq = [
 ]
 ---
 <Base title="Process" description="How Redbarn Ventures works: discovery, written plan and fixed quote, design and build in review rounds, launch and handover, and long-term growth support.">
-  <PageHero label="Process" title="A clear process, from first call to long-term growth." lead="Consulting discipline with agency speed. You always know what happens next, who is doing it and when it will be ready - and you approve every step." crumbs={[{ t: 'Process' }]}>
+  <PageHero label="Process" title="A clear process, from first call to long-term growth." lead="Consulting discipline, agency speed - you approve every step." crumbs={[{ t: 'Process' }]}>
     <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Start with a discovery call <Arrow /></a></div>
   </PageHero>
 
   <section class="frame row" aria-labelledby="tl-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Timeline</span><h2 class="h2" id="tl-h" data-split data-bold="2">Five phases. No surprises.</h2></div>
-      <p class="lead rv">An illustrative timeline for a typical brand and website project. Your own plan sets exact dates.</p>
+      <p class="lead rv">A typical brand and website project. Your plan sets exact dates.</p>
     </div>
     <div class="gantt in-pad rv" role="img" aria-label="Illustrative project timeline across five phases">
       <div class="g-head" aria-hidden="true"><span></span>{Array.from({ length: 12 }, (_, i) => <span>{`W${i + 1}`}</span>)}</div>
@@ -60,33 +60,23 @@ const faq = [
   <section class="frame row trust" aria-labelledby="cm-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Communication</span><h2 class="h2" id="cm-h" data-split data-bold="2">Always know where things stand.</h2></div>
-      <p class="lead rv">Good projects fail on communication more often than on talent. We make progress visible by default.</p>
+      <p class="lead rv">Progress is visible by default.</p>
     </div>
     <ul class="t-grid four">{comms.map((t) => <li class="rv"><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></li>)}</ul>
   </section>
 
   <section class="frame row" aria-labelledby="q-h">
     <div class="q-grid">
-      <div class="q-l in-pad"><span class="label faint">/Quality</span><h2 class="h2" id="q-h" data-split data-bold="2">Checked before you see it.</h2><p class="lead rv">Every deliverable passes the same checklist before it reaches you.</p></div>
+      <div class="q-l in-pad"><span class="label faint">/Quality</span><h2 class="h2" id="q-h" data-split data-bold="2">Checked before you see it.</h2><p class="lead rv">One checklist, every deliverable.</p></div>
       <ul class="q-list">{quality.map((q, i) => <li class="rv"><span>{String(i + 1).padStart(2, '0')}</span>{q}</li>)}</ul>
     </div>
   </section>
 
-  <section class="frame row engage" aria-labelledby="e-h">
-    <div class="sec-h in-pad"><div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split data-bold="2">Start small or build for the long run.</h2></div><p class="lead rv">Every engagement starts with a written plan and quote.</p></div>
-    <div class="e-grid in-pad">
-      {H.engage.map((e, i) => (
-        <article class={`ecard rv ${e.featured ? 'feat' : ''}`}>
-          <div class="e-top"><h3 class="h3">{e.t}</h3><span class={`tag ${e.featured ? 'tag-r' : ''}`}>{e.tag}</span></div>
-          <p class="mute">{e.d}</p>
-          <ul>{e.points.map((p) => <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>{p}</li>)}</ul>
-          <a href="/contact" class={`btn ${e.featured ? 'btn-p' : 'btn-o'}`}>Get a plan and quote <Arrow /></a>
-        </article>
-      ))}
-    </div>
+  <section class="frame row oneline">
+    <div class="ol-in in-pad"><p><b>Projects or monthly partnership.</b> <span class="mute">Start small or build for the long run.</span></p><a href="/services#ways" class="btn btn-p">See options <Arrow /></a></div>
   </section>
 
-  <Faq items={faq} title="Process questions." />
+  <Faq items={faq.slice(0, 3)} title="Process: quick answers." more />
   <CtaBand />
 </Base>
 <style>
@@ -112,7 +102,9 @@ const faq = [
   .q-grid{display:grid;grid-template-columns:1fr 1.2fr}
   .q-l{padding-top:clamp(56px,7vw,96px);padding-bottom:40px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
   .q-list{padding:clamp(40px,6vw,88px) var(--pad)}
-  .q-list li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;letter-spacing:-.01em}
+  .q-list{display:grid!important;grid-template-columns:1fr 1fr;gap:10px}
+  .q-list li{display:flex;gap:12px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:10px;font-size:15px;letter-spacing:-.01em;border-top:1px solid var(--line)!important}
+  .q-list li::after{content:'';margin-left:auto;width:20px;height:20px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center/12px no-repeat}
   .q-list li:first-child{border-top:1px solid var(--line)}
   .q-list span{color:var(--red);font-size:12px;padding-top:3px}
   @media (max-width:1024px){.ph{grid-template-columns:1fr 1fr}.ph>li{border-bottom:1px solid var(--line)}.t-grid.four{grid-template-columns:1fr 1fr}}

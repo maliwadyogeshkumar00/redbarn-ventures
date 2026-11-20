@@ -106,7 +106,27 @@
   ],
   "lower": "brand and identity",
   "tag": "Logos, identity systems and design",
-  "cta": "brand"
+  "cta": "brand",
+  "proof": [
+   {
+    "t": "Tested on real use",
+    "d": "Every element proven where it lives."
+   },
+   {
+    "t": "Built to last",
+    "d": "No trends that date in a year."
+   },
+   {
+    "t": "Ready for what's next",
+    "d": "Same team carries it to web and decks."
+   }
+  ],
+  "steps": [
+   "Agree what the brand must say.",
+   "Explore, then refine one direction.",
+   "Roll it across every touchpoint.",
+   "Source files and guidelines, yours."
+  ]
  },
  {
   "slug": "websites-and-apps",
@@ -215,7 +235,27 @@
   ],
   "lower": "websites and apps",
   "tag": "Fast sites, stores and app interfaces",
-  "cta": "website"
+  "cta": "website",
+  "proof": [
+   {
+    "t": "Speed is a feature",
+    "d": "Lean pages that load fast."
+   },
+   {
+    "t": "Your team in control",
+    "d": "Edit pages without a developer."
+   },
+   {
+    "t": "No lock-in",
+    "d": "Code, domain and accounts in your name."
+   }
+  ],
+  "steps": [
+   "Map pages and actions.",
+   "Design key pages first.",
+   "Build and test on real devices.",
+   "Go live and train your team."
+  ]
  },
  {
   "slug": "ai-agents-and-automation",
@@ -324,7 +364,27 @@
   ],
   "lower": "AI agents and automation",
   "tag": "Agents that do real, repetitive work",
-  "cta": "AI plans"
+  "cta": "AI plans",
+  "proof": [
+   {
+    "t": "Practical, not hype",
+    "d": "Boring, valuable tasks first."
+   },
+   {
+    "t": "Safe by design",
+    "d": "Your data stays in your accounts."
+   },
+   {
+    "t": "Inside your stack",
+    "d": "Works in the tools you use."
+   }
+  ],
+  "steps": [
+   "Find the fastest payback.",
+   "Working version on your data.",
+   "Launch with guardrails.",
+   "Monitor quality and cost."
+  ]
  },
  {
   "slug": "marketing-and-growth",
@@ -433,7 +493,27 @@
   ],
   "lower": "marketing",
   "tag": "Paid, social, email and CRM growth",
-  "cta": "marketing"
+  "cta": "marketing",
+  "proof": [
+   {
+    "t": "Joined to your site",
+    "d": "Campaigns land on pages we improve."
+   },
+   {
+    "t": "Built to compound",
+    "d": "Channels that keep paying back."
+   },
+   {
+    "t": "Plain reporting",
+    "d": "What worked, what changes next."
+   }
+  ],
+  "steps": [
+   "Review channels and data.",
+   "Fix tracking and leaks.",
+   "Run and refine monthly.",
+   "Clear numbers, next plan."
+  ]
  },
  {
   "slug": "seo",
@@ -542,7 +622,27 @@
   ],
   "lower": "SEO and AI search",
   "tag": "Rank on Google and in AI answers",
-  "cta": "search visibility"
+  "cta": "search visibility",
+  "proof": [
+   {
+    "t": "Code and content",
+    "d": "One team fixes both."
+   },
+   {
+    "t": "Honest timelines",
+    "d": "Realistic expectations from day one."
+   },
+   {
+    "t": "Built in",
+    "d": "SEO is part of every build."
+   }
+  ],
+  "steps": [
+   "Technical and content review.",
+   "Resolve what holds you back.",
+   "Publish and improve monthly.",
+   "Track and double down."
+  ]
  },
  {
   "slug": "lead-generation-and-sales",
@@ -651,7 +751,27 @@
   ],
   "lower": "lead generation and sales",
   "tag": "Prospecting, outreach and sales tools",
-  "cta": "pipeline"
+  "cta": "pipeline",
+  "proof": [
+   {
+    "t": "Quality over volume",
+    "d": "Relevant, personal outreach only."
+   },
+   {
+    "t": "Marketing meets sales",
+    "d": "Campaign, page and deck from one team."
+   },
+   {
+    "t": "Open pipeline",
+    "d": "See every lead and reply."
+   }
+  ],
+  "steps": [
+   "Who to target, what to offer.",
+   "Lists, messages, pages, decks.",
+   "Run campaigns, pass warm leads.",
+   "Sharpen targeting monthly."
+  ]
  },
  {
   "slug": "influencer-marketing",
@@ -760,7 +880,27 @@
   ],
   "lower": "influencer marketing",
   "tag": "Creators matched to your buyers",
-  "cta": "creator plans"
+  "cta": "creator plans",
+  "proof": [
+   {
+    "t": "Fit before fame",
+    "d": "Creators your buyers trust."
+   },
+   {
+    "t": "Brand-safe",
+    "d": "On-brand, properly disclosed."
+   },
+   {
+    "t": "Content reused",
+    "d": "Creator posts feed ads and site."
+   }
+  ],
+  "steps": [
+   "Goals, audience and budget.",
+   "Shortlist the right creators.",
+   "Brief, approve, publish.",
+   "Report and plan next round."
+  ]
  },
  {
   "slug": "video-and-content",
@@ -869,7 +1009,27 @@
   ],
   "lower": "video and content",
   "tag": "Films, motion, social and graphics",
-  "cta": "content"
+  "cta": "content",
+  "proof": [
+   {
+    "t": "Strategy first",
+    "d": "Every piece has a job."
+   },
+   {
+    "t": "Always on-brand",
+    "d": "Made inside your identity."
+   },
+   {
+    "t": "Built for reuse",
+    "d": "One shoot, many assets."
+   }
+  ],
+  "steps": [
+   "Ideas, scripts, storyboards.",
+   "Film, animate, design.",
+   "Cut for every channel.",
+   "Deliver, schedule, measure."
+  ]
  },
  {
   "slug": "trade-shows-and-events",
@@ -978,7 +1138,27 @@
   ],
   "lower": "trade show and event marketing",
   "tag": "Booths, show campaigns and follow-up",
-  "cta": "next show"
+  "cta": "next show",
+  "proof": [
+   {
+    "t": "Sales-led",
+    "d": "Designed to start conversations."
+   },
+   {
+    "t": "End to end",
+    "d": "Strategy, design, content, follow-up."
+   },
+   {
+    "t": "Clear from the aisle",
+    "d": "Complex products, understood fast."
+   }
+  ],
+  "steps": [
+   "Goals and meeting target.",
+   "Booth graphics and materials.",
+   "Pre-show and on-site campaign.",
+   "Every contact gets a next step."
+  ]
  },
  {
   "slug": "consultancy",
@@ -1087,7 +1267,27 @@
   ],
   "lower": "consultancy",
   "tag": "Go-to-market and growth strategy",
-  "cta": "growth plan"
+  "cta": "growth plan",
+  "proof": [
+   {
+    "t": "Practitioners",
+    "d": "We advise only what we deliver."
+   },
+   {
+    "t": "Prioritised",
+    "d": "A short list of what to do first."
+   },
+   {
+    "t": "Execution on tap",
+    "d": "Same team can build the plan."
+   }
+  ],
+  "steps": [
+   "Your product, numbers, limits.",
+   "Markets, buyers, competitors.",
+   "Sequenced plan with owners.",
+   "Stay close as it runs."
+  ]
  },
  {
   "slug": "corporate-materials",
@@ -1196,6 +1396,26 @@
   ],
   "lower": "corporate materials",
   "tag": "Decks, datasheets and board packs",
-  "cta": "materials"
+  "cta": "materials",
+  "proof": [
+   {
+    "t": "Precision first",
+    "d": "Every number checked at source."
+   },
+   {
+    "t": "On your template",
+    "d": "Locked layouts your team can edit."
+   },
+   {
+    "t": "One system",
+    "d": "Decks, datasheets and site aligned."
+   }
+  ],
+  "steps": [
+   "Facts checked at source.",
+   "Story and template system.",
+   "Every page to one standard.",
+   "Editable masters, quick updates."
+  ]
  }
 ]

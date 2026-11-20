@@ -3,13 +3,15 @@ import Base from '../layouts/Base.astro'
 import PageHero from '../components/PageHero.astro'
 import Faq from '../components/Faq.astro'
 import Arrow from '../components/Arrow.astro'
+import Art from '../components/Art.astro'
 import LinkedIn from '../components/LinkedIn.astro'
+import H from '../data/home.json'
 import site from '../data/site.json'
 import services from '../data/services.json'
 const next = [
-  { t: 'We read your message', d: 'A senior member of the team reads every enquiry personally - never an automated triage.' },
-  { t: 'A short call', d: 'We arrange a focused call to understand your business, your goals and your timeline.' },
-  { t: 'Your written plan', d: 'You receive a clear plan with scope, timeline and quote. No obligation, no pressure.' },
+  { t: 'We read it', d: 'A senior person, never a bot.' },
+  { t: 'A short call', d: 'Your goals and timeline.' },
+  { t: 'Your plan and quote', d: 'No obligation.' },
 ]
 const faq = [
   { q: 'What should I include in my message?', a: 'A few lines about your company, what you need help with and any deadline you are working towards. If you have an existing website or brand files, a link is helpful but not required.' },
@@ -19,7 +21,7 @@ const faq = [
 ]
 ---
 <Base title="Contact" description="Contact Redbarn Ventures about your brand, website, marketing, SEO or corporate materials. Email or the project form - a senior person replies.">
-  <PageHero label="Contact" title="Let's talk about your brand." lead="Tell us what you are working on. Whether it is a new website, a rebrand, a marketing plan or a single deck, a senior person will read your message and reply personally." crumbs={[{ t: 'Contact' }]} />
+  <PageHero label="Contact" title="Let's talk about your brand." lead="A senior person replies, usually within one working day." crumbs={[{ t: 'Contact' }]} />
 
   <section class="frame row" aria-label="Contact form and details">
     <div class="ct-grid">
@@ -27,7 +29,12 @@ const faq = [
         <div class="ct-card hatch">
           <div class="ct-in">
             <form id="ct-form" novalidate>
-              <div class="ct-head"><h2 class="h3">Start a project</h2><span class="faint">Takes about a minute</span></div>
+              <div class="ct-head"><h2 class="h3">Start a project</h2><span class="faint">About a minute</span></div>
+              <div class="quick" role="group" aria-label="Quick start">
+                <button type="button" class="qk" data-svc="Websites and Apps" data-msg="We need a new website."><span class="qk-a hatch"><Art kind="lattice" /></span>I need a new website</button>
+                <button type="button" class="qk" data-svc="Brand and Identity" data-msg="Our brand feels outdated."><span class="qk-a hatch"><Art kind="cube" /></span>Our brand feels outdated</button>
+                <button type="button" class="qk" data-svc="Lead Generation and Sales" data-msg="We need more qualified leads."><span class="qk-a hatch"><Art kind="funnel" /></span>We need more leads</button>
+              </div>
               <div class="ct-two">
                 <div class="fld"><label for="c-name">Your name <i>*</i></label><input id="c-name" name="name" autocomplete="name" required placeholder="Full name" /><span class="err">Please add your name.</span></div>
                 <div class="fld"><label for="c-email">Email <i>*</i></label><input id="c-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" /><span class="err">Please add a valid email.</span></div>
@@ -69,32 +76,13 @@ const faq = [
           <span class="label faint">/What happens next</span>
           <ol class="ct-next">{next.map((n, i) => <li><span class="p-n">{`0${i + 1}`}</span><div><b>{n.t}</b><p class="mute">{n.d}</p></div></li>)}</ol>
         </div>
-        <div class="ct-block">
-          <span class="label faint">/Prefer email?</span>
-          <p class="mute">Write to us directly with a few lines about your company and what you need. Attach a brief or existing files if you have them - we treat everything you share as confidential.</p>
-          <p class="mute">Useful things to mention: your current website, who your customers are, what is not working today, any deadline or launch date, and a rough idea of budget if you have one. If you are not sure, that is fine too - a short call usually makes it clear.</p>
-        </div>
       </aside>
     </div>
   </section>
 
-  <section class="frame row" aria-labelledby="help-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/What we can help with</span><h2 class="h2" id="help-h" data-split data-bold="2">Not sure where to start? Start here.</h2></div>
-      <p class="lead rv">You do not need a perfect brief. Tell us the problem in your own words and we will recommend the simplest way to solve it - even if that means doing less.</p>
-    </div>
-    <ul class="help-list">
-      {services.map((s) => (
-        <li class="rv"><a href={`/services/${s.slug}`}><span class="cap-n">{s.n}</span><span class="h3">{s.title}</span><span class="mute">{s.short}</span><Arrow /></a></li>
-      ))}
-    </ul>
-    <div class="ways in-pad">
-      <p><b>Our promise when you get in touch:</b> a personal reply from a senior person, an honest view on whether we are the right fit, and a written plan with a clear quote before you commit to anything.</p>
-      <a href="#ct-form" class="btn btn-p btn-sm">Back to the form <Arrow /></a>
-    </div>
-  </section>
 
-  <Faq items={faq} title="Before you get in touch." />
+
+  <Faq items={[...faq, ...H.faq]} title="All questions, in one place." lead="Collapsed for quick scanning - open what you need." />
 </Base>
 
 <script>
@@ -142,6 +130,14 @@ const faq = [
       } finally { btn.disabled = false; lbl.textContent = 'Send message' }
     })
   }
+  document.querySelectorAll<HTMLButtonElement>('.qk').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.qk').forEach((x) => x.classList.toggle('on', x === b))
+    const cb = document.querySelector<HTMLInputElement>(`input[name=service][value="${b.dataset.svc}"]`)
+    if (cb) cb.checked = true
+    const m = document.getElementById('c-msg') as HTMLTextAreaElement
+    if (m && !m.value) m.value = (b.dataset.msg || '') + ' '
+    document.getElementById('c-name')?.focus()
+  }))
 </script>
 <style>
   .ct-grid{display:grid;grid-template-columns:1.25fr .75fr}
@@ -198,4 +194,11 @@ const faq = [
   .ct-next p{font-size:14px;margin-top:2px}
   .ct-block p{font-size:14.5px}
   @media (max-width:900px){.ct-grid{grid-template-columns:1fr}.ct-form-wrap{border-right:0;border-bottom:1px solid var(--line)}.ct-two{grid-template-columns:1fr;gap:0}}
+  .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+  .qk{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:10px;border:1px solid var(--line-2);border-radius:10px;font-size:13.5px;line-height:1.25;transition:border-color .2s,background .2s}
+  .qk:hover,.qk.on{border-color:var(--red);background:#FBE9EA}
+  .qk:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .qk-a{height:64px;border-radius:7px;border:1px solid var(--line);position:relative;background-color:#fff}
+  .qk-a :global(.art){position:absolute;inset:10% 30%;width:40%;height:80%}
+  @media (max-width:600px){.quick{grid-template-columns:1fr}.qk{flex-direction:row;align-items:center}.qk-a{width:64px;flex:none}}
 </style>

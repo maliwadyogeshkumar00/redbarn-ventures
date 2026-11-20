@@ -12,17 +12,17 @@ const together = [
   { t: 'Connected by one brief', d: 'Because every service is planned from the same understanding of your business, your brand, website, content and campaigns reinforce each other instead of pulling in different directions.' },
   { t: 'Supported for the long term', d: 'After launch we stay available for updates, new pages, campaigns and fresh materials, so your brand keeps improving rather than slowly going out of date.' },
 ]
-const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }]
+const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.slice(0, 3).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }]
 ---
 <Base title="Services" description="Eleven services from one global agency: branding, websites, AI agents, marketing, SEO, lead generation, influencer marketing, video, trade shows, consulting and corporate materials." jsonld={ld}>
-  <PageHero label="Services" title="Eleven services. One senior team." lead="From the first sketch of your logo to the monthly report on your search rankings, every service is delivered by experienced specialists who share one brief, one plan and one point of contact with you." crumbs={[{ t: 'Services' }]}>
+  <PageHero label="Services" title="Eleven services. One senior team." lead="Senior specialists, one brief, one point of contact." crumbs={[{ t: 'Services' }]}>
     <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Start a project <Arrow /></a><a href="#ways" class="btn btn-o">Ways to work with us</a></div>
   </PageHero>
 
   <section class="frame row" aria-labelledby="all-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/All services</span><h2 class="h2" id="all-h" data-split data-bold="2">Choose what you need today.</h2></div>
-      <p class="lead rv">Each service stands on its own, and each one gets stronger when combined with the others. Open any of them to see exactly what is included and how we work.</p>
+      <p class="lead rv">Each stands alone. Together they compound.</p>
     </div>
     <div class="b-grid in-pad">
       {services.map((s, i) => (
@@ -30,9 +30,8 @@ const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: 
           <div class="bc-tile hatch"><span class="bc-n">{s.n}</span><div class="bc-art"><Art kind={s.obj} /></div></div>
           <div class="bc-body">
             <h3 class="h3">{s.title}</h3>
-            <p class="mute">{s.short}</p>
-            <div class="bc-tags">{s.included.slice(0, 3).map((t) => <span class="tag">{t.t}</span>)}</div>
-            <span class="bc-more">Explore {s.title} <Arrow /></span>
+            <p class="mute">{s.tag}</p>
+            <span class="bc-more">Explore <Arrow /></span>
           </div>
         </a>
       ))}
@@ -40,19 +39,22 @@ const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: 
   </section>
 
   <section class="frame row" aria-labelledby="tog-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/How it fits together</span><h2 class="h2" id="tog-h" data-split data-bold="2">One agency instead of four suppliers.</h2></div>
-      <p class="lead rv">Hiring a separate designer, developer, agency and consultant means four briefs, four timelines and four opinions. Working with one team removes the friction - and the finger-pointing.</p>
+    <div class="st-row in-pad" style="padding-top:clamp(56px,7vw,96px)">
+      <h2 class="st-title" id="tog-h" data-split data-bold="2">Four suppliers, four briefs. Or one agency.</h2>
+      <div class="st-diag hatch rv" aria-hidden="true">
+        <div class="sd-inner">
+          <ul class="sd-left">{['Designer', 'Developer', 'Agency', 'Consultant'].map((t) => <li>{t}</li>)}</ul>
+          <svg class="sd-lines" viewBox="0 0 120 200" preserveAspectRatio="none"><path d="M0 25 C60 25 60 100 120 100M0 75 C60 75 60 100 120 100M0 125 C60 125 60 100 120 100M0 175 C60 175 60 100 120 100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+          <div class="sd-one"><span class="mark"><i></i><i></i><i></i></span>One Redbarn team</div>
+        </div>
+      </div>
     </div>
-    <ol class="st-points">
-      {together.map((p, i) => <li class="rv" style={`transition-delay:${i * 80}ms`}><span class="num">0{i + 1}</span><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></li>)}
-    </ol>
   </section>
 
   <section class="frame row engage" id="ways" aria-labelledby="e-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split data-bold="2">Start small or build for the long run.</h2></div>
-      <p class="lead rv">Every engagement starts with a written plan and quote. Choose the model that fits where your business is today - and change it as you grow.</p>
+      <p class="lead rv">Every engagement starts with a written plan and quote.</p>
     </div>
     <div class="e-grid in-pad">
       {H.engage.map((e, i) => (
@@ -66,6 +68,6 @@ const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: 
     </div>
   </section>
 
-  <Faq items={H.faq} />
+  <Faq items={H.faq.slice(0, 3)} more />
   <CtaBand />
 </Base>

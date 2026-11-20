@@ -18,7 +18,7 @@ const tdesc = [
 ]
 ---
 <Base title="Insights" description="Insights for CEOs and leadership teams on AI agents, websites, growth, sales, trade shows and branding - practical guides from Redbarn Ventures.">
-  <PageHero label="Insights" title="Practical thinking for leadership teams." lead="Long-form guides on AI, websites, growth, sales and brand - written for chief executives and senior teams who want clear answers rather than hype." crumbs={[{ t: 'Insights' }]}>
+  <PageHero label="Insights" title="Practical thinking for leadership teams." lead="Clear guides for leadership teams - no hype." crumbs={[{ t: 'Insights' }]}>
     <div class="ins-topics rv">{topics.map((t) => <span class="tag">{t}</span>)}</div>
   </PageHero>
 
@@ -41,8 +41,8 @@ const tdesc = [
     <div class="ins-grid in-pad">
       {rest.map((p) => (
         <a href={`/insights/${p.slug}`} class="ins-c rv" data-cat={p.category}>
-          <div class="ic-tile hatch"><Art kind={p.art} /><span class="sg-n">{p.category}</span></div>
-          <div class="ic-b"><h3 class="h3">{p.title}</h3><p class="mute">{p.excerpt}</p><div class="il-meta"><span>{fmt(p.date)}</span><span>{`${p.minutes} min read`}</span></div></div>
+          <div class="ic-tile hatch"><Art kind={p.art} /></div>
+          <div class="ic-b"><span class="tag ic-cat">{p.category}</span><h3 class="h3">{p.title}</h3><div class="il-meta"><span>{fmt(p.date)}</span><span>{`${p.minutes} min read`}</span></div></div>
         </a>
       ))}
       <div class="ins-sub rv">
@@ -52,10 +52,7 @@ const tdesc = [
       </div>
     </div>
   </section>
-  <section class="frame row" aria-labelledby="tp-h">
-    <div class="sec-h in-pad"><div><span class="label faint">/Topics</span><h2 class="h2" id="tp-h" data-split data-bold="2">What we write about.</h2></div><p class="lead rv">Every guide is written by practitioners who do this work for clients every week - no recycled trends, no invented statistics, just clear advice you can act on.</p></div>
-    <ol class="st-points five">{tdesc.map((x, i) => <li class="rv"><span class="num">{`0${i + 1}`}</span><h3 class="h3">{x.t}</h3><p class="mute">{x.d}</p></li>)}</ol>
-  </section>
+
   <CtaBand title="Want this thinking applied to your business?" />
 <script>
   const btns = [...document.querySelectorAll<HTMLButtonElement>('.fbtn')]
@@ -87,7 +84,7 @@ const tdesc = [
   .ic-tile{position:relative;aspect-ratio:16/10;border-bottom:1px solid var(--line)}
   .ic-tile :global(.art){position:absolute;inset:16% 26%;width:48%;height:68%}
   .ic-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
-  .ic-b p{font-size:14px}
+  .ic-cat{align-self:flex-start}
   .ins-sub{border-radius:12px;background:var(--ink);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
   .ins-sub .label{opacity:.6}
   @media (max-width:900px){.ins-lead{grid-template-columns:1fr}.il-art{min-height:260px;border-right:0;border-bottom:1px solid var(--line)}.ins-grid{grid-template-columns:1fr}}

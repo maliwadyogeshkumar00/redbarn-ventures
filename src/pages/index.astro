@@ -9,8 +9,9 @@ import H from '../data/home.json'
 import Marquee from '../components/Marquee.astro'
 import AgentFlow from '../components/AgentFlow.astro'
 import Photo from '../components/Photo.astro'
+import Faq from '../components/Faq.astro'
 const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`
-const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
+const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.slice(0, 3).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/', email: site.email, description: site.description, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.short } })) } }
 ---
 <Base description={site.description} jsonld={[faqLd, svcLd]}>
@@ -94,13 +95,13 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <section class="frame row svc" id="services" aria-labelledby="svc-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Services</span><h2 class="h2" id="svc-h" data-split data-bold="2">Eleven services. One senior team.</h2></div>
-      <p class="lead rv">Strategy, branding, websites, AI, marketing, sales and events - each led by a senior specialist and all working from one brief, so every touchpoint looks and sounds like one company.</p>
+      <p class="lead rv">Each led by a senior specialist - all working from one brief.</p>
     </div>
     <div class="sg in-pad">
       {services.map((s, i) => (
         <a href={`/services/${s.slug}`} class="sg-t rv" style={`transition-delay:${(i % 4) * 50}ms`}>
           <div class="sg-art hatch"><Art kind={s.obj} /><span class="sg-n">{s.n}</span></div>
-          <div class="sg-b"><span class="sg-ti">{s.title}</span><p class="mute">{s.short}</p></div>
+          <div class="sg-b"><span class="sg-ti">{s.title}</span><p class="mute">{s.tag}</p></div>
         </a>
       ))}
       <a href="/contact" class="sg-cta rv"><span class="label">Not sure what you need?</span><span class="bc-big">Ask a senior consultant</span><span class="bc-arr"><Arrow dir="ne" /></span></a>
@@ -115,7 +116,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       <div class="ai-copy in-pad">
         <span class="label faint">/AI and automation</span>
         <h2 class="h2" id="ai-h" data-split data-bold="2">AI agents that do real work.</h2>
-        <p class="lead rv">We build AI agents and automations that read your inbox, qualify leads, process documents and keep your systems up to date - with a human approving every step that matters.</p>
+        <p class="lead rv">Agents that qualify leads, read documents and update your systems - with a human approving what matters.</p>
         <ul class="ai-chips rv">{['Lead qualification', 'Email triage', 'Document extraction', 'Knowledge chat', 'CRM updates', 'Report drafting', 'Proposal drafts', 'Support answers'].map((t) => <li class="tag">{t}</li>)}</ul>
         <a href="/ai" class="btn btn-p rv" style="align-self:flex-start">Explore AI services <Arrow /></a>
       </div>
@@ -127,7 +128,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <section class="frame row build" id="build" aria-labelledby="b-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/What we build</span><h2 class="h2" id="b-h" data-split data-bold="2">The work, not the logos.</h2></div>
-      <p class="lead rv">We keep client names private. What we can show you is the kind of work we make every week - and how each piece is set up to keep working for you long after it ships.</p>
+      <p class="lead rv">Client names stay private. Here is the work we make every week.</p>
     </div>
     <div class="b-grid in-pad">
       {H.build.map((b, i) => (
@@ -181,55 +182,21 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <section class="frame row process" id="process" aria-labelledby="p-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Process</span><h2 class="h2" id="p-h" data-split data-bold="2">From first call to long-term growth.</h2></div>
-      <p class="lead rv">A simple, transparent way of working. You always know what happens next, who is doing it and when it will be ready.</p>
+      <p class="lead rv">You always know what happens next - and who is doing it.</p>
     </div>
-    <ol class="p-grid">
+    <ol class="steps4">
       {H.process.map((p, i) => (
-        <li class="rv" style={`transition-delay:${i * 80}ms`}>
-          <div class="p-top"><span class="p-n">{`0${i + 1}`}</span><span class="p-line" aria-hidden="true"></span></div>
-          <h3 class="h3">{p.t}</h3>
-          <p class="mute">{p.d}</p>
-        </li>
+        <li class="rv" style={`transition-delay:${i * 70}ms`}><span class="s4-n">{`0${i + 1}`}</span><b>{p.t}</b><small>{p.d}</small><span class="s4-bar" aria-hidden="true"></span></li>
       ))}
     </ol>
   </section>
 
-  <!-- ENGAGEMENTS -->
-  <section class="frame row engage" aria-labelledby="e-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split data-bold="2">Start small or build for the long run.</h2></div>
-      <p class="lead rv">Every engagement starts with a written plan and quote. Choose the model that fits where your business is today - and change it as you grow.</p>
-    </div>
-    <div class="e-grid in-pad">
-      {H.engage.map((e, i) => (
-        <article class={`ecard rv ${e.featured ? 'feat' : ''}`} style={`transition-delay:${i * 80}ms`}>
-          <div class="e-top"><h3 class="h3">{e.t}</h3><span class={`tag ${e.featured ? 'tag-r' : ''}`}>{e.tag}</span></div>
-          <p class="mute">{e.d}</p>
-          <ul>{e.points.map((p) => <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>{p}</li>)}</ul>
-          <a href="/contact" class={`btn ${e.featured ? 'btn-p' : 'btn-o'}`}>Get a plan and quote <Arrow /></a>
-        </article>
-      ))}
-    </div>
+  <!-- ENGAGEMENTS (one line) -->
+  <section class="frame row oneline">
+    <div class="ol-in in-pad"><p><b>Projects or monthly partnership.</b> <span class="mute">Start small or build for the long run.</span></p><a href="/services#ways" class="btn btn-p">See options <Arrow /></a></div>
   </section>
 
-  <!-- FAQ -->
-  <section class="frame row faq" id="faq" aria-labelledby="f-h">
-    <div class="faq-grid">
-      <div class="faq-l in-pad">
-        <span class="label faint">/FAQ</span>
-        <h2 class="h2" id="f-h" data-split data-bold="2">Questions we hear before every project.</h2>
-        <p class="lead rv">Something else on your mind? Send us an email or use the contact form - a senior person replies, not a bot.</p>
-      </div>
-      <div class="faq-r">
-        {H.faq.map((f, i) => (
-          <details class="qa" open={i === 0}>
-            <summary><span>{f.q}</span><i aria-hidden="true"></i></summary>
-            <p class="mute">{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <Faq items={H.faq.slice(0, 3)} more />
 
   <!-- CONTACT CTA -->
   <section class="frame row cta" id="contact" aria-labelledby="c-h">
@@ -237,7 +204,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     <div class="cta-c">
       <span class="chip"><i></i>Taking on new projects</span>
       <h2 class="display" id="c-h" data-split data-bold="2">Tell us about your brand.</h2>
-      <p class="lead rv">A few lines about your business and what you need is enough. We will arrange a short call and come back with a written plan and quote.</p>
+      <p class="lead rv">A few lines is enough. We reply with a plan and quote.</p>
       <div class="hero-btns rv">
         <a href={mail} class="btn btn-p">Email {site.email} <Arrow /></a>
         <a href="/contact" class="btn btn-o">Use the contact form</a>

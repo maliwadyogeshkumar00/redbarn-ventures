@@ -15,47 +15,45 @@ export function getStaticPaths() {
 const { s } = Astro.props
 const related = s.related.map((r: string) => services.find((x) => x.slug === r)).filter(Boolean)
 const mail = `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry: ${s.title}`)}`
+const lead = s.intro.split('. ')[0].replace(/\.$/, '') + '.'
+const faq = s.faq.slice(0, 3)
 const ld = [
   { '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.meta, serviceType: s.title, provider: { '@type': 'Organization', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, hasOfferCatalog: { '@type': 'OfferCatalog', name: s.title, itemListElement: s.included.map((i) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: i.t, description: i.d } })) } },
-  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://redbarn.ventures/' }, { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://redbarn.ventures/services' }, { '@type': 'ListItem', position: 3, name: s.title }] },
 ]
 ---
 <Base title={s.title} description={s.meta} jsonld={ld}>
-  <PageHero label={`Service ${s.n} · ${s.nav}`} title={s.hero} lead={s.intro} crumbs={[{ t: 'Services', h: '/services' }, { t: s.title }]}>
+  <PageHero label={`Service ${s.n} · ${s.nav}`} title={s.hero} lead={lead} crumbs={[{ t: 'Services', h: '/services' }, { t: s.title }]}>
     <div class="hero-btns rv" style="transition-delay:.35s">
       <a href="/contact" class="btn btn-p">Discuss your project <Arrow /></a>
       <a href={mail} class="btn btn-o">Email us</a>
     </div>
   </PageHero>
 
-  <section class="frame row svc-pains" aria-labelledby="pain-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/Sound familiar?</span><h2 class="h2" id="pain-h" data-split data-bold="2">{`Why companies come to us for ${s.lower}.`}</h2></div>
-      <p class="lead rv">These are the problems we hear most often in first calls. If one of them sounds like your business, we can help - and we will tell you honestly what it takes.</p>
-    </div>
-    <ol class="pain-cards in-pad">
-      {s.pains.map((p, i) => (
-        <li class="pain rv" style={`transition-delay:${i * 90}ms`}>
-          <div class="pain-top hatch"><span class="pain-n">{`0${i + 1}`}</span></div>
-          <div class="pain-b"><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></div>
+  <section class="frame row" aria-label="Why Redbarn">
+    <ul class="proof3">
+      {s.proof.map((p, i) => (
+        <li class="rv" style={`transition-delay:${i * 80}ms`}>
+          <span class="p3-ic" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <span><b>{p.t}</b><small>{p.d}</small></span>
         </li>
       ))}
-    </ol>
+    </ul>
   </section>
 
   <Photo name={`service-${s.slug}`} alt={`${s.title} at Redbarn Ventures`} caption={s.title} />
 
   <section class="frame row" aria-labelledby="inc-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/What's included</span><h2 class="h2" id="inc-h" data-split data-bold="2">Everything you need, nothing you do not.</h2></div>
-      <p class="lead rv">Every engagement is scoped to your goals. These are the building blocks we combine for most projects in this service.</p>
+      <div><span class="label faint">/What's included</span><h2 class="h2" id="inc-h" data-split data-bold="2">Everything you need, nothing you don't.</h2></div>
+      <p class="lead rv">Scoped to your goals - the building blocks we combine most often.</p>
     </div>
     <div class="bento in-pad">
       <div class="bt-feat rv">
         <div class="bf-top"><span class="faint">services /</span>&nbsp;{s.slug}<span class="sc-n">{s.n}</span></div>
         <div class="bf-art hatch" aria-hidden="true"><Art kind={s.obj} /></div>
-        <p class="bf-sum">{s.short}</p>
+        <p class="bf-sum">{s.tag}.</p>
       </div>
       {s.included.map((it, i) => (
         <div class={`bt-item rv ${i === 5 ? 'wide' : ''}`} style={`transition-delay:${(i % 3) * 60}ms`}>
@@ -64,62 +62,32 @@ const ld = [
           <p class="mute">{it.d}</p>
         </div>
       ))}
-      <a href="/contact" class="bt-cta rv">
-        <span class="label">Next step</span>
-        <span class="bc-big">Get a plan and quote</span>
-        <span class="bc-arr"><Arrow dir="ne" /></span>
-      </a>
+      <a href="/contact" class="bt-cta rv"><span class="label">Next step</span><span class="bc-big">Get a plan and quote</span><span class="bc-arr"><Arrow dir="ne" /></span></a>
     </div>
   </section>
 
-  <section class="frame row process" aria-labelledby="pr-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/How it works</span><h2 class="h2" id="pr-h" data-split data-bold="2">Four clear steps, no surprises.</h2></div>
-      <p class="lead rv">You always know what happens next, who is working on it and when it will be ready. Every step ends with something real you can review.</p>
+  <section class="frame row" aria-labelledby="st-h">
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto">
+      <div><span class="label faint">/How it works</span><h2 class="h2" id="st-h" data-split data-bold="2">Four steps, no surprises.</h2></div>
+      <a href="/services#ways" class="btn btn-o btn-sm">Projects or monthly partnership - see options <Arrow /></a>
     </div>
-    <ol class="p-grid">
-      {s.process.map((p, i) => (
-        <li class="rv" style={`transition-delay:${i * 80}ms`}>
-          <div class="p-top"><span class="p-n">{`0${i + 1}`}</span><span class="p-line" aria-hidden="true"></span></div>
-          <h3 class="h3">{p.t}</h3>
-          <p class="mute">{p.d}</p>
-        </li>
+    <ol class="steps4">
+      {s.steps.map((t, i) => (
+        <li class="rv" style={`transition-delay:${i * 70}ms`}><span class="s4-n">{`0${i + 1}`}</span><b>{s.process[i].t}</b><small>{t}</small><span class="s4-bar" aria-hidden="true"></span></li>
       ))}
     </ol>
   </section>
 
-  <section class="frame row trust" aria-labelledby="why-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/Why Redbarn</span><h2 class="h2" id="why-h" data-split data-bold="2">A partner, not a supplier.</h2></div>
-      <p class="lead rv">You work directly with senior people who care about your results long after the project is delivered.</p>
-    </div>
-    <ul class="t-grid">
-      {s.why.map((t, i) => (
-        <li class="rv" style={`transition-delay:${i * 70}ms`}>
-          <span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-          <h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p>
-        </li>
-      ))}
-    </ul>
-    <div class="ways in-pad">
-      <p><b>Available as a fixed-scope project or as part of an ongoing partnership.</b> Start with what you need now and keep us on for long-term support when you are ready.</p>
-      <a href="/services#ways" class="btn btn-o btn-sm">Ways to work with us <Arrow /></a>
-    </div>
-  </section>
-
-  <Faq items={s.faq} title={`${s.title}: common questions.`} />
+  <Faq items={faq} title={`${s.title}: quick answers.`} more />
 
   <section class="frame row rel" aria-labelledby="rel-h">
-    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/Related services</span><h2 class="h2" id="rel-h" data-split data-bold="2">Often combined with.</h2></div><a href="/services" class="btn btn-o">All services <Arrow /></a></div>
-    <div class="b-grid in-pad">
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/Related</span><h2 class="h2" id="rel-h" data-split data-bold="2">Often combined with.</h2></div><a href="/services" class="btn btn-o">All services <Arrow /></a></div>
+    <div class="relx in-pad">
       {related.map((r) => (
-        <a href={`/services/${r.slug}`} class="bcard rv">
-          <div class="bc-tile hatch"><span class="bc-n">{r.n}</span><div class="bc-art"><Art kind={r.obj} /></div></div>
-          <div class="bc-body"><h3 class="h3">{r.title}</h3><p class="mute">{r.short}</p><span class="bc-more">Explore <Arrow /></span></div>
-        </a>
+        <a href={`/services/${r.slug}`} class="rx rv"><span class="rx-a hatch"><Art kind={r.obj} /></span><span><b>{r.title}</b><small>{r.tag}</small></span><Arrow /></a>
       ))}
     </div>
   </section>
 
-  <CtaBand title={`Let's talk about your ${s.cta}.`} />
+  <CtaBand title={`Let's talk about your ${s.cta}.`} lead="Tell us what you need. A senior person replies with a plan and quote." />
 </Base>

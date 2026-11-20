@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import site from '../data/site.json'
 interface Props { title?: string; lead?: string }
-const { title = 'The tools behind the work.', lead = 'We pick proven technology for each job - and stay fluent in the platforms your business already runs on.' } = Astro.props
+const { title = 'The tools behind the work.', lead = 'Proven technology for each job, fluent in the platforms you already use.' } = Astro.props
 const slug = (t: string) => t.toLowerCase().replace(/\./g, 'dot').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const logo = (t: string) => {
   for (const ext of ['svg', 'png', 'webp']) {

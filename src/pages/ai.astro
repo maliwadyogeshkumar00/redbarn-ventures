@@ -41,7 +41,7 @@ const faq = [
 ]
 ---
 <Base title="AI agents and automation" description="AI agents and automation for business: lead qualification, email triage, document processing, knowledge assistants and workflow automation - built safely around your data.">
-  <PageHero label="AI and automation" title="AI agents that do real work for your team." lead="We design, build and run AI agents and automations around your data and tools - practical, secure and measured, with people in control of every decision that matters." crumbs={[{ t: 'AI' }]}>
+  <PageHero label="AI and automation" title="AI agents that do real work for your team." lead="Practical, secure agents around your data - people stay in control." crumbs={[{ t: 'AI' }]}>
     <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Book an AI audit <Arrow /></a><a href="#uses" class="btn btn-o">{`${total}+ ways AI can help`}</a></div>
   </PageHero>
 
@@ -50,7 +50,7 @@ const faq = [
       <div class="ai-copy in-pad">
         <span class="label faint">/How an agent works</span>
         <h2 class="h2" id="how-h" data-split data-bold="2">Read. Decide. Act. Ask.</h2>
-        <p class="lead rv">An agent takes in work from your inbox, forms and documents, decides what needs to happen, prepares the action in your tools - and asks a person to approve anything important.</p>
+        <p class="lead rv">It reads, decides, prepares the action - and asks a person to approve.</p>
         <a href="/services/ai-agents-and-automation" class="btn btn-o rv" style="align-self:flex-start">AI service details <Arrow /></a>
       </div>
       <div class="ai-vis hatch"><div class="rv"><AgentFlow /></div></div>
@@ -62,22 +62,18 @@ const faq = [
   <section class="frame row" id="uses" aria-labelledby="uses-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Use cases</span><h2 class="h2" id="uses-h" data-split data-bold="2">{`${total} things AI can take off your plate.`}</h2></div>
-      <p class="lead rv">Grouped by team. Each one is a real, buildable automation - most can run alongside the tools you already use.</p>
+      <p class="lead rv">Pick a team. Every tag is a buildable automation.</p>
     </div>
-    <div class="uc in-pad">
-      {uses.map((u, i) => (
-        <div class="uc-col rv" style={`transition-delay:${(i % 4) * 60}ms`}>
-          <div class="uc-h"><span>{u.d}</span><span class="faint">{u.items.length}</span></div>
-          <ul>{u.items.map((t) => <li>{t}</li>)}</ul>
-        </div>
-      ))}
-    </div>
+    <div class="ucf in-pad" role="group" aria-label="Filter by team">{['All', ...uses.map((u) => u.d)].map((d, i) => <button type="button" class={`tag ufb ${i === 0 ? 'on' : ''}`} data-d={d}>{d}</button>)}</div>
+    <ul class="ucloud in-pad">
+      {uses.flatMap((u) => u.items.map((t) => <li class="uct" data-d={u.d}><i></i>{t}</li>))}
+    </ul>
   </section>
 
   <section class="frame row" aria-labelledby="tech-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Technical capabilities</span><h2 class="h2" id="tech-h" data-split data-bold="2">The engineering under the hood.</h2></div>
-      <p class="lead rv">Behind every simple interface sits careful engineering. These are the building blocks we combine for each AI project.</p>
+      <p class="lead rv">The building blocks behind every agent.</p>
     </div>
     <div class="bento in-pad">
       <div class="bt-feat rv"><div class="bf-top"><span class="faint">ai /</span>&nbsp;stack<span class="sc-n">AI</span></div><div class="bf-art hatch"><Art kind="chip" /></div><p class="bf-sum">Models, data, tools and guardrails - assembled for one job at a time, then joined together.</p></div>
@@ -89,12 +85,12 @@ const faq = [
   <section class="frame row trust" aria-labelledby="safe-h">
     <div class="sec-h in-pad">
       <div><span class="label faint">/Responsible AI</span><h2 class="h2" id="safe-h" data-split data-bold="2">Safe enough for your board.</h2></div>
-      <p class="lead rv">AI is only valuable if your leadership can trust it. These rules apply to every agent we build.</p>
+      <p class="lead rv">Four rules for every agent we build.</p>
     </div>
     <ul class="t-grid four">{safe.map((t) => <li class="rv"><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></li>)}</ul>
   </section>
 
-  <Faq items={faq} title="AI questions from leadership teams." />
+  <Faq items={faq.slice(0, 3)} title="AI: quick answers." more />
   <CtaBand title="Find your first AI win." lead="In a short audit we map your processes, rank the AI opportunities by value and risk, and show you what the first agent would do." />
 </Base>
 <style>
@@ -114,4 +110,19 @@ const faq = [
   .t-grid.four li:last-child{border-right:0}
   @media (max-width:1024px){.uc{grid-template-columns:repeat(2,minmax(0,1fr))}.t-grid.four{grid-template-columns:1fr 1fr}}
   @media (max-width:600px){.uc{grid-template-columns:1fr}.t-grid.four{grid-template-columns:1fr}}
+  .ucf{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:16px}
+  .ufb{cursor:pointer;height:30px;padding:0 12px;font-size:13px}
+  .ufb:hover{border-color:var(--red);color:var(--red)}
+  .ufb.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .ucloud{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:var(--pad)}
+  .uct{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;background:#fff;transition:border-color .2s,color .2s,transform .3s var(--ease),opacity .3s}
+  .uct i{width:6px;height:6px;border-radius:50%;background:var(--line-2);transition:background .2s}
+  .uct:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+  .uct:hover i{background:var(--red)}
+  .uct.off{display:none}
 </style>
+<script>
+  const ub = [...document.querySelectorAll<HTMLButtonElement>('.ufb')]
+  const ut = [...document.querySelectorAll<HTMLElement>('.uct')]
+  ub.forEach((b) => b.addEventListener('click', () => { ub.forEach((x) => x.classList.toggle('on', x === b)); ut.forEach((t) => t.classList.toggle('off', b.dataset.d !== 'All' && t.dataset.d !== b.dataset.d)) }))
+</script>

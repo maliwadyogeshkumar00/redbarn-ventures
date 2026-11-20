@@ -1,6 +1,6 @@
 ---
-interface Props { items: { q: string; a: string }[]; title?: string; lead?: string; id?: string }
-const { items, title = 'Questions we hear before every project.', lead = 'Something else on your mind? Send us an email or use the contact form - a senior person replies, not a bot.', id = 'faq' } = Astro.props
+interface Props { items: { q: string; a: string }[]; title?: string; lead?: string; id?: string; more?: boolean }
+const { items, title = 'Quick answers.', lead = 'More questions? A senior person replies to every message.', id = 'faq', more = false } = Astro.props
 ---
 <section class="frame row faq" id={id} aria-labelledby={`${id}-h`}>
   <div class="faq-grid">
@@ -8,10 +8,11 @@ const { items, title = 'Questions we hear before every project.', lead = 'Someth
       <span class="label faint">/FAQ</span>
       <h2 class="h2" id={`${id}-h`} data-split data-bold="2">{title}</h2>
       <p class="lead rv">{lead}</p>
+      {more && <a href="/contact#faq" class="btn btn-o btn-sm rv" style="align-self:flex-start">All questions <span aria-hidden="true">→</span></a>}
     </div>
     <div class="faq-r">
       {items.map((f, i) => (
-        <details class="qa" open={i === 0}>
+        <details class="qa">
           <summary><span>{f.q}</span><i aria-hidden="true"></i></summary>
           <p class="mute">{f.a}</p>
         </details>
