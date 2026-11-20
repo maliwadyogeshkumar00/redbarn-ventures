@@ -1,13 +1,20 @@
 {
   "hero": {
-    "chip": "Brand · Digital · AI · Growth · Consulting",
+    "chip": "Global agency · Est. 2023",
     "title": "We build brands that win trust - and keep them growing.",
-    "lead": "Redbarn Ventures is a global brand, digital and growth agency, established in 2023. We advise, design, build and market for ambitious companies - one senior team, one point of contact, no hand-offs.",
+    "lead": "Brand, websites, AI and growth from one senior team. We help ambitious companies look like the leader, get found first and sell with confidence - then stay to keep them ahead.",
     "proof": [
       "Established 2023",
       "Global clients",
       "Senior team only",
       "Support after launch"
+    ],
+    "rotate": [
+      "ignore.",
+      "outrank.",
+      "forget.",
+      "overlook.",
+      "copy."
     ]
   },
   "board": [

@@ -105,18 +105,31 @@ addEventListener('pageshow', (e) => { if (e.persisted) { wipe?.classList.remove(
 
 /* ---------- line-mask headline split ---------- */
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!)
+type Tok = { w: string; b: boolean }
 const splitEl = (el: HTMLElement) => {
-  const text = (el.dataset.text ??= (el.textContent || '').replace(/\s+/g, ' ').trim())
-  const words = text.split(' ')
-  el.innerHTML = words.map((w) => `<span class="w" style="display:inline-block">${esc(w)}</span>`).join(' ')
-  const lines: string[][] = []
+  let toks: Tok[]
+  if (el.dataset.toks) toks = JSON.parse(el.dataset.toks)
+  else {
+    toks = []
+    el.childNodes.forEach((n) => {
+      const bold = n.nodeType === 1 && /^(B|STRONG)$/.test((n as Element).tagName)
+      ;(n.textContent || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).forEach((w) => toks.push({ w, b: bold }))
+    })
+    const nb = Number(el.dataset.bold || 0)
+    if (nb > 0 && !toks.some((t) => t.b)) toks.slice(-nb).forEach((t) => (t.b = true))
+    el.dataset.toks = JSON.stringify(toks)
+  }
+  const text = toks.map((t) => t.w).join(' ')
+  const wrap = (t: Tok) => (t.b ? `<b>${esc(t.w)}</b>` : esc(t.w))
+  el.innerHTML = toks.map((t) => `<span class="w" style="display:inline-block">${wrap(t)}</span>`).join(' ')
+  const lines: Tok[][] = []
   let lastTop = -1
   $$<HTMLElement>('.w', el).forEach((w, i) => {
     const t = w.offsetTop
     if (Math.abs(t - lastTop) > 2) { lines.push([]); lastTop = t }
-    lines[lines.length - 1].push(words[i])
+    lines[lines.length - 1].push(toks[i])
   })
-  el.innerHTML = lines.map((l, i) => `<span class="ln"><span style="transition-delay:${(Number(el.dataset.delay || 0) + i * 80)}ms">${esc(l.join(' '))}</span></span>`).join('')
+  el.innerHTML = lines.map((l, i) => `<span class="ln"><span style="transition-delay:${(Number(el.dataset.delay || 0) + i * 80)}ms">${l.map(wrap).join(' ')}</span></span>`).join('')
   el.setAttribute('aria-label', text)
   el.classList.add('ready')
 }

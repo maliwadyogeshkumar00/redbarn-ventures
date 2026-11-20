@@ -6,6 +6,7 @@ import TopBar from '../components/TopBar.astro'
 import Footer from '../components/Footer.astro'
 import FloatContact from '../components/FloatContact.astro'
 import Preloader from '../components/Preloader.astro'
+import Brief from '../components/Brief.astro'
 
 interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
 const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
@@ -45,6 +46,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: s
   <main id="main"><slot /></main>
   {!bare && <Footer />}
   {!bare && <FloatContact />}
+  {!bare && <Brief />}
   <script>import '../scripts/site.ts'</script>
 </body>
 </html>

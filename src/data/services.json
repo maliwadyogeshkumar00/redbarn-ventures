@@ -104,7 +104,8 @@
    "corporate-materials",
    "marketing-and-growth"
   ],
-  "lower": "brand and identity"
+  "lower": "brand and identity",
+  "tag": "Logos, identity systems and design"
  },
  {
   "slug": "websites-and-apps",
@@ -211,7 +212,8 @@
    "brand-and-identity",
    "marketing-and-growth"
   ],
-  "lower": "websites and apps"
+  "lower": "websites and apps",
+  "tag": "Fast sites, stores and app interfaces"
  },
  {
   "slug": "ai-agents-and-automation",
@@ -318,7 +320,8 @@
    "lead-generation-and-sales",
    "consultancy"
   ],
-  "lower": "AI agents and automation"
+  "lower": "AI agents and automation",
+  "tag": "Agents that do real, repetitive work"
  },
  {
   "slug": "marketing-and-growth",
@@ -425,7 +428,8 @@
    "websites-and-apps",
    "consultancy"
   ],
-  "lower": "marketing"
+  "lower": "marketing",
+  "tag": "Paid, social, email and CRM growth"
  },
  {
   "slug": "seo",
@@ -532,7 +536,8 @@
    "marketing-and-growth",
    "brand-and-identity"
   ],
-  "lower": "SEO and AI search"
+  "lower": "SEO and AI search",
+  "tag": "Rank on Google and in AI answers"
  },
  {
   "slug": "lead-generation-and-sales",
@@ -639,7 +644,8 @@
    "corporate-materials",
    "trade-shows-and-events"
   ],
-  "lower": "lead generation and sales"
+  "lower": "lead generation and sales",
+  "tag": "Prospecting, outreach and sales tools"
  },
  {
   "slug": "influencer-marketing",
@@ -746,7 +752,8 @@
    "video-and-content",
    "brand-and-identity"
   ],
-  "lower": "influencer marketing"
+  "lower": "influencer marketing",
+  "tag": "Creators matched to your buyers"
  },
  {
   "slug": "video-and-content",
@@ -853,7 +860,8 @@
    "brand-and-identity",
    "trade-shows-and-events"
   ],
-  "lower": "video and content"
+  "lower": "video and content",
+  "tag": "Films, motion, social and graphics"
  },
  {
   "slug": "trade-shows-and-events",
@@ -960,7 +968,8 @@
    "corporate-materials",
    "video-and-content"
   ],
-  "lower": "trade show and event marketing"
+  "lower": "trade show and event marketing",
+  "tag": "Booths, show campaigns and follow-up"
  },
  {
   "slug": "consultancy",
@@ -1067,7 +1076,8 @@
    "corporate-materials",
    "brand-and-identity"
   ],
-  "lower": "consultancy"
+  "lower": "consultancy",
+  "tag": "Go-to-market and growth strategy"
  },
  {
   "slug": "corporate-materials",
@@ -1174,6 +1184,7 @@
    "consultancy",
    "websites-and-apps"
   ],
-  "lower": "corporate materials"
+  "lower": "corporate materials",
+  "tag": "Decks, datasheets and board packs"
  }
 ]

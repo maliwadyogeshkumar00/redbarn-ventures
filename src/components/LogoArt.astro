@@ -2,7 +2,7 @@
 /* Logo built from geometry + text. variant: primary | white | black | reversed */
 interface Props { variant?: 'primary' | 'white' | 'black' | 'reversed'; size?: number; mark?: boolean }
 const { variant = 'primary', size = 48, mark = false } = Astro.props
-const bar = variant === 'black' ? '#0B0B0C' : variant === 'white' ? '#FFFFFF' : '#D7263D'
+const bar = variant === 'black' ? '#0B0B0C' : variant === 'white' ? '#FFFFFF' : '#8C1C34'
 const ink = variant === 'white' || variant === 'reversed' ? '#FFFFFF' : '#0B0B0C'
 const sub = variant === 'white' || variant === 'reversed' ? 'rgba(255,255,255,.62)' : variant === 'black' ? '#0B0B0C' : '#6B6B6B'
 ---

@@ -21,7 +21,7 @@ const ld = [{ '@context': 'https://schema.org', '@type': 'Article', headline: p.
       <div class="hero-c ph art-hero">
         <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/insights">Insights</a><span aria-hidden="true">/</span><span aria-current="page">{p.category}</span></nav>
         <span class="chip rv"><i></i>{p.category}</span>
-        <h1 class="display post-h" data-split data-delay="100">{p.title}</h1>
+        <h1 class="display post-h" data-split data-bold="2" data-delay="100">{p.title}</h1>
         <p class="lead rv">{p.excerpt}</p>
         <div class="il-meta rv"><span>By Redbarn Ventures</span><span>{fmt(p.date)}</span><span>{`${p.minutes} min read`}</span></div>
       </div>

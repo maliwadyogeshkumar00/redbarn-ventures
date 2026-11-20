@@ -36,7 +36,7 @@ const tdesc = [
   </section>
 
   <section class="frame row" aria-labelledby="all-h">
-    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/All insights</span><h2 class="h2" id="all-h" data-split>Latest guides.</h2></div></div>
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/All insights</span><h2 class="h2" id="all-h" data-split data-bold="2">Latest guides.</h2></div></div>
     <div class="ins-grid in-pad">
       {rest.map((p) => (
         <a href={`/insights/${p.slug}`} class="ins-c rv">
@@ -52,7 +52,7 @@ const tdesc = [
     </div>
   </section>
   <section class="frame row" aria-labelledby="tp-h">
-    <div class="sec-h in-pad"><div><span class="label faint">/Topics</span><h2 class="h2" id="tp-h" data-split>What we write about.</h2></div><p class="lead rv">Every guide is written by practitioners who do this work for clients every week - no recycled trends, no invented statistics, just clear advice you can act on.</p></div>
+    <div class="sec-h in-pad"><div><span class="label faint">/Topics</span><h2 class="h2" id="tp-h" data-split data-bold="2">What we write about.</h2></div><p class="lead rv">Every guide is written by practitioners who do this work for clients every week - no recycled trends, no invented statistics, just clear advice you can act on.</p></div>
     <ol class="st-points five">{tdesc.map((x, i) => <li class="rv"><span class="num">{`0${i + 1}`}</span><h3 class="h3">{x.t}</h3><p class="mute">{x.d}</p></li>)}</ol>
   </section>
   <CtaBand title="Want this thinking applied to your business?" />

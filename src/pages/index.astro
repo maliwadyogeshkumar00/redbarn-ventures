@@ -19,7 +19,10 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       <div class="hatch side" aria-hidden="true"></div>
       <div class="hero-c">
         <span class="chip rv"><i></i>{H.hero.chip}</span>
-        <h1 class="display" data-split data-delay="100">{H.hero.title}</h1>
+        <h1 class="display hero-h1" aria-label="We make good companies impossible to ignore.">
+          <span class="hl1" data-split data-delay="100" aria-hidden="true">We make good companies</span>
+          <span class="hl2" aria-hidden="true"><span class="hl2-in"><b>impossible to</b> <span class="rot" data-rot={JSON.stringify(H.hero.rotate)}><span class="rot-w">{H.hero.rotate[0]}</span></span></span></span>
+        </h1>
         <p class="lead rv" style="transition-delay:.25s">{H.hero.lead}</p>
         <div class="hero-btns rv" style="transition-delay:.35s">
           <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
@@ -66,7 +69,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- STATEMENT -->
   <section class="frame row top statement">
     <div class="st-row in-pad">
-      <h2 class="st-title" data-split>{H.statement.title}</h2>
+      <h2 class="st-title" data-split data-bold="2">{H.statement.title}</h2>
       <div class="st-diag hatch rv" aria-hidden="true">
         <div class="sd-inner">
           <ul class="sd-left">{['Designer', 'Developer', 'Agency', 'Consultant'].map((t) => <li>{t}</li>)}</ul>
@@ -83,14 +86,14 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- SERVICES -->
   <section class="frame row svc" id="services" aria-labelledby="svc-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Services</span><h2 class="h2" id="svc-h" data-split>Eleven services. One senior team.</h2></div>
+      <div><span class="label faint">/Services</span><h2 class="h2" id="svc-h" data-split data-bold="2">Eleven services. One senior team.</h2></div>
       <p class="lead rv">Strategy, branding, websites, AI, marketing, sales and events - each led by a senior specialist and all working from one brief, so every touchpoint looks and sounds like one company.</p>
     </div>
     <div class="sg in-pad">
       {services.map((s, i) => (
         <a href={`/services/${s.slug}`} class="sg-t rv" style={`transition-delay:${(i % 4) * 50}ms`}>
           <div class="sg-art hatch"><Art kind={s.obj} /><span class="sg-n">{s.n}</span></div>
-          <div class="sg-b"><span class="sg-ti"><Icon kind={s.obj} />{s.title}</span><p class="mute">{s.short}</p></div>
+          <div class="sg-b"><span class="sg-ti">{s.title}</span><p class="mute">{s.short}</p></div>
         </a>
       ))}
       <a href="/contact" class="sg-cta rv"><span class="label">Not sure what you need?</span><span class="bc-big">Ask a senior consultant</span><span class="bc-arr"><Arrow dir="ne" /></span></a>
@@ -104,7 +107,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     <div class="ai-grid">
       <div class="ai-copy in-pad">
         <span class="label faint">/AI and automation</span>
-        <h2 class="h2" id="ai-h" data-split>AI agents that do real work.</h2>
+        <h2 class="h2" id="ai-h" data-split data-bold="2">AI agents that do real work.</h2>
         <p class="lead rv">We build AI agents and automations that read your inbox, qualify leads, process documents and keep your systems up to date - with a human approving every step that matters.</p>
         <ul class="ai-chips rv">{['Lead qualification', 'Email triage', 'Document extraction', 'Knowledge chat', 'CRM updates', 'Report drafting', 'Proposal drafts', 'Support answers'].map((t) => <li class="tag">{t}</li>)}</ul>
         <a href="/ai" class="btn btn-p rv" style="align-self:flex-start">Explore AI services <Arrow /></a>
@@ -116,7 +119,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- WHAT WE BUILD -->
   <section class="frame row build" id="build" aria-labelledby="b-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/What we build</span><h2 class="h2" id="b-h" data-split>The work, not the logos.</h2></div>
+      <div><span class="label faint">/What we build</span><h2 class="h2" id="b-h" data-split data-bold="2">The work, not the logos.</h2></div>
       <p class="lead rv">We keep client names private. What we can show you is the kind of work we make every week - and how each piece is set up to keep working for you long after it ships.</p>
     </div>
     <div class="b-grid in-pad">
@@ -136,7 +139,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- TRUST -->
   <section class="frame row trust" aria-labelledby="t-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Why teams stay</span><h2 class="h2" id="t-h" data-split>A partner you can hand your brand to.</h2></div>
+      <div><span class="label faint">/Why teams stay</span><h2 class="h2" id="t-h" data-split data-bold="2">A partner you can hand your brand to.</h2></div>
       <p class="lead rv">Handing your brand to an outside team is a big decision. These are the promises we work by, on every project, for every client.</p>
     </div>
     <ul class="t-grid">
@@ -153,7 +156,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- PROCESS -->
   <section class="frame row process" id="process" aria-labelledby="p-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Process</span><h2 class="h2" id="p-h" data-split>From first call to long-term growth.</h2></div>
+      <div><span class="label faint">/Process</span><h2 class="h2" id="p-h" data-split data-bold="2">From first call to long-term growth.</h2></div>
       <p class="lead rv">A simple, transparent way of working. You always know what happens next, who is doing it and when it will be ready.</p>
     </div>
     <ol class="p-grid">
@@ -170,7 +173,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- ENGAGEMENTS -->
   <section class="frame row engage" aria-labelledby="e-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split>Start small or build for the long run.</h2></div>
+      <div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split data-bold="2">Start small or build for the long run.</h2></div>
       <p class="lead rv">Every engagement starts with a written plan and quote. Choose the model that fits where your business is today - and change it as you grow.</p>
     </div>
     <div class="e-grid in-pad">
@@ -190,7 +193,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     <div class="faq-grid">
       <div class="faq-l in-pad">
         <span class="label faint">/FAQ</span>
-        <h2 class="h2" id="f-h" data-split>Questions we hear before every project.</h2>
+        <h2 class="h2" id="f-h" data-split data-bold="2">Questions we hear before every project.</h2>
         <p class="lead rv">Something else on your mind? Send us an email or use the contact form - a senior person replies, not a bot.</p>
       </div>
       <div class="faq-r">
@@ -209,7 +212,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     <div class="hatch side" aria-hidden="true"></div>
     <div class="cta-c">
       <span class="chip"><i></i>Taking on new projects</span>
-      <h2 class="display" id="c-h" data-split>Tell us about your brand.</h2>
+      <h2 class="display" id="c-h" data-split data-bold="2">Tell us about your brand.</h2>
       <p class="lead rv">A few lines about your business and what you need is enough. We will arrange a short call and come back with a written plan and quote.</p>
       <div class="hero-btns rv">
         <a href={mail} class="btn btn-p">Email {site.email} <Arrow /></a>
@@ -266,5 +269,21 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   // one FAQ open at a time
   const qas = [...document.querySelectorAll<HTMLDetailsElement>('.qa')]
   qas.forEach((d) => d.addEventListener('toggle', () => { if (d.open) qas.forEach((o) => { if (o !== d) o.open = false }) }))
+
+  // hero word rotator
+  const rot = document.querySelector<HTMLElement>('.rot')
+  if (rot && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const words: string[] = JSON.parse(rot.dataset.rot || '[]')
+    let i = 0
+    const pl = document.getElementById('pl')
+    const start = pl && !document.documentElement.classList.contains('no-pl') ? 3200 : 2200
+    setTimeout(() => setInterval(() => {
+      i = (i + 1) % words.length
+      const cur = rot.querySelector('.rot-w') as HTMLElement
+      const nxt = document.createElement('span'); nxt.className = 'rot-w in'; nxt.textContent = words[i]
+      cur.classList.add('out'); rot.appendChild(nxt)
+      setTimeout(() => cur.remove(), 700)
+    }, 2400), start)
+  }
 </script>
 

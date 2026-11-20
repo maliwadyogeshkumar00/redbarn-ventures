@@ -1,0 +1,14 @@
+---
+import Legal from '../components/Legal.astro'
+import site from '../data/site.json'
+const E = site.email
+---
+<Legal title="Disclaimer" description="Disclaimer for redbarn.ventures: general information, no professional advice, results, trademarks and external links." lead="Last updated 20 November 2026. Please read this disclaimer together with our terms of use and privacy policy.">
+  <section><h2>General information only</h2><p>The content on this website, including service descriptions, articles and guides, is provided for general information. It is not legal, financial, tax, investment or other professional advice, and it should not be relied on as a substitute for advice tailored to your situation.</p></section>
+  <section><h2>No guarantee of results</h2><p>We describe how we work and what our services typically involve. Every business is different, and outcomes depend on many factors outside our control, including markets, competitors, budgets and decisions made by clients. We therefore do not guarantee specific results, rankings, leads or revenue. Commitments for client work are set out only in a written agreement.</p></section>
+  <section><h2>Insights and articles</h2><p>Our articles reflect the experience and opinions of the Redbarn Ventures team at the time of writing. Technology, platforms and best practices change quickly, so information may become outdated. Always check current details before acting on them.</p></section>
+  <section><h2>AI-related content</h2><p>Where we describe artificial intelligence, agents and automation, we explain general capabilities and approaches. Any AI solution should be designed, tested and governed for your specific data, risks and legal obligations before it is used.</p></section>
+  <section><h2>Trademarks</h2><p>Technology, platform and product names shown on this website - such as cloud providers, software frameworks, operating systems and advertising platforms - are trademarks of their respective owners. They are mentioned only to describe the tools we work with and do not imply endorsement, partnership or sponsorship.</p></section>
+  <section><h2>External links</h2><p>This website links to external websites for convenience. We do not control their content and are not responsible for it or for their privacy practices.</p></section>
+  <section><h2>Contact</h2><p>Questions about this disclaimer can be sent to <a href={`mailto:${E}`}>{E}</a>.</p></section>
+</Legal>

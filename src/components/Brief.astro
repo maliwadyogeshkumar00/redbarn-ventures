@@ -1,0 +1,63 @@
+---
+import site from '../data/site.json'
+---
+<div class="nl" id="nl" role="dialog" aria-modal="false" aria-labelledby="nl-h" hidden>
+  <button class="nl-x" type="button" aria-label="Close" data-nl-close>×</button>
+  <div class="nl-vis hatch" aria-hidden="true">
+    <div class="nl-mail">
+      <div class="nm-top"><span class="nm-mk"><i></i><i></i><i></i></span><span><b>The Redbarn Brief</b><small>Issue for leaders · monthly</small></span></div>
+      <ul class="nm-items">
+        <li><span>01</span>One AI move worth making</li>
+        <li><span>02</span>One website or growth fix</li>
+        <li><span>03</span>One idea from the market</li>
+      </ul>
+      <div class="nm-foot"><span></span><span></span><span class="r"></span></div>
+    </div>
+  </div>
+  <div class="nl-b">
+    <span class="nl-k">The Redbarn Brief</span>
+    <h2 id="nl-h">One page. Once a month. <b>Zero fluff.</b></h2>
+    <p>What is actually working in AI, websites and growth - written for leaders who have no time to read.</p>
+    <form id="nl-form" novalidate>
+      <label class="sr" for="nl-email">Work email</label>
+      <div class="nl-row"><input id="nl-email" name="email" type="email" autocomplete="email" placeholder="Your work email" required /><button class="btn btn-p" type="submit"><span class="lbl">Get the Brief</span></button></div>
+      <div class="nl-roles" role="group" aria-label="Your role (optional)">
+        {['CEO or founder', 'Marketing', 'Sales', 'Other'].map((r) => <label class="nl-r"><input type="radio" name="role" value={r} /><span>{r}</span></label>)}
+      </div>
+      <input type="text" name="_honey" class="nl-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <p class="nl-fine">No spam, unsubscribe any time. <a href="/privacy">Privacy policy</a></p>
+      <p class="nl-err" role="alert" hidden></p>
+    </form>
+    <div class="nl-done" role="status" hidden><b>You are on the list.</b><p>The next Brief lands in your inbox at the start of the month.</p></div>
+  </div>
+</div>
+<script define:vars={{ to: site.formTo }}>
+(function(){
+  var el=document.getElementById('nl'); if(!el) return;
+  var K='rb_nl', now=Date.now();
+  try{var v=JSON.parse(localStorage.getItem(K)||'null'); if(v&&(v.s==='joined'||now-v.t<14*864e5)) return}catch(e){}
+  if(/^\/contact/.test(location.pathname)) return;
+  var shown=false;
+  function show(){ if(shown) return; shown=true; el.hidden=false; requestAnimationFrame(function(){el.classList.add('on')}); }
+  function save(s){ try{localStorage.setItem(K,JSON.stringify({s:s,t:Date.now()}))}catch(e){} }
+  function close(){ el.classList.remove('on'); save('closed'); setTimeout(function(){el.hidden=true},500) }
+  setTimeout(show, 22000);
+  addEventListener('scroll', function(){ var m=document.documentElement.scrollHeight-innerHeight; if(m>0&&scrollY/m>0.55) show() }, {passive:true});
+  document.addEventListener('mouseout', function(e){ if(!e.relatedTarget && e.clientY<8 && scrollY>400) show() });
+  el.querySelector('[data-nl-close]').addEventListener('click', close);
+  addEventListener('keydown', function(e){ if(e.key==='Escape'&&el.classList.contains('on')) close() });
+  var f=document.getElementById('nl-form'), err=el.querySelector('.nl-err'), btn=f.querySelector('button'), lbl=btn.querySelector('.lbl');
+  f.addEventListener('submit', function(e){
+    e.preventDefault(); err.hidden=true;
+    var em=f.email.value.trim(); if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ err.textContent='Please enter a valid email address.'; err.hidden=false; f.email.focus(); return }
+    var role=(f.querySelector('input[name=role]:checked')||{}).value||'-';
+    function done(){ f.hidden=true; el.querySelector('.nl-done').hidden=false; save('joined'); setTimeout(function(){ el.classList.remove('on'); setTimeout(function(){el.hidden=true},500) }, 3500) }
+    if(f._honey.value){ done(); return }
+    btn.disabled=true; lbl.textContent='Joining...';
+    fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:em,role:role,source:location.pathname,_subject:'New Redbarn Brief subscriber',_template:'table',_captcha:'false'})})
+      .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok||j.success==='false'||j.success===false) throw 0; done() }) })
+      .catch(function(){ err.textContent='Could not save that just now - please try again in a moment.'; err.hidden=false })
+      .finally(function(){ btn.disabled=false; lbl.textContent='Get the Brief' });
+  });
+})();
+</script>

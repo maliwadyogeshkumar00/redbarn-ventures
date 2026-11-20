@@ -3,7 +3,7 @@
 interface Props { kind: string; class?: string; label?: string }
 const { kind, class: cls = '', label } = Astro.props
 const uid = 'a' + Math.random().toString(36).slice(2, 8)
-const C = { top: '#E6E6E6', l: '#D8D8D8', r: '#C9C9C9', red: '#D7263D', bg: '#F2F2F2' }
+const C = { top: '#E6E6E6', l: '#D8D8D8', r: '#C9C9C9', red: '#8C1C34', bg: '#F2F2F2' }
 const S = 50
 const P = (x: number, y: number, z: number) => [(x - y) * 0.866 * S, (x + y) * 0.5 * S - z * S]
 type Sh = { tag: string; a: Record<string, string | number>; red?: boolean; pts?: number[][] }
@@ -28,7 +28,7 @@ if (kind === 'cube') {
   const near = ringX(1, 0, 1, 0.56).map(([x, y, z]) => P(x, y, z))
   const inner = ringX(0.35, 0, 1, 0.56).map(([x, y, z]) => P(x, y, z))
   defs.push(`<clipPath id="${uid}c"><polygon points="${fmt(near)}"/></clipPath>`)
-  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#A91C2F' }, red: true, pts: near })
+  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#5E1020' }, red: true, pts: near })
   shapes.push({ tag: 'polygon', a: { points: fmt(inner), fill: C.red, 'clip-path': `url(#${uid}c)` }, red: true, pts: [] })
 }
 if (kind === 'slabs') {
@@ -57,7 +57,7 @@ if (kind === 'monolith') {
   const near = [[-sx, D, z0], [sx, D, z0], [sx, D, z1], [-sx, D, z1]].map(([x, y, z]) => P(x, y, z))
   const far = [[-sx, -D + 0.3, z0], [sx, -D + 0.3, z0], [sx, -D + 0.3, z1], [-sx, -D + 0.3, z1]].map(([x, y, z]) => P(x, y, z))
   defs.push(`<clipPath id="${uid}c"><polygon points="${fmt(near)}"/></clipPath>`)
-  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#A91C2F' }, red: true, pts: near })
+  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#5E1020' }, red: true, pts: near })
   shapes.push({ tag: 'polygon', a: { points: fmt(far), fill: C.red, 'clip-path': `url(#${uid}c)` }, red: true, pts: [] })
 }
 if (kind === 'lattice') {

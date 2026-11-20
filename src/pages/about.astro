@@ -42,7 +42,7 @@ const who = [
   </section>
 
   <section class="frame row" aria-labelledby="story-h">
-    <h2 class="pull" id="story-h" data-split>Great products deserve brands, websites and marketing that work as one.</h2>
+    <h2 class="pull" id="story-h" data-split data-bold="2">Great products deserve brands, websites and marketing that work as one.</h2>
     <ol class="chapters">
       {chapters.map((c, i) => (
         <li class="chap rv" style={`transition-delay:${i * 80}ms`}><span class="k">{`0${i + 1} · ${c.k}`}</span><h3>{c.t}</h3><p>{c.d}</p></li>
@@ -60,7 +60,7 @@ const who = [
 
   <section class="frame row trust" aria-labelledby="pr-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Principles</span><h2 class="h2" id="pr-h" data-split>How we treat every client.</h2></div>
+      <div><span class="label faint">/Principles</span><h2 class="h2" id="pr-h" data-split data-bold="2">How we treat every client.</h2></div>
       <p class="lead rv">These are not slogans. They are the rules we work by on every project, whatever its size.</p>
     </div>
     <ul class="t-grid">
@@ -72,7 +72,7 @@ const who = [
 
   <section class="frame row" aria-labelledby="who-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Who we work with</span><h2 class="h2" id="who-h" data-split>Companies that care about quality.</h2></div>
+      <div><span class="label faint">/Who we work with</span><h2 class="h2" id="who-h" data-split data-bold="2">Companies that care about quality.</h2></div>
       <p class="lead rv">We are a good fit for teams who want a long-term partner rather than the cheapest quote - and who value honest advice as much as beautiful work.</p>
     </div>
     <ol class="st-points">
@@ -81,7 +81,7 @@ const who = [
   </section>
 
   <section class="frame row" aria-labelledby="cap-h">
-    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/Capabilities</span><h2 class="h2" id="cap-h" data-split>What we do every week.</h2></div><a href="/services" class="btn btn-o">All services <Arrow /></a></div>
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/Capabilities</span><h2 class="h2" id="cap-h" data-split data-bold="2">What we do every week.</h2></div><a href="/services" class="btn btn-o">All services <Arrow /></a></div>
     <ul class="cap-list">
       {services.map((s) => (
         <li class="rv"><a href={`/services/${s.slug}`}><span class="cap-n">{s.n}</span><span class="cap-t">{s.title}</span><span class="cap-tags">{s.included.slice(0, 4).map((t) => <span class="tag">{t.t}</span>)}</span><span class="cap-go"><Arrow /></span></a></li>
@@ -121,7 +121,7 @@ const who = [
   .mv-c{border:1px solid var(--line-2);border-radius:14px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:22px;min-height:300px;justify-content:space-between;background:var(--hatch),#fff}
   .mv-c .label{color:var(--red)}
   .mv-c.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .mv-c.dark .label{color:#ff8a99}
+  .mv-c.dark .label{color:#E39AA8}
   .mv-t{font-size:clamp(22px,2.4vw,32px);line-height:1.2;letter-spacing:-.03em;background:inherit}
   .mv-c:not(.dark) .mv-t{background:#fff;padding:14px 16px;border-radius:10px;border:1px solid var(--line)}
   .vals{display:flex;flex-wrap:wrap;border-top:1px solid var(--line)}

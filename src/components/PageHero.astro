@@ -10,7 +10,7 @@ const { label, title, lead, crumbs = [] } = Astro.props
         <nav class="crumbs rv" aria-label="Breadcrumb"><a href="/">Home</a>{crumbs.map((c) => <><span aria-hidden="true">/</span>{c.h ? <a href={c.h}>{c.t}</a> : <span aria-current="page">{c.t}</span>}</>)}</nav>
       )}
       <span class="chip rv"><i></i>{label}</span>
-      <h1 class="display" data-split data-delay="100">{title}</h1>
+      <h1 class="display" data-split data-bold="3" data-delay="100">{title}</h1>
       {lead && <p class="lead rv" style="transition-delay:.25s">{lead}</p>}
       <slot />
     </div>

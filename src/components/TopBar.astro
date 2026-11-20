@@ -3,7 +3,7 @@ import site from '../data/site.json'
 import services from '../data/services.json'
 import Logo from './Logo.astro'
 import Arrow from './Arrow.astro'
-import Icon from './Icon.astro'
+import Art from './Art.astro'
 const path = Astro.url.pathname.replace(/\/$/, '') || '/'
 const cur = (h: string) => !h.includes('#') && (path === h || path.startsWith(h + '/'))
 ---
@@ -18,8 +18,8 @@ const cur = (h: string) => !h.includes('#') && (path === h || path.startsWith(h 
             <div class="dd-grid">
               {services.map((s) => (
                 <a href={`/services/${s.slug}`} class="dd-item" aria-current={path === `/services/${s.slug}` ? 'page' : undefined}>
-                  <span class="dd-ico"><Icon kind={s.obj} /></span>
-                  <span><b>{s.nav}</b><small>{s.short}</small></span>
+                  <span class="dd-ico hatch"><Art kind={s.obj} /></span>
+                  <span class="dd-tx"><b>{s.nav}</b><small>{s.tag}</small></span>
                 </a>
               ))}
             </div>

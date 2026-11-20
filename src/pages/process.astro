@@ -33,7 +33,7 @@ const faq = [
 
   <section class="frame row" aria-labelledby="tl-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Timeline</span><h2 class="h2" id="tl-h" data-split>Five phases. No surprises.</h2></div>
+      <div><span class="label faint">/Timeline</span><h2 class="h2" id="tl-h" data-split data-bold="2">Five phases. No surprises.</h2></div>
       <p class="lead rv">An illustrative timeline for a typical brand and website project. Your own plan sets exact dates.</p>
     </div>
     <div class="gantt in-pad rv" role="img" aria-label="Illustrative project timeline across five phases">
@@ -59,7 +59,7 @@ const faq = [
 
   <section class="frame row trust" aria-labelledby="cm-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Communication</span><h2 class="h2" id="cm-h" data-split>Always know where things stand.</h2></div>
+      <div><span class="label faint">/Communication</span><h2 class="h2" id="cm-h" data-split data-bold="2">Always know where things stand.</h2></div>
       <p class="lead rv">Good projects fail on communication more often than on talent. We make progress visible by default.</p>
     </div>
     <ul class="t-grid four">{comms.map((t) => <li class="rv"><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></li>)}</ul>
@@ -67,13 +67,13 @@ const faq = [
 
   <section class="frame row" aria-labelledby="q-h">
     <div class="q-grid">
-      <div class="q-l in-pad"><span class="label faint">/Quality</span><h2 class="h2" id="q-h" data-split>Checked before you see it.</h2><p class="lead rv">Every deliverable passes the same checklist before it reaches you.</p></div>
+      <div class="q-l in-pad"><span class="label faint">/Quality</span><h2 class="h2" id="q-h" data-split data-bold="2">Checked before you see it.</h2><p class="lead rv">Every deliverable passes the same checklist before it reaches you.</p></div>
       <ul class="q-list">{quality.map((q, i) => <li class="rv"><span>{String(i + 1).padStart(2, '0')}</span>{q}</li>)}</ul>
     </div>
   </section>
 
   <section class="frame row engage" aria-labelledby="e-h">
-    <div class="sec-h in-pad"><div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split>Start small or build for the long run.</h2></div><p class="lead rv">Every engagement starts with a written plan and quote.</p></div>
+    <div class="sec-h in-pad"><div><span class="label faint">/Ways to work with us</span><h2 class="h2" id="e-h" data-split data-bold="2">Start small or build for the long run.</h2></div><p class="lead rv">Every engagement starts with a written plan and quote.</p></div>
     <div class="e-grid in-pad">
       {H.engage.map((e, i) => (
         <article class={`ecard rv ${e.featured ? 'feat' : ''}`}>
