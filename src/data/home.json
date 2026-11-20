@@ -2,7 +2,7 @@
   "hero": {
     "chip": "Global agency · Est. 2023",
     "title": "We build brands that win trust - and keep them growing.",
-    "lead": "Brand, websites, AI and growth from one senior team. We help ambitious companies look like the leader, get found first and sell with confidence - then stay to keep them ahead.",
+    "lead": "Brand, websites, AI and growth from one senior team - so you look like the leader and sell like one.",
     "proof": [
       "Established 2023",
       "Global clients",
@@ -106,19 +106,19 @@
     }
   ],
   "statement": {
-    "title": "Most companies juggle a designer, a developer, an agency and a consultant. We are all four - and we talk to each other.",
+    "title": "Four suppliers, four opinions. Or one team that talks.",
     "points": [
       {
         "t": "One brief",
-        "d": "You explain your business once. Every specialist works from the same page."
+        "d": "Explain your business once."
       },
       {
         "t": "One plan",
-        "d": "Brand, website and marketing are planned together, so nothing contradicts anything else."
+        "d": "Brand, web and growth, aligned."
       },
       {
         "t": "One point of contact",
-        "d": "A senior lead owns your account and answers your messages - from first call to year three."
+        "d": "A senior lead, start to finish."
       }
     ]
   },
@@ -126,7 +126,7 @@
     {
       "t": "Brand identities",
       "obj": "cube",
-      "d": "Logos and identity systems with clear rules, so every person and supplier uses your brand the same way.",
+      "d": "Identity systems with clear rules.",
       "tags": [
         "Logo",
         "Guidelines",
@@ -136,7 +136,7 @@
     {
       "t": "Websites",
       "obj": "lattice",
-      "d": "Fast, search-ready company and marketing sites, built so your own team can edit pages without a developer.",
+      "d": "Fast sites your team can edit.",
       "tags": [
         "Design",
         "Build",
@@ -146,7 +146,7 @@
     {
       "t": "E-commerce stores",
       "obj": "slabs",
-      "d": "Online stores with clean product pages, Shopping feeds and the tracking you need to see what actually sells.",
+      "d": "Stores built to sell and track.",
       "tags": [
         "Store",
         "Shopping",
@@ -156,7 +156,7 @@
     {
       "t": "App interfaces",
       "obj": "arrow",
-      "d": "Screens, flows and design systems for iOS and web apps, ready for your developers to build from.",
+      "d": "Screens and flows ready to build.",
       "tags": [
         "UI",
         "Flows",
@@ -166,7 +166,7 @@
     {
       "t": "Pitch and company decks",
       "obj": "monolith",
-      "d": "Decks that tell a clear story in the room and survive being forwarded - on your own editable template.",
+      "d": "Decks that sell after you leave.",
       "tags": [
         "Sales deck",
         "Investor deck",
@@ -176,7 +176,7 @@
     {
       "t": "Growth programmes",
       "obj": "sphere",
-      "d": "Monthly SEO, AI-search, content and LinkedIn work that compounds - reported in plain language.",
+      "d": "SEO, content and LinkedIn that compound.",
       "tags": [
         "SEO",
         "AI search",
@@ -213,19 +213,19 @@
   "process": [
     {
       "t": "Discovery call",
-      "d": "A focused conversation about your business, your customers and what is not working today. No preparation needed on your side."
+      "d": "Your business, goals and gaps."
     },
     {
       "t": "Plan and quote",
-      "d": "Within days you receive a written plan: what we will make, in what order, by when and for how much."
+      "d": "Scope, dates and a fixed price."
     },
     {
       "t": "Design and build",
-      "d": "We work in short rounds you can see and steer. You review real work, not slides about work."
+      "d": "Short rounds of real work."
     },
     {
       "t": "Launch and grow",
-      "d": "We launch, hand over everything, train your team - and keep improving it month after month if you want us to."
+      "d": "Handover, then ongoing support."
     }
   ],
   "engage": [

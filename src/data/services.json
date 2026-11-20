@@ -7,7 +7,7 @@
   "obj": "cube",
   "short": "Logos, identity systems, guidelines and graphic design that make a company look as good as it is.",
   "meta": "Brand identity and design agency - logos, identity systems, guidelines and decks built by a senior team.",
-  "hero": "Brand identities that look established from day one.",
+  "hero": "Brands that look established from day one.",
   "intro": "Your brand is the first thing a customer, partner or investor judges - usually before they read a single word. We design logos, identity systems and brand guidelines that make your company look credible, consistent and confident everywhere it appears, from the website to the sales deck to the side of a box.",
   "pains": [
    {
@@ -105,7 +105,8 @@
    "marketing-and-growth"
   ],
   "lower": "brand and identity",
-  "tag": "Logos, identity systems and design"
+  "tag": "Logos, identity systems and design",
+  "cta": "brand"
  },
  {
   "slug": "websites-and-apps",
@@ -115,7 +116,7 @@
   "obj": "lattice",
   "short": "Fast, search-ready websites and app interfaces your team can update without calling us.",
   "meta": "Website design and development - fast, search-ready company sites, e-commerce stores and app interfaces.",
-  "hero": "Websites that load fast, rank well and win enquiries.",
+  "hero": "Websites that load fast and win enquiries.",
   "intro": "Your website is your hardest-working salesperson. We design and build company websites, e-commerce stores and app interfaces that load quickly, read clearly on every screen and guide visitors towards an enquiry or a purchase - then we hand you the keys so your own team can keep them up to date.",
   "pains": [
    {
@@ -213,7 +214,8 @@
    "marketing-and-growth"
   ],
   "lower": "websites and apps",
-  "tag": "Fast sites, stores and app interfaces"
+  "tag": "Fast sites, stores and app interfaces",
+  "cta": "website"
  },
  {
   "slug": "ai-agents-and-automation",
@@ -321,7 +323,8 @@
    "consultancy"
   ],
   "lower": "AI agents and automation",
-  "tag": "Agents that do real, repetitive work"
+  "tag": "Agents that do real, repetitive work",
+  "cta": "AI plans"
  },
  {
   "slug": "marketing-and-growth",
@@ -331,7 +334,7 @@
   "obj": "slabs",
   "short": "Paid search, Shopping, LinkedIn, lead generation, email and CRM that compound month after month.",
   "meta": "Marketing and growth agency - paid search, Google Shopping, LinkedIn content, lead generation, email and CRM.",
-  "hero": "Marketing that finds the right buyers - and brings them back.",
+  "hero": "Marketing that finds buyers - and keeps them.",
   "intro": "Good marketing is not a burst of activity before a launch; it is a steady system that keeps the right people finding, trusting and buying from you. We plan and run the channels that matter for your business, connect them to a CRM so no lead is lost, and report results in plain language every month.",
   "pains": [
    {
@@ -429,7 +432,8 @@
    "consultancy"
   ],
   "lower": "marketing",
-  "tag": "Paid, social, email and CRM growth"
+  "tag": "Paid, social, email and CRM growth",
+  "cta": "marketing"
  },
  {
   "slug": "seo",
@@ -439,7 +443,7 @@
   "obj": "sphere",
   "short": "Technical SEO, content and AI-search visibility so buyers find you when they are ready to buy.",
   "meta": "SEO and AI search visibility - technical SEO, content strategy and optimisation for Google and AI answer engines.",
-  "hero": "Be found when your buyers are searching - on Google and in AI answers.",
+  "hero": "Be found on Google - and in AI answers.",
   "intro": "More buying journeys now start with a search or a question to an AI assistant. If your company is not in those results, you are invisible at the exact moment a buyer is ready. We fix the technical foundations of your site, create content that answers real questions and make sure search engines and AI tools understand who you are and what you offer.",
   "pains": [
    {
@@ -537,7 +541,8 @@
    "brand-and-identity"
   ],
   "lower": "SEO and AI search",
-  "tag": "Rank on Google and in AI answers"
+  "tag": "Rank on Google and in AI answers",
+  "cta": "search visibility"
  },
  {
   "slug": "lead-generation-and-sales",
@@ -645,7 +650,8 @@
    "trade-shows-and-events"
   ],
   "lower": "lead generation and sales",
-  "tag": "Prospecting, outreach and sales tools"
+  "tag": "Prospecting, outreach and sales tools",
+  "cta": "pipeline"
  },
  {
   "slug": "influencer-marketing",
@@ -753,7 +759,8 @@
    "brand-and-identity"
   ],
   "lower": "influencer marketing",
-  "tag": "Creators matched to your buyers"
+  "tag": "Creators matched to your buyers",
+  "cta": "creator plans"
  },
  {
   "slug": "video-and-content",
@@ -861,7 +868,8 @@
    "trade-shows-and-events"
   ],
   "lower": "video and content",
-  "tag": "Films, motion, social and graphics"
+  "tag": "Films, motion, social and graphics",
+  "cta": "content"
  },
  {
   "slug": "trade-shows-and-events",
@@ -871,7 +879,7 @@
   "obj": "booth",
   "short": "Booth design, show graphics, pre-show campaigns, sales material and lead follow-up for trade fairs and events.",
   "meta": "Trade show and event marketing agency - booth graphics, show campaigns, sales material, event content and lead follow-up.",
-  "hero": "Trade shows that fill your pipeline, not just your calendar.",
+  "hero": "Trade shows that fill your pipeline.",
   "intro": "Trade shows are expensive, and most of the value is lost before and after the event. We help you plan the show as a sales campaign: a booth that draws the right visitors, materials that explain the product in seconds, a pre-show campaign that books meetings, and follow-up that turns badge scans into conversations.",
   "pains": [
    {
@@ -969,7 +977,8 @@
    "video-and-content"
   ],
   "lower": "trade show and event marketing",
-  "tag": "Booths, show campaigns and follow-up"
+  "tag": "Booths, show campaigns and follow-up",
+  "cta": "next show"
  },
  {
   "slug": "consultancy",
@@ -1077,7 +1086,8 @@
    "brand-and-identity"
   ],
   "lower": "consultancy",
-  "tag": "Go-to-market and growth strategy"
+  "tag": "Go-to-market and growth strategy",
+  "cta": "growth plan"
  },
  {
   "slug": "corporate-materials",
@@ -1087,7 +1097,7 @@
   "obj": "monolith",
   "short": "Company decks, datasheets, investor and board materials, brochures and corporate sites.",
   "meta": "Corporate materials design - company and sales decks, product datasheets, investor and board materials, brochures.",
-  "hero": "The documents a serious company is judged by.",
+  "hero": "The documents a company is judged by.",
   "intro": "Buyers, partners and investors form their view of your company from the documents you send them - often when you are not in the room. We design company decks, product datasheets, investor and board materials and brochures that are precise, consistent and easy for your own team to keep up to date.",
   "pains": [
    {
@@ -1185,6 +1195,7 @@
    "websites-and-apps"
   ],
   "lower": "corporate materials",
-  "tag": "Decks, datasheets and board packs"
+  "tag": "Decks, datasheets and board packs",
+  "cta": "materials"
  }
 ]

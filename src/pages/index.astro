@@ -143,20 +143,37 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     </div>
   </section>
 
-  <!-- TRUST -->
-  <section class="frame row trust" aria-labelledby="t-h">
-    <div class="sec-h in-pad">
-      <div><span class="label faint">/Why teams stay</span><h2 class="h2" id="t-h" data-split data-bold="2">A partner you can hand your brand to.</h2></div>
-      <p class="lead rv">Handing your brand to an outside team is a big decision. These are the promises we work by, on every project, for every client.</p>
+  <!-- TRUST: contract visual -->
+  <section class="frame row trust2" aria-labelledby="t-h">
+    <div class="t2-grid">
+      <div class="t2-l in-pad">
+        <span class="label faint">/Our promise</span>
+        <h2 class="h2" id="t-h" data-split data-bold="2">Six promises, in writing.</h2>
+        <p class="lead rv">Handing over your brand is a big decision. These go into every engagement.</p>
+        <a href="/contact" class="btn btn-p rv" style="align-self:flex-start">Start a project <Arrow /></a>
+      </div>
+      <div class="t2-r hatch">
+        <div class="doc rv">
+          <div class="doc-top"><img src="/logo.svg" alt="" height="16" style="height:16px;width:auto" /><span class="faint">Engagement terms · v1</span></div>
+          <ol class="doc-list">
+            {H.trust.map((t, i) => <li><span class="dn">{`0${i + 1}`}</span><b>{t.t}</b><span class="dk" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></li>)}
+          </ol>
+          <div class="doc-sig">
+            <div><span class="sig-sc">Redbarn Ventures</span><span class="faint">Senior lead</span></div>
+            <div><span class="sig-ln"></span><span class="faint">Your company</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <ul class="t-grid">
-      {H.trust.map((t, i) => (
-        <li class="rv" style={`transition-delay:${(i % 3) * 70}ms`}>
-          <span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
-          <h3 class="h3">{t.t}</h3>
-          <p class="mute">{t.d}</p>
-        </li>
-      ))}
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="frame row nums" aria-label="Redbarn in numbers">
+    <ul>
+      <li class="rv"><b>2023</b><span>Established</span></li>
+      <li class="rv"><b>11</b><span>Services, one team</span></li>
+      <li class="rv"><b>1</b><span>Senior point of contact</span></li>
+      <li class="rv"><b>100<i>%</i></b><span>Of files owned by you</span></li>
     </ul>
   </section>
 
