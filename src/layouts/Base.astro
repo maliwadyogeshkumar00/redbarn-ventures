@@ -12,18 +12,23 @@ interface Props { title?: string; description?: string; image?: string; type?: s
 const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
 const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Global brand, digital and growth agency'
 const canonical = new URL(Astro.url.pathname, Astro.site).href
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://redbarn.ventures/#website', name: 'Redbarn Ventures', alternateName: ['Redbarn', 'redbarn.ventures'], url: 'https://redbarn.ventures/' }
+const isHome = Astro.url.pathname === '/'
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="google-site-verification" content="WTyP1V_DN-lg6zSQ27fO3UIkxYCt6dfQyv-3HQB_Gw4" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{full}</title>
   <meta name="description" content={description} />
   {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
   <meta name="theme-color" content="#FFFFFF" />
   <meta property="og:type" content={type} />
+  <meta name="application-name" content="Redbarn Ventures" />
+  <meta name="apple-mobile-web-app-title" content="Redbarn Ventures" />
   <meta property="og:site_name" content="Redbarn Ventures" />
   <meta property="og:title" content={full} />
   <meta property="og:description" content={description} />
@@ -36,7 +41,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: s
   <script is:inline>
     (function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('rbpl')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('no-pl')}catch(e){d.classList.add('no-pl')}try{if(sessionStorage.getItem('rbw')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('arrive');sessionStorage.removeItem('rbw')}catch(e){}})();
   </script>
-  <script type="application/ld+json" set:html={JSON.stringify([org, ...jsonld])} />
+  <script type="application/ld+json" set:html={JSON.stringify(isHome ? [website, org, ...jsonld] : [org, ...jsonld])} />
 </head>
 <body id="top">
   {!bare && <Preloader />}
