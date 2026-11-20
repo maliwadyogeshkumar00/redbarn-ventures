@@ -8,11 +8,9 @@
 /investment             /   301
 /investment/*           /   301
 /investing              /   301
-/industry               /services   301
-/industry/*             /services   301
-/careers                /about   301
-/insights               /   301
-/insights/*             /   301
 /cookies                /privacy   301
 /work                   /services   301
 /work/*                 /services   301
+/industry   /industries   301
+/industry/*   /industries   301
+/careers   /about   301
