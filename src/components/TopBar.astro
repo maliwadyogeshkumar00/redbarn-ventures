@@ -1,14 +1,26 @@
 ---
+import site from '../data/site.json'
 import Logo from './Logo.astro'
+import Arrow from './Arrow.astro'
+const path = Astro.url.pathname.replace(/\/$/, '') || '/'
+const links = site.nav.filter((l) => l.href !== '/' && l.href !== '/contact')
+const cur = (h: string) => path === h || path.startsWith(h + '/')
 ---
-<header class="top">
-  <div class="wrap top-in">
-    <div class="top-l label"><a href="/contact" class="u">↳ Work with us</a></div>
+<header class="hdr">
+  <div class="hdr-in">
     <Logo />
-    <div class="top-r">
-      <span class="label clock mute" data-clock aria-label="Your local time">--:--</span>
-      <button class="menu-btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false">Menu <i></i></button>
+    <nav class="nav" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={cur(l.href) ? 'page' : undefined}>{l.label}</a>)}
+    </nav>
+    <div class="hdr-cta">
+      <a href="/contact" class="btn btn-o btn-sm">Contact</a>
+      <a href="/contact" class="btn btn-p btn-sm">Start a project <Arrow /></a>
     </div>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet" data-burger><span><i></i><i></i><i></i></span></button>
   </div>
 </header>
-<button class="menu-btn float" type="button" data-menu-open aria-controls="menu" aria-expanded="false">Menu <i></i></button>
+<nav class="sheet" id="sheet" aria-label="Mobile">
+  {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  <a href="/contact">Contact</a>
+  <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
+</nav>

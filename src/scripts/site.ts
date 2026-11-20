@@ -3,6 +3,15 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
 const $ = <T extends Element = HTMLElement>(s: string, el: ParentNode = document) => el.querySelector<T>(s) as T | null
 const $$ = <T extends Element = HTMLElement>(s: string, el: ParentNode = document) => [...el.querySelectorAll<T>(s)]
 
+/* ---------- mobile nav ---------- */
+const burger = $('[data-burger]')
+burger?.addEventListener('click', () => {
+  const open = !document.body.classList.contains('nav-open')
+  document.body.classList.toggle('nav-open', open)
+  burger.setAttribute('aria-expanded', String(open))
+})
+$$('.sheet a').forEach((a) => a.addEventListener('click', () => document.body.classList.remove('nav-open')))
+
 /* ---------- header state ---------- */
 const top = $('.top')
 const onScroll = () => top?.classList.toggle('scrolled', scrollY > 8)
@@ -70,7 +79,7 @@ if (arriving) {
   setTimeout(() => root.classList.remove('arrive', 'go'), 520)
 }
 document.addEventListener('click', (e) => {
-  if (reduce || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+  if (!wipe || reduce || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
   const a = (e.target as Element).closest('a')
   if (!a || a.target || a.hasAttribute('download') || a.dataset.noWipe !== undefined) return
   const url = new URL(a.href, location.href)

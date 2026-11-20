@@ -2,7 +2,6 @@
 import '../styles/global.css'
 import site from '../data/site.json'
 import TopBar from '../components/TopBar.astro'
-import Menu from '../components/Menu.astro'
 import Footer from '../components/Footer.astro'
 
 interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
@@ -19,7 +18,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: s
   <title>{full}</title>
   <meta name="description" content={description} />
   {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-  <meta name="theme-color" content="#F2F2F2" />
+  <meta name="theme-color" content="#FFFFFF" />
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content="Redbarn Ventures" />
   <meta property="og:title" content={full} />
@@ -39,10 +38,8 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: s
   {!bare && <a class="skip" href="#main">Skip to content</a>}
   {!bare && <div class="progress" aria-hidden="true"></div>}
   {!bare && <TopBar />}
-  {!bare && <Menu />}
   <main id="main"><slot /></main>
   {!bare && <Footer />}
-  {!bare && <div class="wipe" aria-hidden="true"></div>}
   <script>import '../scripts/site.ts'</script>
 </body>
 </html>

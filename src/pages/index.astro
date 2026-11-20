@@ -1,135 +1,313 @@
 ---
 import Base from '../layouts/Base.astro'
 import Art from '../components/Art.astro'
-import ProjectCard from '../components/ProjectCard.astro'
 import Icon from '../components/Icon.astro'
 import Arrow from '../components/Arrow.astro'
+import ProjectCard from '../components/ProjectCard.astro'
 import site from '../data/site.json'
 import services from '../data/services.json'
 import work from '../data/work.json'
+const P = Object.fromEntries(work.projects.map((p) => [p.slug, p]))
+const board = [
+  { t: 'Brand and Digital', dot: 'r', items: [{ s: 'parenergy', art: 'cube' }, { s: 'fion-with-love' }, { s: 'wolf-x-group' }] },
+  { t: 'Marketing and Growth', items: [{ s: 'ifmcg-and-inperfume', art: 'slabs' }, { s: 'new-life-for-animals' }] },
+  { t: 'Corporate', items: [{ s: 'wlf-energy' }, { s: 'amp-hour', art: 'monolith' }] },
+  { t: 'Products', items: [{ s: 'ev-lens', art: 'arrow' }, { s: 'verity' }] },
+]
 const featured = work.projects.filter((p) => p.featured).slice(0, 6)
-const spans = ['a', 'b', 'c', 'd', 'e', 'f']
+const wordmarks = ['WLF Energy', 'Wolf X Group', 'Parenergy', 'VersaPowr', 'FLASH WATER', 'Fion with Love']
 ---
 <Base>
-  <section class="hero wrap">
-    <div class="g hero-g">
-      <h1 class="h1 hero-h" data-split data-delay="120">Brands, products and capital - built uncommonly well.</h1>
-      <div class="hero-side">
-        <p class="lead rv">We design, market, advise and invest. One small senior team, from first logo to the boardroom.</p>
-        <a href="/services" class="pill rv" style="transition-delay:.12s">Our Services <span class="dot"><Arrow /></span></a>
+  <!-- HERO -->
+  <section class="frame hero">
+    <div class="hero-grid">
+      <div class="hatch side" aria-hidden="true"></div>
+      <div class="hero-c">
+        <span class="chip rv"><i></i>Design · Marketing · Consultancy · Corporate · Investing</span>
+        <h1 class="display" data-split data-delay="100">Brands, products and capital - built uncommonly well.</h1>
+        <p class="lead rv" style="transition-delay:.25s">We design, market, advise and invest. One small senior team, from first logo to the boardroom.</p>
+        <div class="hero-btns rv" style="transition-delay:.35s">
+          <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
+          <a href="/services" class="btn btn-o">Our services</a>
+        </div>
       </div>
-      <div class="hero-obj"><Art kind="cube" label="Cube with a circular bore, one inner face in red" /></div>
+      <div class="hatch side" aria-hidden="true"></div>
     </div>
-    <div class="hero-foot label mute hl hl-top"><span>/Studio and holding company</span><span>Scroll ↓</span></div>
+    <div class="strip" aria-hidden="true"><span></span><span class="hatch"></span><span></span><span class="hatch"></span><span></span><span class="hatch"></span><span></span></div>
   </section>
 
-  <section class="sec bt" aria-labelledby="h-services">
-    <div class="wrap">
-      <div class="sec-head"><span class="label" id="h-services">/Services</span><a href="/services" class="label arrow-link">All services <Arrow /></a></div>
-      <ol class="svc-strip">
+  <!-- STUDIO BOARD (built in code) -->
+  <section class="frame board-row" aria-label="A snapshot of current studio work">
+    <div class="board rv" role="img" aria-label="Studio board showing current work across Brand and Digital, Marketing and Growth, Corporate and Products">
+      <div class="b-side" aria-hidden="true">
+        <span class="b-mark"><span class="logo"><span class="mark"><i></i><i></i><i></i></span></span></span>
+        {['cube', 'slabs', 'arrow', 'monolith', 'sphere'].map((k, i) => <span class={`b-ico ${i === 0 ? 'on' : ''}`}><Icon kind={k} /></span>)}
+      </div>
+      <div class="b-main" aria-hidden="true">
+        <div class="b-top">
+          <div><span class="faint">studio /</span> board</div>
+          <span class="tag">2026</span>
+        </div>
+        <div class="b-title"><span class="h3">Redbarn studio</span><span class="faint">Live work across the four practices</span></div>
+        <div class="b-tabs"><span class="on">Board</span><span>List</span><span>Timeline</span></div>
+        <div class="b-cols">
+          {board.map((col) => (
+            <div class="b-col">
+              <div class="b-head"><i class={col.dot === 'r' ? 'r' : ''}></i>{col.t} <span class="faint">({col.items.length})</span></div>
+              {col.items.map((it) => { const p = P[it.s]; return (
+                <div class="b-card">
+                  {it.art && <div class="b-thumb hatch"><Art kind={it.art} /></div>}
+                  <div class="b-name">{p.name}</div>
+                  <div class="b-role">{p.role}</div>
+                  <div class="b-tags">{p.tags.slice(0, 2).map((t) => <span class="tag">{t}</span>)}</div>
+                </div>
+              )})}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="board-hatch hatch" aria-hidden="true"></div>
+  </section>
+
+  <!-- WORDMARKS -->
+  <section class="frame row top logos">
+    <p>Work for brands and ventures in energy, consumer and software.</p>
+    <ul>{wordmarks.map((w) => <li>{w}</li>)}</ul>
+  </section>
+
+  <!-- SERVICES: list + switching card -->
+  <section class="frame row svc" aria-labelledby="svc-h">
+    <div class="svc-head in-pad">
+      <h2 class="h2" id="svc-h" data-split>Five disciplines. One team.</h2>
+      <p class="lead rv">Take one or all of them. Every discipline is run by senior people who share one brief, one plan and one point of contact.</p>
+    </div>
+    <div class="svc-body">
+      <div class="svc-list" role="tablist" aria-label="Services">
         {services.map((s, i) => (
-          <li class="rv" style={`transition-delay:${i * 70}ms`}>
-            <a href={`/services/${s.slug}`}>
-              <span class="svc-num label"><Icon kind={s.obj} /> {s.n}</span>
-              <div class="svc-obj"><Art kind={s.obj} /></div>
-              <h3 class="h3">{s.title}</h3>
-              <p class="mute">{s.short}</p>
-              <span class="label arrow-link">Explore <Arrow /></span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section class="sec bt" aria-labelledby="h-work">
-    <div class="wrap">
-      <div class="sec-head"><span class="label" id="h-work">/Selected work</span><a href="/work" class="label arrow-link">All work <Arrow /></a></div>
-      <div class="feat">
-        {featured.map((p, i) => (
-          <div class={`rv f-${spans[i]}`}><ProjectCard p={p} tall={i === 1 || i === 2 || i === 5} showRole={false} /></div>
+          <button class={`svc-item ${i === 0 ? 'on' : ''}`} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`svc-p-${i}`} id={`svc-t-${i}`} data-i={i}>
+            <span class="svc-t"><Icon kind={s.obj} /><span class="h3">{s.title}</span><span class="faint svc-n">{s.n}</span></span>
+            <span class="svc-d mute">{s.short}</span>
+            <span class="svc-bar" aria-hidden="true"></span>
+          </button>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="sec bt" aria-labelledby="h-approach">
-    <div class="wrap">
-      <div class="sec-head"><span class="label" id="h-approach">/Approach</span><span class="label mute">Three steps, every time</span></div>
-      <ol class="g approach">
-        {site.approach.map((a, i) => (
-          <li class="rv" style={`transition-delay:${i * 90}ms`}>
-            <span class="label red">{a.n}</span>
-            <h3 class="h2">{a.title}</h3>
-            <p class="mute">{a.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section class="sec bt" aria-labelledby="h-invest">
-    <div class="wrap">
-      <div class="sec-head"><span class="label" id="h-invest">/Investing</span><span class="label mute">Own capital only</span></div>
-      <div class="g invest">
-        <div class="inv-obj"><Art kind="sphere" /></div>
-        <div class="inv-copy">
-          <h2 class="h2" data-split>We back a few founders with our own capital.</h2>
-          <p class="lead mute rv">Long-term, founder-led and close to the work. When we invest, we usually build alongside.</p>
-          <a href="/investing" class="pill rv">Investing <span class="dot"><Arrow /></span></a>
+      <div class="svc-stage">
+        <div class="svc-frame hatch">
+          {services.map((s, i) => (
+            <div class={`svc-card ${i === 0 ? 'on' : ''}`} role="tabpanel" id={`svc-p-${i}`} aria-labelledby={`svc-t-${i}`} hidden={i !== 0}>
+              <div class="sc-top"><span class="faint">services /</span>&nbsp;{s.slug}</div>
+              <div class="sc-title"><span class="h2">{s.title}</span></div>
+              <div class="sc-art"><Art kind={s.obj} /></div>
+              <div class="sc-row"><span class="faint">Includes</span><div class="sc-tags">{s.included.map((t) => <span class="tag">{t}</span>)}</div></div>
+              <div class="sc-row"><span class="faint">Process</span><ol class="sc-steps">{s.process.map((p, j) => <li><span class="faint">0{j + 1}</span> {p.t}</li>)}</ol></div>
+              <a class="sc-link" href={`/services/${s.slug}`}>Explore {s.title} <Arrow /></a>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
+
+  <!-- APPROACH -->
+  <section class="frame row approach" aria-labelledby="ap-h">
+    <div class="ap-head in-pad"><span class="label faint">/Approach</span><h2 class="h2" id="ap-h" data-split>How every project runs.</h2></div>
+    <ol class="ap-grid">
+      {site.approach.map((a, i) => (
+        <li class="rv" style={`transition-delay:${i * 80}ms`}>
+          <span class="ap-n">{a.n}</span>
+          <h3 class="h3">{a.title}</h3>
+          <p class="mute">{a.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="frame row work" aria-labelledby="w-h">
+    <div class="w-head in-pad">
+      <div><span class="label faint">/Selected work</span><h2 class="h2" id="w-h" data-split>Recent work.</h2></div>
+      <a href="/work" class="btn btn-o">All work <Arrow /></a>
+    </div>
+    <div class="w-grid in-pad">
+      {featured.map((p, i) => <ProjectCard p={p} class="rv" />)}
+    </div>
+  </section>
+
+  <!-- INVESTING -->
+  <section class="frame row inv" aria-labelledby="i-h">
+    <div class="inv-copy in-pad">
+      <span class="label faint">/Investing</span>
+      <h2 class="h2" id="i-h" data-split>We back a few founders with our own capital.</h2>
+      <p class="lead rv">Long-term, founder-led and close to the work. When we invest, we usually build alongside.</p>
+      <a href="/investing" class="btn btn-o rv">How we invest <Arrow /></a>
+      <p class="faint fine">Redbarn invests its own capital only. Nothing on this site is investment advice.</p>
+    </div>
+    <div class="inv-art hatch"><div class="inv-box"><Art kind="sphere" /></div></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="frame row cta">
+    <div class="hatch side" aria-hidden="true"></div>
+    <div class="cta-c">
+      <h2 class="display" data-split>Let's build something uncommon.</h2>
+      <p class="lead rv">Tell us what you are working on. We reply to every message personally.</p>
+      <div class="hero-btns rv"><a href="/contact" class="btn btn-p">Start a project <Arrow /></a><a href={`mailto:${site.email}`} class="btn btn-o">{site.email}</a></div>
+    </div>
+    <div class="hatch side" aria-hidden="true"></div>
+  </section>
 </Base>
 
+<script>
+  const items = [...document.querySelectorAll<HTMLButtonElement>('.svc-item')]
+  const cards = [...document.querySelectorAll<HTMLElement>('.svc-card')]
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+  let cur = 0, timer = 0, paused = false
+  const go = (i: number) => {
+    cur = (i + items.length) % items.length
+    items.forEach((b, j) => { b.classList.toggle('on', j === cur); b.setAttribute('aria-selected', String(j === cur)); b.style.setProperty('--run', '0') })
+    cards.forEach((c, j) => {
+      const on = j === cur
+      c.hidden = !on; c.classList.toggle('on', on)
+      const art = c.querySelector('.art')
+      if (on && art) { art.classList.remove('in'); requestAnimationFrame(() => requestAnimationFrame(() => art.classList.add('in'))) }
+    })
+    restart()
+  }
+  const restart = () => {
+    clearTimeout(timer)
+    const b = items[cur]
+    b.classList.remove('run'); void b.offsetWidth
+    if (!reduce && !paused) { b.classList.add('run'); timer = window.setTimeout(() => go(cur + 1), 6000) }
+  }
+  items.forEach((b, i) => b.addEventListener('click', () => go(i)))
+  const list = document.querySelector('.svc-list')
+  list?.addEventListener('keydown', (e) => {
+    const k = (e as KeyboardEvent).key
+    if (k === 'ArrowDown' || k === 'ArrowRight') { e.preventDefault(); go(cur + 1); items[cur].focus() }
+    if (k === 'ArrowUp' || k === 'ArrowLeft') { e.preventDefault(); go(cur - 1); items[cur].focus() }
+  })
+  const sec = document.querySelector('.svc')
+  sec?.addEventListener('mouseenter', () => { paused = true; clearTimeout(timer); items[cur].classList.remove('run') })
+  sec?.addEventListener('mouseleave', () => { paused = false; restart() })
+  if (sec && 'IntersectionObserver' in window) new IntersectionObserver(([e]) => { if (e.isIntersecting) restart(); else clearTimeout(timer) }, { threshold: 0.3 }).observe(sec)
+</script>
+
 <style>
-  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:120px;position:relative}
-  .hero-g{align-items:end;position:relative;flex:1;grid-template-rows:1fr auto}
-  .hero-h{grid-column:1/9;grid-row:2;align-self:end;padding-bottom:clamp(28px,4vw,56px)}
-  .hero-side{grid-column:9/13;grid-row:1;align-self:start;display:flex;flex-direction:column;gap:28px;align-items:flex-start;padding-top:clamp(40px,8vh,110px);max-width:380px}
-  .hero-obj{grid-column:9/13;grid-row:2;width:100%;max-width:440px;justify-self:end;margin-bottom:12px}
-  .hero-foot{display:flex;justify-content:space-between;padding:16px 0 22px}
+  .hero-grid{display:grid;grid-template-columns:72px 1fr 72px}
+  .side{border-right:1px solid var(--line)}
+  .hero-grid .side:last-child,.cta .side:last-child{border-right:0;border-left:1px solid var(--line)}
+  .hero-c{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding:clamp(72px,11vw,128px) var(--pad) clamp(56px,8vw,96px)}
+  .hero-c h1{max-width:15ch}
+  .hero-c .lead{max-width:46ch}
+  .hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .strip{display:grid;grid-template-columns:1fr 1.4fr .6fr 1.4fr .6fr 1.4fr 1fr;height:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .strip span{border-right:1px solid var(--line)}.strip span:last-child{border-right:0}
 
-  .svc-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-left:1px solid var(--line)}
-  .svc-strip li{border-right:1px solid var(--line)}
-  .svc-strip a{display:flex;flex-direction:column;gap:14px;padding:6px 20px 24px;height:100%}
-  .svc-num{display:flex;align-items:center;gap:8px}
-  .svc-obj{width:100%;margin:6px 0}
-  .svc-strip p{font-size:14px;min-height:3em}
-  .svc-strip a .arrow-link{margin-top:auto}
-  .svc-strip a:hover .arrow-link svg{transform:translateX(4px);color:var(--red)}
+  .board-row{padding:36px clamp(16px,5vw,64px) 0;position:relative}
+  .board{position:relative;z-index:1;display:grid;grid-template-columns:52px 1fr;border:1px solid var(--line-2);border-radius:14px;background:#fff;overflow:hidden;height:min(620px,72vw)}
+  .b-side{border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0;background:#FCFCFC}
+  .b-mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;display:grid;place-items:center;margin-bottom:6px}
+  .b-mark .logo{color:#fff}.b-mark .mark i{width:4px;height:11px}
+  .b-ico{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#777}
+  .b-ico.on{background:#F1F1F1;color:var(--ink)}
+  .b-main{padding:14px 20px 0;min-width:0;display:flex;flex-direction:column}
+  .b-top{display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
+  .b-title{display:flex;flex-direction:column;gap:2px;padding:16px 0 12px}
+  .b-title .faint{font-size:12px}
+  .b-tabs{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:8px;width:max-content;font-size:12.5px;color:var(--mute);margin-bottom:16px}
+  .b-tabs span{padding:4px 10px;border-radius:5px}.b-tabs .on{background:#F1F1F1;color:var(--ink)}
+  .b-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;flex:1;min-height:0;overflow:hidden}
+  .b-col{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .b-head{font-size:12.5px;display:flex;align-items:center;gap:6px;padding-bottom:2px}
+  .b-head i{width:7px;height:7px;border-radius:50%;background:#BDBDBD}.b-head i.r{background:var(--red)}
+  .b-card{border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;background:#fff}
+  .b-thumb{border-radius:6px;border:1px solid var(--line);aspect-ratio:16/9;position:relative;overflow:hidden}
+  .b-thumb :global(.art){position:absolute;inset:10% 0;width:100%;height:80%}
+  .b-name{font-size:13.5px;letter-spacing:-.01em}
+  .b-role{font-size:12px;color:var(--mute);line-height:1.4}
+  .b-tags{display:flex;gap:4px;flex-wrap:wrap}
+  .board-hatch{position:absolute;left:50%;transform:translateX(-50%);bottom:-44px;width:60%;height:120px;border:1px solid var(--line);z-index:0}
 
-  .feat{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px var(--gut)}
-  .f-a{grid-column:1/8}.f-b{grid-column:9/13;margin-top:18%}
-  .f-c{grid-column:2/6}.f-d{grid-column:7/13;margin-top:-12%}
-  .f-e{grid-column:1/7}.f-f{grid-column:8/12;margin-top:22%}
-    .approach li{grid-column:span 4;display:flex;flex-direction:column;gap:18px;padding:0 24px 0 0;border-left:1px solid var(--line);padding-left:20px;min-height:280px}
-  .approach li p{max-width:34ch;margin-top:auto}
+  .logos{display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:24px;padding:64px var(--pad) 40px;margin-top:44px}
+  .logos p{font-size:15px;max-width:30ch}
+  .logos ul{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 28px}
+  .logos li{font-size:clamp(17px,1.7vw,22px);letter-spacing:-.03em;color:#A3A3A3;font-weight:600;transition:color .3s}
+  .logos li:hover{color:var(--ink)}
 
-  .invest{align-items:center}
-  .inv-obj{grid-column:1/6;max-width:520px;width:100%}
-  .inv-copy{grid-column:7/13;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+  .svc-head,.ap-head,.w-head{padding-top:clamp(64px,8vw,104px);padding-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end}
+  .svc-head .lead{max-width:46ch}
+  .svc-body{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  .svc-list{display:flex;flex-direction:column;border-right:1px solid var(--line)}
+  .svc-item{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:8px;padding:22px var(--pad);border-bottom:1px solid var(--line);color:var(--faint);transition:color .3s,background .3s}
+  .svc-item:last-child{border-bottom:0}
+  .svc-item:hover{background:#FCFCFC}
+  .svc-item:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+  .svc-item.on{color:var(--ink)}
+  .svc-t{display:flex;align-items:center;gap:10px}
+  .svc-n{margin-left:auto;font-size:12px}
+  .svc-d{font-size:14px;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s var(--ease),opacity .4s}
+  .svc-item.on .svc-d{max-height:60px;opacity:1}
+  .svc-bar{position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%}
+  .svc-item.on .svc-bar{transform:scaleX(1)}
+  .svc-item.run .svc-bar{transform:scaleX(0);animation:bar 6s linear forwards}
+  @keyframes bar{to{transform:scaleX(1)}}
+  .svc-stage{padding:32px clamp(16px,4vw,48px);display:grid;place-items:center}
+  .svc-frame{width:100%;max-width:470px;padding:22px;border:1px solid var(--line)}
+  .svc-card{background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px}
+  .svc-card[hidden]{display:none}
+  .svc-card.on{animation:cardIn .6s var(--ease)}
+  @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .sc-top{font-size:12px;display:flex}
+  .sc-title .h2{font-size:30px}
+  .sc-art{height:170px;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sc-art :global(.art){position:absolute;inset:14px 0;width:100%;height:calc(100% - 28px)}
+  .sc-row{display:grid;grid-template-columns:72px 1fr;gap:10px;font-size:13px;align-items:start}
+  .sc-tags{display:flex;flex-wrap:wrap;gap:5px}
+  .sc-steps{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+  .sc-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;padding-top:6px;border-top:1px solid var(--line)}
+  .sc-link :global(svg){width:12px;height:12px;transition:transform .3s var(--ease)}
+  .sc-link:hover :global(svg){transform:translateX(3px);color:var(--red)}
+
+  .ap-head{grid-template-columns:1fr;gap:10px}
+  .ap-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .ap-grid li{padding:28px var(--pad) 40px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-height:240px}
+  .ap-grid li:last-child{border-right:0}
+  .ap-n{width:30px;height:30px;border-radius:7px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:12px}
+  .ap-grid li:first-child .ap-n{border-color:var(--red);color:var(--red)}
+  .ap-grid p{font-size:14.5px;max-width:34ch}
+
+  .w-head{grid-template-columns:1fr auto}
+  .w-head h2{margin-top:10px}
+  .w-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+
+  .inv{display:grid;grid-template-columns:1fr 1fr}
+  .inv-copy{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px);border-right:1px solid var(--line)}
+  .fine{font-size:12px;margin-top:12px}
+  .inv-art{display:grid;place-items:center;padding:40px}
+  .inv-box{width:min(320px,80%);background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:28px}
+
+  .cta{display:grid;grid-template-columns:72px 1fr 72px}
+  .cta .side{border-right:1px solid var(--line)}
+  .cta-c{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:clamp(72px,10vw,120px) var(--pad)}
+  .cta-c h2{max-width:14ch}
 
   @media (max-width:1024px){
-    .svc-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
-    .svc-strip li{border-bottom:1px solid var(--line)}
-    .hero-h{grid-column:1/13}
-    .hero-side{grid-column:1/13;grid-row:auto;padding-top:24px}
-    .hero-g{grid-template-rows:auto}
-    .hero-obj{grid-column:7/13;grid-row:1;max-width:320px}
-    .approach li{grid-column:span 12;min-height:0;padding:28px 0 28px 20px;border-left:0;border-top:1px solid var(--line)}
+    .b-cols{grid-template-columns:repeat(3,minmax(0,1fr))}.b-col:nth-child(4){display:none}
+    .w-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media (max-width:768px){
-    .hero{min-height:auto;padding-top:96px}
-    .hero-g{display:flex;flex-direction:column;align-items:stretch}
-    .hero-obj{order:-1;max-width:260px;align-self:flex-end;margin:0}
-    .hero-h{padding-bottom:20px}
-    .hero-side{padding-top:0;padding-bottom:32px}
-    .svc-strip{grid-template-columns:1fr}
-    .feat{display:flex;flex-direction:column;gap:40px}
-    .feat .card{margin-top:0!important}
-    .inv-obj{max-width:300px}
-    .invest{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+    .hero-grid,.cta{grid-template-columns:16px 1fr 16px}
+    .board{grid-template-columns:1fr;height:460px}.b-side{display:none}
+    .b-cols{grid-template-columns:repeat(2,minmax(0,1fr))}.b-col:nth-child(3){display:none}
+    .logos{grid-template-columns:1fr}
+    .logos ul{justify-content:flex-start}
+    .svc-head,.w-head,.svc-body,.inv{grid-template-columns:1fr}
+    .svc-list{border-right:0;border-bottom:1px solid var(--line)}
+    .ap-grid{grid-template-columns:1fr}
+    .ap-grid li{border-right:0;border-bottom:1px solid var(--line);min-height:0}
+    .w-grid{grid-template-columns:1fr}
+    .inv-copy{border-right:0;border-bottom:1px solid var(--line)}
+    .strip{grid-template-columns:1fr 1fr 1fr 1fr}.strip span:nth-child(n+5){display:none}
   }
 </style>
