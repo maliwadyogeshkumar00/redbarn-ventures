@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import services from '../data/services.json'
+import { getPosts } from '../posts'
+
+const posts = getPosts()
+const years = [...new Set(posts.map((p) => new Date(p.date).getFullYear()))].sort((a, b) => b - a)
+const groups = [
+  { k: 'Company', items: [['Home', '/'], ['About', '/about/'], ['Process', '/process/'], ['Industries', '/industries/'], ['Contact', '/contact/']] },
+  { k: 'Capabilities', items: [['All services', '/services/'], ['AI agents and automation', '/ai/'], ['Insights', '/insights/']] },
+  { k: 'Legal', items: [['Privacy', '/privacy/'], ['Cookies', '/cookies/'], ['Terms', '/terms/'], ['Disclaimer', '/disclaimer/'], ['Accessibility', '/accessibility/'], ['XML sitemap', '/sitemap.xml']] },
+]
+---
+<Base title="Sitemap" description="Every page on the Redbarn Ventures website, in one place - services, insights, company and legal pages.">
+  <PageHero label="Sitemap" title="Every page, in one place." lead={`${services.length} services, ${posts.length} insights and the pages around them.`} crumbs={[{ t: 'Sitemap' }]} />
+
+  <section class="frame row" aria-label="Main pages">
+    <div class="sm-top">
+      {groups.map((g) => (
+        <div class="sm-col">
+          <span class="label faint">{g.k}</span>
+          <ul>{g.items.map(([t, h]) => <li><a href={h}>{t}<span aria-hidden="true">→</span></a></li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="frame row" aria-labelledby="sm-s">
+    <div class="sm-head in-pad"><span class="label faint">/Services</span><h2 class="h2" id="sm-s" data-split data-bold="1">Eleven services.</h2></div>
+    <ul class="sm-svc">
+      {services.map((s) => <li><a href={`/services/${s.slug}/`}><span class="sm-n">{s.n}</span><b>{s.title}</b><small>{s.tag}</small></a></li>)}
+    </ul>
+  </section>
+
+  <section class="frame row" aria-labelledby="sm-i">
+    <div class="sm-head in-pad"><span class="label faint">/Insights</span><h2 class="h2" id="sm-i" data-split data-bold="1">Every article.</h2></div>
+    <div class="sm-years">
+      {years.map((y) => (
+        <div class="sm-year">
+          <span class="sm-y">{y}</span>
+          <ul>{posts.filter((p) => new Date(p.date).getFullYear() === y).map((p) => <li><a href={`/insights/${p.slug}/`}>{p.title}</a></li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sm-top{display:grid;grid-template-columns:repeat(3,1fr)}
+  .sm-col{padding:32px var(--pad);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+  .sm-col:last-child{border-right:0}
+  .sm-col ul{display:flex;flex-direction:column}
+  .sm-col a{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-bottom:1px solid var(--line);font-size:17px;letter-spacing:-.015em;transition:color .2s,padding .3s var(--ease)}
+  .sm-col a span{color:var(--line-2);transition:color .2s,transform .3s var(--ease)}
+  .sm-col a:hover{color:var(--red);padding-left:4px}
+  .sm-col a:hover span{color:var(--red);transform:translateX(3px)}
+  .sm-head{padding-top:clamp(40px,5vw,64px);padding-bottom:24px;display:flex;flex-direction:column;gap:12px}
+  .sm-svc{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .sm-svc li{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sm-svc li:nth-child(3n){border-right:0}
+  .sm-svc a{display:grid;grid-template-columns:40px 1fr;gap:2px 10px;padding:20px var(--pad);min-height:88px;transition:background .2s}
+  .sm-svc a:hover{background:#FBE9EA}
+  .sm-svc a:hover b{color:var(--red)}
+  .sm-n{grid-row:span 2;font-size:12px;color:var(--faint);padding-top:4px;font-variant-numeric:tabular-nums}
+  .sm-svc b{font-weight:600;font-size:16px;letter-spacing:-.015em;transition:color .2s}
+  .sm-svc small{font-size:14px;color:var(--mute)}
+  .sm-years{border-top:1px solid var(--line)}
+  .sm-year{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--line)}
+  .sm-y{padding:20px var(--pad);font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.05em;color:var(--red);line-height:1;border-right:1px solid var(--line)}
+  .sm-year ul{display:grid;grid-template-columns:1fr 1fr;padding:10px var(--pad);gap:0 32px}
+  .sm-year a{display:flex;align-items:center;min-height:44px;border-bottom:1px dashed var(--line);font-size:15px;transition:color .2s}
+  .sm-year a:hover{color:var(--red)}
+  @media (max-width:900px){.sm-top,.sm-svc{grid-template-columns:1fr}.sm-col{border-right:0;border-bottom:1px solid var(--line)}.sm-svc li{border-right:0}.sm-year{grid-template-columns:1fr}.sm-y{border-right:0;padding-bottom:0}.sm-year ul{grid-template-columns:1fr}}
+</style>

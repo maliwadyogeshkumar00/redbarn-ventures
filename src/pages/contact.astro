@@ -149,7 +149,7 @@ const faq = [
   .fld{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;border:0;padding:0;min-width:0}
   .fld label,.fld legend{font-size:13px;color:#333;padding:0;margin-bottom:6px}
   .fld i{font-style:normal;color:var(--red)}
-  .fld input,.fld textarea{width:100%;border:1px solid var(--line-2);border-radius:8px;padding:11px 12px;font-size:15px;background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
+  .fld input,.fld textarea{width:100%;border:1px solid var(--line-2);border-radius:8px;padding:12px 14px;font-size:16px;background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
   .fld textarea{resize:vertical;min-height:130px;line-height:1.5}
   .fld input:focus,.fld textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(163,16,28,.12)}
   .fld input::placeholder,.fld textarea::placeholder{color:#AAA}
@@ -157,7 +157,8 @@ const faq = [
   .fld.bad .err{display:block}
   .fld.bad input,.fld.bad textarea{border-color:var(--red)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .pick input{position:absolute;opacity:0;pointer-events:none}
+  .pick input{position:absolute;opacity:0;pointer-events:none;width:1px!important;height:1px}
+  .pick{position:relative}
   .pick span{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border:1px solid var(--line-2);border-radius:7px;font-size:13.5px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
   .pick span::before{content:"";width:12px;height:12px;border-radius:3px;border:1px solid var(--line-2);transition:background .2s,border-color .2s}
   .pick:hover span{border-color:var(--red)}
@@ -193,6 +194,7 @@ const faq = [
   .ct-next b{font-weight:400;font-size:15px}
   .ct-next p{font-size:14px;margin-top:2px}
   .ct-block p{font-size:14.5px}
+  @media (max-width:600px){.ct-card{padding:0;border:0}.ct-in{padding:20px 16px;border-radius:14px}.ct-form-wrap{padding-left:16px!important;padding-right:16px!important}}
   @media (max-width:900px){.ct-grid{grid-template-columns:1fr}.ct-form-wrap{border-right:0;border-bottom:1px solid var(--line)}.ct-two{grid-template-columns:1fr;gap:0}}
   .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
   .qk{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:10px;border:1px solid var(--line-2);border-radius:10px;font-size:13.5px;line-height:1.25;transition:border-color .2s,background .2s}

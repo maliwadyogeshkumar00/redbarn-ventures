@@ -412,3 +412,4 @@ html:not(.no-pl) .xh-oc{animation-delay:1.7s}
 .doc-foot{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
 .doc-foot .mark{display:inline-flex;gap:2px}
 .doc-foot .mark i{width:3px;height:12px;background:var(--red);transform:skewX(-14deg);border-radius:1px}
+@media (max-width:900px){.st-row{grid-template-columns:1fr!important}.st-row>*{min-width:0}}
