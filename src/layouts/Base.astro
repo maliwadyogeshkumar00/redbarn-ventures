@@ -69,6 +69,7 @@ const speculation = { prefetch: [{ where: { and: [{ href_matches: '/*' }, { not:
   <script type="speculationrules" set:html={JSON.stringify(speculation)} />
 </head>
 <body id="top">
+  <Fragment set:html="<!--email_off-->" />
   {!bare && <a class="skip" href="#main">Skip to content</a>}
   {!bare && <div class="progress" aria-hidden="true"></div>}
   {!bare && <TopBar />}
@@ -78,5 +79,6 @@ const speculation = { prefetch: [{ where: { and: [{ href_matches: '/*' }, { not:
   {!bare && <Brief />}
   {!bare && <Consent />}
   <script>import '../scripts/site.ts'</script>
+  <Fragment set:html="<!--email_on-->" />
 </body>
 </html>
