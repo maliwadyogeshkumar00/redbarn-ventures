@@ -5,6 +5,7 @@ import Faq from '../components/Faq.astro'
 import Arrow from '../components/Arrow.astro'
 import Art from '../components/Art.astro'
 import LinkedIn from '../components/LinkedIn.astro'
+import XLogo from '../components/XLogo.astro'
 import H from '../data/home.json'
 import site from '../data/site.json'
 import services from '../data/services.json'
@@ -71,6 +72,7 @@ const faq = [
           <span class="label faint">/Direct</span>
           <a class="ct-big" href={`mailto:${site.email}`}>{site.email}</a>
           <a class="btn btn-o" href={site.linkedin} target="_blank" rel="noopener" style="align-self:flex-start"><LinkedIn /> Redbarn Ventures on LinkedIn</a>
+          <a class="btn btn-o" href={site.x} target="_blank" rel="noopener me" style="align-self:flex-start"><XLogo /> Follow {site.xHandle} on X</a>
         </div>
         <div class="ct-block">
           <span class="label faint">/What happens next</span>

@@ -106,38 +106,43 @@ addEventListener('pageshow', (e) => { if (e.persisted) { wipe?.classList.remove(
 /* ---------- line-mask headline split ---------- */
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!)
 type Tok = { w: string; b: boolean }
-const splitEl = (el: HTMLElement) => {
-  let toks: Tok[]
-  if (el.dataset.toks) toks = JSON.parse(el.dataset.toks)
-  else {
-    toks = []
-    el.childNodes.forEach((n) => {
-      const bold = n.nodeType === 1 && /^(B|STRONG)$/.test((n as Element).tagName)
-      ;(n.textContent || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).forEach((w) => toks.push({ w, b: bold }))
-    })
-    const nb = Number(el.dataset.bold || 0)
-    if (nb > 0 && !toks.some((t) => t.b)) toks.slice(-nb).forEach((t) => (t.b = true))
-    el.dataset.toks = JSON.stringify(toks)
-  }
-  const text = toks.map((t) => t.w).join(' ')
-  const wrap = (t: Tok) => (t.b ? `<b>${esc(t.w)}</b>` : esc(t.w))
-  el.innerHTML = toks.map((t) => `<span class="w" style="display:inline-block">${wrap(t)}</span>`).join(' ')
-  const lines: Tok[][] = []
-  let lastTop = -1
-  $$<HTMLElement>('.w', el).forEach((w, i) => {
-    const t = w.offsetTop
-    if (Math.abs(t - lastTop) > 2) { lines.push([]); lastTop = t }
-    lines[lines.length - 1].push(toks[i])
+/* tokens per headline, parsed once */
+const toksOf = (el: HTMLElement): Tok[] => {
+  if (el.dataset.toks) return JSON.parse(el.dataset.toks)
+  const toks: Tok[] = []
+  el.childNodes.forEach((n) => {
+    const bold = n.nodeType === 1 && /^(B|STRONG)$/.test((n as Element).tagName)
+    ;(n.textContent || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).forEach((w) => toks.push({ w, b: bold }))
   })
-  el.innerHTML = lines.map((l, i) => `<span class="ln"><span style="transition-delay:${(Number(el.dataset.delay || 0) + i * 80)}ms">${l.map(wrap).join(' ')}</span></span>`).join('')
-  el.setAttribute('aria-label', text)
-  el.classList.add('ready')
+  const nb = Number(el.dataset.bold || 0)
+  if (nb > 0 && !toks.some((t) => t.b)) toks.slice(-nb).forEach((t) => (t.b = true))
+  el.dataset.toks = JSON.stringify(toks)
+  return toks
+}
+const wrap = (t: Tok) => (t.b ? `<b>${esc(t.w)}</b>` : esc(t.w))
+/* batched: write all, measure all (one layout), write all - instead of one forced layout per headline */
+const splitAll = (els: HTMLElement[]) => {
+  const all = els.map((el) => ({ el, toks: toksOf(el) }))
+  all.forEach(({ el, toks }) => { el.innerHTML = toks.map((t) => `<span class="w" style="display:inline-block">${wrap(t)}</span>`).join(' ') })
+  const tops = all.map(({ el }) => $$<HTMLElement>('.w', el).map((w) => w.offsetTop))
+  all.forEach(({ el, toks }, k) => {
+    const lines: Tok[][] = []
+    let lastTop = -1
+    tops[k].forEach((t, i) => {
+      if (Math.abs(t - lastTop) > 2) { lines.push([]); lastTop = t }
+      lines[lines.length - 1].push(toks[i])
+    })
+    el.innerHTML = lines.map((l, i) => `<span class="ln"><span style="transition-delay:${(Number(el.dataset.delay || 0) + i * 80)}ms">${l.map(wrap).join(' ')}</span></span>`).join('')
+    el.setAttribute('aria-label', toks.map((t) => t.w).join(' '))
+    el.classList.add('ready')
+  })
 }
 const splits = $$('[data-split]')
-const doSplit = () => splits.forEach(splitEl)
+const doSplit = () => { if (splits.length) splitAll(splits) }
 if (document.fonts?.ready) document.fonts.ready.then(doSplit); else doSplit()
-let rz = 0
-addEventListener('resize', () => { clearTimeout(rz); rz = window.setTimeout(doSplit, 150) })
+/* re-split only when the width changes - mobile URL-bar show/hide fires height-only resizes while scrolling */
+let rz = 0, lastW = innerWidth
+addEventListener('resize', () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rz); rz = window.setTimeout(doSplit, 150) })
 
 /* ---------- reveal on scroll ---------- */
 const startReveal = () => {
@@ -208,8 +213,10 @@ if (arts.length) {
     const step = () => {
       raf = 0
       let moving = false
-      vis.forEach((a) => {
-        const r = a.getBoundingClientRect(), s = st.get(a)!
+      /* read all rects first, then write transforms - avoids read/write layout thrash */
+      const rects = [...vis].map((a) => [a, a.getBoundingClientRect()] as const)
+      rects.forEach(([a, r]) => {
+        const s = st.get(a)!
         const cx = r.left + r.width / 2, cy = r.top + r.height / 2
         const nx = fine ? Math.max(-1, Math.min(1, (px - cx) / (innerWidth / 2))) : 0
         const ny = fine ? Math.max(-1, Math.min(1, (py - cy) / (innerHeight / 2))) : 0

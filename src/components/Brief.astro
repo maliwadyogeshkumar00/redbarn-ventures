@@ -37,7 +37,7 @@ import site from '../data/site.json'
   // desktop: leaving intent (pointer heads to the tab bar or close button)
   document.documentElement.addEventListener('mouseleave', function(e){ if(e.clientY<=0 && Date.now()-t0>8000) show() });
   // touch devices: a quick scroll back up after reading most of the page
-  if(matchMedia('(pointer: coarse)').matches){ var ly=scrollY, deep=false; addEventListener('scroll', function(){ var m=document.documentElement.scrollHeight-innerHeight; if(m>0&&scrollY/m>0.5) deep=true; if(deep && ly-scrollY>140 && Date.now()-t0>15000) show(); ly=scrollY }, {passive:true}) }
+  if(matchMedia('(pointer: coarse)').matches){ var ly=scrollY, deep=false; var m=0; function mm(){ m=document.documentElement.scrollHeight-innerHeight } addEventListener('load', mm); addEventListener('resize', mm); mm(); addEventListener('scroll', function(){ if(m>0&&scrollY/m>0.5) deep=true; if(deep && ly-scrollY>140 && Date.now()-t0>15000) show(); ly=scrollY }, {passive:true}) }
   el.querySelector('[data-nl-close]').addEventListener('click', close);
   addEventListener('keydown', function(e){ if(e.key==='Escape'&&el.classList.contains('on')) close() });
   var f=document.getElementById('nl-form'), err=el.querySelector('.nl-err'), btn=f.querySelector('button'), lbl=btn.querySelector('.lbl');
