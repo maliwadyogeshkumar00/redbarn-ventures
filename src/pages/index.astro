@@ -8,7 +8,6 @@ import services from '../data/services.json'
 import H from '../data/home.json'
 import Marquee from '../components/Marquee.astro'
 import AgentFlow from '../components/AgentFlow.astro'
-import Photo from '../components/Photo.astro'
 import Faq from '../components/Faq.astro'
 const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.slice(0, 3).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
@@ -89,8 +88,6 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     </ol>
   </section>
 
-  <Photo name="home" alt="A senior strategy team reviewing website layouts and growth charts in a glass-walled meeting room" caption="Strategy, design and growth in one room" />
-
   <!-- SERVICES -->
   <section class="frame row svc" id="services" aria-labelledby="svc-h">
     <div class="sec-h in-pad">
@@ -159,10 +156,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
           <ol class="doc-list">
             {H.trust.map((t, i) => <li><span class="dn">{`0${i + 1}`}</span><b>{t.t}</b><span class="dk" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></li>)}
           </ol>
-          <div class="doc-sig">
-            <div><span class="sig-sc">Redbarn Ventures</span><span class="faint">Senior lead</span></div>
-            <div><span class="sig-ln"></span><span class="faint">Your company</span></div>
-          </div>
+          <div class="doc-foot"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Included in every engagement - project or partnership.</span></div>
         </div>
       </div>
     </div>

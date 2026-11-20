@@ -3,7 +3,6 @@ import Base from '../../layouts/Base.astro'
 import CtaBand from '../../components/CtaBand.astro'
 import Art from '../../components/Art.astro'
 import Arrow from '../../components/Arrow.astro'
-import Photo from '../../components/Photo.astro'
 import { getPosts } from '../../posts'
 export function getStaticPaths() {
   const posts = getPosts()
@@ -29,7 +28,6 @@ const ld = [{ '@context': 'https://schema.org', '@type': 'Article', headline: p.
       <div class="hatch side" aria-hidden="true"></div>
     </div>
   </section>
-  <Photo name={`insight-${p.slug}`} alt={p.title} caption={p.category} />
   <section class="frame row post">
     <aside class="post-side">
       <div class="ps-art hatch"><Art kind={p.art} /></div>
