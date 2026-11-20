@@ -36,10 +36,11 @@ const tdesc = [
   </section>
 
   <section class="frame row" aria-labelledby="all-h">
-    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/All insights</span><h2 class="h2" id="all-h" data-split data-bold="2">Latest guides.</h2></div></div>
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/All insights</span><h2 class="h2" id="all-h" data-split data-bold="2">Every guide, since 2023.</h2></div></div>
+    <div class="ins-filter in-pad" role="group" aria-label="Filter by topic">{['All', ...new Set(posts.map((p) => p.category))].map((c, i) => <button type="button" class={`tag fbtn ${i === 0 ? 'on' : ''}`} data-f={c}>{c}</button>)}</div>
     <div class="ins-grid in-pad">
       {rest.map((p) => (
-        <a href={`/insights/${p.slug}`} class="ins-c rv">
+        <a href={`/insights/${p.slug}`} class="ins-c rv" data-cat={p.category}>
           <div class="ic-tile hatch"><Art kind={p.art} /><span class="sg-n">{p.category}</span></div>
           <div class="ic-b"><h3 class="h3">{p.title}</h3><p class="mute">{p.excerpt}</p><div class="il-meta"><span>{fmt(p.date)}</span><span>{`${p.minutes} min read`}</span></div></div>
         </a>
@@ -56,8 +57,20 @@ const tdesc = [
     <ol class="st-points five">{tdesc.map((x, i) => <li class="rv"><span class="num">{`0${i + 1}`}</span><h3 class="h3">{x.t}</h3><p class="mute">{x.d}</p></li>)}</ol>
   </section>
   <CtaBand title="Want this thinking applied to your business?" />
+<script>
+  const btns = [...document.querySelectorAll<HTMLButtonElement>('.fbtn')]
+  const cards = [...document.querySelectorAll<HTMLElement>('.ins-c')]
+  btns.forEach((b) => b.addEventListener('click', () => {
+    btns.forEach((x) => x.classList.toggle('on', x === b))
+    cards.forEach((c) => { c.style.display = b.dataset.f === 'All' || c.dataset.cat === b.dataset.f ? '' : 'none' })
+  }))
+</script>
 </Base>
 <style>
+  .ins-filter{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:18px}
+  .fbtn{cursor:pointer;height:30px;padding:0 12px;font-size:13px;transition:background .2s,color .2s,border-color .2s}
+  .fbtn:hover{border-color:var(--red);color:var(--red)}
+  .fbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .ins-topics{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
   .ins-lead{display:grid;grid-template-columns:1fr 1fr;transition:background .3s}
   .ins-lead:hover{background:#FCFCFC}

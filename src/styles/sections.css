@@ -288,7 +288,7 @@
 @media (max-width:560px){.sg{grid-template-columns:1fr}}
 
 /* hero headline */
-.hero-h1{max-width:none!important;display:flex;flex-direction:column;align-items:center;font-size:clamp(46px,7.2vw,104px)!important;line-height:.98!important}
+.hero-h1{max-width:none!important;display:flex;flex-direction:column;align-items:center;font-size:clamp(44px,6.4vw,96px)!important;line-height:.98!important;text-shadow:0 0 24px #fff,0 0 2px #fff}
 .hl1{display:block}
 .hl2{display:block;overflow:hidden;padding-bottom:.1em}
 .hl2-in{display:inline-flex;align-items:baseline;gap:.24em;opacity:0;transform:translateY(100%);animation:hl2 1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--hd,.55s)}
@@ -304,3 +304,35 @@ html:not(.no-pl) .hl2-in{--hd:2s}
 @keyframes rotIn{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.hl2-in{opacity:1;transform:none;animation:none}.rot::after{animation:none;transform:scaleX(1)}}
 @media (max-width:600px){.hl2-in{flex-wrap:wrap;justify-content:center}}
+
+/* full-screen hero */
+.xh{position:relative;min-height:calc(100svh - 64px);display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.xh-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);z-index:-3;pointer-events:none}
+.xh-grid i{border-right:1px solid #F1F1F1}.xh-grid i:last-child{border-right:0}
+.xh-light{position:absolute;inset:0;z-index:-2;pointer-events:none;background:var(--hatch);-webkit-mask-image:radial-gradient(260px circle at var(--mx,50%) var(--my,40%),#000 0%,transparent 70%);mask-image:radial-gradient(260px circle at var(--mx,50%) var(--my,40%),#000 0%,transparent 70%);opacity:.9}
+.xh-objs{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.xh-o{position:absolute;width:clamp(88px,8vw,136px);aspect-ratio:1;transition:translate .2s linear}
+.xh-oc{width:100%;height:100%;border:1px solid var(--line);border-radius:14px;background:var(--hatch),#fff;position:relative;opacity:0;transform:translateY(20px) scale(.95);animation:xo 1.2s var(--ease) forwards}
+html:not(.no-pl) .xh-oc{animation-delay:1.7s}
+.xh-oc .art{position:absolute;inset:16%;width:68%;height:68%}
+.o1{left:2.5%;top:5%}.o2{right:2.5%;top:6%}.o3{left:4%;bottom:20%}.o4{right:4%;bottom:19%}.o5{left:15%;bottom:6%;width:clamp(64px,5vw,92px)}.o6{right:15%;bottom:6%;width:clamp(64px,5vw,92px)}
+.o2 .xh-oc{animation-delay:.15s}.o3 .xh-oc{animation-delay:.3s}.o4 .xh-oc{animation-delay:.45s}.o5 .xh-oc{animation-delay:.6s}.o6 .xh-oc{animation-delay:.75s}
+.xh-o:nth-child(odd) .xh-oc{rotate:-4deg}.xh-o:nth-child(even) .xh-oc{rotate:3deg}
+@keyframes xo{to{opacity:1;transform:none}}
+.xh-c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;padding:clamp(48px,8vh,96px) var(--pad)}
+.xh-c .lead{max-width:54ch;background:rgba(255,255,255,.85)}
+.btn-lg{height:48px;padding:0 20px;font-size:15px}
+.xh-bot{display:grid;grid-template-columns:1fr auto;border-top:1px solid var(--line);background:#fff}
+.xh-tick{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.xh-tick ul{display:flex;width:max-content;animation:mq 70s linear infinite}
+.xh-tick li{display:flex;align-items:center;gap:22px;padding:0 22px 0 0;height:54px;font-size:14px;color:var(--mute);white-space:nowrap}
+.xh-tick li i{width:5px;height:5px;border-radius:50%;background:var(--red)}
+.xh-scroll{display:flex;align-items:center;gap:10px;padding:0 var(--pad);border-left:1px solid var(--line);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.xh-scroll i{width:1px;height:22px;background:var(--line-2);position:relative;overflow:hidden}
+.xh-scroll i::after{content:"";position:absolute;left:0;top:-50%;width:1px;height:50%;background:var(--red);animation:sc 1.6s var(--ease) infinite}
+@keyframes sc{to{top:100%}}
+.xh-scroll:hover{color:var(--red)}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (max-width:1024px){.o5,.o6{display:none}.xh-o{width:84px}.o1{top:4%}.o2{top:4%}.o3{bottom:16%}.o4{bottom:14%}}
+@media (max-width:640px){.xh-objs{display:none}.xh{min-height:calc(100svh - 64px)}.xh-scroll{display:none}.xh-bot{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.xh-tick ul,.xh-scroll i::after{animation:none}.xh-oc{opacity:1;transform:none;animation:none}}
