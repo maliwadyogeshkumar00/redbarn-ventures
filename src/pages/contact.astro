@@ -118,12 +118,13 @@ const faq = [
       if (v('_honey')) { finish(); return }
       btn.disabled = true; lbl.textContent = 'Sending...'
       try {
-        const r = await fetch(`https://formsubmit.co/ajax/${site.formTo}`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ name: v('name'), email: v('email'), company: v('company') || '-', website: v('website') || '-', services, message: v('message'), _subject: `Website enquiry: ${services} - ${v('name')}`, _replyto: v('email'), _template: 'table', _captcha: 'false' }),
+        const r = await fetch('/api/contact', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: v('name'), email: v('email'), company: v('company'), website: v('website'), services, message: v('message'), _honey: v('_honey') }),
         })
         const j = await r.json().catch(() => ({}))
-        if (!r.ok || j.success === 'false' || j.success === false) throw new Error()
+        if (j.error === 'email') { box('c-email').classList.add('bad'); document.getElementById('c-email')?.focus(); return }
+        if (!r.ok || !j.ok) throw new Error()
         finish()
       } catch {
         const body = encodeURIComponent(`Name: ${v('name')}\nCompany: ${v('company')}\nWebsite: ${v('website')}\nNeeds: ${services}\n\n${v('message')}`)

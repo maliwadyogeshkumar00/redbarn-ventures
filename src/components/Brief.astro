@@ -48,8 +48,8 @@ import site from '../data/site.json'
     function done(){ f.hidden=true; el.querySelector('.nl-done').hidden=false; save('joined'); setTimeout(function(){ el.classList.remove('on'); bd.classList.remove('on'); setTimeout(function(){el.hidden=true;bd.hidden=true},450) }, 3200) }
     if(f._honey.value){ done(); return }
     btn.disabled=true; lbl.textContent='Joining...';
-    fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:em,role:role,source:location.pathname,_subject:'New Redbarn Brief subscriber',_template:'table',_captcha:'false'})})
-      .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok||j.success==='false'||j.success===false) throw 0; done() }) })
+    fetch('/api/brief',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,role:role,source:location.pathname})})
+      .then(function(r){ return r.json().catch(function(){return {}}).then(function(j){ if(!r.ok||!j.ok) throw 0; done() }) })
       .catch(function(){ err.textContent='Could not save that just now - please try again in a moment.'; err.hidden=false })
       .finally(function(){ btn.disabled=false; lbl.textContent='Get the Brief' });
   });
