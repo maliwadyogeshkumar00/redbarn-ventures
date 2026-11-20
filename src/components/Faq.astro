@@ -1,6 +1,6 @@
 ---
 interface Props { items: { q: string; a: string }[]; title?: string; lead?: string; id?: string }
-const { items, title = 'Questions we hear before every project.', lead = 'Something else on your mind? Message us on WhatsApp or email - a senior person replies, not a bot.', id = 'faq' } = Astro.props
+const { items, title = 'Questions we hear before every project.', lead = 'Something else on your mind? Send us an email or use the contact form - a senior person replies, not a bot.', id = 'faq' } = Astro.props
 ---
 <section class="frame row faq" id={id} aria-labelledby={`${id}-h`}>
   <div class="faq-grid">

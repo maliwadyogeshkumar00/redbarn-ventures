@@ -6,7 +6,6 @@ import Arrow from '../components/Arrow.astro'
 import site from '../data/site.json'
 import services from '../data/services.json'
 import H from '../data/home.json'
-const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hi Redbarn, I would like to discuss a project.')}`
 const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/', email: site.email, description: site.description, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.short } })) } }
@@ -191,7 +190,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       <div class="faq-l in-pad">
         <span class="label faint">/FAQ</span>
         <h2 class="h2" id="f-h" data-split>Questions we hear before every project.</h2>
-        <p class="lead rv">Something else on your mind? Message us on WhatsApp or email - a senior person replies, not a bot.</p>
+        <p class="lead rv">Something else on your mind? Send us an email or use the contact form - a senior person replies, not a bot.</p>
       </div>
       <div class="faq-r">
         {H.faq.map((f, i) => (
@@ -213,7 +212,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       <p class="lead rv">A few lines about your business and what you need is enough. We will arrange a short call and come back with a written plan and quote.</p>
       <div class="hero-btns rv">
         <a href={mail} class="btn btn-p">Email {site.email} <Arrow /></a>
-        <a href={wa} class="btn btn-o" target="_blank" rel="noopener">WhatsApp us</a>
+        <a href="/contact" class="btn btn-o">Use the contact form</a>
       </div>
     </div>
     <div class="hatch side" aria-hidden="true"></div>

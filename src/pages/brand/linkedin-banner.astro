@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro'
+import Art from '../../components/Art.astro'
+import LogoArt from '../../components/LogoArt.astro'
+---
+<Base title="LinkedIn banner" noindex bare>
+  <div class="lb">
+    <div class="lb-h hatch"></div>
+    <div class="lb-t">
+      <span class="lb-chip"><i></i>Brand · Websites · Marketing · SEO · Consultancy · Corporate</span>
+      <p class="lb-head">We build brands that win trust - <span>and keep them growing.</span></p>
+    </div>
+    <div class="lb-o">
+      <div class="lb-cell hatch"><Art kind="cube" class="in" /></div>
+      <div class="lb-cell hatch"><Art kind="lattice" class="in" /></div>
+      <div class="lb-cell hatch"><Art kind="sphere" class="in" /></div>
+    </div>
+    <div class="lb-r"><LogoArt size={20} /><span>redbarn.ventures</span></div>
+  </div>
+</Base>
+<style is:global>
+  html,body{background:#fff!important;overflow:hidden}
+  .lb{width:1128px;height:191px;display:grid;grid-template-columns:150px 1fr 300px 200px;border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;position:relative}
+  .lb-h{border-right:1px solid #E7E7E7}
+  .lb-t{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:0 28px;border-right:1px solid #E7E7E7}
+  .lb-chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;height:22px;padding:0 8px;border:1px solid #E7E7E7;border-radius:5px;font-size:10px;color:#6B6B6B}
+  .lb-chip i{width:5px;height:5px;border-radius:50%;background:#D7263D}
+  .lb-head{font-size:27px;line-height:1.08;letter-spacing:-.04em;max-width:15ch}
+  .lb-head span{color:#D7263D}
+  .lb-o{display:grid;grid-template-columns:repeat(3,1fr);border-right:1px solid #E7E7E7}
+  .lb-cell{position:relative;border-right:1px solid #E7E7E7}
+  .lb-cell:last-child{border-right:0}
+  .lb-cell .art{position:absolute;inset:26% 14%;width:72%;height:48%}
+  .lb-cell .art .fl{animation:none}
+  .js .lb .art .s{stroke-dashoffset:0;fill-opacity:1;transition:none}
+  .js .lb .art .sh{opacity:.06}
+  .lb-r{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;padding:0 22px;font-size:12px;color:#6B6B6B}
+</style>

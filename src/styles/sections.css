@@ -214,3 +214,49 @@
   .incl-card{position:static}
   .ways{flex-direction:column;align-items:flex-start}
 }
+
+/* big pain cards */
+.pain-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+.pain{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;transition:border-color .3s,transform .5s var(--ease)}
+.pain:hover{border-color:var(--red);transform:translateY(-4px)}
+.pain-top{height:150px;display:flex;align-items:flex-end;padding:0 20px;border-bottom:1px solid var(--line);position:relative}
+.pain-n{font-size:120px;line-height:.78;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px var(--ink);transform:translateY(8px);transition:-webkit-text-stroke-color .3s,color .4s}
+.pain:hover .pain-n{color:var(--red);-webkit-text-stroke-color:var(--red)}
+.pain-b{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px}
+.pain-b p{font-size:14.5px}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+.bt-feat{grid-column:1/3;grid-row:1/3;border:1px solid var(--line-2);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;background:#fff}
+.bf-top{display:flex;font-size:12px}
+.bf-art{flex:1;min-height:240px;border:1px solid var(--line);border-radius:10px;position:relative}
+.bf-art .art{position:absolute;inset:12% 25%;width:50%;height:76%}
+.bf-sum{font-size:clamp(18px,1.6vw,22px);letter-spacing:-.02em;line-height:1.3;max-width:34ch}
+.bt-item{border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;background:#fff;transition:border-color .3s,transform .5s var(--ease),background .3s}
+.bt-item:hover{border-color:var(--red);transform:translateY(-3px)}
+.bt-item.wide{grid-column:span 2}
+.bt-item p{font-size:14px;line-height:1.5}
+.bi-n{width:30px;height:30px;border-radius:7px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:12px;margin-bottom:6px;transition:background .3s,color .3s,border-color .3s}
+.bt-item:hover .bi-n{background:var(--red);border-color:var(--red);color:#fff}
+.bt-cta{border-radius:14px;background:var(--red);color:#fff;padding:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:170px;position:relative;overflow:hidden;transition:background .3s}
+.bt-cta:hover{background:#B81F33}
+.bt-cta .label{opacity:.8}
+.bc-big{font-size:26px;letter-spacing:-.03em;line-height:1.05;max-width:10ch}
+.bc-arr{position:absolute;right:18px;bottom:18px;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--red);display:grid;place-items:center;transition:transform .5s var(--ease)}
+.bc-arr svg{width:15px;height:15px}
+.bt-cta:hover .bc-arr{transform:rotate(45deg)}
+/* about chapters */
+.chapters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.chap{padding:28px var(--pad) 36px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.chap:last-child{border-right:0}
+.chap .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.chap h3{font-size:22px;letter-spacing:-.025em;line-height:1.15}
+.chap p{font-size:14.5px;color:var(--mute)}
+.pull{font-size:clamp(28px,3.6vw,52px);line-height:1.08;letter-spacing:-.04em;max-width:22ch;padding:clamp(56px,7vw,96px) var(--pad) clamp(40px,5vw,64px)}
+.pull em{font-style:normal;color:var(--red)}
+@media (max-width:1024px){.chapters{grid-template-columns:1fr 1fr}.chap:nth-child(2){border-right:0}.chap:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:900px){
+  .pain-cards{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .bt-feat,.bt-item.wide{grid-column:auto;grid-row:auto}
+  .chapters{grid-template-columns:1fr}.chap{border-right:0!important;border-bottom:1px solid var(--line)}
+}

@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 const { s } = Astro.props
 const related = s.related.map((r: string) => services.find((x) => x.slug === r)).filter(Boolean)
-const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hi Redbarn, I would like to discuss ${s.lower}.`)}`
+const mail = `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry: ${s.title}`)}`
 const ld = [
   { '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.meta, serviceType: s.title, provider: { '@type': 'Organization', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, hasOfferCatalog: { '@type': 'OfferCatalog', name: s.title, itemListElement: s.included.map((i) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: i.t, description: i.d } })) } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
@@ -24,7 +24,7 @@ const ld = [
   <PageHero label={`Service ${s.n} · ${s.nav}`} title={s.hero} lead={s.intro} crumbs={[{ t: 'Services', h: '/services' }, { t: s.title }]}>
     <div class="hero-btns rv" style="transition-delay:.35s">
       <a href="/contact" class="btn btn-p">Discuss your project <Arrow /></a>
-      <a href={wa} class="btn btn-o" target="_blank" rel="noopener">WhatsApp us</a>
+      <a href={mail} class="btn btn-o">Email us</a>
     </div>
   </PageHero>
 
@@ -33,33 +33,39 @@ const ld = [
       <div><span class="label faint">/Sound familiar?</span><h2 class="h2" id="pain-h" data-split>{`Why companies come to us for ${s.lower}.`}</h2></div>
       <p class="lead rv">These are the problems we hear most often in first calls. If one of them sounds like your business, we can help - and we will tell you honestly what it takes.</p>
     </div>
-    <ol class="st-points">
-      {s.pains.map((p, i) => <li class="rv" style={`transition-delay:${i * 80}ms`}><span class="num">0{i + 1}</span><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></li>)}
+    <ol class="pain-cards in-pad">
+      {s.pains.map((p, i) => (
+        <li class="pain rv" style={`transition-delay:${i * 90}ms`}>
+          <div class="pain-top hatch"><span class="pain-n">{`0${i + 1}`}</span></div>
+          <div class="pain-b"><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></div>
+        </li>
+      ))}
     </ol>
   </section>
 
-  <section class="frame row incl" aria-labelledby="inc-h">
-    <div class="incl-grid">
-      <div class="incl-l">
-        <div class="incl-card hatch rv">
-          <div class="ic-in">
-            <div class="ic-top"><span class="faint">services /</span>&nbsp;{s.slug}<span class="sc-n">{s.n}</span></div>
-            <div class="ic-art" aria-hidden="true"><Art kind={s.obj} /></div>
-            <p class="ic-sum">{s.short}</p>
-            <a href="/contact" class="btn btn-p" style="justify-content:center">Get a plan and quote <Arrow /></a>
-          </div>
+  <section class="frame row" aria-labelledby="inc-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/What's included</span><h2 class="h2" id="inc-h" data-split>Everything you need, nothing you do not.</h2></div>
+      <p class="lead rv">Every engagement is scoped to your goals. These are the building blocks we combine for most projects in this service.</p>
+    </div>
+    <div class="bento in-pad">
+      <div class="bt-feat rv">
+        <div class="bf-top"><span class="faint">services /</span>&nbsp;{s.slug}<span class="sc-n">{s.n}</span></div>
+        <div class="bf-art hatch" aria-hidden="true"><Art kind={s.obj} /></div>
+        <p class="bf-sum">{s.short}</p>
+      </div>
+      {s.included.map((it, i) => (
+        <div class={`bt-item rv ${i === 5 ? 'wide' : ''}`} style={`transition-delay:${(i % 3) * 60}ms`}>
+          <span class="bi-n">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="h3">{it.t}</h3>
+          <p class="mute">{it.d}</p>
         </div>
-      </div>
-      <div class="incl-r">
-        <span class="label faint">/What's included</span>
-        <h2 class="h2" id="inc-h" data-split>Everything you need, nothing you do not.</h2>
-        <p class="lead rv">{`Every engagement is scoped to your goals. These are the building blocks we combine for most ${s.lower} projects.`}</p>
-        <ol class="inc-list">
-          {s.included.map((it, i) => (
-            <li class="rv"><span class="inc-n">{String(i + 1).padStart(2, '0')}</span><div><h3 class="h3">{it.t}</h3><p class="mute">{it.d}</p></div></li>
-          ))}
-        </ol>
-      </div>
+      ))}
+      <a href="/contact" class="bt-cta rv">
+        <span class="label">Next step</span>
+        <span class="bc-big">Get a plan and quote</span>
+        <span class="bc-arr"><Arrow dir="ne" /></span>
+      </a>
     </div>
   </section>
 

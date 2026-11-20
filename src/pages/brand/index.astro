@@ -1,0 +1,254 @@
+---
+import Base from '../../layouts/Base.astro'
+import PageHero from '../../components/PageHero.astro'
+import LogoArt from '../../components/LogoArt.astro'
+import Art from '../../components/Art.astro'
+import Icon from '../../components/Icon.astro'
+import Arrow from '../../components/Arrow.astro'
+const colours = [
+  { n: 'Signal Red', hex: '#D7263D', rgb: '215 38 61', cmyk: '0 82 72 16', use: 'Accent only: buttons, logo bars, active states, one face of each object.', dark: true },
+  { n: 'Ink', hex: '#0B0B0C', rgb: '11 11 12', cmyk: '8 8 0 95', use: 'Headlines, body text, line drawing.', dark: true },
+  { n: 'Paper', hex: '#FFFFFF', rgb: '255 255 255', cmyk: '0 0 0 0', use: 'The canvas. Every layout starts white.' },
+  { n: 'Hairline', hex: '#E7E7E7', rgb: '231 231 231', cmyk: '0 0 0 9', use: 'Frame lines, dividers, hatching.' },
+  { n: 'Clay', hex: '#E6E6E6', rgb: '230 230 230', cmyk: '0 0 0 10', use: 'Object faces and tags.' },
+  { n: 'Graphite', hex: '#6B6B6B', rgb: '107 107 107', cmyk: '0 0 0 58', use: 'Secondary text and captions.' },
+  { n: 'Blush', hex: '#FCECEE', rgb: '252 236 238', cmyk: '0 6 5 1', use: 'Selected and highlighted states.' },
+]
+const type = [
+  { n: 'Display', spec: '80 / 1.02 · -4.5%', s: 'font-size:clamp(40px,5vw,80px);line-height:1.02;letter-spacing:-.045em', t: 'Built uncommonly well.' },
+  { n: 'Heading', spec: '52 / 1.05 · -4%', s: 'font-size:clamp(30px,3.4vw,52px);line-height:1.05;letter-spacing:-.04em', t: 'One senior team.' },
+  { n: 'Title', spec: '20 / 1.25 · -2%', s: 'font-size:20px;line-height:1.25;letter-spacing:-.02em', t: 'Clear scope before we start' },
+  { n: 'Body', spec: '15 / 1.55 · 0', s: 'font-size:15px;line-height:1.55;color:#444', t: 'You get a written plan, timeline and quote before any work begins.' },
+  { n: 'Label', spec: '11 / 1.3 · +8% · caps', s: 'font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6B6B6B', t: '/Services' },
+]
+const objects = [
+  { k: 'cube', n: 'Bored cube', m: 'Brand and Identity - a solid form with a clear centre.' },
+  { k: 'lattice', n: 'Node lattice', m: 'Websites and Apps - connected structure.' },
+  { k: 'slabs', n: 'Stepped slabs', m: 'Marketing - layers that build on each other.' },
+  { k: 'sphere', n: 'Sliced sphere', m: 'SEO and AI Search - seeing inside the whole.' },
+  { k: 'arrow', n: 'Channel arrow', m: 'Consultancy - direction with a cut path.' },
+  { k: 'monolith', n: 'Slotted monolith', m: 'Corporate Materials - solid, precise, upright.' },
+]
+const voice = [
+  { t: 'Clear over clever', do: 'You get a written plan, timeline and quote before any work begins.', dont: 'We leverage synergistic frameworks to unlock value.' },
+  { t: 'Confident, never loud', do: 'We build brands that win trust.', dont: 'The world\'s #1 most amazing agency!!!' },
+  { t: 'Honest about limits', do: 'SEO compounds over months; we set realistic expectations.', dont: 'Guaranteed first place on Google in 7 days.' },
+  { t: 'About them, not us', do: 'Your team can edit the site without calling us.', dont: 'Our award-winning proprietary process.' },
+]
+const motion = [
+  { t: 'Ease', d: 'cubic-bezier(.22, 1, .36, 1) for everything. Fast start, soft landing.' },
+  { t: 'Reveal', d: 'Headlines rise line by line through a mask, 80 ms apart.' },
+  { t: 'Draw', d: 'Objects draw their 1 px outline first, then fill.' },
+  { t: 'Restraint', d: 'No bounce, no spin, no particles. Motion explains, never decorates.' },
+]
+---
+<Base title="Brand guidelines" description="Redbarn Ventures brand guidelines: logo, colour, typography, grid, illustration, components, motion and voice." noindex>
+  <PageHero label="Brand guidelines · v1.0 · November 2026" title="The Redbarn brand, in one place." lead="How we look, move and speak. Use this page whenever you create anything for Redbarn Ventures - a slide, a post, a page or a proposal." crumbs={[{ t: 'Brand' }]}>
+    <nav class="bg-toc rv" aria-label="Sections">{['Logo', 'Colour', 'Type', 'Grid', 'Objects', 'Components', 'Motion', 'Voice', 'Applications'].map((x, i) => <a href={`#b-${x.toLowerCase()}`}><span>{`0${i + 1}`.slice(-2)}</span>{x}</a>)}</nav>
+  </PageHero>
+
+  <!-- 01 LOGO -->
+  <section class="frame row" id="b-logo">
+    <div class="sec-h in-pad"><div><span class="label faint">/01 Logo</span><h2 class="h2" data-split>Three bars. One name.</h2></div><p class="lead rv">Three slanted bars in Signal Red stand for the three things we join together - design, technology and growth. The wordmark is set in Inter Tight: Redbarn in SemiBold, Ventures in Regular Graphite.</p></div>
+    <div class="lg-hero hatch"><div class="lg-stage rv"><LogoArt size={96} /></div></div>
+    <div class="lg-grid">
+      <div class="lg-cell"><LogoArt size={40} /><span class="cap">Primary · on white</span></div>
+      <div class="lg-cell dark"><LogoArt size={40} variant="reversed" /><span class="cap">Reversed · on ink</span></div>
+      <div class="lg-cell"><LogoArt size={40} variant="black" /><span class="cap">Mono · one-colour print</span></div>
+      <div class="lg-cell redbg"><LogoArt size={40} variant="white" /><span class="cap">White · on Signal Red</span></div>
+    </div>
+    <div class="lg-rules">
+      <div class="rule"><div class="rule-art"><div class="clear"><LogoArt size={44} /></div></div><h3 class="h3">Clear space</h3><p class="mute">Keep a margin of at least two bar-widths around the logo. Nothing enters that zone.</p></div>
+      <div class="rule"><div class="rule-art sizes"><LogoArt size={24} /><LogoArt size={16} mark /></div><h3 class="h3">Minimum size</h3><p class="mute">Full logo no smaller than 120 px wide on screen or 30 mm in print. Below that, use the bars alone.</p></div>
+      <div class="rule"><div class="rule-art"><span class="app"><LogoArt size={46} mark /></span></div><h3 class="h3">The mark</h3><p class="mute">The three bars work alone for avatars, favicons and app icons - always on white or ink.</p></div>
+    </div>
+    <div class="donts">
+      {[{ t: 'Do not recolour the bars', s: 'filter:hue-rotate(160deg)' }, { t: 'Do not stretch', s: 'transform:scaleX(1.5)' }, { t: 'Do not rotate', s: 'transform:rotate(-12deg)' }, { t: 'Do not add effects', s: 'filter:drop-shadow(4px 6px 3px rgba(0,0,0,.45)) blur(.4px)' }].map((d) => (
+        <div class="dont"><div class="dont-art"><span style={d.s}><LogoArt size={26} /></span><i class="x" aria-hidden="true"></i></div><span>{d.t}</span></div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 02 COLOUR -->
+  <section class="frame row" id="b-colour">
+    <div class="sec-h in-pad"><div><span class="label faint">/02 Colour</span><h2 class="h2" data-split>White page. Black ink. One red signal.</h2></div><p class="lead rv">Red is never a background for whole sections. It marks the one thing that matters on a page - usually the next step.</p></div>
+    <div class="ratio in-pad rv" aria-label="Colour proportions"><span style="flex:70;background:#fff">Paper 70%</span><span style="flex:18;background:#0B0B0C;color:#fff">Ink 18%</span><span style="flex:8;background:#E7E7E7">Greys 8%</span><span style="flex:4;background:#D7263D;color:#fff">4%</span></div>
+    <div class="sw-grid in-pad">
+      {colours.map((c) => (
+        <div class="sw rv"><div class="sw-chip" style={`background:${c.hex};color:${c.dark ? '#fff' : '#0B0B0C'}`}><span>{c.hex}</span></div><div class="sw-b"><b>{c.n}</b><span class="faint">RGB {c.rgb}</span><span class="faint">CMYK {c.cmyk}</span><p class="mute">{c.use}</p></div></div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 03 TYPE -->
+  <section class="frame row" id="b-type">
+    <div class="sec-h in-pad"><div><span class="label faint">/03 Typography</span><h2 class="h2" data-split>Inter Tight, regular weight.</h2></div><p class="lead rv">One typeface, mostly one weight. Size and spacing do the work that bold usually does. SemiBold is reserved for the logo.</p></div>
+    <div class="spec-big in-pad"><span class="aa">Aa</span><div><b>Inter Tight</b><p class="mute">Regular 400 for everything. SemiBold 600 for the wordmark only. Self-hosted, never loaded from a font service.</p><p class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789 - / · ( ) %</p></div></div>
+    <ol class="scale">{type.map((t) => <li class="rv"><span class="sc-k"><b>{t.n}</b><span class="faint">{t.spec}</span></span><span style={t.s}>{t.t}</span></li>)}</ol>
+  </section>
+
+  <!-- 04 GRID -->
+  <section class="frame row" id="b-grid">
+    <div class="sec-h in-pad"><div><span class="label faint">/04 Grid and structure</span><h2 class="h2" data-split>Show the grid.</h2></div><p class="lead rv">Our layouts sit inside a visible 1440 px frame. Hairlines divide sections and columns; diagonal hatching marks margins and empty space.</p></div>
+    <div class="grid-demo in-pad">
+      <div class="gd rv"><div class="gd-frame"><span class="hatch"></span><span class="gd-c"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="hatch"></span></div><h3 class="h3">The frame</h3><p class="mute">1440 px maximum width, 1 px Hairline borders, 72 px hatched side gutters on hero and closing sections.</p></div>
+      <div class="gd rv"><div class="gd-hatch hatch"></div><h3 class="h3">The hatch</h3><p class="mute">45° lines, 1 px Hairline every 7 px. Used for margins, image placeholders and behind floating cards - never behind text.</p></div>
+      <div class="gd rv"><div class="gd-cards"><span></span><span class="on"></span><span></span></div><h3 class="h3">Cards</h3><p class="mute">White, 1 px border, 12-14 px radius. On hover they lift 4 px and the border turns red.</p></div>
+    </div>
+  </section>
+
+  <!-- 05 OBJECTS -->
+  <section class="frame row" id="b-objects">
+    <div class="sec-h in-pad"><div><span class="label faint">/05 Objects</span><h2 class="h2" data-split>Six objects, one for each service.</h2></div><p class="lead rv">Flat axonometric drawings: Clay faces, 1 px Ink outline, exactly one cut face in Signal Red. They replace stock photography and client logos.</p></div>
+    <div class="obj-grid">
+      {objects.map((o) => <div class="ob rv"><div class="ob-art hatch"><Art kind={o.k} /></div><div class="ob-b"><span class="ob-ico"><Icon kind={o.k} /></span><div><b>{o.n}</b><p class="mute">{o.m}</p></div></div></div>)}
+    </div>
+  </section>
+
+  <!-- 06 COMPONENTS -->
+  <section class="frame row" id="b-components">
+    <div class="sec-h in-pad"><div><span class="label faint">/06 Components</span><h2 class="h2" data-split>The building blocks.</h2></div><p class="lead rv">Buttons, chips and tags are the only rounded elements besides cards. One red button per view.</p></div>
+    <div class="comp in-pad">
+      <div class="cp rv"><span class="label faint">Buttons</span><div class="cp-row"><span class="btn btn-p">Start a project <Arrow /></span><span class="btn btn-o">See our services</span><span class="btn btn-k">Secondary dark</span></div></div>
+      <div class="cp rv"><span class="label faint">Chip and tags</span><div class="cp-row"><span class="chip"><i></i>Brand · Websites · Marketing</span><span class="tag">SEO</span><span class="tag">Logo</span><span class="tag tag-r">Long-term</span></div></div>
+      <div class="cp rv"><span class="label faint">Numbers and ticks</span><div class="cp-row"><span class="p-n" style="background:var(--red);border-color:var(--red);color:#fff">01</span><span class="p-n">02</span><span class="t-ico"><svg viewBox="0 0 16 16" style="width:14px;height:14px;color:var(--red)"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><span class="label">/Section label</span></div></div>
+    </div>
+  </section>
+
+  <!-- 07 MOTION -->
+  <section class="frame row" id="b-motion">
+    <div class="sec-h in-pad"><div><span class="label faint">/07 Motion</span><h2 class="h2" data-split>Calm, precise, purposeful.</h2></div><p class="lead rv">Motion should feel like a well-made object closing: quick to start, soft to settle.</p></div>
+    <ol class="p-grid">{motion.map((m, i) => <li class="rv"><div class="p-top"><span class="p-n">{`0${i + 1}`}</span><span class="p-line"></span></div><h3 class="h3">{m.t}</h3><p class="mute">{m.d}</p></li>)}</ol>
+    <div class="ease-demo in-pad"><span class="label faint">Ease curve</span><svg viewBox="0 0 200 100" aria-hidden="true"><path d="M0 100 H200 M0 0 V100" stroke="#E7E7E7" fill="none"/><path d="M0 100 C44 0 72 0 200 0" stroke="#D7263D" stroke-width="1.6" fill="none"/></svg><span class="faint">cubic-bezier(.22, 1, .36, 1) · 0.6-1.1 s</span></div>
+  </section>
+
+  <!-- 08 VOICE -->
+  <section class="frame row" id="b-voice">
+    <div class="sec-h in-pad"><div><span class="label faint">/08 Voice</span><h2 class="h2" data-split>Senior, plain, warm.</h2></div><p class="lead rv">We write like an experienced partner across the table: short sentences, concrete promises, no jargon. A few hard rules apply to everything we publish.</p></div>
+    <div class="voice in-pad">
+      {voice.map((v) => <div class="vc rv"><h3 class="h3">{v.t}</h3><div class="vd"><span class="ok">Say</span><p>{v.do}</p></div><div class="vd no"><span class="ko">Avoid</span><p>{v.dont}</p></div></div>)}
+    </div>
+    <ul class="hard in-pad">
+      <li><b>-</b> Use a plain hyphen, never an em or en dash.</li>
+      <li><b>and</b> Write "and", never "&".</li>
+      <li><b>No logos</b> Never name or show clients without written approval.</li>
+      <li><b>No places</b> Do not name countries or cities.</li>
+      <li><b>No inventions</b> No made-up numbers, awards or testimonials.</li>
+    </ul>
+  </section>
+
+  <!-- 09 APPLICATIONS -->
+  <section class="frame row" id="b-applications">
+    <div class="sec-h in-pad"><div><span class="label faint">/09 Applications</span><h2 class="h2" data-split>The system in use.</h2></div><p class="lead rv">The same frame, hatch, objects and red signal carry across every touchpoint - from LinkedIn to a business card.</p></div>
+    <div class="apps in-pad">
+      <figure class="ap rv wide"><div class="ap-frame"><img src="/brand/linkedin-banner.png" alt="Redbarn Ventures LinkedIn cover" width="1128" height="191" loading="lazy" /></div><figcaption><b>LinkedIn cover</b><span class="faint">1128 × 191 (2x) · <a href="/brand/linkedin-banner.png" download>Download PNG</a></span></figcaption></figure>
+      <figure class="ap rv"><div class="ap-frame sq"><img src="/brand/linkedin-logo.png" alt="Redbarn Ventures LinkedIn logo" width="400" height="400" loading="lazy" /></div><figcaption><b>LinkedIn logo</b><span class="faint">400 × 400 · <a href="/brand/linkedin-logo.png" download>Download PNG</a></span></figcaption></figure>
+      <figure class="ap rv"><div class="ap-frame card"><div class="bcard-f"><LogoArt size={22} /><span class="faint">hello@redbarn.ventures</span></div><div class="bcard-b hatch"><LogoArt size={20} mark /></div></div><figcaption><b>Business card</b><span class="faint">85 × 55 mm · front and back</span></figcaption></figure>
+      <figure class="ap rv"><div class="ap-frame sig"><div class="sig-in"><b>Your Name</b><span class="faint">Role · Redbarn Ventures</span><span class="sig-line"></span><LogoArt size={18} /><span class="faint">redbarn.ventures</span></div></div><figcaption><b>Email signature</b><span class="faint">Plain text plus logo</span></figcaption></figure>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .bg-toc{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:6px}
+  .bg-toc a{display:inline-flex;gap:6px;align-items:center;height:30px;padding:0 10px;border:1px solid var(--line);border-radius:6px;font-size:13px;transition:border-color .2s,color .2s}
+  .bg-toc a span{font-size:11px;color:var(--faint)}
+  .bg-toc a:hover{border-color:var(--red);color:var(--red)}
+  .lg-hero{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(40px,6vw,80px) var(--pad);display:grid;place-items:center}
+  .lg-stage{background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:clamp(36px,6vw,72px) clamp(36px,8vw,110px)}
+  .lg-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+  .lg-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:44px 20px;border-right:1px solid var(--line);min-height:190px}
+  .lg-cell:last-child{border-right:0}
+  .lg-cell.dark{background:#0B0B0C}.lg-cell.redbg{background:#D7263D}
+  .cap{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .dark .cap,.redbg .cap{color:rgba(255,255,255,.7)}
+  .lg-rules{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+  .rule{padding:28px var(--pad) 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+  .rule:last-child{border-right:0}
+  .rule p{font-size:14.5px}
+  .rule-art{height:150px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;background:var(--hatch);margin-bottom:6px}
+  .clear{background:#fff;padding:18px 22px;outline:1px dashed var(--red);outline-offset:0}
+  .sizes{display:flex;gap:28px;align-items:center;justify-content:center;background:#fff}
+  .app{width:84px;height:84px;border-radius:20px;background:#fff;border:1px solid var(--line-2);display:grid;place-items:center}
+  .donts{display:grid;grid-template-columns:repeat(4,1fr)}
+  .dont{padding:22px var(--pad);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--mute)}
+  .dont:last-child{border-right:0}
+  .dont-art{position:relative;height:100px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;overflow:hidden}
+  .x::before,.x::after{content:"";position:absolute;left:50%;top:50%;width:140%;height:1.5px;background:var(--red);transform:translate(-50%,-50%) rotate(28deg)}
+  .x::after{transform:translate(-50%,-50%) rotate(-28deg)}
+  .ratio{display:flex;height:64px;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;font-size:12px;margin-bottom:24px;padding:0}
+  .ratio span{display:flex;align-items:flex-end;padding:10px;border-right:1px solid var(--line);white-space:nowrap;overflow:hidden}
+  .sw-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+  .sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .sw-chip{height:120px;display:flex;align-items:flex-end;padding:12px;font-size:13px;border-bottom:1px solid var(--line)}
+  .sw-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:3px;font-size:12.5px}
+  .sw-b b{font-weight:400;font-size:16px;letter-spacing:-.015em;margin-bottom:4px}
+  .sw-b p{font-size:13px;margin-top:6px;line-height:1.45}
+  .sw:first-child{grid-column:span 2}
+  .sw:first-child .sw-chip{height:180px}
+  .spec-big{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,64px);align-items:center;padding-bottom:36px}
+  .aa{font-size:clamp(120px,16vw,240px);line-height:.8;letter-spacing:-.06em}
+  .spec-big b{font-weight:400;font-size:28px;letter-spacing:-.03em}
+  .spec-big p{max-width:52ch;margin-top:8px}
+  .glyphs{font-size:20px;letter-spacing:.02em;line-height:1.5;color:#333;margin-top:16px!important}
+  .scale{border-top:1px solid var(--line)}
+  .scale li{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:baseline;padding:22px var(--pad);border-bottom:1px solid var(--line)}
+  .scale li:last-child{border-bottom:0}
+  .sc-k{display:flex;flex-direction:column;gap:2px;font-size:12.5px}
+  .sc-k b{font-weight:400;font-size:14px}
+  .grid-demo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+  .gd{display:flex;flex-direction:column;gap:10px}
+  .gd p{font-size:14.5px}
+  .gd-frame,.gd-hatch,.gd-cards{height:170px;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin-bottom:6px}
+  .gd-frame{display:grid;grid-template-columns:28px 1fr 28px}
+  .gd-frame .hatch:first-child{border-right:1px solid var(--line)}.gd-frame .hatch:last-child{border-left:1px solid var(--line)}
+  .gd-c{display:grid;grid-template-columns:repeat(6,1fr)}
+  .gd-c i{border-right:1px dashed #F0C9CF}.gd-c i:last-child{border-right:0}
+  .gd-cards{display:flex;gap:10px;align-items:center;justify-content:center;background:var(--hatch)}
+  .gd-cards span{width:28%;height:62%;background:#fff;border:1px solid var(--line-2);border-radius:10px}
+  .gd-cards span.on{border-color:var(--red);transform:translateY(-6px)}
+  .obj-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+  .ob{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .ob:nth-child(3n){border-right:0}
+  .ob:nth-last-child(-n+3){border-bottom:0}
+  .ob-art{height:240px;position:relative;border-bottom:1px solid var(--line)}
+  .ob-art :global(.art){position:absolute;inset:14% 26%;width:48%;height:72%}
+  .ob-b{display:flex;gap:12px;padding:18px var(--pad) 22px}
+  .ob-ico{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+  .ob-b b{font-weight:400;font-size:16px}
+  .ob-b p{font-size:13.5px;margin-top:2px}
+  .comp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+  .cp{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:16px;background:var(--hatch)}
+  .cp-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#fff;border:1px solid var(--line-2);border-radius:10px;padding:18px;min-height:110px}
+  .ease-demo{display:flex;align-items:center;gap:20px;padding-top:20px;padding-bottom:24px;border-top:1px solid var(--line);font-size:13px}
+  .ease-demo svg{width:160px;height:80px}
+  .voice{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:24px}
+  .vc{border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;background:#fff}
+  .vd{border-left:2px solid #1F9D55;padding-left:10px;font-size:14px}
+  .vd.no{border-color:var(--red);color:var(--mute)}
+  .vd.no p{text-decoration:line-through;text-decoration-color:rgba(215,38,61,.5)}
+  .ok,.ko{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1F9D55}
+  .ko{color:var(--red)}
+  .hard{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);padding:0!important}
+  .hard li{padding:20px var(--pad);border-right:1px solid var(--line);font-size:13.5px;color:var(--mute);display:flex;flex-direction:column;gap:6px}
+  .hard li:last-child{border-right:0}
+  .hard b{font-weight:400;font-size:20px;color:var(--red);letter-spacing:-.02em}
+  .apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+  .ap{margin:0;display:flex;flex-direction:column;gap:10px}
+  .ap.wide{grid-column:1/-1}
+  .ap-frame{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--hatch)}
+  .ap-frame img{width:100%;height:auto;display:block}
+  .ap-frame.sq{padding:26px;display:grid;place-items:center}.ap-frame.sq img{width:160px;border-radius:50%;border:1px solid var(--line-2)}
+  .ap-frame.card{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center;min-height:212px}
+  .bcard-f,.bcard-b{width:100%;aspect-ratio:85/55;border-radius:6px;border:1px solid var(--line-2);background:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:14px;font-size:10px}
+  .bcard-b{align-items:center;justify-content:center;border-color:var(--line)}
+  .ap-frame.sig{padding:22px;display:grid;place-items:center;min-height:212px}
+  .sig-in{background:#fff;border:1px solid var(--line-2);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;font-size:12.5px;min-width:220px}
+  .sig-in b{font-weight:400;font-size:15px}
+  .sig-line{height:1px;background:var(--red);width:28px;margin:8px 0}
+  figcaption{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+  figcaption b{font-weight:400}
+  figcaption a{text-decoration:underline}
+  @media (max-width:1024px){.sw-grid,.voice{grid-template-columns:repeat(2,minmax(0,1fr))}.hard{grid-template-columns:1fr 1fr}.lg-grid,.donts{grid-template-columns:1fr 1fr}}
+  @media (max-width:768px){.lg-rules,.grid-demo,.comp,.apps,.obj-grid{grid-template-columns:1fr}.sw-grid,.voice{grid-template-columns:1fr}.sw:first-child{grid-column:auto}.scale li{grid-template-columns:1fr}.spec-big{grid-template-columns:1fr}.rule,.ob{border-right:0!important}.hard{grid-template-columns:1fr}}
+</style>

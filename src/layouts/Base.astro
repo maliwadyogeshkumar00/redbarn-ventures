@@ -5,6 +5,7 @@ import site from '../data/site.json'
 import TopBar from '../components/TopBar.astro'
 import Footer from '../components/Footer.astro'
 import FloatContact from '../components/FloatContact.astro'
+import Preloader from '../components/Preloader.astro'
 
 interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
 const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
@@ -32,11 +33,12 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: s
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <script is:inline>
-    (function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('rbw')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('arrive');sessionStorage.removeItem('rbw')}catch(e){}})();
+    (function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('rbpl')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('no-pl')}catch(e){d.classList.add('no-pl')}try{if(sessionStorage.getItem('rbw')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('arrive');sessionStorage.removeItem('rbw')}catch(e){}})();
   </script>
   <script type="application/ld+json" set:html={JSON.stringify([org, ...jsonld])} />
 </head>
 <body id="top">
+  {!bare && <Preloader />}
   {!bare && <a class="skip" href="#main">Skip to content</a>}
   {!bare && <div class="progress" aria-hidden="true"></div>}
   {!bare && <TopBar />}

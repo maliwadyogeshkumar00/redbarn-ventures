@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro'
 import PageHero from '../components/PageHero.astro'
 import Faq from '../components/Faq.astro'
 import Arrow from '../components/Arrow.astro'
+import LinkedIn from '../components/LinkedIn.astro'
 import site from '../data/site.json'
 import services from '../data/services.json'
-const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Hi Redbarn, I would like to discuss a project.')}`
 const next = [
   { t: 'We read your message', d: 'A senior member of the team reads every enquiry personally - never an automated triage.' },
   { t: 'A short call', d: 'We arrange a focused call to understand your business, your goals and your timeline.' },
@@ -15,10 +15,10 @@ const faq = [
   { q: 'What should I include in my message?', a: 'A few lines about your company, what you need help with and any deadline you are working towards. If you have an existing website or brand files, a link is helpful but not required.' },
   { q: 'Do you charge for the first call?', a: 'No. The first conversation and the written plan that follows are free and without obligation.' },
   { q: 'Can we sign an NDA before sharing details?', a: 'Yes. If your project is confidential, tell us in your message and we will sign your NDA before you share anything sensitive.' },
-  { q: 'Can I contact you on WhatsApp instead?', a: 'Of course. Many clients prefer WhatsApp for quick questions - use the green button on any page and you will reach us directly.' },
+  { q: 'Where can I see what you are working on?', a: 'Follow Redbarn Ventures on LinkedIn for new work, ideas and studio updates. For anything about your own project, email or the form above is the fastest route.' },
 ]
 ---
-<Base title="Contact" description="Contact Redbarn Ventures about your brand, website, marketing, SEO or corporate materials. Email, WhatsApp or the project form - a senior person replies.">
+<Base title="Contact" description="Contact Redbarn Ventures about your brand, website, marketing, SEO or corporate materials. Email or the project form - a senior person replies.">
   <PageHero label="Contact" title="Let's talk about your brand." lead="Tell us what you are working on. Whether it is a new website, a rebrand, a marketing plan or a single deck, a senior person will read your message and reply personally." crumbs={[{ t: 'Contact' }]} />
 
   <section class="frame row" aria-label="Contact form and details">
@@ -54,7 +54,7 @@ const faq = [
               <span class="ct-tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
               <h2 class="h3">Message received.</h2>
               <p class="mute">Thank you<span data-name></span>. A senior member of the team will reply to <b data-mail></b> personally.</p>
-              <a class="btn btn-o btn-sm" href={wa} target="_blank" rel="noopener">Need it faster? WhatsApp us</a>
+              <a class="btn btn-o btn-sm" href={site.linkedin} target="_blank" rel="noopener"><LinkedIn /> Follow us on LinkedIn</a>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ const faq = [
         <div class="ct-block">
           <span class="label faint">/Direct</span>
           <a class="ct-big" href={`mailto:${site.email}`}>{site.email}</a>
-          <a class="btn btn-o" href={wa} target="_blank" rel="noopener" style="align-self:flex-start"><svg viewBox="0 0 32 32" fill="#25D366" style="width:16px;height:16px"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3z"/></svg>WhatsApp us</a>
+          <a class="btn btn-o" href={site.linkedin} target="_blank" rel="noopener" style="align-self:flex-start"><LinkedIn /> Redbarn Ventures on LinkedIn</a>
         </div>
         <div class="ct-block">
           <span class="label faint">/What happens next</span>
@@ -137,7 +137,7 @@ const faq = [
         finish()
       } catch {
         const body = encodeURIComponent(`Name: ${v('name')}\nCompany: ${v('company')}\nWebsite: ${v('website')}\nNeeds: ${services}\n\n${v('message')}`)
-        err.innerHTML = `We could not send that just now. <a href="mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}&body=${body}">Send it by email instead</a> or message us on WhatsApp.`
+        err.innerHTML = `We could not send that just now. <a href="mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}&body=${body}">Send it by email instead</a>.`
         err.hidden = false
       } finally { btn.disabled = false; lbl.textContent = 'Send message' }
     })

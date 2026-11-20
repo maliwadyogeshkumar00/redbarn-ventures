@@ -6,6 +6,12 @@ import Art from '../components/Art.astro'
 import Arrow from '../components/Arrow.astro'
 import services from '../data/services.json'
 import H from '../data/home.json'
+const chapters = [
+  { k: 'The problem', t: 'Too many suppliers.', d: 'A designer for the logo, a developer for the site, an agency for ads, a consultant for strategy - each good at their part, none owning the whole picture.' },
+  { k: 'The idea', t: 'One senior team.', d: 'The people who design your identity also build your website, write your pages, plan your campaigns and prepare your materials - from one brief.' },
+  { k: 'Staying small', t: 'Real attention.', d: 'The people you meet in the first call are the people who do the work. Decisions are quick and no client is handed to juniors.' },
+  { k: 'For the long run', t: 'We stay after launch.', d: 'Brands and websites are never finished. Long-term partnerships keep your company improving month after month.' },
+]
 const who = [
   { t: 'Established companies', d: 'Businesses with a strong product and a reputation to protect, whose brand, website or materials no longer reflect how good they are.' },
   { t: 'New ventures', d: 'Founders launching a product or company who want to look established from day one and build marketing that grows with them.' },
@@ -15,18 +21,19 @@ const who = [
 <Base title="About" description="Redbarn Ventures is a small senior studio for brand, websites and growth. One team, one point of contact, and long-term support after launch.">
   <PageHero label="About Redbarn" title="A small senior studio for brands that want to grow." lead="We started Redbarn because good companies kept telling us the same story: they had a great product, but their brand, website and marketing were spread across too many suppliers who never spoke to each other." crumbs={[{ t: 'About' }]} />
 
-  <section class="frame row incl" aria-labelledby="story-h">
-    <div class="incl-grid">
-      <div class="incl-l"><div class="incl-card hatch rv"><div class="ic-in"><div class="ic-top"><span class="faint">studio /</span>&nbsp;about</div><div class="ic-art" aria-hidden="true"><Art kind="sphere" /></div><p class="ic-sum">Design, technology, marketing and strategy - sliced into one team, held together by one brief.</p></div></div></div>
-      <div class="incl-r">
-        <span class="label faint">/Our story</span>
-        <h2 class="h2" id="story-h" data-split>Built to remove the hand-offs.</h2>
-        <div class="about-copy rv">
-          <p>Most companies end up managing a designer for the logo, a developer for the website, an agency for advertising and a consultant for strategy. Each one is good at their part. None of them owns the whole picture. The result is a brand that looks slightly different everywhere, a website that does not match the sales deck, and campaigns that send people to pages nobody planned for them.</p>
-          <p>Redbarn Ventures brings those disciplines into one small, senior team. The people who design your identity also build your website, write your pages, plan your campaigns and prepare your corporate materials. They work from one brief, share one plan and report to you through one point of contact.</p>
-          <p>We deliberately stay small. It means the people you meet in the first call are the people who do the work, decisions are made quickly, and every client gets real attention rather than a rotating cast of juniors.</p>
-          <p>And we do not disappear after launch. Brands, websites and marketing are never finished, so we offer long-term partnerships that keep your company improving month after month.</p>
-        </div>
+  <section class="frame row" aria-labelledby="story-h">
+    <h2 class="pull" id="story-h" data-split>Great products deserve brands, websites and marketing that work as one.</h2>
+    <ol class="chapters">
+      {chapters.map((c, i) => (
+        <li class="chap rv" style={`transition-delay:${i * 80}ms`}><span class="k">{`0${i + 1} · ${c.k}`}</span><h3>{c.t}</h3><p>{c.d}</p></li>
+      ))}
+    </ol>
+    <div class="about-band">
+      <div class="ab-art hatch" aria-hidden="true"><div class="ab-box"><Art kind="sphere" /></div></div>
+      <div class="ab-copy in-pad">
+        <span class="label faint">/In one line</span>
+        <p class="ab-line">Design, technology, marketing and strategy - <span class="red">sliced into one team</span>, held together by one brief.</p>
+        <a href="/services" class="btn btn-o" style="align-self:flex-start">See what we do <Arrow /></a>
       </div>
     </div>
   </section>
@@ -77,4 +84,11 @@ const who = [
   .cap-tags{display:flex;gap:6px;flex-wrap:wrap}
   .cap-go :global(svg){width:14px;height:14px}
   @media (max-width:768px){.cap-list a{grid-template-columns:40px 1fr 24px}.cap-tags{grid-column:2/3}}
+  .about-band{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+  .ab-art{display:grid;place-items:center;padding:40px;border-right:1px solid var(--line)}
+  .ab-box{width:min(300px,80%);background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:28px}
+  .ab-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-top:48px;padding-bottom:48px}
+  .ab-line{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.03em;line-height:1.2;max-width:22ch}
+  .red{color:var(--red)}
+  @media (max-width:900px){.about-band{grid-template-columns:1fr}.ab-art{border-right:0;border-bottom:1px solid var(--line)}}
 </style>

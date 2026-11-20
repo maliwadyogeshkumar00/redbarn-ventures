@@ -1,0 +1,24 @@
+<div class="pl" id="pl" aria-hidden="true">
+  <div class="pl-frame"></div>
+  <div class="pl-c">
+    <div class="pl-logo"><span class="pl-bars"><i></i><i></i><i></i></span><span class="pl-word"><span><b>Redbarn</b><em>Ventures</em></span></span></div>
+    <div class="pl-meta"><span>Loading studio</span><span class="pl-line"><i></i></span><span class="pl-n">000</span></div>
+  </div>
+</div>
+<script is:inline>
+(function(){
+  var d=document.documentElement,pl=document.getElementById('pl');
+  if(!pl||d.classList.contains('no-pl'))return;
+  document.body.style.overflow='hidden';
+  var n=pl.querySelector('.pl-n'),line=pl.querySelector('.pl-line'),t0=performance.now(),loaded=false,min=1300;
+  addEventListener('load',function(){loaded=true});
+  function ease(x){return 1-Math.pow(1-x,3)}
+  function tick(t){
+    var k=Math.min(1,(t-t0)/min),p=loaded?ease(k):Math.min(.9,ease(k));
+    line.style.setProperty('--pl',p.toFixed(3));n.textContent=String(Math.round(p*100)).padStart(3,'0');
+    if(p>=1){setTimeout(function(){pl.classList.add('out');document.body.style.overflow='';try{sessionStorage.setItem('rbpl','1')}catch(e){}setTimeout(function(){pl.remove()},1000)},180);return}
+    requestAnimationFrame(tick)
+  }
+  requestAnimationFrame(tick);
+})();
+</script>

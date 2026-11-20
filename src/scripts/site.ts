@@ -139,7 +139,8 @@ const startReveal = () => {
   }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' })
   els.forEach((e) => io.observe(e))
 }
-setTimeout(startReveal, arriving ? 260 : 40)
+const hasPl = !!document.getElementById('pl') && !root.classList.contains('no-pl')
+setTimeout(startReveal, hasPl ? 1650 : arriving ? 260 : 40)
 
 /* ---------- red 10% breathing + progress fallbacks ---------- */
 const hasView = CSS.supports?.('animation-timeline: view()')
