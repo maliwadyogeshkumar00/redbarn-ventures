@@ -17,7 +17,7 @@ const mail = `mailto:${site.email}?subject=${encodeURIComponent(`Enquiry: ${s.ti
 const lead = s.intro.split('. ')[0].replace(/\.$/, '') + '.'
 const faq = s.faq.slice(0, 3)
 const ld = [
-  { '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.meta, serviceType: s.title, provider: { '@type': 'Organization', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, hasOfferCatalog: { '@type': 'OfferCatalog', name: s.title, itemListElement: s.included.map((i) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: i.t, description: i.d } })) } },
+  { '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.meta, serviceType: s.title, url: `https://redbarn.ventures/services/${s.slug}/`, areaServed: 'Worldwide', provider: { '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, hasOfferCatalog: { '@type': 'OfferCatalog', name: s.title, itemListElement: s.included.map((i) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: i.t, description: i.d } })) } },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://redbarn.ventures/' }, { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://redbarn.ventures/services' }, { '@type': 'ListItem', position: 3, name: s.title }] },
 ]

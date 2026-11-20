@@ -13,7 +13,7 @@ const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.slice(0, 3).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/', email: site.email, description: site.description, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.short } })) } }
 ---
-<Base description={site.description} jsonld={[faqLd, svcLd]}>
+<Base description="Global brand, digital and growth agency since 2023. Branding, websites, AI agents, marketing, SEO, lead generation and consulting from one senior team." jsonld={[faqLd, svcLd]}>
   <!-- HERO -->
   <section class="frame xh" aria-label="Introduction">
     <div class="xh-grid" aria-hidden="true">{Array.from({ length: 12 }, () => <i></i>)}</div>
@@ -152,7 +152,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
       </div>
       <div class="t2-r hatch">
         <div class="doc rv">
-          <div class="doc-top"><img src="/logo.svg" alt="" height="16" style="height:16px;width:auto" /><span class="faint">Engagement terms · v1</span></div>
+          <div class="doc-top"><img src="/logo.svg" alt="" width="163" height="16" style="height:16px;width:auto" /><span class="faint">Engagement terms · v1</span></div>
           <ol class="doc-list">
             {H.trust.map((t, i) => <li><span class="dn">{`0${i + 1}`}</span><b>{t.t}</b><span class="dk" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span></li>)}
           </ol>

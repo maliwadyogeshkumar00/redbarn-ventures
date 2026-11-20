@@ -1,6 +1,6 @@
 ---
 title: "Turning trade shows into pipeline: a playbook for leadership teams"
-description: "How to plan trade shows as sales campaigns - choosing events, designing booths that stop the right visitors, booking meetings before the show and following up so leads do not go cold."
+description: "Plan trade shows as sales campaigns: choose the right events, design booths that stop buyers, book meetings early and follow up before leads go cold."
 date: "2026-11-05"
 category: "Sales and events"
 art: "booth"

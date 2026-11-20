@@ -14,7 +14,7 @@ const together = [
 ]
 const ld = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.slice(0, 3).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }]
 ---
-<Base title="Services" description="Eleven services from one global agency: branding, websites, AI agents, marketing, SEO, lead generation, influencer marketing, video, trade shows, consulting and corporate materials." jsonld={ld}>
+<Base title="Services" description="Eleven services from one agency: branding, websites, AI agents, marketing, SEO, lead generation, influencer, video, trade shows and consulting." jsonld={ld}>
   <PageHero label="Services" title="Eleven services. One senior team." lead="Senior specialists, one brief, one point of contact." crumbs={[{ t: 'Services' }]}>
     <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Start a project <Arrow /></a><a href="#ways" class="btn btn-o">Ways to work with us</a></div>
   </PageHero>

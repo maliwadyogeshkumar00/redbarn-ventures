@@ -12,9 +12,12 @@ const { p, others } = Astro.props
 const Content = p.Content
 const fmt = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 const toc = p.headings.filter((h) => h.depth === 2)
-const ld = [{ '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.description, datePublished: p.date, dateModified: p.date, author: { '@type': 'Organization', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, publisher: { '@type': 'Organization', name: 'Redbarn Ventures', logo: { '@type': 'ImageObject', url: 'https://redbarn.ventures/icon-512.png' } }, mainEntityOfPage: `https://redbarn.ventures/insights/${p.slug}` }]
+const url = `https://redbarn.ventures/insights/${p.slug}/`
+const words = (p.minutes || 1) * 230
+const ld = [{ '@context': 'https://schema.org', '@type': 'BlogPosting', '@id': url + '#article', headline: p.title, description: p.description, url, datePublished: p.date, dateModified: p.date, articleSection: p.category, inLanguage: 'en', image: 'https://redbarn.ventures/og.jpg', author: { '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/' }, publisher: { '@id': 'https://redbarn.ventures/#org' }, mainEntityOfPage: { '@id': url + '#webpage' }, isPartOf: { '@id': 'https://redbarn.ventures/insights/#webpage' }, timeRequired: `PT${p.minutes}M` }]
 ---
 <Base title={p.title} description={p.description} type="article" jsonld={ld}>
+  <Fragment slot="head"><meta property="article:published_time" content={p.date} /><meta property="article:section" content={p.category} /></Fragment>
   <section class="frame hero">
     <div class="hero-grid">
       <div class="hatch side" aria-hidden="true"></div>

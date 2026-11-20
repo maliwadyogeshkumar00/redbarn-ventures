@@ -1,24 +1,35 @@
+import { execSync } from 'node:child_process'
 import services from '../data/services.json'
 import { getPosts } from '../posts'
 
+// Last commit date of the files that make up a page; falls back to the build date.
+const lastmod = (...files: string[]) => {
+  try {
+    const out = execSync(`git log -1 --format=%cs -- ${files.map((f) => `"${f}"`).join(' ')}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    if (out) return out
+  } catch {}
+  return new Date().toISOString().slice(0, 10)
+}
+
 export function GET() {
   const base = 'https://redbarn.ventures'
-  const today = '2026-11-20'
-  const core: [string, string, string][] = [
-    ['/', '1.0', 'weekly'], ['/services/', '0.9', 'monthly'], ['/ai/', '0.9', 'monthly'],
-    ['/industries/', '0.8', 'monthly'], ['/process/', '0.7', 'monthly'], ['/insights/', '0.8', 'weekly'],
-    ['/about/', '0.7', 'monthly'], ['/contact/', '0.8', 'monthly'], ['/sitemap/', '0.3', 'monthly'],
-    ['/privacy/', '0.2', 'yearly'], ['/cookies/', '0.2', 'yearly'], ['/terms/', '0.2', 'yearly'],
-    ['/disclaimer/', '0.2', 'yearly'], ['/accessibility/', '0.2', 'yearly'],
+  const pg = (n: string) => `src/pages/${n}.astro`
+  const core: [string, string[]][] = [
+    ['/', [pg('index'), 'src/data/home.json']], ['/services/', [pg('services/index'), 'src/data/services.json']], ['/ai/', [pg('ai')]],
+    ['/industries/', [pg('industries')]], ['/process/', [pg('process')]], ['/insights/', [pg('insights/index'), 'src/posts']],
+    ['/about/', [pg('about')]], ['/contact/', [pg('contact')]], ['/sitemap/', [pg('sitemap')]],
+    ['/privacy/', [pg('privacy')]], ['/cookies/', [pg('cookies')]], ['/terms/', [pg('terms')]],
+    ['/disclaimer/', [pg('disclaimer')]], ['/accessibility/', [pg('accessibility')]],
   ]
+  const svcMod = lastmod('src/data/services.json', 'src/pages/services/[slug].astro')
   const rows = [
-    ...core.map(([p, pr, cf]) => ({ loc: base + p, lastmod: today, pr, cf })),
-    ...services.map((s) => ({ loc: `${base}/services/${s.slug}/`, lastmod: today, pr: '0.9', cf: 'monthly' })),
-    ...getPosts().map((p) => ({ loc: `${base}/insights/${p.slug}/`, lastmod: String(p.date).slice(0, 10), pr: '0.6', cf: 'yearly' })),
+    ...core.map(([p, f]) => ({ loc: base + p, lastmod: lastmod(...f) })),
+    ...services.map((s) => ({ loc: `${base}/services/${s.slug}/`, lastmod: svcMod })),
+    ...getPosts().map((p) => ({ loc: `${base}/insights/${p.slug}/`, lastmod: String(p.date).slice(0, 10) })),
   ]
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${rows.map((r) => `  <url><loc>${r.loc}</loc><lastmod>${r.lastmod}</lastmod><changefreq>${r.cf}</changefreq><priority>${r.pr}</priority></url>`).join('\n')}
+${rows.map((r) => `  <url><loc>${r.loc}</loc><lastmod>${r.lastmod}</lastmod></url>`).join('\n')}
 </urlset>
 `
   return new Response(body, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } })

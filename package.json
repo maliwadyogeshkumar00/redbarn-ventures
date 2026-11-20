@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "seo:audit": "node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@fontsource/inter-tight": "^5.3.0",

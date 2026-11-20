@@ -8,13 +8,22 @@ import FloatContact from '../components/FloatContact.astro'
 import Preloader from '../components/Preloader.astro'
 import Brief from '../components/Brief.astro'
 
-interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
-const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
-const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Global brand, digital and growth agency'
+interface Props { title?: string; description?: string; image?: string; imageAlt?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean; pageType?: string; crumb?: string }
+const { title, description = site.description, image = '/og.jpg', imageAlt = 'Redbarn Ventures - global brand, digital and growth agency', type = 'website', jsonld = [], noindex = false, bare = false, pageType, crumb } = Astro.props
+// Brand suffix only when the full title stays within ~65 characters, so long article titles are not truncated in search results.
+const full = title ? (`${title} - Redbarn Ventures`.length <= 65 ? `${title} - Redbarn Ventures` : title) : 'Redbarn Ventures - Global brand, digital and growth agency'
 const canonical = new URL(Astro.url.pathname, Astro.site).href
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://redbarn.ventures/#website', name: 'Redbarn Ventures', alternateName: ['Redbarn', 'redbarn.ventures'], url: 'https://redbarn.ventures/' }
 const isHome = Astro.url.pathname === '/'
-const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: site.name, foundingDate: '2023', sameAs: [site.linkedin], url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
+const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: site.name, foundingDate: '2023', sameAs: [site.linkedin, site.x], url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
+// WebPage + BreadcrumbList for every indexable inner page (pages that already ship a BreadcrumbList keep theirs).
+const SECTIONS: Record<string, string> = { services: 'Services', insights: 'Insights' }
+const segs = Astro.url.pathname.split('/').filter(Boolean)
+const hasCrumbs = jsonld.some((n) => n['@type'] === 'BreadcrumbList')
+const autoTypes: Record<string, string> = { about: 'AboutPage', contact: 'ContactPage', insights: 'CollectionPage', services: 'CollectionPage', sitemap: 'CollectionPage' }
+const webpage = { '@context': 'https://schema.org', '@type': pageType || (segs.length === 1 && autoTypes[segs[0]]) || 'WebPage', '@id': canonical + '#webpage', url: canonical, name: full, description, inLanguage: 'en', isPartOf: { '@id': 'https://redbarn.ventures/#website' }, publisher: { '@id': 'https://redbarn.ventures/#org' } }
+const breadcrumb = segs.length && !hasCrumbs ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://redbarn.ventures/' }, ...segs.map((seg, i) => { const last = i === segs.length - 1; return { '@type': 'ListItem', position: i + 2, name: last ? (crumb || title || seg) : (SECTIONS[seg] || seg), item: new URL('/' + segs.slice(0, i + 1).join('/') + '/', Astro.site).href } })] } : null
+const graph = noindex ? [] : isHome ? [website, org, ...jsonld] : [org, webpage, ...(breadcrumb ? [breadcrumb] : []), ...jsonld]
 import Consent from '../components/Consent.astro'
 ---
 <!doctype html>
@@ -26,7 +35,7 @@ import Consent from '../components/Consent.astro'
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{full}</title>
   <meta name="description" content={description} />
-  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+  {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
   <meta name="theme-color" content="#FFFFFF" />
   <meta property="og:type" content={type} />
   <meta name="application-name" content="Redbarn Ventures" />
@@ -36,14 +45,25 @@ import Consent from '../components/Consent.astro'
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={new URL(image, Astro.site).href} />
+  <meta property="og:image:alt" content={imageAlt} />
+  {image === '/og.jpg' && <><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /></>}
+  <meta property="og:locale" content="en_GB" />
+  <meta name="twitter:title" content={full} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(image, Astro.site).href} />
+  <link rel="alternate" type="application/rss+xml" title="Redbarn Ventures Insights" href="/rss.xml" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content={site.xHandle} />
+  <meta name="twitter:creator" content={site.xHandle} />
+  <link rel="me" href={site.x} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <script is:inline>
     (function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('rbpl')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('no-pl')}catch(e){d.classList.add('no-pl')}try{if(sessionStorage.getItem('rbw')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('arrive');sessionStorage.removeItem('rbw')}catch(e){}})();
   </script>
-  <script type="application/ld+json" set:html={JSON.stringify(isHome ? [website, org, ...jsonld] : [org, ...jsonld])} />
+  {graph.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />}
+  <slot name="head" />
 </head>
 <body id="top">
   {!bare && <Preloader />}
