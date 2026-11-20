@@ -1,0 +1,57 @@
+---
+// Cookie consent for Google Analytics. Nothing from Google loads until the visitor clicks Accept.
+const GA = 'G-QSVG9MT6Q9'
+---
+<div class="cc" id="cc" role="dialog" aria-labelledby="cc-t" aria-describedby="cc-d" hidden>
+  <p class="cc-t" id="cc-t"><span class="cc-mark" aria-hidden="true"><i></i><i></i><i></i></span>Cookies, briefly.</p>
+  <p class="cc-d" id="cc-d">May we use Google Analytics to see which pages help visitors? No ads, no selling data. <a href="/cookies/">Cookie policy</a></p>
+  <div class="cc-b">
+    <button type="button" class="btn btn-o" data-cc="denied">Decline</button>
+    <button type="button" class="btn btn-o" data-cc="granted">Accept</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA }}>
+  (function () {
+    var KEY = 'rb_consent', box = document.getElementById('cc')
+    function get() { try { return JSON.parse(localStorage.getItem(KEY) || 'null') } catch (e) { return null } }
+    function set(v) { try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })) } catch (e) {} }
+    function load() {
+      if (window.__rbga) return; window.__rbga = 1
+      window.dataLayer = window.dataLayer || []
+      window.gtag = function () { dataLayer.push(arguments) }
+      gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' })
+      gtag('js', new Date())
+      gtag('config', GA, { anonymize_ip: true })
+      var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA; document.head.appendChild(s)
+    }
+    function clearGa() {
+      document.cookie.split(';').forEach(function (c) { var n = c.split('=')[0].trim(); if (n.indexOf('_ga') === 0) { document.cookie = n + '=; Max-Age=0; path=/; domain=.redbarn.ventures'; document.cookie = n + '=; Max-Age=0; path=/' } })
+    }
+    var c = get(), SIX_MONTHS = 1000 * 60 * 60 * 24 * 182
+    if (c && Date.now() - c.t < SIX_MONTHS) { if (c.v === 'granted') load() } else { box.hidden = false; requestAnimationFrame(function () { box.classList.add('on') }) }
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cc]'); if (!b) return
+      var v = b.getAttribute('data-cc'); set(v)
+      if (v === 'granted') load(); else clearGa()
+      box.classList.remove('on'); setTimeout(function () { box.hidden = true }, 400)
+    })
+    document.addEventListener('click', function (e) {
+      var o = e.target.closest('[data-cc-open]'); if (!o) return
+      e.preventDefault(); box.hidden = false; requestAnimationFrame(function () { box.classList.add('on') }); box.querySelector('[data-cc="denied"]').focus()
+    })
+  })()
+</script>
+
+<style>
+  .cc{position:fixed;left:16px;bottom:16px;z-index:250;width:min(380px,calc(100vw - 32px));background:rgba(255,255,255,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line-2);border-radius:14px;padding:18px 18px 16px;box-shadow:0 30px 60px -30px rgba(11,11,12,.35);display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(16px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+  .cc.on{opacity:1;transform:none}
+  .cc[hidden]{display:none}
+  .cc-t{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;letter-spacing:-.015em}
+  .cc-mark{display:inline-flex;gap:2px}.cc-mark i{width:3px;height:13px;background:var(--red);transform:skewX(-14deg);border-radius:1px}
+  .cc-d{font-size:14px;line-height:1.5;color:var(--mute)}
+  .cc-d a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+  .cc-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+  .cc-b .btn{justify-content:center;width:100%}
+  @media (max-width:600px){.cc{left:8px;right:8px;bottom:8px;width:auto}}
+</style>

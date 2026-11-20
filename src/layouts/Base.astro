@@ -15,11 +15,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://redbarn.ventures/#website', name: 'Redbarn Ventures', alternateName: ['Redbarn', 'redbarn.ventures'], url: 'https://redbarn.ventures/' }
 const isHome = Astro.url.pathname === '/'
 const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: site.name, foundingDate: '2023', sameAs: [site.linkedin], url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
+import Consent from '../components/Consent.astro'
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="msvalidate.01" content="2ADD87699A8236062A3D577ABDA6E451" />
   <meta name="google-site-verification" content="WTyP1V_DN-lg6zSQ27fO3UIkxYCt6dfQyv-3HQB_Gw4" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{full}</title>
@@ -52,6 +54,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 
   {!bare && <Footer />}
   {!bare && <FloatContact />}
   {!bare && <Brief />}
+  {!bare && <Consent />}
   <script>import '../scripts/site.ts'</script>
 </body>
 </html>
