@@ -3,10 +3,10 @@
   "slug": "brand-and-identity",
   "n": "001",
   "title": "Brand and Identity",
-  "nav": "Design and Branding",
+  "nav": "Branding and Design",
   "obj": "cube",
-  "short": "Logos, identity systems and guidelines that make a company look as good as it is.",
-  "meta": "Brand identity and design studio - logos, identity systems, guidelines and decks built by a senior team.",
+  "short": "Logos, identity systems, guidelines and graphic design that make a company look as good as it is.",
+  "meta": "Brand identity and design agency - logos, identity systems, guidelines and decks built by a senior team.",
   "hero": "Brand identities that look established from day one.",
   "intro": "Your brand is the first thing a customer, partner or investor judges - usually before they read a single word. We design logos, identity systems and brand guidelines that make your company look credible, consistent and confident everywhere it appears, from the website to the sales deck to the side of a box.",
   "pains": [
@@ -45,8 +45,8 @@
     "d": "Editable presentation, document and social templates so your team produces on-brand work themselves."
    },
    {
-    "t": "Print and packaging",
-    "d": "Business stationery, brochures, labels and packaging prepared as print-ready files."
+    "t": "Graphic design",
+    "d": "Social graphics, ads, brochures, packaging and print - designed in your system, ready to publish."
    }
   ],
   "process": [
@@ -214,13 +214,120 @@
   "lower": "websites and apps"
  },
  {
-  "slug": "marketing-and-growth",
+  "slug": "ai-agents-and-automation",
   "n": "003",
+  "title": "AI Agents and Automation",
+  "nav": "AI Agents and Automation",
+  "obj": "chip",
+  "short": "AI agents, chatbots and automations that take repetitive work off your team - built safely around your data.",
+  "meta": "AI agents and automation agency - custom AI assistants, chatbots, document processing, workflow automation and integrations.",
+  "hero": "AI that does real work - not just demos.",
+  "intro": "Most companies have tried a chatbot. Few have put AI to work on the tasks that actually cost them time: answering the same questions, qualifying leads, reading documents, updating systems and writing first drafts. We design, build and run AI agents and automations around your own data and tools, with clear guardrails and a human in the loop wherever it matters.",
+  "pains": [
+   {
+    "t": "Your team drowns in repetitive work",
+    "d": "Inboxes, data entry, reporting and copy-paste between systems eat hours that should go to customers."
+   },
+   {
+    "t": "AI experiments never reach production",
+    "d": "Pilots look impressive in a meeting and then stall, because nobody owns security, data or maintenance."
+   },
+   {
+    "t": "Knowledge is trapped in documents",
+    "d": "Answers exist somewhere in PDFs, emails and drives, but nobody can find them quickly."
+   }
+  ],
+  "included": [
+   {
+    "t": "AI opportunity audit",
+    "d": "We map your processes and rank where AI saves the most time with the least risk."
+   },
+   {
+    "t": "Custom AI agents",
+    "d": "Assistants that read, decide and act across your tools - with approval steps you control."
+   },
+   {
+    "t": "Knowledge assistants",
+    "d": "Chat over your own documents, policies and product data, with sources for every answer."
+   },
+   {
+    "t": "Workflow automation",
+    "d": "Connect CRM, email, forms, sheets and calendars so work moves without manual hand-offs."
+   },
+   {
+    "t": "Document processing",
+    "d": "Extract, check and route data from invoices, contracts, datasheets and forms."
+   },
+   {
+    "t": "Monitoring and care",
+    "d": "Logging, cost control, quality checks and improvements every month."
+   }
+  ],
+  "process": [
+   {
+    "t": "Audit",
+    "d": "We find the tasks where AI pays back fastest."
+   },
+   {
+    "t": "Prototype",
+    "d": "We build a working version on your real data."
+   },
+   {
+    "t": "Deploy",
+    "d": "We launch with guardrails, training and clear ownership."
+   },
+   {
+    "t": "Improve",
+    "d": "We monitor quality and cost, and expand what works."
+   }
+  ],
+  "why": [
+   {
+    "t": "Practical, not hype",
+    "d": "We start with boring, valuable tasks and prove the return before scaling."
+   },
+   {
+    "t": "Safe by design",
+    "d": "Your data stays in accounts you control, with access rules and human approval where needed."
+   },
+   {
+    "t": "Connected to your stack",
+    "d": "Agents work inside the CRM, inbox and tools your team already uses."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Is our data safe with AI tools?",
+    "a": "We design every solution so data stays in accounts you control, use providers with clear data-handling terms and limit what each agent can see and do."
+   },
+   {
+    "q": "Which AI models do you use?",
+    "a": "We choose the model that fits the task, cost and privacy needs - and can switch models later without rebuilding everything."
+   },
+   {
+    "q": "Do we need a large IT team?",
+    "a": "No. We build, document and maintain the solution, and train your team to use and supervise it."
+   },
+   {
+    "q": "How quickly can we see results?",
+    "a": "A focused automation can be live within weeks. Larger agents follow once the first one proves its value."
+   }
+  ],
+  "related": [
+   "websites-and-apps",
+   "lead-generation-and-sales",
+   "consultancy"
+  ],
+  "lower": "AI agents and automation"
+ },
+ {
+  "slug": "marketing-and-growth",
+  "n": "004",
   "title": "Marketing and Growth",
   "nav": "Marketing",
   "obj": "slabs",
   "short": "Paid search, Shopping, LinkedIn, lead generation, email and CRM that compound month after month.",
-  "meta": "Marketing and growth studio - paid search, Google Shopping, LinkedIn content, lead generation, email and CRM.",
+  "meta": "Marketing and growth agency - paid search, Google Shopping, LinkedIn content, lead generation, email and CRM.",
   "hero": "Marketing that finds the right buyers - and brings them back.",
   "intro": "Good marketing is not a burst of activity before a launch; it is a steady system that keeps the right people finding, trusting and buying from you. We plan and run the channels that matter for your business, connect them to a CRM so no lead is lost, and report results in plain language every month.",
   "pains": [
@@ -322,7 +429,7 @@
  },
  {
   "slug": "seo",
-  "n": "004",
+  "n": "005",
   "title": "SEO and AI Search",
   "nav": "SEO and AI Search",
   "obj": "sphere",
@@ -428,8 +535,436 @@
   "lower": "SEO and AI search"
  },
  {
+  "slug": "lead-generation-and-sales",
+  "n": "006",
+  "title": "Lead Generation and Sales",
+  "nav": "Lead Generation and Sales",
+  "obj": "funnel",
+  "short": "Target lists, outreach, landing pages, sales decks and CRM that turn interest into qualified meetings.",
+  "meta": "B2B lead generation and sales enablement agency - prospect lists, outreach campaigns, landing pages, sales decks and CRM setup.",
+  "hero": "More qualified conversations, less guesswork.",
+  "intro": "Marketing that does not reach sales is only half a job. We build the system that finds the right companies, reaches the right people with the right message, and hands your sales team warm conversations - supported by the decks, pages and CRM that help them close.",
+  "pains": [
+   {
+    "t": "The pipeline depends on luck",
+    "d": "Most new business comes from referrals, and nobody knows where the next deal will come from."
+   },
+   {
+    "t": "Outreach gets ignored",
+    "d": "Generic messages to bought lists damage your reputation and bring nothing back."
+   },
+   {
+    "t": "Sales tools are out of date",
+    "d": "Decks, case material and follow-up emails differ from person to person."
+   }
+  ],
+  "included": [
+   {
+    "t": "Ideal customer profile",
+    "d": "A clear definition of which companies and roles are worth your time."
+   },
+   {
+    "t": "Prospect research",
+    "d": "Verified, segmented lists built for your market - not bought in bulk."
+   },
+   {
+    "t": "Outreach campaigns",
+    "d": "Personal email and LinkedIn sequences written to start real conversations."
+   },
+   {
+    "t": "Landing pages",
+    "d": "Focused pages for each offer and segment, built to convert."
+   },
+   {
+    "t": "Sales enablement",
+    "d": "Decks, one-pagers, proposals and follow-up templates your team will actually use."
+   },
+   {
+    "t": "CRM and reporting",
+    "d": "Pipeline set up so every lead is tracked, followed up and measured."
+   }
+  ],
+  "process": [
+   {
+    "t": "Define",
+    "d": "Agree who to target and what to offer them."
+   },
+   {
+    "t": "Build",
+    "d": "Create lists, messages, pages and sales material."
+   },
+   {
+    "t": "Launch",
+    "d": "Run campaigns and hand over warm leads."
+   },
+   {
+    "t": "Refine",
+    "d": "Improve messaging and targeting every month."
+   }
+  ],
+  "why": [
+   {
+    "t": "Quality over volume",
+    "d": "We protect your reputation with relevant, personal outreach."
+   },
+   {
+    "t": "Marketing and sales joined up",
+    "d": "The same team builds the campaign, the page and the deck."
+   },
+   {
+    "t": "Transparent pipeline",
+    "d": "You see every lead, every reply and every meeting."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do you book meetings for us?",
+    "a": "Yes. We can run outreach end to end and pass qualified replies and meetings straight to your calendar."
+   },
+   {
+    "q": "Is this suitable for complex B2B products?",
+    "a": "Yes - especially. We write for technical buyers and long sales cycles."
+   },
+   {
+    "q": "Which CRM do you work with?",
+    "a": "We work with the CRM you have, or set up a simple one that fits your team."
+   },
+   {
+    "q": "Do you buy email lists?",
+    "a": "No. We research and verify contacts to keep outreach relevant and compliant."
+   }
+  ],
+  "related": [
+   "marketing-and-growth",
+   "corporate-materials",
+   "trade-shows-and-events"
+  ],
+  "lower": "lead generation and sales"
+ },
+ {
+  "slug": "influencer-marketing",
+  "n": "007",
+  "title": "Influencer Marketing",
+  "nav": "Influencer Marketing",
+  "obj": "phone",
+  "short": "Creator and influencer campaigns matched to your audience - from shortlist to contracts, content and results.",
+  "meta": "Influencer marketing agency - creator discovery, campaign strategy, contracts, content production and reporting.",
+  "hero": "The right voices, telling your story.",
+  "intro": "People trust people more than they trust ads. We find creators and influencers whose audiences genuinely match your customers, plan campaigns with clear goals, handle briefs and contracts, and make sure the content is on-brand, compliant and measured.",
+  "pains": [
+   {
+    "t": "Big follower counts, no sales",
+    "d": "Past collaborations looked popular but did not move the numbers that matter."
+   },
+   {
+    "t": "Finding the right creators takes forever",
+    "d": "Shortlisting, vetting and negotiating eats weeks of your team's time."
+   },
+   {
+    "t": "Content goes off-brand",
+    "d": "Without a clear brief, creator content can confuse your message or miss legal requirements."
+   }
+  ],
+  "included": [
+   {
+    "t": "Campaign strategy",
+    "d": "Goals, audiences, platforms and budget planned before anyone is contacted."
+   },
+   {
+    "t": "Creator discovery",
+    "d": "Shortlists of creators chosen for audience fit and credibility, not just reach."
+   },
+   {
+    "t": "Outreach and contracts",
+    "d": "Negotiation, agreements and usage rights handled for you."
+   },
+   {
+    "t": "Briefs and approvals",
+    "d": "Clear creative briefs and review steps that keep content on-brand and compliant."
+   },
+   {
+    "t": "Content amplification",
+    "d": "The best creator content reused in ads, on your website and in sales material."
+   },
+   {
+    "t": "Reporting",
+    "d": "Reach, engagement, traffic and sales tracked and explained."
+   }
+  ],
+  "process": [
+   {
+    "t": "Plan",
+    "d": "Set goals, audience and budget."
+   },
+   {
+    "t": "Match",
+    "d": "Shortlist and approach the right creators."
+   },
+   {
+    "t": "Run",
+    "d": "Brief, approve and publish content."
+   },
+   {
+    "t": "Measure",
+    "d": "Report results and plan the next round."
+   }
+  ],
+  "why": [
+   {
+    "t": "Fit before fame",
+    "d": "We choose creators for credibility with your buyers."
+   },
+   {
+    "t": "Brand-safe",
+    "d": "Every brief and post follows your brand and disclosure rules."
+   },
+   {
+    "t": "Joined to your marketing",
+    "d": "Creator content feeds your ads, site and sales tools."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do you work with celebrities as well as smaller creators?",
+    "a": "Yes. We match the profile to your goal and budget, from niche experts to well-known personalities."
+   },
+   {
+    "q": "Is influencer marketing only for consumer brands?",
+    "a": "No. B2B companies use industry voices, experts and creators on LinkedIn and YouTube very effectively."
+   },
+   {
+    "q": "Who owns the content?",
+    "a": "Usage rights are agreed in each contract so you know exactly how and where you can reuse it."
+   },
+   {
+    "q": "How do you measure results?",
+    "a": "With tracked links, codes and platform data, reported in plain language."
+   }
+  ],
+  "related": [
+   "marketing-and-growth",
+   "video-and-content",
+   "brand-and-identity"
+  ],
+  "lower": "influencer marketing"
+ },
+ {
+  "slug": "video-and-content",
+  "n": "008",
+  "title": "Video and Content",
+  "nav": "Video and Content",
+  "obj": "screen",
+  "short": "Brand films, product videos, motion graphics, social content and graphics that make people stop and watch.",
+  "meta": "Video and content agency - brand films, product and explainer videos, motion graphics, social media content and graphic design.",
+  "hero": "Content people actually stop for.",
+  "intro": "Video and visual content now carry most of the weight in how people discover and judge a brand. We plan, script and produce brand films, product explainers, motion graphics and social content - in your identity, sized for every channel and ready to publish.",
+  "pains": [
+   {
+    "t": "Nobody stops scrolling",
+    "d": "Posts look like everyone else's and disappear without a reaction."
+   },
+   {
+    "t": "Complex products are hard to explain",
+    "d": "Buyers do not understand the product from a page of text."
+   },
+   {
+    "t": "Content is always late",
+    "d": "There is no plan, so content is rushed out when someone remembers."
+   }
+  ],
+  "included": [
+   {
+    "t": "Brand films",
+    "d": "Short films that show who you are and why you matter."
+   },
+   {
+    "t": "Product and explainer videos",
+    "d": "Clear, visual explanations of how your product works and why it is better."
+   },
+   {
+    "t": "Motion graphics",
+    "d": "Animated graphics, logo animations and data stories."
+   },
+   {
+    "t": "Social content",
+    "d": "Monthly posts, reels and carousels designed for each platform."
+   },
+   {
+    "t": "Graphic design",
+    "d": "Ads, banners, infographics and campaign visuals in your brand system."
+   },
+   {
+    "t": "Content calendar",
+    "d": "A planned, approved schedule so content goes out on time."
+   }
+  ],
+  "process": [
+   {
+    "t": "Concept",
+    "d": "Ideas, scripts and storyboards."
+   },
+   {
+    "t": "Produce",
+    "d": "Filming, animation and design."
+   },
+   {
+    "t": "Edit",
+    "d": "Versions cut for every channel."
+   },
+   {
+    "t": "Publish",
+    "d": "Delivered, scheduled and measured."
+   }
+  ],
+  "why": [
+   {
+    "t": "Strategy first",
+    "d": "Every piece of content has a job and an audience."
+   },
+   {
+    "t": "On-brand every time",
+    "d": "Made inside your identity, not as one-off experiments."
+   },
+   {
+    "t": "Built for reuse",
+    "d": "One shoot becomes many assets across your channels."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do you shoot live video or only animation?",
+    "a": "Both. We plan live shoots, animation or a mix depending on what explains your story best."
+   },
+   {
+    "q": "Can you produce content every month?",
+    "a": "Yes - ongoing content packages are one of our most common partnerships."
+   },
+   {
+    "q": "Do you write the scripts?",
+    "a": "Yes. We handle concept, scripts and storyboards before production."
+   },
+   {
+    "q": "Which formats do you deliver?",
+    "a": "Every format you need, from widescreen films to vertical reels and square social posts."
+   }
+  ],
+  "related": [
+   "influencer-marketing",
+   "brand-and-identity",
+   "trade-shows-and-events"
+  ],
+  "lower": "video and content"
+ },
+ {
+  "slug": "trade-shows-and-events",
+  "n": "009",
+  "title": "Trade Shows and Events",
+  "nav": "Trade Shows and Events",
+  "obj": "booth",
+  "short": "Booth design, show graphics, pre-show campaigns, sales material and lead follow-up for trade fairs and events.",
+  "meta": "Trade show and event marketing agency - booth graphics, show campaigns, sales material, event content and lead follow-up.",
+  "hero": "Trade shows that fill your pipeline, not just your calendar.",
+  "intro": "Trade shows are expensive, and most of the value is lost before and after the event. We help you plan the show as a sales campaign: a booth that draws the right visitors, materials that explain the product in seconds, a pre-show campaign that books meetings, and follow-up that turns badge scans into conversations.",
+  "pains": [
+   {
+    "t": "A big spend with little to show",
+    "d": "The stand looked good, but few real opportunities came out of it."
+   },
+   {
+    "t": "Visitors walk past",
+    "d": "The booth does not explain what you do from the aisle."
+   },
+   {
+    "t": "Leads go cold after the show",
+    "d": "Business cards sit in a drawer while competitors follow up first."
+   }
+  ],
+  "included": [
+   {
+    "t": "Show strategy",
+    "d": "Which events to attend, what to achieve and how to measure it."
+   },
+   {
+    "t": "Booth and stand graphics",
+    "d": "Back walls, counters, banners and screens designed to stop the right people."
+   },
+   {
+    "t": "Pre-show campaign",
+    "d": "Email, LinkedIn and invitations that book meetings before the doors open."
+   },
+   {
+    "t": "Show material",
+    "d": "Brochures, datasheets, product videos and giveaways that support sales conversations."
+   },
+   {
+    "t": "Event content",
+    "d": "Photos, video and social posts captured during the show."
+   },
+   {
+    "t": "Lead follow-up",
+    "d": "Structured follow-up sequences and CRM tracking after the event."
+   }
+  ],
+  "process": [
+   {
+    "t": "Plan",
+    "d": "Set goals, audiences and the meeting target."
+   },
+   {
+    "t": "Design",
+    "d": "Create booth graphics and materials."
+   },
+   {
+    "t": "Promote",
+    "d": "Run the pre-show and on-site campaign."
+   },
+   {
+    "t": "Follow up",
+    "d": "Turn every contact into a next step."
+   }
+  ],
+  "why": [
+   {
+    "t": "Sales-led",
+    "d": "Every element is designed to start and continue conversations."
+   },
+   {
+    "t": "End to end",
+    "d": "Strategy, design, content and follow-up from one agency."
+   },
+   {
+    "t": "Experience with technical products",
+    "d": "We make complex products understandable from the aisle."
+   }
+  ],
+  "faq": [
+   {
+    "q": "Do you build the physical stand?",
+    "a": "We design the graphics and materials and work with your stand builder or ours to produce them."
+   },
+   {
+    "q": "How early should we start?",
+    "a": "Ideally two to three months before the show, so the pre-show campaign has time to work."
+   },
+   {
+    "q": "Can you help us at the event?",
+    "a": "Yes - we can capture content and support your team on site."
+   },
+   {
+    "q": "What happens after the show?",
+    "a": "We run the follow-up, track leads in your CRM and report what the show delivered."
+   }
+  ],
+  "related": [
+   "lead-generation-and-sales",
+   "corporate-materials",
+   "video-and-content"
+  ],
+  "lower": "trade show and event marketing"
+ },
+ {
   "slug": "consultancy",
-  "n": "005",
+  "n": "010",
   "title": "Consultancy",
   "nav": "Consultancy",
   "obj": "arrow",
@@ -524,7 +1059,7 @@
    },
    {
     "q": "Can you help us implement the plan?",
-    "a": "Yes. Our studio can deliver the brand, website, content and campaigns the plan recommends."
+    "a": "Yes. Our agency can deliver the brand, website, content and campaigns the plan recommends."
    }
   ],
   "related": [
@@ -536,7 +1071,7 @@
  },
  {
   "slug": "corporate-materials",
-  "n": "006",
+  "n": "011",
   "title": "Corporate Materials",
   "nav": "Corporate Materials",
   "obj": "monolith",

@@ -1,11 +1,12 @@
 {
   "hero": {
-    "chip": "Brand · Websites · Marketing · Consultancy · Corporate",
+    "chip": "Brand · Digital · AI · Growth · Consulting",
     "title": "We build brands that win trust - and keep them growing.",
-    "lead": "Redbarn Ventures is a senior design and growth studio. We create your brand, build your website, market it and support it for the long run - one team, one point of contact, no hand-offs.",
+    "lead": "Redbarn Ventures is a global brand, digital and growth agency, established in 2023. We advise, design, build and market for ambitious companies - one senior team, one point of contact, no hand-offs.",
     "proof": [
+      "Established 2023",
+      "Global clients",
       "Senior team only",
-      "You own every file",
       "Support after launch"
     ]
   },
@@ -259,11 +260,11 @@
   "faq": [
     {
       "q": "What kind of companies do you work with?",
-      "a": "Established businesses and ambitious new ones that want to look and sell like leaders in their field - from industrial and energy companies to consumer brands and software products. If you care about quality and want a long-term partner, we are likely a good fit."
+      "a": "Established businesses and ambitious new ventures around the world that want to look and sell like leaders in their field - from industrial and energy companies to consumer brands, software products and professional services. If you care about quality and want a long-term partner, we are likely a good fit."
     },
     {
-      "q": "Can you handle our brand, website and marketing together?",
-      "a": "Yes, that is what we are built for. One senior team plans and delivers your brand, website and marketing together, so everything works as one system instead of three separate projects."
+      "q": "Can you handle our brand, website, marketing and AI together?",
+      "a": "Yes, that is what we are built for. One senior agency team plans and delivers your brand, website, marketing, sales material and AI automations together, so everything works as one system instead of separate projects."
     },
     {
       "q": "How long does a website take?",

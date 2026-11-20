@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Faq from '../components/Faq.astro'
+import AgentFlow from '../components/AgentFlow.astro'
+import Art from '../components/Art.astro'
+import Arrow from '../components/Arrow.astro'
+const uses = [
+  { d: 'Sales', items: ['Lead qualification and scoring', 'Prospect research briefs', 'Personalised outreach drafts', 'Meeting preparation notes', 'Call summaries to CRM', 'Proposal first drafts', 'Follow-up reminders', 'Pipeline health reports', 'Competitor monitoring', 'Pricing question answers', 'Tender document analysis', 'Account research agents'] },
+  { d: 'Marketing', items: ['Content briefs and outlines', 'SEO article drafts', 'Social post variations', 'Ad copy testing', 'Campaign reporting', 'AI-search visibility checks', 'Newsletter drafts', 'Image and video ideas', 'Translation and localisation', 'Review and mention monitoring', 'Persona research', 'Landing page copy tests'] },
+  { d: 'Customer support', items: ['Website chat assistant', 'Email triage and routing', 'Suggested replies', 'Knowledge base answers', 'Order and status lookups', 'Returns handling', 'Ticket summaries', 'Sentiment alerts', 'FAQ generation', 'After-hours coverage', 'Multilingual support', 'Escalation to humans'] },
+  { d: 'Operations', items: ['Invoice data extraction', 'Purchase order matching', 'Contract clause checks', 'Datasheet generation', 'Inventory alerts', 'Supplier email handling', 'Form processing', 'Spreadsheet clean-up', 'Report automation', 'Meeting notes and actions', 'Process documentation', 'Quality checklists'] },
+  { d: 'Finance', items: ['Expense categorisation', 'Payment reminders', 'Cash flow summaries', 'Budget variance notes', 'Receipt matching', 'Board pack drafts', 'Investor update drafts', 'Policy question answers'] },
+  { d: 'People and HR', items: ['CV screening support', 'Interview question sets', 'Onboarding assistant', 'Policy and handbook chat', 'Training material drafts', 'Internal announcements', 'Job description drafts', 'Employee FAQ bot'] },
+  { d: 'Leadership', items: ['Market and news briefings', 'Board meeting preparation', 'Strategy document drafts', 'KPI commentary', 'Competitor landscape summaries', 'Decision memos', 'Speech and post drafts', 'Due diligence reading'] },
+  { d: 'Product and tech', items: ['Code review assistance', 'Test case generation', 'Release notes', 'Bug report triage', 'API documentation', 'User feedback analysis', 'Spec drafting', 'Data clean-up scripts'] },
+]
+const total = uses.reduce((n, u) => n + u.items.length, 0)
+const tech = [
+  { t: 'Retrieval over your data', d: 'Assistants that search your documents and answer with sources, using vector search on secure databases.' },
+  { t: 'Tool-using agents', d: 'Agents that call your CRM, email, calendar and internal APIs to take real actions.' },
+  { t: 'Multi-agent workflows', d: 'Several specialised agents passing work between them, each with a narrow, testable job.' },
+  { t: 'Document intelligence', d: 'Reading PDFs, scans and spreadsheets, extracting fields and checking them against rules.' },
+  { t: 'Voice and chat interfaces', d: 'Website chat, internal assistants and voice agents that speak your brand language.' },
+  { t: 'Evaluation and guardrails', d: 'Test sets, quality scores, cost limits, permissions and human approval steps.' },
+]
+const safe = [
+  { t: 'Your data stays yours', d: 'Built in accounts you control, with providers whose terms keep your data out of public training.' },
+  { t: 'Humans approve what matters', d: 'Anything that reaches a customer or moves money waits for a person.' },
+  { t: 'Least access', d: 'Each agent sees and does only what its job needs.' },
+  { t: 'Measured, not guessed', d: 'Every agent is tested against real examples before and after launch.' },
+]
+const faq = [
+  { q: 'Where should a company start with AI?', a: 'Start with one repetitive, rules-based task that costs your team hours every week and has a clear right answer - for example email triage, lead qualification or document extraction. Prove the value there, then expand.' },
+  { q: 'Will AI replace our team?', a: 'In our work, AI removes the dull parts of jobs so people can spend more time with customers and on decisions. We design every agent with clear human ownership.' },
+  { q: 'Which AI models and platforms do you use?', a: 'We work with leading commercial models and open models, cloud platforms and databases such as Supabase, and automation tools - choosing per task based on quality, cost and privacy.' },
+  { q: 'How do you keep costs under control?', a: 'We set usage limits, choose the smallest model that does the job well and monitor cost per task every month.' },
+  { q: 'Can you connect AI to our existing systems?', a: 'Yes. Most of the value comes from connecting AI to the tools you already use - CRM, email, calendars, drives, ERP and websites.' },
+]
+---
+<Base title="AI agents and automation" description="AI agents and automation for business: lead qualification, email triage, document processing, knowledge assistants and workflow automation - built safely around your data.">
+  <PageHero label="AI and automation" title="AI agents that do real work for your team." lead="We design, build and run AI agents and automations around your data and tools - practical, secure and measured, with people in control of every decision that matters." crumbs={[{ t: 'AI' }]}>
+    <div class="hero-btns rv" style="transition-delay:.35s"><a href="/contact" class="btn btn-p">Book an AI audit <Arrow /></a><a href="#uses" class="btn btn-o">{`${total}+ ways AI can help`}</a></div>
+  </PageHero>
+
+  <section class="frame row ai-band" aria-labelledby="how-h">
+    <div class="ai-grid">
+      <div class="ai-copy in-pad">
+        <span class="label faint">/How an agent works</span>
+        <h2 class="h2" id="how-h" data-split>Read. Decide. Act. Ask.</h2>
+        <p class="lead rv">An agent takes in work from your inbox, forms and documents, decides what needs to happen, prepares the action in your tools - and asks a person to approve anything important.</p>
+        <a href="/services/ai-agents-and-automation" class="btn btn-o rv" style="align-self:flex-start">AI service details <Arrow /></a>
+      </div>
+      <div class="ai-vis hatch"><div class="rv"><AgentFlow /></div></div>
+    </div>
+  </section>
+
+  <section class="frame row" id="uses" aria-labelledby="uses-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Use cases</span><h2 class="h2" id="uses-h" data-split>{`${total} things AI can take off your plate.`}</h2></div>
+      <p class="lead rv">Grouped by team. Each one is a real, buildable automation - most can run alongside the tools you already use.</p>
+    </div>
+    <div class="uc in-pad">
+      {uses.map((u, i) => (
+        <div class="uc-col rv" style={`transition-delay:${(i % 4) * 60}ms`}>
+          <div class="uc-h"><span>{u.d}</span><span class="faint">{u.items.length}</span></div>
+          <ul>{u.items.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="frame row" aria-labelledby="tech-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Technical capabilities</span><h2 class="h2" id="tech-h" data-split>The engineering under the hood.</h2></div>
+      <p class="lead rv">Behind every simple interface sits careful engineering. These are the building blocks we combine for each AI project.</p>
+    </div>
+    <div class="bento in-pad">
+      <div class="bt-feat rv"><div class="bf-top"><span class="faint">ai /</span>&nbsp;stack<span class="sc-n">AI</span></div><div class="bf-art hatch"><Art kind="chip" /></div><p class="bf-sum">Models, data, tools and guardrails - assembled for one job at a time, then joined together.</p></div>
+      {tech.map((t, i) => <div class={`bt-item rv ${i === 5 ? 'wide' : ''}`}><span class="bi-n">{String(i + 1).padStart(2, '0')}</span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></div>)}
+      <a href="/contact" class="bt-cta rv"><span class="label">Next step</span><span class="bc-big">Book an AI audit</span><span class="bc-arr"><Arrow dir="ne" /></span></a>
+    </div>
+  </section>
+
+  <section class="frame row trust" aria-labelledby="safe-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Responsible AI</span><h2 class="h2" id="safe-h" data-split>Safe enough for your board.</h2></div>
+      <p class="lead rv">AI is only valuable if your leadership can trust it. These rules apply to every agent we build.</p>
+    </div>
+    <ul class="t-grid four">{safe.map((t) => <li class="rv"><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><h3 class="h3">{t.t}</h3><p class="mute">{t.d}</p></li>)}</ul>
+  </section>
+
+  <Faq items={faq} title="AI questions from leadership teams." />
+  <CtaBand title="Find your first AI win." lead="In a short audit we map your processes, rank the AI opportunities by value and risk, and show you what the first agent would do." />
+</Base>
+<style>
+  .uc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding-bottom:var(--pad)}
+  .uc-col{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+  .uc-h{display:flex;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px;background:var(--hatch),#fff}
+  .uc-h span:first-child{background:#fff;padding:0 6px;border-radius:4px;margin-left:-6px}
+  .uc-col ul{display:flex;flex-direction:column}
+  .uc-col li{font-size:13.5px;padding:9px 14px;border-bottom:1px solid #F2F2F2;display:flex;gap:8px;align-items:center;transition:background .2s,color .2s}
+  .uc-col li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--line-2);flex:none;transition:background .2s}
+  .uc-col li:hover{background:#FCFCFC;color:var(--red)}
+  .uc-col li:hover::before{background:var(--red)}
+  .uc-col li:last-child{border-bottom:0}
+  .t-grid.four{grid-template-columns:repeat(4,1fr)}
+  .t-grid.four li{border-bottom:0}
+  .t-grid.four li:nth-child(3n){border-right:1px solid var(--line)}
+  .t-grid.four li:last-child{border-right:0}
+  @media (max-width:1024px){.uc{grid-template-columns:repeat(2,minmax(0,1fr))}.t-grid.four{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.uc{grid-template-columns:1fr}.t-grid.four{grid-template-columns:1fr}}
+</style>

@@ -65,7 +65,7 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .logo .mark i{width:6.5px;height:16px;background:var(--red);transform:skewX(-16deg);border-radius:1px}
 .logo b{font-weight:600;font-size:17px;letter-spacing:-.02em;line-height:1;white-space:nowrap}
 .logo b span{font-weight:400;color:var(--mute);margin-left:.13em}
-.nav{display:flex;gap:26px;margin:0 auto;font-size:14px}
+.nav{display:flex;gap:24px;margin:0 auto;font-size:14px}
 .nav a{color:#333;transition:color .2s;position:relative}
 .nav a:hover,.nav a:focus-visible{color:var(--red)}
 .nav a[aria-current=page]::after{content:"";position:absolute;left:50%;bottom:-8px;width:4px;height:4px;border-radius:50%;background:var(--red);transform:translateX(-50%)}
@@ -109,10 +109,10 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .foot-word span{color:var(--red)}
 .foot-bot{display:flex;justify-content:space-between;gap:16px;padding:18px var(--pad);font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
 
-@media (max-width:900px){
+@media (max-width:1100px){
   .nav,.hdr-cta{display:none}
   .burger{display:inline-flex}
-  .sheet{display:block;position:fixed;top:64px;left:0;right:0;z-index:99;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--pad) 20px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),transform .4s var(--ease),visibility 0s .3s}
+  .sheet{max-height:calc(100svh - 64px);overflow:auto;display:block;position:fixed;top:64px;left:0;right:0;z-index:99;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--pad) 20px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),transform .4s var(--ease),visibility 0s .3s}
   .nav-open .sheet{opacity:1;transform:none;visibility:visible;transition:opacity .3s var(--ease),transform .4s var(--ease)}
   .sheet a:not(.btn):hover{color:var(--red)}
   .sheet a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:20px;letter-spacing:-.02em}
@@ -146,10 +146,10 @@ b,strong,h1,h2,h3,h4{font-weight:400}
 .dd>a{display:inline-flex;align-items:center;gap:4px}
 .chev{width:10px;height:10px;transition:transform .3s var(--ease)}
 .dd:hover .chev,.dd:focus-within .chev{transform:rotate(180deg)}
-.dd-panel{position:absolute;left:50%;top:calc(100% + 18px);transform:translate(-50%,6px);width:620px;background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:10px;box-shadow:0 24px 50px -24px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .35s var(--ease),visibility 0s .25s}
+.dd-panel{position:absolute;left:-40px;top:calc(100% + 18px);transform:translate(0,6px);width:min(880px,90vw);background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:10px;box-shadow:0 24px 50px -24px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .35s var(--ease),visibility 0s .25s}
 .dd-panel::before{content:"";position:absolute;left:0;right:0;top:-20px;height:20px}
-.dd:hover .dd-panel,.dd:focus-within .dd-panel{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .25s var(--ease),transform .35s var(--ease)}
-.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.dd:hover .dd-panel,.dd:focus-within .dd-panel{opacity:1;visibility:visible;transform:translate(0,0);transition:opacity .25s var(--ease),transform .35s var(--ease)}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .dd-item{display:flex;gap:12px;padding:12px;border-radius:8px;color:var(--ink)!important;transition:background .2s}
 .dd-item:hover{background:#FAFAFA}
 .dd-item:hover b{color:var(--red)}
@@ -195,3 +195,8 @@ html.no-pl .pl{display:none}
 @keyframes plFade{to{opacity:1}}
 @media (max-width:600px){.pl-word{font-size:30px}.pl-bars{height:36px}.pl-bars i{width:13px;height:36px}.pl-meta{width:220px}.pl-frame::before,.pl-frame::after{width:16px}}
 @media (prefers-reduced-motion:reduce){.pl{display:none}}
+.foot-mail{font-size:18px;letter-spacing:-.02em}
+.foot-soc{display:flex;gap:8px;margin-top:10px}
+.foot-soc a{width:36px;height:36px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;transition:border-color .2s,color .2s}
+.foot-soc a:hover{border-color:var(--red);color:var(--red)}
+.foot-soc svg{width:16px;height:16px}

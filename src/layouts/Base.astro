@@ -9,7 +9,7 @@ import Preloader from '../components/Preloader.astro'
 
 interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
 const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
-const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Brand, websites and growth studio'
+const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Global brand, digital and growth agency'
 const canonical = new URL(Astro.url.pathname, Astro.site).href
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
 ---

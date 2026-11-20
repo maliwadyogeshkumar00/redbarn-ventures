@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHero from '../components/PageHero.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Art from '../components/Art.astro'
+import Arrow from '../components/Arrow.astro'
+import services from '../data/services.json'
+const S = Object.fromEntries(services.map((s) => [s.slug, s]))
+const inds = [
+  { t: 'Energy and industrial', obj: 'monolith', d: 'Complex, technical products sold to engineers, procurement teams and boards. We turn specifications into clear stories, precise datasheets and trade show presence that wins meetings.', needs: ['Technical datasheets', 'Investor and sales decks', 'Trade show campaigns', 'Lead generation'], svc: ['corporate-materials', 'trade-shows-and-events', 'lead-generation-and-sales'] },
+  { t: 'Technology and SaaS', obj: 'lattice', d: 'Products that change every month and buyers who research everything online. We build sites, product pages and content that explain value fast and rank in search and AI answers.', needs: ['Product websites', 'SEO and AI search', 'AI features', 'Launch campaigns'], svc: ['websites-and-apps', 'seo', 'ai-agents-and-automation'] },
+  { t: 'Consumer and e-commerce', obj: 'slabs', d: 'Brands that live and die by how they look and how easily people can buy. We design identities, stores, Shopping feeds, creator campaigns and CRM that brings customers back.', needs: ['E-commerce stores', 'Influencer campaigns', 'Social content', 'CRM and retention'], svc: ['influencer-marketing', 'video-and-content', 'marketing-and-growth'] },
+  { t: 'Professional services', obj: 'arrow', d: 'Firms that sell expertise and trust. We sharpen positioning, build credible websites and thought-leadership content, and set up pipelines that do not depend on referrals alone.', needs: ['Positioning', 'Thought leadership', 'Websites', 'Outreach'], svc: ['consultancy', 'brand-and-identity', 'lead-generation-and-sales'] },
+  { t: 'Startups and new ventures', obj: 'cube', d: 'Founders who need to look established on day one. We create the brand, website, pitch deck and first marketing engine - and stay on as the company grows.', needs: ['Brand from scratch', 'Pitch deck', 'Launch website', 'First campaigns'], svc: ['brand-and-identity', 'websites-and-apps', 'corporate-materials'] },
+  { t: 'Health and wellness', obj: 'sphere', d: 'Brands that must earn trust carefully and communicate clearly within strict rules. We design calm, credible identities, compliant content and sites that answer real patient and customer questions.', needs: ['Credible branding', 'Clear product pages', 'Compliant content', 'Search visibility'], svc: ['brand-and-identity', 'seo', 'video-and-content'] },
+]
+const global = [
+  { t: 'Across time zones', d: 'We work asynchronously with clear weekly updates, so progress never waits for a meeting.' },
+  { t: 'Multilingual by design', d: 'Websites and materials are built to work cleanly in several languages from the start.' },
+  { t: 'One standard everywhere', d: 'Wherever your teams sit, every market gets the same brand, the same quality and the same point of contact.' },
+]
+---
+<Base title="Industries" description="Industries we serve: energy and industrial, technology and SaaS, consumer and e-commerce, professional services, startups and health and wellness - one global agency.">
+  <PageHero label="Industries" title="Different industries. The same senior standard." lead="We work with companies around the world in sectors where trust, clarity and long sales cycles matter. Here is how we help in each - and the services our clients use most." crumbs={[{ t: 'Industries' }]} />
+
+  <section class="frame row" aria-label="Industries">
+    <div class="ind in-pad">
+      {inds.map((x, i) => (
+        <article class="ind-c rv" style={`transition-delay:${(i % 2) * 80}ms`}>
+          <div class="ind-art hatch"><Art kind={x.obj} /><span class="sg-n">{`0${i + 1}`}</span></div>
+          <div class="ind-b">
+            <h2 class="h3 ind-t">{x.t}</h2>
+            <p class="mute">{x.d}</p>
+            <div class="ind-row"><span class="label faint">Typical needs</span><div class="bc-tags">{x.needs.map((n) => <span class="tag">{n}</span>)}</div></div>
+            <div class="ind-row"><span class="label faint">Services</span><div class="ind-links">{x.svc.map((k) => <a href={`/services/${k}`}>{S[k].title} <Arrow /></a>)}</div></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="frame row" aria-labelledby="gl-h">
+    <div class="sec-h in-pad">
+      <div><span class="label faint">/Global agency</span><h2 class="h2" id="gl-h" data-split>Built to work wherever you do.</h2></div>
+      <p class="lead rv">Since 2023 we have worked with companies across continents and time zones. Distance has never been a reason for lower quality or slower answers.</p>
+    </div>
+    <ol class="pain-cards in-pad">
+      {global.map((p, i) => <li class="pain rv"><div class="pain-top hatch"><span class="pain-n">{`0${i + 1}`}</span></div><div class="pain-b"><h3 class="h3">{p.t}</h3><p class="mute">{p.d}</p></div></li>)}
+    </ol>
+  </section>
+
+  <CtaBand title="Tell us about your industry." />
+</Base>
+<style>
+  .ind{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding-top:var(--pad);padding-bottom:var(--pad)}
+  .ind-c{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:grid;grid-template-columns:200px 1fr;transition:border-color .3s,transform .5s var(--ease)}
+  .ind-c:hover{border-color:var(--red);transform:translateY(-3px)}
+  .ind-art{position:relative;border-right:1px solid var(--line);min-height:220px}
+  .ind-art :global(.art){position:absolute;inset:22% 18%;width:64%;height:56%}
+  .ind-b{padding:20px;display:flex;flex-direction:column;gap:12px}
+  .ind-t{font-size:22px}
+  .ind-b p{font-size:14.5px}
+  .ind-row{display:flex;flex-direction:column;gap:6px}
+  .ind-links{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px}
+  .ind-links a{display:inline-flex;align-items:center;gap:4px}
+  .ind-links a:hover{color:var(--red)}
+  .ind-links :global(svg){width:11px;height:11px}
+  @media (max-width:1024px){.ind{grid-template-columns:1fr}}
+  @media (max-width:600px){.ind-c{grid-template-columns:1fr}.ind-art{border-right:0;border-bottom:1px solid var(--line)}}
+</style>

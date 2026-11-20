@@ -1,0 +1,45 @@
+---
+/* Built-in diagram of an AI agent taking work from inputs to actions, with a human approval step. */
+const ins = [{ t: 'Inbox', s: 'Customer emails' }, { t: 'Forms', s: 'Website enquiries' }, { t: 'Documents', s: 'PDFs and datasheets' }]
+const outs = [{ t: 'CRM', s: 'Lead created and scored' }, { t: 'Calendar', s: 'Meeting proposed' }, { t: 'Reply draft', s: 'Ready for approval' }]
+const steps = ['Read', 'Understand', 'Decide', 'Act']
+---
+<div class="af" role="img" aria-label="Diagram: an AI agent reads emails, forms and documents, decides what to do, asks a human to approve, and updates the CRM, calendar and replies.">
+  <div class="af-top" aria-hidden="true"><span><span class="faint">automation /</span> lead-agent</span><span class="af-live"><i></i>Running</span></div>
+  <div class="af-body" aria-hidden="true">
+    <ul class="af-col">{ins.map((x) => <li><b>{x.t}</b><small>{x.s}</small></li>)}</ul>
+    <svg class="af-l" viewBox="0 0 100 300" preserveAspectRatio="none"><path class="ln" d="M0 50 C50 50 50 150 100 150M0 150 L100 150M0 250 C50 250 50 150 100 150" /></svg>
+    <div class="af-agent">
+      <span class="af-chip"><span class="mk"><i></i><i></i><i></i></span>AI agent</span>
+      <ol>{steps.map((s, i) => <li><span>{`0${i + 1}`}</span>{s}</li>)}</ol>
+      <span class="af-human">Human approval</span>
+    </div>
+    <svg class="af-l" viewBox="0 0 100 300" preserveAspectRatio="none"><path class="ln" d="M0 150 C50 150 50 50 100 50M0 150 L100 150M0 150 C50 150 50 250 100 250" /></svg>
+    <ul class="af-col out">{outs.map((x) => <li><b>{x.t}</b><small>{x.s}</small></li>)}</ul>
+  </div>
+</div>
+<style>
+  .af{background:#fff;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+  .af-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:12.5px}
+  .af-live{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:3px 8px;border-radius:5px;background:#F3F3F3}
+  .af-live i{width:6px;height:6px;border-radius:50%;background:#1F9D55;animation:pulse 1.6s infinite}
+  @keyframes pulse{50%{opacity:.3}}
+  .af-body{display:grid;grid-template-columns:1fr 54px 1.15fr 54px 1fr;align-items:center;padding:22px 18px}
+  .af-col{display:flex;flex-direction:column;gap:12px}
+  .af-col li{border:1px solid var(--line);border-radius:9px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;background:#fff}
+  .af-col b{font-weight:400;font-size:13.5px}
+  .af-col small{font-size:11.5px;color:var(--mute)}
+  .af-col.out li{border-color:var(--line-2)}
+  .af-l{width:100%;height:230px}
+  .ln{fill:none;stroke:var(--line-2);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:4 4;animation:dash 1.2s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-16}}
+  .af-agent{border:1px solid var(--red);border-radius:12px;padding:14px;box-shadow:0 0 0 4px rgba(215,38,61,.07);display:flex;flex-direction:column;gap:12px;background:var(--hatch),#fff}
+  .af-chip{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:#fff;border:1px solid var(--line-2);border-radius:7px;padding:6px 10px;font-size:13.5px}
+  .mk{display:flex;gap:1.6px}.mk i{width:4px;height:11px;background:var(--red);transform:skewX(-16deg);border-radius:1px}
+  .af-agent ol{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .af-agent li{background:#fff;border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12.5px;display:flex;gap:6px}
+  .af-agent li span{color:var(--red);font-size:11px}
+  .af-human{align-self:flex-start;font-size:11.5px;color:var(--red);background:#FCECEE;border:1px solid #F6D3D8;border-radius:5px;padding:3px 8px}
+  @media (max-width:900px){.af-body{grid-template-columns:1fr;gap:12px}.af-l{display:none}}
+  @media (prefers-reduced-motion:reduce){.ln,.af-live i{animation:none}}
+</style>

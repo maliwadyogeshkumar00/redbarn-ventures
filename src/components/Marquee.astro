@@ -1,0 +1,41 @@
+---
+import site from '../data/site.json'
+interface Props { title?: string; lead?: string }
+const { title = 'The tools behind the work.', lead = 'We pick proven technology for each job - and stay fluent in the platforms your business already runs on.' } = Astro.props
+const rows = [
+  { k: 'Technologies we build with', items: site.tech, dir: 'l' },
+  { k: 'Platforms we work with', items: site.platforms, dir: 'r' },
+]
+const mono = (t: string) => t.replace(/[^A-Za-z0-9]/g, '').slice(0, 2)
+---
+<section class="frame row mq-sec" aria-labelledby="mq-h">
+  <div class="sec-h in-pad">
+    <div><span class="label faint">/Stack</span><h2 class="h2" id="mq-h" data-split>{title}</h2></div>
+    <p class="lead rv">{lead}</p>
+  </div>
+  {rows.map((r) => (
+    <div class="mq-row">
+      <span class="mq-k label">{r.k}</span>
+      <div class={`mq ${r.dir}`} aria-label={r.k}>
+        <ul class="mq-t">
+          {[...r.items, ...r.items].map((t, i) => <li aria-hidden={i >= r.items.length ? 'true' : undefined}><span class="mq-m">{mono(t)}</span>{t}</li>)}
+        </ul>
+      </div>
+    </div>
+  ))}
+</section>
+<style>
+  .mq-row{display:grid;grid-template-columns:200px 1fr;border-top:1px solid var(--line);align-items:center}
+  .mq-k{padding:0 var(--pad);color:var(--faint);border-right:1px solid var(--line);height:100%;display:flex;align-items:center}
+  .mq{overflow:hidden;padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .mq-t{display:flex;gap:12px;width:max-content;animation:mq 50s linear infinite}
+  .mq.r .mq-t{animation-direction:reverse;animation-duration:56s}
+  .mq:hover .mq-t{animation-play-state:paused}
+  .mq li{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 8px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:16px;letter-spacing:-.015em;white-space:nowrap;transition:border-color .25s,color .25s}
+  .mq li:hover{border-color:var(--red);color:var(--red)}
+  .mq-m{width:32px;height:32px;border-radius:7px;background:#F5F5F5;border:1px solid var(--line);display:grid;place-items:center;font-size:11px;letter-spacing:0;color:#555;transition:background .25s,color .25s,border-color .25s}
+  .mq li:hover .mq-m{background:var(--red);border-color:var(--red);color:#fff}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  @media (max-width:768px){.mq-row{grid-template-columns:1fr}.mq-k{border-right:0;border-bottom:1px solid var(--line);padding:12px var(--pad)}}
+  @media (prefers-reduced-motion:reduce){.mq-t{animation:none;flex-wrap:wrap;width:auto;padding:0 var(--pad)}.mq-t li[aria-hidden]{display:none}.mq{-webkit-mask-image:none;mask-image:none}}
+</style>

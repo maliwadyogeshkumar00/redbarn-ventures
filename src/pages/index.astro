@@ -6,6 +6,8 @@ import Arrow from '../components/Arrow.astro'
 import site from '../data/site.json'
 import services from '../data/services.json'
 import H from '../data/home.json'
+import Marquee from '../components/Marquee.astro'
+import AgentFlow from '../components/AgentFlow.astro'
 const mail = `mailto:${site.email}?subject=${encodeURIComponent('Project enquiry')}`
 const faqLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: H.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
 const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Redbarn Ventures', url: 'https://redbarn.ventures/', email: site.email, description: site.description, hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, description: s.short } })) } }
@@ -21,7 +23,7 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
         <p class="lead rv" style="transition-delay:.25s">{H.hero.lead}</p>
         <div class="hero-btns rv" style="transition-delay:.35s">
           <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>
-          <a href="#services" class="btn btn-o">See our services</a>
+          <a href="/services" class="btn btn-o">See our services</a>
         </div>
         <ul class="proof rv" style="transition-delay:.45s">{H.hero.proof.map((p) => <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>{p}</li>)}</ul>
       </div>
@@ -30,16 +32,16 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
     <div class="strip" aria-hidden="true"><span></span><span class="hatch"></span><span></span><span class="hatch"></span><span></span><span class="hatch"></span><span></span></div>
   </section>
 
-  <!-- STUDIO BOARD -->
-  <section class="frame board-row" aria-label="What a typical month of studio work looks like">
+  <!-- WORK BOARD -->
+  <section class="frame board-row" aria-label="What a typical month of agency work looks like">
     <div class="board rv">
       <div class="b-side" aria-hidden="true">
         <span class="b-mark"><span class="mark"><i></i><i></i><i></i></span></span>
         {['cube', 'lattice', 'slabs', 'arrow', 'monolith'].map((k, i) => <span class={`b-ico ${i === 0 ? 'on' : ''}`}><Icon kind={k} /></span>)}
       </div>
       <div class="b-main">
-        <div class="b-top" aria-hidden="true"><div><span class="faint">studio /</span> board</div><span class="tag">This month</span></div>
-        <div class="b-title"><span class="h3">Redbarn studio</span><span class="faint">A typical month of work across our practices</span></div>
+        <div class="b-top" aria-hidden="true"><div><span class="faint">agency /</span> board</div><span class="tag">This month</span></div>
+        <div class="b-title"><span class="h3">Redbarn workspace</span><span class="faint">A typical month of work across our practices</span></div>
         <div class="b-tabs" aria-hidden="true"><span class="on">Board</span><span>List</span><span>Timeline</span></div>
         <div class="b-cols">
           {H.board.map((col, ci) => (
@@ -81,34 +83,33 @@ const svcLd = { '@context': 'https://schema.org', '@type': 'ProfessionalService'
   <!-- SERVICES -->
   <section class="frame row svc" id="services" aria-labelledby="svc-h">
     <div class="sec-h in-pad">
-      <div><span class="label faint">/Services</span><h2 class="h2" id="svc-h" data-split>Everything your brand needs to grow.</h2></div>
-      <p class="lead rv">Take one service or all six. Each is led by a senior specialist, and all of them work from the same brief - so your logo, website, deck and campaigns finally look and sound like one company.</p>
+      <div><span class="label faint">/Services</span><h2 class="h2" id="svc-h" data-split>Eleven services. One senior team.</h2></div>
+      <p class="lead rv">Strategy, branding, websites, AI, marketing, sales and events - each led by a senior specialist and all working from one brief, so every touchpoint looks and sounds like one company.</p>
     </div>
-    <div class="svc-body">
-      <div class="svc-list" role="tablist" aria-label="Services">
-        {services.map((s, i) => (
-          <button class={`svc-item ${i === 0 ? 'on' : ''}`} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`svc-p-${i}`} id={`svc-t-${i}`} tabindex={i === 0 ? 0 : -1}>
-            <span class="svc-t"><Icon kind={s.obj} /><span class="h3">{s.title}</span><span class="faint svc-n">{s.n}</span></span>
-            <span class="svc-d mute">{s.short}</span>
-            <span class="svc-bar" aria-hidden="true"></span>
-          </button>
-        ))}
+    <div class="sg in-pad">
+      {services.map((s, i) => (
+        <a href={`/services/${s.slug}`} class="sg-t rv" style={`transition-delay:${(i % 4) * 50}ms`}>
+          <div class="sg-art hatch"><Art kind={s.obj} /><span class="sg-n">{s.n}</span></div>
+          <div class="sg-b"><span class="sg-ti"><Icon kind={s.obj} />{s.title}</span><p class="mute">{s.short}</p></div>
+        </a>
+      ))}
+      <a href="/contact" class="sg-cta rv"><span class="label">Not sure what you need?</span><span class="bc-big">Ask a senior consultant</span><span class="bc-arr"><Arrow dir="ne" /></span></a>
+    </div>
+  </section>
+
+  <Marquee />
+
+  <!-- AI -->
+  <section class="frame row ai-band" aria-labelledby="ai-h">
+    <div class="ai-grid">
+      <div class="ai-copy in-pad">
+        <span class="label faint">/AI and automation</span>
+        <h2 class="h2" id="ai-h" data-split>AI agents that do real work.</h2>
+        <p class="lead rv">We build AI agents and automations that read your inbox, qualify leads, process documents and keep your systems up to date - with a human approving every step that matters.</p>
+        <ul class="ai-chips rv">{['Lead qualification', 'Email triage', 'Document extraction', 'Knowledge chat', 'CRM updates', 'Report drafting', 'Proposal drafts', 'Support answers'].map((t) => <li class="tag">{t}</li>)}</ul>
+        <a href="/ai" class="btn btn-p rv" style="align-self:flex-start">Explore AI services <Arrow /></a>
       </div>
-      <div class="svc-stage">
-        <div class="svc-frame hatch">
-          {services.map((s, i) => (
-            <div class={`svc-card ${i === 0 ? 'on' : ''}`} role="tabpanel" id={`svc-p-${i}`} aria-labelledby={`svc-t-${i}`} hidden={i !== 0}>
-              <div class="sc-top"><span class="faint">services /</span>&nbsp;{s.slug}<span class="sc-n">{s.n}</span></div>
-              <h3 class="sc-title">{s.title}</h3>
-              <p class="sc-intro">{s.intro}</p>
-              <div class="sc-art" aria-hidden="true"><Art kind={s.obj} /></div>
-              <div class="sc-row"><span class="faint">Includes</span><div class="sc-tags">{s.included.map((t) => <span class="tag">{t}</span>)}</div></div>
-              <div class="sc-row"><span class="faint">Process</span><ol class="sc-steps">{s.process.map((p, j) => <li><span class="faint">0{j + 1}</span> {p.t}</li>)}</ol></div>
-              <a class="sc-link" href={`/services/${s.slug}`}>Explore {s.title} <Arrow /></a>
-            </div>
-          ))}
-        </div>
-      </div>
+      <div class="ai-vis hatch"><div class="rv"><AgentFlow /></div></div>
     </div>
   </section>
 

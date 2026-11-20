@@ -2,7 +2,7 @@
   "name": "Redbarn Ventures",
   "email": "hello@redbarn.ventures",
   "tagline": "We design, build, market and advise.",
-  "description": "Redbarn Ventures is a senior design and growth studio. Brand identity, websites and apps, marketing, consultancy and corporate materials - delivered by one team that stays with you after launch.",
+  "description": "Redbarn Ventures is a global brand, digital and growth agency, established in 2023. Branding, websites, AI agents, marketing, SEO, lead generation, video, trade shows and consulting - from one senior team.",
   "nav": [
     {
       "label": "Services",
@@ -10,16 +10,28 @@
       "menu": true
     },
     {
+      "label": "AI",
+      "href": "/ai"
+    },
+    {
+      "label": "Industries",
+      "href": "/industries"
+    },
+    {
       "label": "Process",
-      "href": "/#process"
+      "href": "/process"
+    },
+    {
+      "label": "Insights",
+      "href": "/insights"
     },
     {
       "label": "About",
       "href": "/about"
     },
     {
-      "label": "FAQ",
-      "href": "/#faq"
+      "label": "Contact",
+      "href": "/contact"
     }
   ],
   "approach": [
@@ -40,5 +52,41 @@
     }
   ],
   "formTo": "admin@redbarn.ventures",
-  "linkedin": "https://www.linkedin.com/company/redbarn-ventures/"
+  "linkedin": "https://www.linkedin.com/company/redbarn-ventures/",
+  "instagram": "#instagram",
+  "since": "2023",
+  "tech": [
+    "PHP",
+    "Laravel",
+    "WordPress",
+    "WooCommerce",
+    "Shopify",
+    "React",
+    "Next.js",
+    "Astro",
+    "Node.js",
+    "Python",
+    "Supabase",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Swift",
+    "Kotlin"
+  ],
+  "platforms": [
+    "Cloudflare",
+    "AWS",
+    "Google Cloud",
+    "Google Ads",
+    "Google Analytics",
+    "Meta",
+    "LinkedIn",
+    "Microsoft 365",
+    "iOS",
+    "Android",
+    "Vercel",
+    "GitHub",
+    "HubSpot",
+    "Stripe",
+    "Figma"
+  ]
 }

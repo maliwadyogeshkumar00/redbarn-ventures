@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro'
+import PageHero from '../../components/PageHero.astro'
+import CtaBand from '../../components/CtaBand.astro'
+import Art from '../../components/Art.astro'
+import Arrow from '../../components/Arrow.astro'
+import { getPosts } from '../../posts'
+const posts = getPosts()
+const [lead, ...rest] = posts
+const fmt = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+const topics = ['AI and automation', 'Websites and growth', 'Sales and events', 'Branding', 'Leadership']
+const tdesc = [
+  { t: 'AI and automation', d: 'Where AI agents genuinely save time and money, how to start safely and how to measure the return.' },
+  { t: 'Websites and growth', d: 'How to judge, fix and grow the website as a sales, trust and investor asset - including search and AI visibility.' },
+  { t: 'Sales and events', d: 'Lead generation, sales enablement and trade shows run as disciplined campaigns that fill the pipeline.' },
+  { t: 'Branding', d: 'Positioning, identity and consistency across every touchpoint, from the website to the trade show stand.' },
+  { t: 'Leadership', d: 'Practical frameworks that help chief executives and boards make faster, clearer marketing and technology decisions.' },
+]
+---
+<Base title="Insights" description="Insights for CEOs and leadership teams on AI agents, websites, growth, sales, trade shows and branding - practical guides from Redbarn Ventures.">
+  <PageHero label="Insights" title="Practical thinking for leadership teams." lead="Long-form guides on AI, websites, growth, sales and brand - written for chief executives and senior teams who want clear answers rather than hype." crumbs={[{ t: 'Insights' }]}>
+    <div class="ins-topics rv">{topics.map((t) => <span class="tag">{t}</span>)}</div>
+  </PageHero>
+
+  <section class="frame row" aria-label="Featured article">
+    <a href={`/insights/${lead.slug}`} class="ins-lead">
+      <div class="il-art hatch"><Art kind={lead.art} /></div>
+      <div class="il-b in-pad">
+        <span class="label faint">{`Featured · ${lead.category}`}</span>
+        <h2 class="h2">{lead.title}</h2>
+        <p class="lead">{lead.excerpt}</p>
+        <div class="il-meta"><span>{fmt(lead.date)}</span><span>{`${lead.minutes} min read`}</span></div>
+        <span class="btn btn-p" style="align-self:flex-start">Read the guide <Arrow /></span>
+      </div>
+    </a>
+  </section>
+
+  <section class="frame row" aria-labelledby="all-h">
+    <div class="sec-h in-pad" style="grid-template-columns:1fr auto"><div><span class="label faint">/All insights</span><h2 class="h2" id="all-h" data-split>Latest guides.</h2></div></div>
+    <div class="ins-grid in-pad">
+      {rest.map((p) => (
+        <a href={`/insights/${p.slug}`} class="ins-c rv">
+          <div class="ic-tile hatch"><Art kind={p.art} /><span class="sg-n">{p.category}</span></div>
+          <div class="ic-b"><h3 class="h3">{p.title}</h3><p class="mute">{p.excerpt}</p><div class="il-meta"><span>{fmt(p.date)}</span><span>{`${p.minutes} min read`}</span></div></div>
+        </a>
+      ))}
+      <div class="ins-sub rv">
+        <span class="label">/More coming</span>
+        <p class="bc-big">New guides for leadership teams, every month.</p>
+        <a href="https://www.linkedin.com/company/redbarn-ventures/" target="_blank" rel="noopener" class="btn btn-o" style="background:#fff">Follow on LinkedIn <Arrow /></a>
+      </div>
+    </div>
+  </section>
+  <section class="frame row" aria-labelledby="tp-h">
+    <div class="sec-h in-pad"><div><span class="label faint">/Topics</span><h2 class="h2" id="tp-h" data-split>What we write about.</h2></div><p class="lead rv">Every guide is written by practitioners who do this work for clients every week - no recycled trends, no invented statistics, just clear advice you can act on.</p></div>
+    <ol class="st-points five">{tdesc.map((x, i) => <li class="rv"><span class="num">{`0${i + 1}`}</span><h3 class="h3">{x.t}</h3><p class="mute">{x.d}</p></li>)}</ol>
+  </section>
+  <CtaBand title="Want this thinking applied to your business?" />
+</Base>
+<style>
+  .ins-topics{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+  .ins-lead{display:grid;grid-template-columns:1fr 1fr;transition:background .3s}
+  .ins-lead:hover{background:#FCFCFC}
+  .ins-lead:hover h2{color:var(--red)}
+  .il-art{position:relative;min-height:420px;border-right:1px solid var(--line)}
+  .il-art :global(.art){position:absolute;inset:18% 24%;width:52%;height:64%}
+  .il-b{display:flex;flex-direction:column;gap:18px;justify-content:center;padding-top:48px;padding-bottom:48px}
+  .il-b h2{transition:color .3s}
+  .il-meta{display:flex;gap:16px;font-size:12.5px;color:var(--faint)}
+  .ins-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:var(--pad)}
+  .ins-c{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .3s}
+  .ins-c:hover{transform:translateY(-4px);border-color:var(--red)}
+  .ins-c:hover h3{color:var(--red)}
+  .ic-tile{position:relative;aspect-ratio:16/10;border-bottom:1px solid var(--line)}
+  .ic-tile :global(.art){position:absolute;inset:16% 26%;width:48%;height:68%}
+  .ic-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
+  .ic-b p{font-size:14px}
+  .ins-sub{border-radius:12px;background:var(--ink);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+  .ins-sub .label{opacity:.6}
+  @media (max-width:900px){.ins-lead{grid-template-columns:1fr}.il-art{min-height:260px;border-right:0;border-bottom:1px solid var(--line)}.ins-grid{grid-template-columns:1fr}}
+  .st-points.five{grid-template-columns:repeat(5,1fr)}
+  @media (max-width:900px){.st-points.five{grid-template-columns:1fr}}
+</style>

@@ -29,7 +29,6 @@ const cur = (h: string) => !h.includes('#') && (path === h || path.startsWith(h 
       ) : <a href={l.href} aria-current={cur(l.href) ? 'page' : undefined}>{l.label}</a>)}
     </nav>
     <div class="hdr-cta">
-      <a href="/contact" class="btn btn-o btn-sm">Contact</a>
       <a href="/contact" class="btn btn-p btn-sm">Start a project <Arrow /></a>
     </div>
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet" data-burger><span><i></i><i></i><i></i></span></button>
@@ -38,7 +37,10 @@ const cur = (h: string) => !h.includes('#') && (path === h || path.startsWith(h 
 <nav class="sheet" id="sheet" aria-label="Mobile">
   <a href="/services">Services</a>
   {services.map((s) => <a href={`/services/${s.slug}`} class="sub">{s.nav}</a>)}
-  <a href="/#process">Process</a>
+  <a href="/ai">AI</a>
+  <a href="/industries">Industries</a>
+  <a href="/process">Process</a>
+  <a href="/insights">Insights</a>
   <a href="/about">About</a>
   <a href="/contact">Contact</a>
   <a href="/contact" class="btn btn-p">Start a project <Arrow /></a>

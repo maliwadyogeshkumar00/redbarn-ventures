@@ -8,8 +8,8 @@ import services from '../data/services.json'
 import H from '../data/home.json'
 const chapters = [
   { k: 'The problem', t: 'Too many suppliers.', d: 'A designer for the logo, a developer for the site, an agency for ads, a consultant for strategy - each good at their part, none owning the whole picture.' },
-  { k: 'The idea', t: 'One senior team.', d: 'The people who design your identity also build your website, write your pages, plan your campaigns and prepare your materials - from one brief.' },
-  { k: 'Staying small', t: 'Real attention.', d: 'The people you meet in the first call are the people who do the work. Decisions are quick and no client is handed to juniors.' },
+  { k: 'The idea', t: 'One senior agency.', d: 'Since 2023 the same team advises, designs, builds websites and AI, runs campaigns and prepares your materials - from one brief.' },
+  { k: 'Senior by design', t: 'Real attention.', d: 'The people you meet in the first call are the people who do the work. Decisions are quick and no client is handed to juniors.' },
   { k: 'For the long run', t: 'We stay after launch.', d: 'Brands and websites are never finished. Long-term partnerships keep your company improving month after month.' },
 ]
 const who = [
@@ -18,8 +18,28 @@ const who = [
   { t: 'Technical and industrial firms', d: 'Companies selling complex products - energy, engineering, software - who need clear, credible communication for demanding buyers.' },
 ]
 ---
-<Base title="About" description="Redbarn Ventures is a small senior studio for brand, websites and growth. One team, one point of contact, and long-term support after launch.">
-  <PageHero label="About Redbarn" title="A small senior studio for brands that want to grow." lead="We started Redbarn because good companies kept telling us the same story: they had a great product, but their brand, website and marketing were spread across too many suppliers who never spoke to each other." crumbs={[{ t: 'About' }]} />
+<Base title="About" description="Redbarn Ventures is a global brand, digital and growth agency, established in 2023. Our mission, vision, principles and the senior team approach behind our work.">
+  <PageHero label="About Redbarn · Established 2023" title="A global agency for brands that want to grow." lead="We think like consultants and deliver like an agency. Since 2023, Redbarn Ventures has helped ambitious companies around the world look credible, sell more and work smarter - with one senior team that stays long after launch." crumbs={[{ t: 'About' }]} />
+
+  <section class="frame row" aria-label="Facts">
+    <ul class="facts">
+      <li class="rv"><b>2023</b><span>Established</span></li>
+      <li class="rv"><b>Global</b><span>Clients across continents and time zones</span></li>
+      <li class="rv"><b>11</b><span>Services under one roof</span></li>
+      <li class="rv"><b>1</b><span>Senior point of contact per client</span></li>
+    </ul>
+  </section>
+
+  <section class="frame row" aria-labelledby="mv-h">
+    <h2 class="sr" id="mv-h">Mission and vision</h2>
+    <div class="mv">
+      <div class="mv-c rv"><span class="label">/Our mission</span><p class="mv-t">To give every ambitious company the brand, technology and growth engine of a market leader - delivered by one senior team that treats their business as its own.</p></div>
+      <div class="mv-c dark rv"><span class="label">/Our vision</span><p class="mv-t">A world where great products are never held back by weak marketing, slow websites or disconnected suppliers - and where AI frees people to do their best work.</p></div>
+    </div>
+    <div class="vals">
+      {['Clarity', 'Ownership', 'Craft', 'Honesty', 'Long-term thinking'].map((v, i) => <span class="rv"><i>{`0${i + 1}`}</i>{v}</span>)}
+    </div>
+  </section>
 
   <section class="frame row" aria-labelledby="story-h">
     <h2 class="pull" id="story-h" data-split>Great products deserve brands, websites and marketing that work as one.</h2>
@@ -32,7 +52,7 @@ const who = [
       <div class="ab-art hatch" aria-hidden="true"><div class="ab-box"><Art kind="sphere" /></div></div>
       <div class="ab-copy in-pad">
         <span class="label faint">/In one line</span>
-        <p class="ab-line">Design, technology, marketing and strategy - <span class="red">sliced into one team</span>, held together by one brief.</p>
+        <p class="ab-line">Consulting, design, technology, AI and marketing - <span class="red">one global agency</span>, held together by one brief.</p>
         <a href="/services" class="btn btn-o" style="align-self:flex-start">See what we do <Arrow /></a>
       </div>
     </div>
@@ -91,4 +111,22 @@ const who = [
   .ab-line{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.03em;line-height:1.2;max-width:22ch}
   .red{color:var(--red)}
   @media (max-width:900px){.about-band{grid-template-columns:1fr}.ab-art{border-right:0;border-bottom:1px solid var(--line)}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr)}
+  .facts li{padding:28px var(--pad);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+  .facts li:last-child{border-right:0}
+  .facts b{font-weight:400;font-size:clamp(36px,4vw,56px);letter-spacing:-.045em;line-height:1}
+  .facts li:first-child b{color:var(--red)}
+  .facts span{font-size:13.5px;color:var(--mute)}
+  .mv{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:var(--pad)}
+  .mv-c{border:1px solid var(--line-2);border-radius:14px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:22px;min-height:300px;justify-content:space-between;background:var(--hatch),#fff}
+  .mv-c .label{color:var(--red)}
+  .mv-c.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .mv-c.dark .label{color:#ff8a99}
+  .mv-t{font-size:clamp(22px,2.4vw,32px);line-height:1.2;letter-spacing:-.03em;background:inherit}
+  .mv-c:not(.dark) .mv-t{background:#fff;padding:14px 16px;border-radius:10px;border:1px solid var(--line)}
+  .vals{display:flex;flex-wrap:wrap;border-top:1px solid var(--line)}
+  .vals span{flex:1;min-width:160px;padding:18px var(--pad);border-right:1px solid var(--line);font-size:18px;letter-spacing:-.02em;display:flex;gap:10px;align-items:baseline}
+  .vals span:last-child{border-right:0}
+  .vals i{font-style:normal;font-size:11px;color:var(--red)}
+  @media (max-width:900px){.facts{grid-template-columns:1fr 1fr}.facts li:nth-child(2){border-right:0}.facts li:nth-child(-n+2){border-bottom:1px solid var(--line)}.mv{grid-template-columns:1fr}.vals span{border-right:0;border-bottom:1px solid var(--line);min-width:100%}}
 </style>
