@@ -1,0 +1,488 @@
+{
+ "categories": [
+  {
+   "key": "energy",
+   "label": "Energy and Industrial"
+  },
+  {
+   "key": "consumer",
+   "label": "Consumer"
+  },
+  {
+   "key": "products",
+   "label": "Products"
+  },
+  {
+   "key": "agencies",
+   "label": "Agencies"
+  },
+  {
+   "key": "publishing",
+   "label": "Publishing"
+  }
+ ],
+ "projects": [
+  {
+   "slug": "wlf-energy",
+   "n": "001",
+   "name": "WLF Energy",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Global marketing, pitch decks, datasheets and web",
+   "tags": [
+    "Marketing",
+    "Pitch decks",
+    "Datasheets",
+    "Web"
+   ],
+   "obj": "monolith",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Marketing",
+    "Pitch decks",
+    "Datasheets",
+    "Web"
+   ],
+   "images": []
+  },
+  {
+   "slug": "wolf-x-group",
+   "n": "002",
+   "name": "Wolf X Group",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Brand system and 5-language website",
+   "tags": [
+    "Brand system",
+    "Website",
+    "Multilingual"
+   ],
+   "obj": "cube",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Brand system",
+    "Website",
+    "Multilingual"
+   ],
+   "images": []
+  },
+  {
+   "slug": "amp-hour",
+   "n": "003",
+   "name": "AMP-HOUR",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Company introduction deck",
+   "tags": [
+    "Company deck"
+   ],
+   "obj": "monolith",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Company deck"
+   ],
+   "images": []
+  },
+  {
+   "slug": "parenergy",
+   "n": "004",
+   "name": "Parenergy",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Logo and brand guidelines",
+   "tags": [
+    "Logo",
+    "Brand guidelines"
+   ],
+   "obj": "cube",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Logo",
+    "Brand guidelines"
+   ],
+   "images": []
+  },
+  {
+   "slug": "versapowr",
+   "n": "005",
+   "name": "VersaPowr",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Brand system",
+   "tags": [
+    "Brand system"
+   ],
+   "obj": "cube",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Brand system"
+   ],
+   "images": []
+  },
+  {
+   "slug": "arvion-advisory",
+   "n": "006",
+   "name": "Arvion Advisory",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Logo",
+   "tags": [
+    "Logo"
+   ],
+   "obj": "cube",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Logo"
+   ],
+   "images": []
+  },
+  {
+   "slug": "grid-intel",
+   "n": "007",
+   "name": "Grid Intel",
+   "cat": "energy",
+   "category": "Energy and Industrial",
+   "year": "2026",
+   "role": "Lead and market-intelligence platform",
+   "tags": [
+    "Platform",
+    "Lead generation",
+    "Market intelligence"
+   ],
+   "obj": "lattice",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Platform",
+    "Lead generation",
+    "Market intelligence"
+   ],
+   "images": []
+  },
+  {
+   "slug": "ifmcg-and-inperfume",
+   "n": "008",
+   "name": "IFMCG and InPerfume",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "Perfume e-commerce, SEO, Google Shopping and CRM",
+   "tags": [
+    "E-commerce",
+    "SEO",
+    "Google Shopping",
+    "CRM"
+   ],
+   "obj": "slabs",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "E-commerce",
+    "SEO",
+    "Google Shopping",
+    "CRM"
+   ],
+   "images": []
+  },
+  {
+   "slug": "fion-with-love",
+   "n": "009",
+   "name": "Fion with Love",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "AI hair-care app brand and site",
+   "tags": [
+    "Brand",
+    "Website",
+    "App"
+   ],
+   "obj": "sphere",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Brand",
+    "Website",
+    "App"
+   ],
+   "images": []
+  },
+  {
+   "slug": "flash-water",
+   "n": "010",
+   "name": "FLASH WATER",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "Pharmacy mouthwash brand and site",
+   "tags": [
+    "Brand",
+    "Website"
+   ],
+   "obj": "cube",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Brand",
+    "Website"
+   ],
+   "images": []
+  },
+  {
+   "slug": "heliski-travel",
+   "n": "011",
+   "name": "Heliski Travel",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "Travel site",
+   "tags": [
+    "Website"
+   ],
+   "obj": "slabs",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Website"
+   ],
+   "images": []
+  },
+  {
+   "slug": "luxebrand",
+   "n": "012",
+   "name": "Luxebrand",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "Marketing video",
+   "tags": [
+    "Video"
+   ],
+   "obj": "sphere",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Video"
+   ],
+   "images": []
+  },
+  {
+   "slug": "new-life-for-animals",
+   "n": "013",
+   "name": "New Life for Animals",
+   "cat": "consumer",
+   "category": "Consumer",
+   "year": "2026",
+   "role": "SEO",
+   "tags": [
+    "SEO"
+   ],
+   "obj": "slabs",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "SEO"
+   ],
+   "images": []
+  },
+  {
+   "slug": "ev-lens",
+   "n": "014",
+   "name": "EV Lens",
+   "cat": "products",
+   "category": "Products",
+   "year": "2026",
+   "role": "iOS app",
+   "tags": [
+    "iOS app",
+    "Product design"
+   ],
+   "obj": "arrow",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "iOS app",
+    "Product design"
+   ],
+   "images": []
+  },
+  {
+   "slug": "verity",
+   "n": "015",
+   "name": "Verity",
+   "cat": "products",
+   "category": "Products",
+   "year": "2026",
+   "role": "Lead database and email verification SaaS",
+   "tags": [
+    "SaaS",
+    "Data",
+    "Email verification"
+   ],
+   "obj": "lattice",
+   "featured": true,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "SaaS",
+    "Data",
+    "Email verification"
+   ],
+   "images": []
+  },
+  {
+   "slug": "kalki",
+   "n": "016",
+   "name": "Kalki",
+   "cat": "products",
+   "category": "Products",
+   "year": "2026",
+   "role": "AI agent",
+   "tags": [
+    "AI agent"
+   ],
+   "obj": "lattice",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "AI agent"
+   ],
+   "images": []
+  },
+  {
+   "slug": "voyage",
+   "n": "017",
+   "name": "Voyage",
+   "cat": "products",
+   "category": "Products",
+   "year": "2026",
+   "role": "Travel planner",
+   "tags": [
+    "Web app",
+    "Travel"
+   ],
+   "obj": "arrow",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Web app",
+    "Travel"
+   ],
+   "images": []
+  },
+  {
+   "slug": "velvly",
+   "n": "018",
+   "name": "Velvly",
+   "cat": "agencies",
+   "category": "Agencies",
+   "year": "2026",
+   "role": "Premium web studio",
+   "tags": [
+    "Web studio",
+    "WordPress"
+   ],
+   "obj": "monolith",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Web studio",
+    "WordPress"
+   ],
+   "images": []
+  },
+  {
+   "slug": "colatch",
+   "n": "019",
+   "name": "Colatch",
+   "cat": "agencies",
+   "category": "Agencies",
+   "year": "2026",
+   "role": "Celebrity marketing",
+   "tags": [
+    "Celebrity marketing"
+   ],
+   "obj": "sphere",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Celebrity marketing"
+   ],
+   "images": []
+  },
+  {
+   "slug": "voxa",
+   "n": "020",
+   "name": "VOXA",
+   "cat": "agencies",
+   "category": "Agencies",
+   "year": "2026",
+   "role": "Sports sponsorship prospecting",
+   "tags": [
+    "Sponsorship",
+    "Prospecting"
+   ],
+   "obj": "arrow",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Sponsorship",
+    "Prospecting"
+   ],
+   "images": []
+  },
+  {
+   "slug": "yr-maliwad",
+   "n": "021",
+   "name": "Y.R. Maliwad",
+   "cat": "publishing",
+   "category": "Publishing",
+   "year": "2026",
+   "role": "Self-help books",
+   "tags": [
+    "Publishing",
+    "Books"
+   ],
+   "obj": "monolith",
+   "featured": false,
+   "brief": "",
+   "did": "",
+   "deliverables": [
+    "Publishing",
+    "Books"
+   ],
+   "images": []
+  }
+ ]
+}

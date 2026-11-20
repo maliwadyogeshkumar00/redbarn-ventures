@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "brand-and-digital", "n": "001", "title": "Brand and Digital", "obj": "cube",
+    "short": "Identities, logos, websites, apps, decks and video - designed as one system.",
+    "intro": "We build brands that hold together everywhere they appear: the mark, the type, the website, the app, the deck and the film.",
+    "included": ["Brand identity and logo", "Brand guidelines", "Websites", "Apps and product interfaces", "Pitch and company decks", "Video"],
+    "process": [
+      { "t": "Position", "d": "Agree what the brand must say, to whom, and against whom." },
+      { "t": "Design", "d": "Mark, type, colour and layout, tested on real applications." },
+      { "t": "Build", "d": "Sites, apps and templates built to be edited by your own team." },
+      { "t": "Hand over", "d": "Guidelines and source files, organised and ready to use." }
+    ],
+    "related": ["parenergy", "versapowr", "arvion-advisory", "fion-with-love", "flash-water", "wolf-x-group"]
+  },
+  {
+    "slug": "marketing-and-growth", "n": "002", "title": "Marketing and Growth", "obj": "slabs",
+    "short": "SEO, AI-search visibility, Shopping, paid search, LinkedIn, lead generation and CRM.",
+    "intro": "We get the right people to find you, and we keep the ones who already did - across search engines, AI answers, shopping feeds and the inbox.",
+    "included": ["SEO", "AI-search visibility", "Google Shopping", "Paid search", "LinkedIn content", "Lead generation", "CRM"],
+    "process": [
+      { "t": "Audit", "d": "Where you are found today, and where you are missing." },
+      { "t": "Fix", "d": "Technical, content and feed issues, in order of impact." },
+      { "t": "Grow", "d": "Content, campaigns and outreach that build on each other." },
+      { "t": "Retain", "d": "CRM and follow-up so first buyers come back." }
+    ],
+    "related": ["ifmcg-and-inperfume", "new-life-for-animals", "grid-intel", "verity", "voxa", "wlf-energy"]
+  },
+  {
+    "slug": "consultancy", "n": "003", "title": "Consultancy", "obj": "arrow",
+    "short": "Go-to-market for energy and battery storage, market entry, expansion and growth strategy.",
+    "intro": "Practical advice from people who also do the work - especially for energy and battery storage companies entering new markets.",
+    "included": ["Energy and battery storage go-to-market", "European market entry", "Asia to Europe expansion", "Growth strategy"],
+    "process": [
+      { "t": "Listen", "d": "Your product, your numbers and your constraints." },
+      { "t": "Map", "d": "Markets, buyers, partners and competitors, side by side." },
+      { "t": "Plan", "d": "A sequenced plan with owners, budgets and checkpoints." },
+      { "t": "Support", "d": "We stay close while the plan meets reality." }
+    ],
+    "related": ["wlf-energy", "amp-hour", "grid-intel", "wolf-x-group"]
+  },
+  {
+    "slug": "corporate", "n": "004", "title": "Corporate", "obj": "monolith",
+    "short": "Company decks, datasheets, brand systems, investor and board materials, multilingual sites.",
+    "intro": "The documents a serious company is judged by - made precise, consistent and easy for your team to keep up to date.",
+    "included": ["Company decks", "Datasheets", "Brand systems", "Investor and board materials", "Multilingual corporate sites"],
+    "process": [
+      { "t": "Collect", "d": "Facts, figures and existing files, checked at the source." },
+      { "t": "Structure", "d": "A clear story and a template system that enforces it." },
+      { "t": "Produce", "d": "Every page set to the same standard, in every language." },
+      { "t": "Maintain", "d": "Editable masters so updates take minutes, not weeks." }
+    ],
+    "related": ["wlf-energy", "wolf-x-group", "amp-hour", "versapowr"]
+  },
+  {
+    "slug": "investing", "n": "005", "title": "Investing", "obj": "sphere",
+    "short": "Own-capital investments in early ventures and long-term equity holdings.",
+    "intro": "We put our own capital behind early ventures we understand, and hold it for the long term.",
+    "included": ["Own-capital investments in early ventures", "Long-term equity holdings"],
+    "process": [
+      { "t": "Meet", "d": "A founder, a problem and a reason it matters now." },
+      { "t": "Understand", "d": "We only invest where we can also help with the work." },
+      { "t": "Commit", "d": "Simple terms, our own money, no outside funds." },
+      { "t": "Hold", "d": "Long-term, patient and close to the founders." }
+    ],
+    "related": ["ev-lens", "verity", "kalki", "voyage"]
+  }
+]

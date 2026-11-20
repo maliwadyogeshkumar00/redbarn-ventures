@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro'
+import Art from '../components/Art.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import Icon from '../components/Icon.astro'
+import Arrow from '../components/Arrow.astro'
+import site from '../data/site.json'
+import services from '../data/services.json'
+import work from '../data/work.json'
+const featured = work.projects.filter((p) => p.featured).slice(0, 6)
+const spans = ['a', 'b', 'c', 'd', 'e', 'f']
+---
+<Base>
+  <section class="hero wrap">
+    <div class="g hero-g">
+      <h1 class="h1 hero-h" data-split data-delay="120">Brands, products and capital - built uncommonly well.</h1>
+      <div class="hero-side">
+        <p class="lead rv">We design, market, advise and invest. One small senior team, from first logo to the boardroom.</p>
+        <a href="/services" class="pill rv" style="transition-delay:.12s">Our Services <span class="dot"><Arrow /></span></a>
+      </div>
+      <div class="hero-obj"><Art kind="cube" label="Cube with a circular bore, one inner face in red" /></div>
+    </div>
+    <div class="hero-foot label mute hl hl-top"><span>/Studio and holding company</span><span>Scroll ↓</span></div>
+  </section>
+
+  <section class="sec bt" aria-labelledby="h-services">
+    <div class="wrap">
+      <div class="sec-head"><span class="label" id="h-services">/Services</span><a href="/services" class="label arrow-link">All services <Arrow /></a></div>
+      <ol class="svc-strip">
+        {services.map((s, i) => (
+          <li class="rv" style={`transition-delay:${i * 70}ms`}>
+            <a href={`/services/${s.slug}`}>
+              <span class="svc-num label"><Icon kind={s.obj} /> {s.n}</span>
+              <div class="svc-obj"><Art kind={s.obj} /></div>
+              <h3 class="h3">{s.title}</h3>
+              <p class="mute">{s.short}</p>
+              <span class="label arrow-link">Explore <Arrow /></span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bt" aria-labelledby="h-work">
+    <div class="wrap">
+      <div class="sec-head"><span class="label" id="h-work">/Selected work</span><a href="/work" class="label arrow-link">All work <Arrow /></a></div>
+      <div class="feat">
+        {featured.map((p, i) => (
+          <div class={`rv f-${spans[i]}`}><ProjectCard p={p} tall={i === 1 || i === 2 || i === 5} showRole={false} /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bt" aria-labelledby="h-approach">
+    <div class="wrap">
+      <div class="sec-head"><span class="label" id="h-approach">/Approach</span><span class="label mute">Three steps, every time</span></div>
+      <ol class="g approach">
+        {site.approach.map((a, i) => (
+          <li class="rv" style={`transition-delay:${i * 90}ms`}>
+            <span class="label red">{a.n}</span>
+            <h3 class="h2">{a.title}</h3>
+            <p class="mute">{a.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec bt" aria-labelledby="h-invest">
+    <div class="wrap">
+      <div class="sec-head"><span class="label" id="h-invest">/Investing</span><span class="label mute">Own capital only</span></div>
+      <div class="g invest">
+        <div class="inv-obj"><Art kind="sphere" /></div>
+        <div class="inv-copy">
+          <h2 class="h2" data-split>We back a few founders with our own capital.</h2>
+          <p class="lead mute rv">Long-term, founder-led and close to the work. When we invest, we usually build alongside.</p>
+          <a href="/investing" class="pill rv">Investing <span class="dot"><Arrow /></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:120px;position:relative}
+  .hero-g{align-items:end;position:relative;flex:1;grid-template-rows:1fr auto}
+  .hero-h{grid-column:1/9;grid-row:2;align-self:end;padding-bottom:clamp(28px,4vw,56px)}
+  .hero-side{grid-column:9/13;grid-row:1;align-self:start;display:flex;flex-direction:column;gap:28px;align-items:flex-start;padding-top:clamp(40px,8vh,110px);max-width:380px}
+  .hero-obj{grid-column:9/13;grid-row:2;width:100%;max-width:440px;justify-self:end;margin-bottom:12px}
+  .hero-foot{display:flex;justify-content:space-between;padding:16px 0 22px}
+
+  .svc-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-left:1px solid var(--line)}
+  .svc-strip li{border-right:1px solid var(--line)}
+  .svc-strip a{display:flex;flex-direction:column;gap:14px;padding:6px 20px 24px;height:100%}
+  .svc-num{display:flex;align-items:center;gap:8px}
+  .svc-obj{width:100%;margin:6px 0}
+  .svc-strip p{font-size:14px;min-height:3em}
+  .svc-strip a .arrow-link{margin-top:auto}
+  .svc-strip a:hover .arrow-link svg{transform:translateX(4px);color:var(--red)}
+
+  .feat{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:56px var(--gut)}
+  .f-a{grid-column:1/8}.f-b{grid-column:9/13;margin-top:18%}
+  .f-c{grid-column:2/6}.f-d{grid-column:7/13;margin-top:-12%}
+  .f-e{grid-column:1/7}.f-f{grid-column:8/12;margin-top:22%}
+    .approach li{grid-column:span 4;display:flex;flex-direction:column;gap:18px;padding:0 24px 0 0;border-left:1px solid var(--line);padding-left:20px;min-height:280px}
+  .approach li p{max-width:34ch;margin-top:auto}
+
+  .invest{align-items:center}
+  .inv-obj{grid-column:1/6;max-width:520px;width:100%}
+  .inv-copy{grid-column:7/13;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+
+  @media (max-width:1024px){
+    .svc-strip{grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+    .svc-strip li{border-bottom:1px solid var(--line)}
+    .hero-h{grid-column:1/13}
+    .hero-side{grid-column:1/13;grid-row:auto;padding-top:24px}
+    .hero-g{grid-template-rows:auto}
+    .hero-obj{grid-column:7/13;grid-row:1;max-width:320px}
+    .approach li{grid-column:span 12;min-height:0;padding:28px 0 28px 20px;border-left:0;border-top:1px solid var(--line)}
+  }
+  @media (max-width:768px){
+    .hero{min-height:auto;padding-top:96px}
+    .hero-g{display:flex;flex-direction:column;align-items:stretch}
+    .hero-obj{order:-1;max-width:260px;align-self:flex-end;margin:0}
+    .hero-h{padding-bottom:20px}
+    .hero-side{padding-top:0;padding-bottom:32px}
+    .svc-strip{grid-template-columns:1fr}
+    .feat{display:flex;flex-direction:column;gap:40px}
+    .feat .card{margin-top:0!important}
+    .inv-obj{max-width:300px}
+    .invest{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+  }
+</style>

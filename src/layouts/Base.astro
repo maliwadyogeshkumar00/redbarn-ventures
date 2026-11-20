@@ -1,0 +1,48 @@
+---
+import '../styles/global.css'
+import site from '../data/site.json'
+import TopBar from '../components/TopBar.astro'
+import Menu from '../components/Menu.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props { title?: string; description?: string; image?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean }
+const { title, description = site.description, image = '/og.jpg', type = 'website', jsonld = [], noindex = false, bare = false } = Astro.props
+const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Brands, products and capital'
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{full}</title>
+  <meta name="description" content={description} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+  <meta name="theme-color" content="#F2F2F2" />
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content="Redbarn Ventures" />
+  <meta property="og:title" content={full} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL(image, Astro.site).href} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script is:inline>
+    (function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('rbw')==='1'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('arrive');sessionStorage.removeItem('rbw')}catch(e){}})();
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify([org, ...jsonld])} />
+</head>
+<body id="top">
+  {!bare && <a class="skip" href="#main">Skip to content</a>}
+  {!bare && <div class="progress" aria-hidden="true"></div>}
+  {!bare && <TopBar />}
+  {!bare && <Menu />}
+  <main id="main"><slot /></main>
+  {!bare && <Footer />}
+  {!bare && <div class="wipe" aria-hidden="true"></div>}
+  <script>import '../scripts/site.ts'</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+---
+interface Props { dir?: 'right' | 'up' | 'ne' }
+const { dir = 'right' } = Astro.props
+const r = dir === 'up' ? -90 : dir === 'ne' ? -45 : 0
+---
+<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" style={r ? `transform:rotate(${r}deg)` : undefined}><path d="M2 8h12M9 3l5 5-5 5" /></svg>

@@ -1,0 +1,117 @@
+---
+/* Flat 2D axonometric cut-out objects. Painter-ordered polygons, one red cut face each. */
+interface Props { kind: string; class?: string; label?: string }
+const { kind, class: cls = '', label } = Astro.props
+const uid = 'a' + Math.random().toString(36).slice(2, 8)
+const C = { top: '#E6E6E6', l: '#D8D8D8', r: '#C9C9C9', red: '#D7263D', bg: '#F2F2F2' }
+const S = 50
+const P = (x: number, y: number, z: number) => [(x - y) * 0.866 * S, (x + y) * 0.5 * S - z * S]
+type Sh = { tag: string; a: Record<string, string | number>; red?: boolean; pts?: number[][] }
+const shapes: Sh[] = []
+const defs: string[] = []
+const fmt = (pp: number[][]) => pp.map((p) => p.map((v) => v.toFixed(1)).join(',')).join(' ')
+const poly = (p3: number[][], fill: string, extra: Record<string, string> = {}) => {
+  const pts = p3.map(([x, y, z]) => P(x, y, z))
+  shapes.push({ tag: 'polygon', a: { points: fmt(pts), fill, ...extra }, red: fill === C.red, pts })
+  return pts
+}
+const box = (x0: number, y0: number, z0: number, x1: number, y1: number, z1: number, red?: 'x' | 'y' | 'top') => {
+  poly([[x1, y0, z0], [x1, y1, z0], [x1, y1, z1], [x1, y0, z1]], red === 'x' ? C.red : C.r)
+  poly([[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1]], red === 'y' ? C.red : C.l)
+  poly([[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], red === 'top' ? C.red : C.top)
+}
+const ringX = (x: number, cy: number, cz: number, r: number, n = 64) => Array.from({ length: n }, (_, i) => { const t = (i / n) * Math.PI * 2; return [x, cy + r * Math.cos(t), cz + r * Math.sin(t)] })
+let vb = ''
+
+if (kind === 'cube') {
+  box(-1, -1, 0, 1, 1, 2)
+  const near = ringX(1, 0, 1, 0.56).map(([x, y, z]) => P(x, y, z))
+  const inner = ringX(0.35, 0, 1, 0.56).map(([x, y, z]) => P(x, y, z))
+  defs.push(`<clipPath id="${uid}c"><polygon points="${fmt(near)}"/></clipPath>`)
+  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#A91C2F' }, red: true, pts: near })
+  shapes.push({ tag: 'polygon', a: { points: fmt(inner), fill: C.red, 'clip-path': `url(#${uid}c)` }, red: true, pts: [] })
+}
+if (kind === 'slabs') {
+  const t = 0.42, g = 0.1
+  box(-1.65, -1, 0, 1.35, 1, t)
+  box(-1.3, -1, t + g, 1.7, 1, 2 * t + g)
+  const z0 = 2 * (t + g), z1 = z0 + t
+  box(-1.5, -1, z0, 0.45, 1, z1)
+  box(0.45, -1, z0, 1.0, 0.3, z1, 'y')
+  box(1.0, -1, z0, 1.5, -0.35, z1)
+}
+if (kind === 'arrow') {
+  const h = 0.62, d = 0.26, w = 0.46, c = 0.15
+  poly([[-2, w, 0], [0.4, w, 0], [0.4, w, h], [-2, w, h]], C.l)
+  poly([[-2, -w, h], [0.4, -w, h], [0.4, -c, h], [-2, -c, h]], C.top)
+  poly([[-2, -c, h - d], [0.4, -c, h - d], [0.4, c, h - d], [-2, c, h - d]], C.red)
+  poly([[-2, -c, h - d], [0.4, -c, h - d], [0.4, -c, h], [-2, -c, h]], C.l)
+  poly([[-2, c, h], [0.4, c, h], [0.4, w, h], [-2, w, h]], C.top)
+  poly([[1.65, 0, 0], [0.4, 1.05, 0], [0.4, 1.05, h], [1.65, 0, h]], C.l)
+  poly([[0.4, -1.05, h], [1.65, 0, h], [0.4, 1.05, h]], C.top)
+}
+if (kind === 'monolith') {
+  const W = 0.75, D = 0.24, H = 3
+  box(-W, -D, 0, W, D, H)
+  const sx = 0.11, z0 = 0.75, z1 = 2.45
+  const near = [[-sx, D, z0], [sx, D, z0], [sx, D, z1], [-sx, D, z1]].map(([x, y, z]) => P(x, y, z))
+  const far = [[-sx, -D + 0.3, z0], [sx, -D + 0.3, z0], [sx, -D + 0.3, z1], [-sx, -D + 0.3, z1]].map(([x, y, z]) => P(x, y, z))
+  defs.push(`<clipPath id="${uid}c"><polygon points="${fmt(near)}"/></clipPath>`)
+  shapes.push({ tag: 'polygon', a: { points: fmt(near), fill: '#A91C2F' }, red: true, pts: near })
+  shapes.push({ tag: 'polygon', a: { points: fmt(far), fill: C.red, 'clip-path': `url(#${uid}c)` }, red: true, pts: [] })
+}
+if (kind === 'lattice') {
+  const n = [-1, 0, 1]
+  const nodes: number[][] = []
+  n.forEach((x) => n.forEach((y) => n.forEach((z) => nodes.push([x * 1.05, y * 0.72, (z + 1) * 0.86]))))
+  const key = (p: number[]) => p.map((v) => v.toFixed(3)).join(',')
+  const set = new Set(nodes.map(key))
+  nodes.forEach((p) => [[1.05, 0, 0], [0, 0.72, 0], [0, 0, 0.86]].forEach((d) => {
+    const q = [+(p[0] + d[0]).toFixed(3), +(p[1] + d[1]).toFixed(3), +(p[2] + d[2]).toFixed(3)]
+    if (!set.has(key(q))) return
+    const a = P(p[0], p[1], p[2]), b = P(q[0], q[1], q[2])
+    shapes.push({ tag: 'line', a: { x1: a[0].toFixed(1), y1: a[1].toFixed(1), x2: b[0].toFixed(1), y2: b[1].toFixed(1) }, pts: [a, b] })
+  }))
+  nodes.sort((a, b) => a[0] + a[1] + a[2] - (b[0] + b[1] + b[2])).forEach((p) => {
+    const c = P(p[0], p[1], p[2]); const red = p[0] > 1 && p[1] > 0.7 && p[2] > 2.5
+    shapes.push({ tag: 'circle', a: { cx: c[0].toFixed(1), cy: c[1].toFixed(1), r: red ? 8 : 6, fill: red ? C.red : C.top }, red, pts: [[c[0] - 8, c[1] - 8], [c[0] + 8, c[1] + 8]] })
+  })
+}
+if (kind === 'sphere') {
+  const R = 110, k = 0.2, gap = 22
+  const cuts = [-R, -48, 6, 60, R]
+  const shift = [0, -9, 10, -4]
+  for (let i = 0; i < cuts.length - 1; i++) {
+    const yt = cuts[i], yb = cuts[i + 1], off = i * gap
+    const id = `${uid}s${i}`
+    defs.push(`<clipPath id="${id}"><rect x="${-R - 2}" y="${yt}" width="${2 * R + 4}" height="${yb - yt}"/></clipPath>`)
+    const tf = `translate(${shift[i]},${off})`
+    shapes.push({ tag: 'circle', a: { cx: 0, cy: 0, r: R, fill: C.l, 'clip-path': `url(#${id})`, transform: tf }, pts: [[-R - 14, -R], [R + 14, R + (cuts.length - 2) * gap]] })
+    if (i > 0) {
+      const xt = Math.sqrt(R * R - yt * yt)
+      shapes.push({ tag: 'ellipse', a: { cx: 0, cy: yt, rx: xt.toFixed(1), ry: (xt * k).toFixed(1), fill: i === 2 ? C.red : C.top, transform: tf }, red: i === 2, pts: [] })
+    }
+  }
+}
+
+// viewBox from all points
+const all = shapes.flatMap((s) => s.pts || [])
+if (all.length) {
+  const xs = all.map((p) => p[0]), ys = all.map((p) => p[1])
+  const pad = 22
+  const x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad, x1 = Math.max(...xs) + pad, y1 = Math.max(...ys) + pad
+  const size = Math.max(x1 - x0, y1 - y0)
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2
+  vb = `${(cx - size / 2).toFixed(1)} ${(cy - size / 2).toFixed(1)} ${size.toFixed(1)} ${size.toFixed(1)}`
+}
+const shadowY = (() => { const ys = all.map((p) => p[1]); return ys.length ? Math.max(...ys) + 6 : 0 })()
+const shadowX = (() => { const xs = all.map((p) => p[0]); return xs.length ? (Math.min(...xs) + Math.max(...xs)) / 2 : 0 })()
+const shadowW = (() => { const xs = all.map((p) => p[0]); return xs.length ? (Math.max(...xs) - Math.min(...xs)) * 0.42 : 0 })()
+const attrs = (a: Record<string, string | number>) => Object.entries(a).map(([k, v]) => `${k}="${v}"`).join(' ')
+const body = shapes.map((s, i) => `<${s.tag} class="s${s.red ? ' rd' : ''}" pathLength="1" style="--i:${i}" ${attrs(s.a)}/>`).join('')
+---
+<svg class={`art ${cls}`} viewBox={vb} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} data-kind={kind}>
+  <defs set:html={defs.join('')} />
+  <ellipse class="sh" cx={shadowX.toFixed(1)} cy={shadowY.toFixed(1)} rx={shadowW.toFixed(1)} ry={(shadowW * 0.14).toFixed(1)} />
+  <g class="fl" set:html={body} />
+</svg>
