@@ -14,7 +14,7 @@ const full = title ? `${title} - Redbarn Ventures` : 'Redbarn Ventures - Global 
 const canonical = new URL(Astro.url.pathname, Astro.site).href
 const website = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://redbarn.ventures/#website', name: 'Redbarn Ventures', alternateName: ['Redbarn', 'redbarn.ventures'], url: 'https://redbarn.ventures/' }
 const isHome = Astro.url.pathname === '/'
-const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: site.name, legalName: 'Redbarn Ventures Private Limited', foundingDate: '2023', sameAs: [site.linkedin], url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
+const org = { '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://redbarn.ventures/#org', name: site.name, foundingDate: '2023', sameAs: [site.linkedin], url: 'https://redbarn.ventures/', email: site.email, logo: 'https://redbarn.ventures/icon-512.png', description: site.description }
 ---
 <!doctype html>
 <html lang="en">
