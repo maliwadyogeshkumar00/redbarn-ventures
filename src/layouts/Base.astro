@@ -5,7 +5,6 @@ import site from '../data/site.json'
 import TopBar from '../components/TopBar.astro'
 import Footer from '../components/Footer.astro'
 import FloatContact from '../components/FloatContact.astro'
-import Preloader from '../components/Preloader.astro'
 import Brief from '../components/Brief.astro'
 
 interface Props { title?: string; description?: string; image?: string; imageAlt?: string; type?: string; jsonld?: Record<string, unknown>[]; noindex?: boolean; bare?: boolean; pageType?: string; crumb?: string }
@@ -25,6 +24,8 @@ const webpage = { '@context': 'https://schema.org', '@type': pageType || (segs.l
 const breadcrumb = segs.length && !hasCrumbs ? { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://redbarn.ventures/' }, ...segs.map((seg, i) => { const last = i === segs.length - 1; return { '@type': 'ListItem', position: i + 2, name: last ? (crumb || title || seg) : (SECTIONS[seg] || seg), item: new URL('/' + segs.slice(0, i + 1).join('/') + '/', Astro.site).href } })] } : null
 const graph = noindex ? [] : isHome ? [website, org, ...jsonld] : [org, webpage, ...(breadcrumb ? [breadcrumb] : []), ...jsonld]
 import Consent from '../components/Consent.astro'
+import font400 from '@fontsource/inter-tight/files/inter-tight-latin-400-normal.woff2?url'
+const speculation = { prefetch: [{ where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/*.*' } }] }, eagerness: 'moderate' }] }
 ---
 <!doctype html>
 <html lang="en">
@@ -33,6 +34,7 @@ import Consent from '../components/Consent.astro'
   <meta name="msvalidate.01" content="2ADD87699A8236062A3D577ABDA6E451" />
   <meta name="google-site-verification" content="WTyP1V_DN-lg6zSQ27fO3UIkxYCt6dfQyv-3HQB_Gw4" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
   <title>{full}</title>
   <meta name="description" content={description} />
   {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
@@ -64,9 +66,9 @@ import Consent from '../components/Consent.astro'
   </script>
   {graph.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />}
   <slot name="head" />
+  <script type="speculationrules" set:html={JSON.stringify(speculation)} />
 </head>
 <body id="top">
-  {!bare && <Preloader />}
   {!bare && <a class="skip" href="#main">Skip to content</a>}
   {!bare && <div class="progress" aria-hidden="true"></div>}
   {!bare && <TopBar />}
