@@ -1,19 +1,50 @@
 {
   "name": "Redbarn Ventures",
   "email": "hello@redbarn.ventures",
-  "tagline": "We design, market, advise and invest.",
-  "description": "Redbarn Ventures is a studio and holding company that designs, markets, advises and invests. One small senior team, from first logo to the boardroom.",
+  "tagline": "We design, build, market and advise.",
+  "description": "Redbarn Ventures is a senior design and growth studio. Brand identity, websites and apps, marketing, consultancy and corporate materials - delivered by one team that stays with you after launch.",
   "nav": [
-    { "n": "01", "label": "Home", "href": "/", "obj": "cube" },
-    { "n": "02", "label": "Work", "href": "/work", "obj": "lattice" },
-    { "n": "03", "label": "Services", "href": "/services", "obj": "slabs" },
-    { "n": "04", "label": "Investing", "href": "/investing", "obj": "sphere" },
-    { "n": "05", "label": "About", "href": "/about", "obj": "monolith" },
-    { "n": "06", "label": "Contact", "href": "/contact", "obj": "arrow" }
+    {
+      "n": "01",
+      "label": "Services",
+      "href": "/#services",
+      "obj": "cube"
+    },
+    {
+      "n": "02",
+      "label": "What we build",
+      "href": "/#build",
+      "obj": "lattice"
+    },
+    {
+      "n": "03",
+      "label": "Process",
+      "href": "/#process",
+      "obj": "arrow"
+    },
+    {
+      "n": "04",
+      "label": "FAQ",
+      "href": "/#faq",
+      "obj": "slabs"
+    }
   ],
   "approach": [
-    { "n": "01", "title": "Decide", "text": "We start with the decision that matters: who it is for, what it has to do and what we will not do. One page, agreed before anything is made." },
-    { "n": "02", "title": "Build", "text": "A small senior team makes the work itself - identity, product, site, deck or plan - in short cycles you can see and steer." },
-    { "n": "03", "title": "Compound", "text": "We stay on to market, measure and improve. Good work is kept, extended and reused, so every round starts further ahead." }
-  ]
+    {
+      "n": "01",
+      "title": "Decide",
+      "text": "We start with the decision that matters: who it is for, what it has to do and what we will not do. One page, agreed before anything is made."
+    },
+    {
+      "n": "02",
+      "title": "Build",
+      "text": "A small senior team makes the work itself - identity, product, site, deck or plan - in short cycles you can see and steer."
+    },
+    {
+      "n": "03",
+      "title": "Compound",
+      "text": "We stay on to market, measure and improve. Good work is kept, extended and reused, so every round starts further ahead."
+    }
+  ],
+  "whatsapp": "919638500066"
 }

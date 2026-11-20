@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "chip": "Brand · Websites · Marketing · Consultancy · Corporate",
+    "title": "We build brands that win trust - and keep them growing.",
+    "lead": "Redbarn Ventures is a senior design and growth studio. We create your brand, build your website, market it and support it for the long run - one team, one point of contact, no hand-offs.",
+    "proof": ["Senior team only", "You own every file", "Support after launch"]
+  },
+  "board": [
+    { "t": "Brand and Identity", "items": [ { "n": "Identity system", "d": "Logo, colour, type and usage rules", "tags": ["Logo", "Guidelines"], "art": "cube" }, { "n": "Pitch deck redesign", "d": "Story, structure and slides", "tags": ["Deck", "Story"] } ] },
+    { "t": "Websites and Apps", "items": [ { "n": "Marketing website", "d": "Design, build and launch", "tags": ["Design", "Build"], "art": "lattice" }, { "n": "App interface", "d": "Screens and design system", "tags": ["iOS", "UI"] } ] },
+    { "t": "Marketing and Growth", "items": [ { "n": "SEO and AI-search programme", "d": "Technical fixes and content", "tags": ["SEO", "Content"], "art": "slabs" }, { "n": "LinkedIn content calendar", "d": "Posts, visuals and timing", "tags": ["LinkedIn"] } ] },
+    { "t": "Corporate Materials", "items": [ { "n": "Datasheet system", "d": "Editable masters for every product", "tags": ["Datasheets"], "art": "monolith" }, { "n": "Investor deck", "d": "Numbers, narrative and design", "tags": ["Deck", "Board"] } ] }
+  ],
+  "statement": {
+    "title": "Most companies juggle a designer, a developer, an agency and a consultant. We are all four - and we talk to each other.",
+    "points": [
+      { "t": "One brief", "d": "You explain your business once. Every specialist works from the same page." },
+      { "t": "One plan", "d": "Brand, website and marketing are planned together, so nothing contradicts anything else." },
+      { "t": "One point of contact", "d": "A senior lead owns your account and answers your messages - from first call to year three." }
+    ]
+  },
+  "build": [
+    { "t": "Brand identities", "obj": "cube", "d": "Logos and identity systems with clear rules, so every person and supplier uses your brand the same way.", "tags": ["Logo", "Guidelines", "Templates"] },
+    { "t": "Websites", "obj": "lattice", "d": "Fast, search-ready company and marketing sites, built so your own team can edit pages without a developer.", "tags": ["Design", "Build", "SEO-ready"] },
+    { "t": "E-commerce stores", "obj": "slabs", "d": "Online stores with clean product pages, Shopping feeds and the tracking you need to see what actually sells.", "tags": ["Store", "Shopping", "CRM"] },
+    { "t": "App interfaces", "obj": "arrow", "d": "Screens, flows and design systems for iOS and web apps, ready for your developers to build from.", "tags": ["UI", "Flows", "Design system"] },
+    { "t": "Pitch and company decks", "obj": "monolith", "d": "Decks that tell a clear story in the room and survive being forwarded - on your own editable template.", "tags": ["Sales deck", "Investor deck", "Template"] },
+    { "t": "Growth programmes", "obj": "sphere", "d": "Monthly SEO, AI-search, content and LinkedIn work that compounds - reported in plain language.", "tags": ["SEO", "AI search", "Content"] }
+  ],
+  "trust": [
+    { "t": "Senior people only", "d": "The people you meet are the people who do the work. No juniors learning on your budget." },
+    { "t": "Clear scope before we start", "d": "You get a written plan, timeline and quote before any work begins. No surprise invoices." },
+    { "t": "You own everything", "d": "Source files, logins, domains and code are yours from day one - nothing held back." },
+    { "t": "Built for your team", "d": "Websites, decks and templates are set up so your own people can update them confidently." },
+    { "t": "Honest advice", "d": "If something will not help your business, we say so - even when it means less work for us." },
+    { "t": "We stay after launch", "d": "Ongoing design, website care and marketing, so your brand keeps improving instead of ageing." }
+  ],
+  "process": [
+    { "t": "Discovery call", "d": "A focused conversation about your business, your customers and what is not working today. No preparation needed on your side." },
+    { "t": "Plan and quote", "d": "Within days you receive a written plan: what we will make, in what order, by when and for how much." },
+    { "t": "Design and build", "d": "We work in short rounds you can see and steer. You review real work, not slides about work." },
+    { "t": "Launch and grow", "d": "We launch, hand over everything, train your team - and keep improving it month after month if you want us to." }
+  ],
+  "engage": [
+    { "t": "Project", "tag": "Fixed scope", "d": "A defined piece of work with a fixed quote and a clear finish line.", "points": ["New brand or rebrand", "Website design and build", "Pitch or company deck", "Written plan and quote up front"] },
+    { "t": "Ongoing partnership", "tag": "Long-term", "d": "A monthly team for brands that need steady design, web and marketing support.", "points": ["Design and content on demand", "Website care and updates", "SEO, AI search and LinkedIn", "Monthly plan and plain-language report"], "featured": true },
+    { "t": "Advisory", "tag": "Strategy", "d": "Senior advice for a launch, a new market or a stalled growth plan.", "points": ["Go-to-market strategy", "Positioning and messaging", "Marketing audit", "Sessions with your leadership"] }
+  ],
+  "faq": [
+    { "q": "What kind of companies do you work with?", "a": "Established businesses and ambitious new ones that want to look and sell like leaders in their field - from industrial and energy companies to consumer brands and software products. If you care about quality and want a long-term partner, we are likely a good fit." },
+    { "q": "Can you handle our brand, website and marketing together?", "a": "Yes, that is what we are built for. One senior team plans and delivers your brand, website and marketing together, so everything works as one system instead of three separate projects." },
+    { "q": "How long does a website take?", "a": "It depends on scope. A focused company site is usually a matter of weeks; larger builds with many pages, languages or a store take longer. You get an exact timeline in your written plan before we start." },
+    { "q": "Do we own the files and the website?", "a": "Always. Source files, code, domains and accounts belong to you from day one. We set everything up in your name and document it, so you are never locked in." },
+    { "q": "Do you offer support after launch?", "a": "Yes. You can keep us on an ongoing partnership for website care, new design work, SEO and content - or simply call on us whenever you need something." },
+    { "q": "Which platforms do you build on?", "a": "We choose the platform that fits your team: modern static sites for speed, WordPress and Elementor when your team wants to edit visually, WooCommerce or Shopify for stores, and native designs for iOS apps." },
+    { "q": "How do we start?", "a": "Send us an email or a WhatsApp message with a few lines about your business and what you need. We will arrange a short call and follow up with a written plan and quote." }
+  ]
+}
